@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "sourceEnvironment": "development",
+  "repository": "https://github.com/amazing-socrates/story-contract",
+  "branch": "dev-20260824-card",
+  "anchorVersion": "1.0.0",
+  "environments": {
+    "development": {
+      "programId": "6w1itXjxKn79S6WzR3tY6nkF7rx5DDJbYkH12a7uFyTk",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "4cd4b7cc6f906e424a3ef501118824d524c8299e8f94c53d63c14fb129f83c26"
+    },
+    "test": {
+      "programId": "CJEnSe9eJ3s8qLQNdWrcHQpp6199s4NohcBBHZ3UeRQL",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "2c664599e31572b9e685f3a72bae1a6b087d0a4490ed20670fd30e9590b2c02b"
+    },
+    "production": {
+      "programId": "7vGTZBAqjk9mArEnj1bZ7aRvAkeoksAcrzB7aEtzb8g1",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "9254a15edb5e783280ad3048bfb066c6725ffc44de1ec7aa6a4430fc4f10919f"
+    }
+  }
+}

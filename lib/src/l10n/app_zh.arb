@@ -1,0 +1,2921 @@
+{
+  "appName": "StoryFun",
+  "commonCancel": "取消",
+  "commonNoData": "暂无数据",
+  "commonNo": "否",
+  "commonYes": "是",
+  "publishDrama": "发布短剧",
+  "publishVideo": "发布视频",
+  "publishVideoUploadTitle": "上传视频文件",
+  "publishVideoFileHint": "支持 mp4、flv、wmv、mkv、avi、mov、webm 等格式，文件不超过 2GB",
+  "publishVideoChooseFile": "选择文件",
+  "publishVideoChangeFile": "更换文件",
+  "publishVideoChooseSource": "选择视频来源",
+  "publishVideoChooseFromGallery": "从相册选择",
+  "publishVideoChooseFromFiles": "从文件选择",
+  "publishVideoPreparing": "正在准备视频…",
+  "publishVideoCoverTitle": "视频封面",
+  "publishVideoChangeCover": "更换封面",
+  "publishVideoCoverHint": "支持 JPG/PNG，不超过 5MB",
+  "publishVideoDescriptionLabel": "描述",
+  "publishVideoRequired": "（必填）",
+  "publishVideoDescriptionHint": "添加作品描述（最多200字）",
+  "publishVideoSaveDraft": "保存草稿",
+  "publishVideoDraftEditModeNotSupported": "编辑模式下不能保存草稿",
+  "publishVideoDraftNothingToSave": "没有可保存的内容",
+  "publishVideoNext": "下一步",
+  "publishVideoCoverCropTitle": "裁剪视频封面",
+  "publishVideoVideoTooLarge": "该视频超过 2GB，暂不支持上传，请选择较小的视频",
+  "publishVideoVideoPickFailed": "选择视频失败，请重试",
+  "publishVideoInsufficientStorage": "设备剩余空间不足，无法准备该视频",
+  "publishVideoPermissionDenied": "无法访问该视频，请检查相册或文件权限",
+  "publishVideoSourceUnavailable": "该视频暂时无法读取，请确认云端文件已下载后重试",
+  "publishVideoPrepareFailed": "视频准备失败，请重试或从文件选择",
+  "publishVideoMetadataUnavailable": "无法读取视频信息，请选择其他文件",
+  "publishVideoCoverTooLarge": "封面图片不能超过 5MB",
+  "publishVideoCoverUnsupportedFormat": "仅支持 JPG/PNG 格式的图片",
+  "publishVideoCoverPickFailed": "选择封面失败，请重试",
+  "publishVideoUploadSessionFailed": "创建上传会话失败，请重试",
+  "publishVideoPublishedSuccess": "视频发布成功",
+  "publishVideoUpdatedSuccess": "视频修改成功",
+  "publishActorIp": "发布IP",
+  "commonConfirm": "确认",
+  "commonOk": "我知道了",
+  "commonNotice": "提示",
+  "commonRetry": "重试",
+  "publicProfileLikedEmpty": "暂无点赞的短剧",
+  "profileTabDramas": "短剧",
+  "profileTabWorks": "作品",
+  "profileTabActorIp": "角色IP",
+  "@dramaUnlockConfirmLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockConfirmLabel": "{price} {currency} 解锁",
+  "dramaAllEpisodes": "共 {count} 集",
+  "dramaAllEpisodesFull": "全{count}集",
+  "dramaLoading": "加载精选短剧中...",
+  "dramaEmpty": "暂无短剧",
+  "dramaRefresh": "刷新",
+  "@dramaAllEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navTheater": "剧场",
+  "navHome": "首页",
+  "theaterTabShortDrama": "短剧",
+  "theaterTabRecommend": "推荐",
+  "playerWatchFullDrama": "观看完整短剧",
+  "playerStoryPerHourUnit": "STORY/h",
+  "navNft": "IP市场",
+  "navNftIp": "角色IP",
+  "watchFullDramaEpisodes": "观看完整短剧 · 全{count}集",
+  "@watchFullDramaEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navCreate": "创作",
+  "navProfile": "我",
+  "navMy": "经纪人",
+  "aboutTitle": "关于我们",
+  "aboutVision": "AI · Web3 · 协议",
+  "aboutVisionDesc": "三种力量驱动，将叙事从被动体验转化为主动生成",
+  "aboutAiDesc": "你的想法，自动变成故事",
+  "aboutWeb3Desc": "你的创作，永远属于你",
+  "aboutProtocolDesc": "你的故事，可以无限延续",
+  "aboutIdentityTitle": "你的叙事身份",
+  "aboutIdentityDesc": "你本身，就是一个正在展开的叙事宇宙",
+  "aboutIdentityCreator": "创造者",
+  "aboutIdentityCreatorDesc": "主动书写自身的叙事",
+  "aboutIdentityWitness": "见证者",
+  "aboutIdentityWitnessDesc": "参与并验证他人叙事",
+  "aboutIdentityCoCreator": "共创者",
+  "aboutIdentityCoCreatorDesc": "进入叙事结构并进行改写",
+  "aboutIdentitySpreader": "传播者",
+  "aboutIdentitySpreaderDesc": "传播你值得的叙事",
+  "aboutTokenomicsTitle": "STORY：叙事权通证",
+  "aboutTokenomicsDesc": "成为 AI 短剧的联合出品人，重构影视行业的利益分配格局",
+  "aboutTokenomicsGov": "治理权",
+  "aboutTokenomicsGovDesc": "投票决定下一部 AI 短剧的题材与走向",
+  "aboutTokenomicsRevenue": "收益权",
+  "aboutTokenomicsRevenueDesc": "分享平台订阅、版权授权及周边销售红利",
+  "aboutTokenomicsAccess": "访问权",
+  "aboutTokenomicsAccessDesc": "抢先观看最新剧集，解锁独家内容",
+  "aboutStakingTitle": "质押分润",
+  "aboutStakingDesc": "短剧 NFT · 角色 NFT · STORY → 质押即享分润",
+  "aboutStakingDrama": "短剧 NFT 质押",
+  "aboutStakingDramaDesc": "短剧创作者 · 获得分润",
+  "aboutStakingActor": "角色 NFT 质押",
+  "aboutStakingActorDesc": "角色参演短剧 · 获得分润",
+  "aboutStakingStory": "STORY 质押",
+  "aboutStakingStoryDesc": "质押到短剧 · 收入分润",
+  "aboutHeroTitle": "创造属于你的故事",
+  "aboutHeroDesc": "你的人生不是被体验的剧本，而是正在被你书写的叙事",
+  "loginTitle": "邮箱登录",
+  "loginSubtitle": "通过 Privy 邮箱 OTP 登录，自动创建 Solana 嵌入式钱包。",
+  "loginPlaceholder": "输入邮箱地址",
+  "loginEmailHintFormat": "请输入邮箱",
+  "loginVerificationFailed": "验证码错误",
+  "loginNeedCodeFirst": "请先获取验证码",
+  "loginCreateWalletFailed": "创建钱包失败",
+  "loginGetTokenFailed": "获取登录凭证失败",
+  "loginPrivyUnavailable": "登录服务暂不可用，请重启应用后再试",
+  "loginSendCodeFailed": "验证码发送失败，请稍后重试",
+  "loginTooManyRequests": "请求过于频繁，请稍后再试",
+  "loginVerificationSuccessful": "验证成功",
+  "loginSendCode": "获取验证码",
+  "loginSendingCode": "发送中...",
+  "loginCodePlaceholder": "输入 6 位验证码",
+  "loginSubmit": "登录",
+  "loginSubmitting": "登录中...",
+  "loginEmailRequired": "请输入邮箱",
+  "loginCodeRequired": "请输入验证码",
+  "loginSuccess": "登录成功",
+  "loginErrorPrefix": "登录失败：",
+  "loginCodeSent": "验证码已发送至 {email}",
+  "loginEmailLabel": "邮箱",
+  "loginCodeLabel": "验证码",
+  "loginVerifying": "验证中，请稍候...",
+  "loginVerifyAndSubmit": "验证并登录",
+  "loginChangeEmail": "换个邮箱",
+  "loginNotNow": "暂不登录",
+  "loginInvalidEmail": "请输入有效邮箱",
+  "@loginCodeSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "经纪人",
+  "profileNotLoggedIn": "未登录",
+  "profileClickLogin": "登录 / 注册",
+  "profileMyWallet": "我的钱包",
+  "profileWallet": "钱包",
+  "profileTradeStory": "交易 STORY",
+  "profileWalletCreating": "创建中...",
+  "walletNetworkSolana": "Solana",
+  "walletNetworkEvm": "EVM",
+  "profileEarnings": "收益",
+  "profileMyNft": "我的 NFT",
+  "profileMyFavorites": "我的收藏",
+  "profileWatchHistory": "观看历史",
+  "profileCreatorCatalog": "创作者目录",
+  "profileIdentityAuth": "实名认证",
+  "profileAccountSecurity": "账号安全",
+  "profileLanguage": "语言",
+  "profileAboutUs": "关于我们",
+  "profileHelpFeedback": "帮助与反馈",
+  "profileLogout": "退出登录",
+  "profileLogoutConfirm": "确认要退出登录吗？",
+  "profileLogoutSuccess": "已退出登录",
+  "mainPressBackAgainToExit": "再按一次退出",
+  "languageSelectTitle": "选择语言",
+  "languageChinese": "简体中文",
+  "languageEnglish": "English",
+  "searchTitle": "搜索",
+  "searchHint": "搜索短剧、作品、角色、用户...",
+  "searchEmpty": "暂无相关内容",
+  "searchNoData": "暂无相关内容",
+  "searchPlaceholder": "搜索短剧、作品、角色、用户...",
+  "theaterSearchPlaceholder": "搜索短剧、作品、角色、用户...",
+  "searchHistory": "最近搜索",
+  "searchClear": "清空历史",
+  "searchAction": "搜索",
+  "searchHistoryCleared": "已清空搜索历史",
+  "searchKeywordTooShort": "请输入至少2个字符",
+  "searchTabDramas": "短剧",
+  "searchTabWorks": "作品",
+  "searchTabActors": "角色 IP",
+  "searchTabUsers": "用户",
+  "searchEpisodeNo": "第{episodeNo}集",
+  "@searchEpisodeNo": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "searchMinutesAgo": "{count} 分钟前",
+  "@searchMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchHoursAgo": "{count} 小时前",
+  "@searchHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDaysAgo": "{count} 天前",
+  "@searchDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramasCount": "短剧 ({count})",
+  "@searchDramasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchActorsCount": "角色 ({count})",
+  "@searchActorsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramaEpisodesWithCast": "全{count}集 | 参演：{actors}",
+  "@searchDramaEpisodesWithCast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "actors": {
+        "type": "String"
+      }
+    }
+  },
+  "nftTitle": "NFT 角色广场",
+  "nftLoading": "加载角色 IP 中…",
+  "nftEmpty": "暂无角色IP",
+  "nftRefresh": "刷新",
+  "nftIdPrefix": "编号：#{id}",
+  "@nftIdPrefix": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "nftRarity": "稀有度",
+  "nftStatusStaked": "已质押",
+  "nftStatusIdle": "空闲",
+  "nftPrice": "价格",
+  "dramaDetailTitle": "短剧详情",
+  "dramaDetailLoading": "加载中…",
+  "dramaDetailRetry": "重试",
+  "dramaDetailEpisodeList": "剧集列表",
+  "dramaDetailSynopsis": "剧情简介",
+  "dramaDetailExpand": "展开",
+  "dramaDetailCollapse": "收起",
+  "dramaDetailTabIntro": "简介",
+  "dramaDetailTabEpisodes": "选集",
+  "dramaDetailTabComments": "评论",
+  "dramaDetailTabRoles": "角色IP",
+  "dramaDetailSignMoreCharacterIps": "签约更多角色IP",
+  "dramaDetailCharactersEmpty": "暂未绑定角色IP",
+  "dramaDetailRoleSalary": "片酬 {amount}",
+  "@dramaDetailRoleSalary": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleSalaryPerHour": "片酬{amount} STORY/h",
+  "@dramaDetailRoleSalaryPerHour": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleUnbound": "未绑定",
+  "dramaCastActorsTitle": "参演角色IP",
+  "dramaDetailCompletion": "{count} 完播",
+  "@dramaDetailCompletion": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailHeat": "{count} 热度",
+  "@dramaDetailHeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailTotalEpisodes": "共{count}集",
+  "@dramaDetailTotalEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingTitle": "为作品评分",
+  "dramaDetailWantToRate": "我要评分",
+  "dramaDetailNotRated": "未评",
+  "dramaDetailCompletionLabel": "完播",
+  "dramaDetailHeatLabel": "热度",
+  "dramaDetailSynopsisLead": "简介：",
+  "dramaDetailRatingEmpty": "您的评分：--",
+  "dramaDetailRatingValue": "您的评分：{rating}",
+  "@dramaDetailRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingConfirm": "确认评分",
+  "dramaDetailRatingSuccess": "评分成功：{rating} 分！",
+  "@dramaDetailRatingSuccess": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailSelectEpisodeHint": "请先选择剧集开始播放",
+  "dramaFavorited": "已收藏",
+  "dramaUnfavorited": "已取消收藏",
+  "dramaLiked": "已点赞",
+  "dramaUnliked": "已取消点赞",
+  "playerFollowed": "已关注",
+  "playerUnfollowed": "已取消关注",
+  "errorNetwork": "网络错误，请稍后再试",
+  "errorTimeout": "请求超时，请稍后再试",
+  "errorParse": "数据解析失败",
+  "errorUnauthorized": "请先登录",
+  "authSessionExpired": "登录状态已失效，请重新登录",
+  "errorNotFound": "资源不存在",
+  "iapOrderInFlight": "该商品有未完成的订单，请稍后再试",
+  "errorOperationFailed": "操作失败",
+  "uploadErrorNetwork": "网络连接不稳定，请检查网络后重试",
+  "uploadErrorTimeout": "上传超时，请保持 App 在前台并重试",
+  "uploadErrorSessionExpired": "上传凭证已过期，请重新上传",
+  "uploadErrorSessionUnavailable": "暂时无法创建上传任务，请重试",
+  "uploadErrorFileMissing": "本地视频已被移动或清理，请重新选择",
+  "uploadErrorUnauthorized": "登录状态或上传权限已失效，请重新登录后重试",
+  "uploadErrorRateLimited": "上传请求过于频繁，请稍后重试",
+  "uploadErrorRejected": "上传服务拒绝了该文件，请确认文件后重试",
+  "uploadErrorServer": "上传服务暂时不可用，请稍后重试",
+  "uploadErrorInvalidResponse": "上传服务返回异常，请稍后重试",
+  "uploadErrorAccountChanged": "登录账号已变化，请在当前账号下重新上传",
+  "uploadErrorUnknown": "视频上传失败，请重试",
+  "uploadErrorFileTypeNotAllowed": "不支持该视频格式，请重新选择",
+  "uploadErrorFileSizeExceeded": "文件过大，请重新选择",
+  "uploadErrorMultipartInvalid": "上传记录已失效，请重新上传",
+  "uploadStatusWaitingNetwork": "等待网络连接...",
+  "uploadStatusMerging": "正在合并视频...",
+  "uploadActionPause": "暂停",
+  "uploadActionResume": "继续上传",
+  "uploadCellularDialogMessage": "当前处于非 WiFi 网络，是否继续使用流量上传视频？",
+  "errorInvalidRoleId": "角色 ID 无效，请刷新后重试",
+  "errorInvalidRoleNftAssetId": "角色 NFT assetId 无效，请刷新后重试",
+  "errorInvalidRoleCollectionAssetId": "角色合集 assetId 无效，请刷新后重试",
+  "roleNftLabelUnknown": "角色NFT#未知",
+  "roleNftLabel": "角色NFT#{prefix}",
+  "@roleNftLabel": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBusiness": "操作失败：{message}",
+  "@errorBusiness": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorUnknown": "发生未知错误：{message}",
+  "@errorUnknown": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotSupported": "不支持的操作：{message}",
+  "@errorNotSupported": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "选集",
+  "playerPlayFailed": "播放失败",
+  "playerDramaUnavailable": "暂无法播放该剧",
+  "playerContentUnavailable": "该内容暂未上架或已下架",
+  "creatorWorkNotFound": "作品不存在，无法查看",
+  "creatorWorkNotPublished": "作品未上架，暂不可查看",
+  "creatorOfflineReasonUnavailable": "暂无下架原因",
+  "playerTapRetry": "点击重试",
+  "playerEpisodeTotal": "全{count}集",
+  "@playerEpisodeTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeLabel": "第 {episodeNo} 集",
+  "@playerEpisodeLabel": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "playerLike": "点赞",
+  "playerComment": "评论",
+  "playerFavorite": "收藏",
+  "playerShare": "分享",
+  "playerShareDramaEpisode": "{title} | 第{episodeNo}集：{description} {url} 。来 StoryFun，观看精美AI短剧。",
+  "@playerShareDramaEpisode": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "episodeNo": {
+        "type": "int"
+      },
+      "description": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDramaEpisodeNoDesc": "{title} | 第{episodeNo}集 {url} 。来 StoryFun，观看精美AI短剧。",
+  "@playerShareDramaEpisodeNoDesc": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "episodeNo": {
+        "type": "int"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareShortVideo": "{description} {url}。来 StoryFun，观看精美短视频。",
+  "@playerShareShortVideo": {
+    "placeholders": {
+      "description": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareShortVideoNoDesc": "{url}。来 StoryFun，观看精美短视频。",
+  "@playerShareShortVideoNoDesc": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDrama": "{title} {url} 。来 StoryFun，观看精美AI短剧。",
+  "@playerShareDrama": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDramaNoTitle": "{url} 。来 StoryFun，观看精美AI短剧。",
+  "@playerShareDramaNoTitle": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerRatingLabel": "{rating} 分",
+  "@playerRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOrSignUp": "登录或注册",
+  "loginEnterCode": "输入验证码",
+  "loginCheckEmailDesc": "请检查 {email} 收到的由 privy.io 发送的邮件，并在下方输入验证码。",
+  "@loginCheckEmailDesc": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "loginResendCountdown": "{seconds} 秒后重新发送",
+  "@loginResendCountdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResendBtn": "重新发送",
+  "loginProtectedByPrivy": "由 Privy 提供安全保护",
+  "loginAgreeLead": "我已同意",
+  "loginAgreeAnd": "和",
+  "loginAgreeConfirmLead": "点击确定，代表您已同意",
+  "loginAgreeRequired": "请先同意服务条款和隐私政策",
+  "deletingAccountPending": "账户等待删除中",
+  "deletingAccountCancelDeletion": "撤销删除账户",
+  "deletingAccountGoBack": "回退",
+  "drawerEmailAccount": "邮箱账户",
+  "drawerClickToLogin": "点击登录账户",
+  "drawerBuyStory": "交易 STORY",
+  "drawerDeposit": "充值",
+  "drawerWithdraw": "提现",
+  "drawerNotifications": "通知消息",
+  "drawerNoNotifications": "暂无新消息",
+  "notificationTabSystem": "系统",
+  "notificationTabInteraction": "互动",
+  "notificationTagIpSign": "签约角色IP",
+  "notificationTagRoleManagement": "角色管理",
+  "notificationTagShowRevenue": "演出收益",
+  "notificationTagLike": "点赞",
+  "notificationTagFavorite": "收藏",
+  "notificationSignedActor": "@{user} 签约了角色IP {actor}",
+  "@notificationSignedActor": {
+    "placeholders": {
+      "user": {
+        "type": "String"
+      },
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationShareEarned": "你获得分成 {amount}",
+  "@notificationShareEarned": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationStaminaLow": "{actor} 体力不足，尽快补充体力或休息",
+  "@notificationStaminaLow": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationCurrentStamina": "当前体力 {value}",
+  "@notificationCurrentStamina": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationShowEnded": "{range} 演出结束",
+  "@notificationShowEnded": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationIncomeEarned": "你获得收益 {amount}",
+  "@notificationIncomeEarned": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationActionClaim": "领取",
+  "notificationActionRefill": "补充",
+  "notificationInteractionLikedVideo": "赞了你的视频",
+  "notificationInteractionLikedDrama": "赞了你的短剧《{title}》",
+  "@notificationInteractionLikedDrama": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationInteractionFavoritedVideo": "收藏了你的视频",
+  "notificationInteractionFavoritedDrama": "收藏了你的短剧《{title}》",
+  "@notificationInteractionFavoritedDrama": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationInteractionCommented": "评论了你：{content}",
+  "@notificationInteractionCommented": {
+    "placeholders": {
+      "content": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationInteractionFollowedYou": "关注了你",
+  "notificationActionMutualFollow": "互关",
+  "notificationActionFollow": "关注",
+  "notificationDelete": "删除",
+  "notificationDeleteFailed": "删除失败，请稍后再试",
+  "notificationRealtimeReceived": "收到一条新通知",
+  "drawerEpisodeProgress": "{current}/{total}集",
+  "@drawerEpisodeProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "drawerNotificationSignedActor": "{actor} 签约了角色IP {target}",
+  "@drawerNotificationSignedActor": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerNotificationLikedVideo": "{actor} 赞了你的视频",
+  "@drawerNotificationLikedVideo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerNotificationFavoritedDrama": "{actor} 收藏了你的短剧 {target}",
+  "@drawerNotificationFavoritedDrama": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "depositTitle": "充值",
+  "insufficientBalanceTitle": "余额不足",
+  "insufficientBalanceDetail": "{currency} 余额不足，你还差 {amount} {currency}",
+  "@insufficientBalanceDetail": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientBalancePrompt": "是否前往充值？",
+  "insufficientBalanceRecharge": "去充值",
+  "depositDesc": "请从交易所或其他钱包向下方地址转账，确认到账后余额会自动更新。",
+  "depositToken": "币种",
+  "depositNetwork": "网络",
+  "depositNetworkNote": "请确认转账网络，网络错误可能导致资产丢失",
+  "depositAddress": "充值地址",
+  "depositAddressCopied": "地址已复制到剪贴板",
+  "depositSend": "发送",
+  "depositReceive": "接收",
+  "depositConvertNote": "将代币发送到这个地址，它将自动在你的 Story.fun 账户中兑换成USDC",
+  "depositMinNote": "最小充值金额：{minAmount} {token}",
+  "@depositMinNote": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "depositExchangeRateNote": "当前兑换汇率为 {rate}，实际到账金额 = 充值金额 × {rate}",
+  "@depositExchangeRateNote": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "depositWarning": "请仅转入所选网络上的所选币种，其他资产将无法找回\n请确认转账网络，网络错误可能导致资产丢失",
+  "withdrawTitle": "提现",
+  "withdrawBalance": "可提现余额",
+  "withdrawToken": "币种",
+  "withdrawAddress": "提现地址",
+  "withdrawAddressHint": "请输入或粘贴 Solana 接收地址",
+  "withdrawAddressHintEvm": "请输入或粘贴 EVM 接收地址",
+  "withdrawInvalidEvmAddress": "请输入有效的 EVM 地址",
+  "withdrawInvalidSolanaAddress": "请输入有效的 Solana 地址",
+  "withdrawEvmGasNote": "EVM 提现需钱包内有足够的原生代币支付 Gas，交易将直接在链上发起。",
+  "withdrawEvmFailed": "EVM 提现失败，请稍后重试",
+  "withdrawAddressNote": "请确认地址正确，转账后无法撤回",
+  "withdrawNetwork": "网络",
+  "withdrawAmount": "金额",
+  "withdrawAmountHint": "输入提现金额",
+  "withdrawMax": "最大",
+  "withdrawAvailableBalance": "余额 {balance} {token}",
+  "@withdrawAvailableBalance": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinWarning": "最小提现金额：{minAmount} {token}\n请仔细核对提现地址和网络，转账后无法撤回",
+  "@withdrawMinWarning": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawConfirm": "确认提现",
+  "withdrawAll": "全部",
+  "withdrawMinAmountError": "最小提现金额为 {minAmt} {token}",
+  "@withdrawMinAmountError": {
+    "placeholders": {
+      "minAmt": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawExceedBalanceError": "提现金额不能超过可用余额",
+  "withdrawSameAsWalletError": "提现地址不能与当前钱包地址相同",
+  "withdrawConfirmTitle": "确认提现",
+  "withdrawConfirmMessage": "确定提取 {amount} {token} 到以下 Solana 接收地址吗？\n\n{address}",
+  "@withdrawConfirmMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSuccessToast": "提现指令已提交成功！",
+  "withdrawFailedToast": "提现失败，请重试",
+  "withdrawErrorToast": "提现发生错误: {error}",
+  "@withdrawErrorToast": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawAddressHintWithToken": "输入接收 {token} 的钱包地址",
+  "@withdrawAddressHintWithToken": {
+    "placeholders": {
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawFee": "手续费",
+  "withdrawFeeValue": "{fee} {token}",
+  "@withdrawFeeValue": {
+    "placeholders": {
+      "fee": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinAmount": "最低提币量：{minAmount} {token}",
+  "@withdrawMinAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMaxAmount": "最大提现金额：{maxAmount} {token}",
+  "@withdrawMaxAmount": {
+    "placeholders": {
+      "maxAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSponsorSigning": "签名交易中...",
+  "withdrawSponsorSubmitting": "提交链上交易中...",
+  "withdrawSponsorSuccess": "提现交易已提交成功！",
+  "withdrawSponsorFailed": "交易提交失败，请重试",
+  "withdrawOrderProcessing": "订单处理中",
+  "withdrawOrderSuccess": "订单已完成",
+  "withdrawOrderFailed": "订单处理失败",
+  "withdrawOrderStatus": "订单状态：{status}",
+  "@withdrawOrderStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "qrScannerTitle": "扫描二维码",
+  "qrScannerHint": "将二维码放入框内扫描",
+  "drawerProfile": "个人中心",
+  "drawerCreatorManagement": "创作管理",
+  "drawerInvite": "邀请",
+  "inviteTitle": "邀请好友",
+  "inviteTotalPeople": "累计邀请人数",
+  "inviteTotalRewards": "累计邀请收益",
+  "inviteWeeklyPool": "本周邀请奖池",
+  "inviteViewHistory": "查看收益记录",
+  "inviteShareSection": "分享专属邀请链接或邀请码",
+  "inviteLinkSection": "邀请链接",
+  "inviteLinkSubtitle": "好友通过你的链接注册，签约并派遣角色，你将获得额外 STORY 奖励",
+  "inviteCodeLabel": "邀请码",
+  "inviteCopyButton": "复制链接",
+  "inviteCopiedSuccess": "邀请链接已复制到剪贴板！",
+  "inviteCodeCopiedSuccess": "邀请码已复制到剪贴板！",
+  "inviteInvitedLabel": "已邀请",
+  "inviteRewardLabel": "收益",
+  "inviteBindCode": "绑定邀请码",
+  "inviteBindCodePromptHint": "跳过后可在邀请页绑定",
+  "inviteBindCodePlaceholder": "输入邀请码",
+  "inviteBindConfirm": "确定",
+  "inviteBindSuccess": "邀请码绑定成功",
+  "inviteBindCodeInvalid": "邀请码无效",
+  "inviteBindCodeAlreadyBound": "该账号已绑定邀请码",
+  "inviteRulesSection": "邀请规则",
+  "inviteFaqPoolTitle": "每周邀请奖池是什么？",
+  "inviteFaqPoolBody": "每周邀请奖池是平台为邀请活动设立的独立奖励池，用于奖励当周邀请行为，不会从被邀请人收益中扣除。奖池设有周发放上限，触顶后按份额等比缩减，每周一重新统计发放。",
+  "inviteFaqSettlementTitle": "邀请奖励什么时候结算？",
+  "inviteFaqSettlementBody": "邀请奖励与经纪人页面的片酬在同一周期统一结算：每周一 00:00 (UTC) 截止统计，结算后可前往收益页领取。",
+  "inviteRuleSourceTitle": "奖励来源",
+  "inviteRuleSourceSubtitle": "独立邀请子池",
+  "inviteRuleSourceBody": "邀请奖励来自 NFT 挖矿池中独立的邀请子池（占总挖矿池 25%），不从被邀请人收益中扣除。邀请子池有独立周硬顶，触顶后按份额等比缩减。",
+  "inviteRuleBaseTitle": "计算基数",
+  "inviteRuleBaseSubtitle": "按实得 STORY",
+  "inviteRuleBaseBody": "奖励按被邀请人本期实际到手的 STORY 计算，不按名义产出计算。被邀请人自己挖到的 STORY 不受影响，邀请奖励是额外发放。",
+  "inviteRuleLevelTitle": "奖励范围",
+  "inviteRuleLevelSubtitle": "仅直接邀请",
+  "inviteRuleLevelBody": "邀请奖励仅发放给你直接邀请的用户，不设二级及以上间接返佣。",
+  "inviteRuleConditionTitle": "有效条件",
+  "inviteRuleConditionSubtitle": "有效下线才能产生奖励",
+  "inviteRuleConditionBody": "被邀请人实际挖到过 STORY，或发生过 {currency} 付费，才计为有效下线。空号注册不产生奖励。邀请关系一经建立不可更改。",
+  "@inviteRuleConditionBody": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerTxHistory": "交易记录",
+  "drawerFinanceDashboard": "资金看板",
+  "financeDashboardComingSoon": "资金看板即将上线，敬请期待",
+  "financeDashboardPageTitle": "平台资金看板",
+  "financeDashboardTotalUsdcIncome": "{currency} 总收入",
+  "@financeDashboardTotalUsdcIncome": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardTotalStoryReleased": "STORY 总释放",
+  "financeDashboardTabUsdcIncome": "{currency} 收入明细",
+  "@financeDashboardTabUsdcIncome": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardTabVaultFunds": "金库资金沉淀",
+  "financeDashboardTabStoryRelease": "STORY 释放概览",
+  "financeDashboardFeeMint": "签约费",
+  "financeDashboardFeeRoyalty": "二级版税",
+  "financeDashboardFeeItemPurchase": "购买道具",
+  "financeDashboardFeeTx": "手续费",
+  "financeDashboardLedgerBizSigningFee": "签约费",
+  "financeDashboardLedgerBizManualCredit": "人工加款",
+  "financeDashboardLedgerBizManualDebit": "人工扣款",
+  "financeDashboardLedgerBizStaminaPurchase": "购买体力费",
+  "financeDashboardLedgerBizSynthesisUpgrade": "合成升级费",
+  "financeDashboardLedgerBizTransactionFee": "手续费",
+  "financeDashboardRecentUsdcLedger": "近期 {currency} 收入流水",
+  "@financeDashboardRecentUsdcLedger": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardViewMore": "查看更多",
+  "financeDashboardTotalVaultFunds": "总资金",
+  "financeDashboardCoveredActorIp": "覆盖角色IP",
+  "financeDashboardActorVaultRanking": "角色IP金库排行",
+  "storyReleaseTabAllocation": "STORY 总量分配",
+  "storyReleaseTabMiningRelease": "近期挖矿释放",
+  "storyReleaseFieldPeriod": "周期",
+  "storyReleaseFieldHardLimit": "周硬顶",
+  "storyReleaseFieldMiningRewards": "质押挖矿",
+  "storyReleaseFieldInviteRewards": "邀请挖矿",
+  "storyReleaseFieldUsageRate": "使用率",
+  "storyReleaseFieldTarget": "分配对象",
+  "storyReleaseFieldRatio": "比例",
+  "storyReleaseFieldAmount": "数量",
+  "storyReleaseFieldReleased": "已释放",
+  "storyReleaseFieldProgress": "释放进度",
+  "storyReleaseCategoryNftMiningPool": "NFT 挖矿池",
+  "storyReleaseCategoryTeam": "团队",
+  "storyReleaseCategoryInvestors": "投资人",
+  "storyReleaseCategoryLiquidity": "Launchpad + 流动性",
+  "storyReleaseCategoryTreasury": "国库",
+  "storyReleaseCategoryMarketOps": "市场运营",
+  "storyReleaseTotalSupplyBadge": "总量 {total} STORY",
+  "@storyReleaseTotalSupplyBadge": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerWhitepaper": "白皮书",
+  "drawerSettings": "设置",
+  "commonClose": "关闭",
+  "commonDelete": "删除",
+  "commonLoadFailed": "加载失败",
+  "commonNone": "未命名",
+  "commonUntitled": "未命名",
+  "actorDetailTitle": "演员主页",
+  "actorDetailCastDramas": "参演短剧",
+  "actorDetailTabCast": "参演",
+  "actorDetailTabInfo": "信息",
+  "actorDetailNoCastRecords": "暂无参演记录",
+  "actorBondingCurve": "价格联合曲线",
+  "actorContractAddress": "合约地址",
+  "actorCurrentPosition": "当前位置",
+  "actorCurrentPrice": "当前价格 {price} {currency}",
+  "@actorCurrentPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorFloorPrice": "地板价",
+  "actorGoTrade": "去交易",
+  "profileWalletTrade": "交易",
+  "actorHeatCoefficient": "热度系数",
+  "actorIpPower": "IP片酬",
+  "actorPayMax": "最高",
+  "actorPayUpgradeTitle": "片酬升级规则",
+  "actorPayUpgradeReachHint": "该IP参演短剧的当前完播数可支持角色升级至",
+  "actorPayUpgradeCompletions": "{count} 完播",
+  "@actorPayUpgradeCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayUpgradeMultiplier": "片酬 ×{value}",
+  "@actorPayUpgradeMultiplier": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayTitle": "{name} · 片酬",
+  "@actorPayTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorLv1PayHint": "签约即可获得Lv.1角色",
+  "actorLv1PayFormula": "Lv.1片酬=价格系数×热度系数",
+  "actorLv1PayEquals": "={value}",
+  "@actorLv1PayEquals": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerTitle": "{name} · IP片酬",
+  "@actorIpPowerTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerFormula": "IP片酬 = 价格系数 × 热度系数 × Trust1",
+  "actorPriceCoefficient": "价格系数",
+  "actorPriceCoefficientValue": "价格系数 {value}",
+  "@actorPriceCoefficientValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientHelpA11y": "查看价格系数说明",
+  "actorPriceUnitName": "点数",
+  "actorPriceCoefficientDialogFormulaLe100": "系数 = P0 ÷ 10",
+  "actorPriceCoefficientDialogDescLe100": "线性增长",
+  "actorPriceCoefficientDialogTitleGt100": "P0 > 10 {currency}",
+  "@actorPriceCoefficientDialogTitleGt100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientDialogFormulaGt100": "系数 = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]",
+  "actorPriceCoefficientDialogDescGt100": "增速渐缓，上限 1.6",
+  "actorPriceCoefficientDialogTitleLe100": "P0 ≤ 10 {currency}",
+  "@actorPriceCoefficientDialogTitleLe100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientFactorDesc": "P0 ≤ 10 {currency1} 系数= P0/10（线性增长）\nP0 > 10 {currency2} → 系数 = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]（渐近上限 1.6）",
+  "@actorPriceCoefficientFactorDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "actorHeatCoefficientFactorDesc": "角色IP 近30天热度乘子，取决于短剧完播、点赞、收藏等互动表现",
+  "actorTrustFactorDesc": "平台风控系数，默认值为 1.0",
+  "actorStatCompletion": "完播",
+  "actorIdCopied": "编号已复制",
+  "actorInitialPrice": "初始价格：{price} {currency}",
+  "@actorInitialPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpLabel": "演员 IP {label}",
+  "@actorIpLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIssueInfo": "发行信息",
+  "actorIssuer": "发行者 {name}",
+  "@actorIssuer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorMintedCount": "已铸造 {minted}/{maxSupply}",
+  "@actorMintedCount": {
+    "placeholders": {
+      "minted": {
+        "type": "int"
+      },
+      "maxSupply": {
+        "type": "int"
+      }
+    }
+  },
+  "actorPriceCurve": "价格曲线",
+  "actorSign": "签约",
+  "actorConfirmSign": "确认签约",
+  "actorSignPriceLabel": "签约价格",
+  "actorSignPriceDescription": "签约价格随已签约数自动上涨，早期签约更优惠",
+  "actorSignPriceFormula": "公式：价格 = 初始价格 × 5^(已签约数 ÷ 发行总量)",
+  "actorPriceAxisLabel": "价格（{currency}）",
+  "@actorPriceAxisLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignedCountAxisLabel": "已签约数",
+  "actorSignRemainingCount": "剩余{count}个",
+  "actorSignSoldOut": "已售罄",
+  "@actorSignRemainingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignSupplySummary": "总发行 {total} · 剩余 {remaining}",
+  "@actorSignSupplySummary": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPricingFixed": "固定价格",
+  "actorPricingCurve": "曲线价格",
+  "actorPriceCurveDisclaimer": "初始价格不代表平台估值，曲线上涨不代表二级价格上涨，平台不承诺收益。",
+  "actorPriceStatInitialPrice": "初始价格",
+  "actorPriceStatCurrentPrice": "当前价格",
+  "actorPriceStatTailPrice": "尾价",
+  "actorPriceStatTotalSupply": "总发行量",
+  "actorPriceStatSigned": "已签约",
+  "actorPriceStatRemaining": "剩余",
+  "actorPricingType": "定价类型",
+  "contentBadgeOfficialIssue": "官方发行",
+  "contentBadgeCommunityIssue": "社区发行",
+  "contentBadgePartnerIssue": "合作方发行",
+  "contentBadgeVerifiedIssue": "认证创作者发行",
+  "contentBadgeOfficialDrama": "官方短剧",
+  "contentBadgeCommunityDrama": "社区短剧",
+  "contentBadgePartnerDrama": "合作方短剧",
+  "contentBadgeVerifiedDrama": "认证创作者短剧",
+  "actorIpCopied": "复制成功",
+  "actorRiskIp": "风险IP",
+  "actorRiskIpDescription": "该角色IP信任系数异常，挖矿权重将受影响。",
+  "actorIpVault": "角色IP金库",
+  "actorIpVaultDescription": "签约收入的 30% 自动沉淀至角色IP金库，用于支撑 IP 生态的长期发展。二级市场版税收入的 30% 同样归入金库，形成持续资金蓄水池。V1 版本金库仅提供数据展示，暂不开放分配。",
+  "actorIpVaultSignIncomePrefix": "签约收入 · 沉淀 ",
+  "actorIpVaultSecondaryRoyaltyPrefix": "二级版税 · 沉淀 ",
+  "actorFixedPriceDialogDesc": "该角色IP采用固定价格模式，每个角色都以统一价格签约，销量变化不影响价格",
+  "actorCurvePriceDialogDesc": "价格按联合曲线公式随已签约数自动上涨，早期签约更优惠",
+  "actorFixedPriceNote1": "发行者设定固定价格后，所有签约均按此价格结算",
+  "actorFixedPriceNote2": "不会因已签约数增加而价格上涨",
+  "actorFixedPriceNote3": "适合希望锁定成本的买家",
+  "actorIssueFixedPriceDesc": "该角色IP采用固定价格模式，所有签约均按固定价格结算，不随销量变化。",
+  "actorSignSlippageNote": "已开启 1% 滑点保护，价格超出时将取消交易",
+  "actorSignSuccessTitle": "签约成功！",
+  "actorSignSuccessMessage": "角色「{name}」签约成功",
+  "@actorSignSuccessMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignSuccessNftId": "NFT编号：{nftId}",
+  "@actorSignSuccessNftId": {
+    "placeholders": {
+      "nftId": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignChainConfigMissing": "链上配置不完整，请稍后重试",
+  "actorSignPriceSoldOut": "签约价格 · 已售罄",
+  "actorSignPriceRemaining": "签约价格 · 剩余{count}个",
+  "@actorSignPriceRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignedCount": "已签约 {count}",
+  "@actorSignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorStatusLabelOffline": "离线",
+  "actorStatusLabelOnline": "在线",
+  "actorStatusLabelPending": "审核中",
+  "actorStatusLabelRejected": "已拒绝",
+  "actorTotalSupply": "发行总量",
+  "commentsAnonymous": "匿名用户",
+  "commentsEmpty": "暂无评论",
+  "commentsHint": "发布精彩评论...",
+  "commentsInvalidContent": "请输入有效内容",
+  "commentsReply": "回复",
+  "commentsViewReplies": "查看 {count} 条回复",
+  "@commentsViewReplies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsCollapseReplies": "收起",
+  "commentsViewMoreReplies": "展开更多",
+  "commentsReplyHint": "回复 {nickname}",
+  "@commentsReplyHint": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsDeleteCommentTitle": "删除这条评论？",
+  "commentsDeleteReplyTitle": "删除这条回复？",
+  "commentTagAuthor": "作者",
+  "commentTagMe": "我",
+  "commentTagFriend": "你的好友",
+  "commentTagFan": "你的粉丝",
+  "commentTagFirst": "首评",
+  "commentTagAuthorLiked": "作者赞过",
+  "commentsReplyTo": "回复 @{nickname}：",
+  "@commentsReplyTo": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsReplyCommentNotExists": "评论不存在",
+  "commentsBlockedByMe": "黑名单用户，无法评论",
+  "commentsBlockedByTarget": "由于对方设置，你无法评论TA",
+  "commentsTabComments": "评论",
+  "commentsTabAllComments": "全部评论",
+  "commentsTabDramas": "短剧",
+  "commentsTabActors": "角色",
+  "timeJustNow": "刚刚",
+  "timeYesterday": "昨天",
+  "timeDayBeforeYesterday": "前天",
+  "timeMinutesAgo": "{count}分钟前",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHoursAgo": "{count}小时前",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDaysAgo": "{count}天前",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsTitle": "评论 ({count})",
+  "@commentsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createActorTitle": "创建角色",
+  "createActorHeroTitle": "铸造角色 NFT",
+  "createActorHeroSubtitle": "创建专属 AI 角色，绑定分润参与短剧",
+  "createActorNameLabel": "角色名称",
+  "createActorNameHint": "输入角色名称",
+  "createActorBioLabel": "角色简介",
+  "createActorBioHint": "描述角色背景",
+  "createActorGenderLabel": "性别",
+  "createActorGenderMale": "男",
+  "createActorGenderFemale": "女",
+  "createActorMintParams": "NFT 铸造参数",
+  "createActorTokenStandard": "Token 标准",
+  "createActorChain": "链",
+  "createActorMinHolding": "最低持仓门槛",
+  "createActorMintNft": "铸造 NFT",
+  "createActorIpTitle": "发行角色 IP",
+  "createActorIpSubtitle": "发行一个角色 IP 之后可在该 IP 下签约角色，角色可派遣产生收益。",
+  "createActorSelectMaterial": "选择角色素材",
+  "createActorDreamOsBadge": "前往 DreamOS",
+  "createActorSelectMaterialDesc": "进入DreamOS项目 → 创建角色 → 进入StoryFun发行 IP",
+  "createActorSelectButton": "选择角色",
+  "createActorNameLabelNew": "角色姓名",
+  "createActorNamePlaceholder": "输入角色姓名",
+  "createActorBioLabelNew": "简介",
+  "createActorBioPlaceholder": "请输入角色 IP 介绍",
+  "createActorParamsTitle": "角色 IP 发行参数",
+  "createActorParamsSubtitle": "设定角色 IP 的发行参数，发行后不可修改。",
+  "createActorTotalSupplyLabel": "角色发行总量",
+  "createActorTotalSupplyDesc": "发行总量范围为 100 - 5,000。",
+  "createActorTotalSupplyPlaceholder": "100 - 5,000",
+  "createActorPricingFixed": "固定价格",
+  "createActorPricingCurve": "曲线价格",
+  "createActorFixedPriceLabel": "固定价格（{currency}）",
+  "@createActorFixedPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorInitialPriceLabel": "初始价格（{currency}）",
+  "@createActorInitialPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorFixedPricePlaceholder": "10 - 1,000",
+  "createActorFixedPriceDesc": "每个角色都以固定不变的价格购买，不会随销量变化。",
+  "createActorInitialPricePlaceholder": "10 - 1,000",
+  "createActorInitialPriceDesc": "初始价格为联合曲线起始价，每签约一个角色，价格按公式 P = P₀ × 5^(已签约数/发行总量) 自动上涨，早期签约更优惠。",
+  "createActorFormIncomplete": "请先完成角色素材、姓名、简介和发行参数填写",
+  "createActorValidationNameRequired": "请输入角色姓名",
+  "createActorValidationNameTooLong": "角色姓名不超过20字",
+  "createActorValidationBioRequired": "请输入简介",
+  "createActorValidationBioTooLong": "简介不超过500字",
+  "createActorValidationTotalSupplyRequired": "请输入有效的NFT发行总量",
+  "createActorValidationTotalSupplyPositiveInteger": "NFT发行总量须为正整数",
+  "createActorValidationTotalSupplyRange": "角色发行总量须在100到5000之间",
+  "createActorValidationPriceRequired": "请输入有效的Mint价格",
+  "createActorValidationPriceInvalid": "Mint价格须大于等于10且不超过1,000",
+  "createActorValidationPriceMaxDecimals": "Mint价格最多保留两位小数",
+  "createActorSelectMaterialRequired": "请选择角色素材",
+  "createActorCancelButton": "取消",
+  "createActorConfirmButton": "确定发行",
+  "createActorIssueFee": "手续费",
+  "createActorSuccessTitle": "{name} · 发行成功！",
+  "@createActorSuccessTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessDesc": "角色 IP {id}",
+  "@createActorSuccessDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessTip": "发行者也需要签约才能获得该角色哦～",
+  "createActorCloseButton": "稍后再说",
+  "createActorViewButton": "去签约",
+  "createActorEmptyTitle": "您还没有在 DreamOS 中创建满足条件、由系统在 DreamOS 自动生成的 NFT 发行。",
+  "createActorGotoDreamOs": "前往 DreamOS 创建",
+  "createActorSearchPlaceholder": "搜索角色素材",
+  "createActorInvalidOrderId": "角色IP订单编号无效，请刷新后重试",
+  "createDramaTitle": "创建短剧",
+  "createDramaTitleLabel": "短剧标题",
+  "createDramaTitleHint": "输入短剧名称",
+  "createDramaSynopsisLabel": "剧情简介",
+  "createDramaSynopsisHint": "讲述一个什么样的故事...（最多1000字）",
+  "createDramaAiSettings": "AI 生成设置",
+  "createDramaVisualStyle": "画面风格",
+  "createDramaVisualStyleRealistic": "写实",
+  "createDramaEpisodeDuration": "每集时长",
+  "createDramaEpisodeDurationValue": "3-5 分钟",
+  "createDramaTotalEpisodes": "总集数",
+  "createDramaTotalEpisodesValue": "8 集",
+  "createDramaGenreLabel": "类型",
+  "createDramaGenreDrama": "剧情",
+  "createDramaGenreComedy": "喜剧",
+  "createDramaGenreAction": "动作",
+  "createDramaGenreRomance": "爱情",
+  "createDramaGenreSciFi": "科幻",
+  "createDramaGenreMystery": "悬疑",
+  "createDramaGenreHorror": "恐怖",
+  "createDramaGenreAnimation": "动画",
+  "createDramaHeroTitle": "AI 短剧创作",
+  "createDramaHeroSubtitle": "一键生成属于你的爆款短剧",
+  "createDramaStartGeneration": "开始生成",
+  "creatorDramaManagementTab": "短剧管理",
+  "creatorDramaNftTab": "短剧NFT",
+  "creatorHeaderSubtitle": "短剧的发布、审核与铸造。",
+  "creatorV2Subtitle": "短剧/视频的发布与管理。",
+  "creatorV2DramaTabCount": "短剧（{count}）",
+  "@creatorV2DramaTabCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorV2VideoTabCount": "视频（{count}）",
+  "@creatorV2VideoTabCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorV2NoVideos": "暂无视频",
+  "creatorLoginPrompt": "登录后查看你的创作",
+  "creatorNoCreatedActors": "暂无创建的角色",
+  "creatorNoPublishedDramas": "暂无发布的短剧",
+  "creatorOwnedNftCount": "持有NFT数",
+  "creatorCreateDrama": "创作短剧",
+  "creatorPublishNewDrama": "发布新短剧",
+  "creatorPublishedDramas": "发布短剧",
+  "creatorReviewFilterAll": "全部",
+  "creatorReviewFilterApproved": "已通过",
+  "creatorReviewFilterPending": "审核中",
+  "creatorReviewFilterRejected": "未通过",
+  "creatorReviewFilterOffline": "已下架",
+  "creatorDramaOtherReason": "其他原因",
+  "creatorDramaStatusOnline": "已通过",
+  "creatorDramaStatusPendingReview": "等待审核",
+  "creatorDramaStatusReviewRejected": "未通过",
+  "creatorDramaStatusPendingOnline": "待上线",
+  "creatorDramaAuditReason": "未通过审核原因：{reason}",
+  "@creatorDramaAuditReason": {
+    "placeholders": {
+      "reason": {}
+    }
+  },
+  "creatorDramaNftMinted": "已铸造",
+  "creatorDramaEpisodeCount": "{count} 集",
+  "@creatorDramaEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorDramaEdit": "编辑",
+  "creatorDramaDelete": "删除",
+  "creatorActorDelete": "删除角色",
+  "creatorDeleteDramaConfirm": "确定删除该短剧吗？",
+  "creatorDeleteVideoConfirmTitle": "删除视频确认",
+  "creatorDeleteVideoConfirmMessage": "您确定要删除 “{name}” 吗？\n此操作无法撤销",
+  "@creatorDeleteVideoConfirmMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorDeleteActorConfirm": "确定删除该角色吗？",
+  "creatorDeleting": "删除中...",
+  "creatorNoDramas": "暂无短剧",
+  "creatorNoNfts": "暂无短剧NFT",
+  "creatorsComingSoon": "创作者目录即将上线",
+  "creatorsHeroSubtitle": "发现优秀创作者",
+  "creatorsHeroTitle": "创作者目录",
+  "dramaBatchUnlockAll": "解锁全部",
+  "dramaBatchUnlockDiscount": "批量解锁优惠 {discount}%",
+  "@dramaBatchUnlockDiscount": {
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaBatchUnlockSubtitle": "一次性解锁全部剧集更划算",
+  "dramaBatchUnlockSuccess": "解锁成功，请开始观看",
+  "dramaDetailAllFree": "全集免费",
+  "dramaDetailBoundActors": "{count} 角色绑定",
+  "@dramaDetailBoundActors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodeCount": "{count} 集",
+  "@dramaDetailEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodePrice": "单集价格",
+  "dramaDetailFree": "免费",
+  "dramaDetailFreeEpisodes": "前 {count} 集免费",
+  "@dramaDetailFreeEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailMainCharacters": "主要人物",
+  "dramaDetailNftMinted": "NFT 已铸造",
+  "dramaDetailNoEpisodes": "暂无剧集",
+  "dramaDetailPaid": "付费",
+  "dramaDetailPendingActor": "待定角色",
+  "dramaDetailRoleCount": "人物数",
+  "dramaUnlockFailedRetry": "解锁失败，请重试",
+  "dramaUnlockFetchTimeout": "获取播放地址超时，请重试",
+  "dramaUnlockLoginRequired": "请先登录后再解锁剧集",
+  "dramaUnlockMessage": "第 {epNo} 集需要付费解锁\n单价：{price} {currency}\n批量解锁优惠：{discount}",
+  "@dramaUnlockMessage": {
+    "placeholders": {
+      "epNo": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "discount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockSuccessFetching": "解锁成功，正在获取播放地址...",
+  "dramaUnlockTitle": "解锁剧集",
+  "editActorTitle": "编辑角色",
+  "editDramaTitle": "编辑短剧",
+  "editVideoTitle": "编辑视频",
+  "editSaveChanges": "保存修改",
+  "editProfileTitle": "编辑资料",
+  "editNicknameLabel": "昵称",
+  "editRoleNameLabel": "用户名",
+  "editNicknameHint": "请输入昵称",
+  "editNicknameRequired": "请输入昵称",
+  "editProfileBioLabel": "简介",
+  "editProfileBioHint": "请输入简介",
+  "editProfileEmailLabel": "邮箱地址",
+  "editAvatarCropTitle": "裁剪头像",
+  "profileUpdateSuccess": "资料更新成功",
+  "incomeClaimAmount": "领取 {amount} {currency}",
+  "@incomeClaimAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimFailed": "领取失败",
+  "incomeClaimMessage": "可领取金额：{amount} {currency}\n收益将直接转入您的钱包余额",
+  "@incomeClaimMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimSuccess": "领取成功",
+  "incomeClaimTitle": "领取收益",
+  "incomeConfirmClaim": "确认领取",
+  "incomeHistoryTab": "收益历史",
+  "incomeInviteHeroSubtitle": "邀请好友消费和互动，被邀人活跃度越高奖励越多",
+  "incomeInviteHeroTitle": "邀请好友赚返利",
+  "incomeInviteNoRecords": "暂无返利记录",
+  "incomeInvitePaidUnlockDesc": "好友付费解锁剧集",
+  "incomeInvitePaidUnlockTitle": "付费解锁",
+  "incomeInviteRecords": "返利记录",
+  "incomeInviteRegisterDesc": "好友通过链接注册账号",
+  "incomeInviteRegisterTitle": "邀请注册",
+  "incomeInviteRules": "返利规则",
+  "incomeInviteShareLink": "分享邀请链接",
+  "incomeInviteStakeDesc": "好友质押 NFT 或 STORY",
+  "incomeInviteStakeTitle": "质押投资",
+  "incomeInviteTab": "邀请返利",
+  "incomeInviteWatchDesc": "好友观看短剧获取积分",
+  "incomeInviteWatchTitle": "观看短剧",
+  "incomeNoHistory": "暂无收益历史",
+  "incomeNoRecords": "暂无收益记录",
+  "incomeNothingToClaim": "暂无可领取金额",
+  "incomeOverviewTab": "收益总览",
+  "incomePendingClaim": "待领取",
+  "incomeRecords": "收益记录",
+  "incomeThisMonth": "本月",
+  "incomeToday": "今日",
+  "incomeTotalEarnings": "累计收益",
+  "incomeCumulativeStory": "累计 STORY",
+  "incomeCumulativeUsdc": "累计 {currency}",
+  "@incomeCumulativeUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimableStory": "可领取 STORY",
+  "incomeClaimableUsdc": "可领取 {currency}",
+  "@incomeClaimableUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeSettlingStory": "我的片酬",
+  "incomeSettlingHint": "结算中，到账后可领取",
+  "incomeHelpTotalStoryDesc": "历史所有周期累计获得的 STORY 总量（含已领取和未领取）。",
+  "incomeHelpTotalUsdcDesc": "历史所有角色签约分成、二级版税的累计 {currency} 收入。",
+  "@incomeHelpTotalUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeHelpSettlingStoryDesc": "系统结算后自动兑换为 STORY",
+  "incomeHelpClaimableStoryDesc": "已结算的 STORY，可领取至个人钱包。",
+  "incomeHelpClaimableUsdcDesc": "已结算的 {currency}，可领取至个人钱包。",
+  "@incomeHelpClaimableUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeFilterAll": "全部",
+  "incomeFilterMining": "派遣收益",
+  "incomeFilterInvite": "邀请收益",
+  "incomeMiningReward": "派遣收益",
+  "incomeInviteReward": "邀请收益",
+  "incomeUsdcActorSignShare": "角色签约分成",
+  "incomeClaimNoWallet": "请先绑定钱包",
+  "incomeClaimCurrencyTitle": "领取 {currency}",
+  "@incomeClaimCurrencyTitle": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawMessage": "确定提取 {amount} {currency} 到您的 Solana 钱包吗？\n收款地址: {address}",
+  "@incomeClaimWithdrawMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawConfirm": "确认提取",
+  "incomeClaimWithdrawSubmitted": "提现成功",
+  "incomeClaimWithdrawFailed": "领取提取失败，请重试",
+  "incomeClaimAction": "领取",
+  "nftCreateActorIp": "创建角色IP",
+  "nftHeaderSubtitle": "浏览和收藏专属角色 NFT",
+  "nftHeaderTitle": "角色 NFT 广场",
+  "nftSearchHint": "搜索短剧、作品、角色、用户...",
+  "actorHowToPlayTitle": "角色 IP 怎么玩",
+  "actorHowToPlayHelpTooltip": "玩法说明",
+  "actorHowToPlaySignTab": "签约IP",
+  "actorHowToPlaySignSubtitle": "坐享片酬",
+  "actorHowToPlayIssueTab": "发行IP",
+  "actorHowToPlayIssueSubtitle": "创作变现",
+  "actorHowToPlaySignPositioning": "定位：零创作门槛，轻松稳赚收益",
+  "actorHowToPlaySignAudience": "不想创作，想低门槛赚 STORY 收益的普通用户",
+  "actorHowToPlaySignGuide": "签约高热度高片酬角色 IP，在经纪人页面安排演出即可获利",
+  "actorHowToPlaySignRightsTitle": "双重收益",
+  "actorHowToPlaySignRightPerform": "安排演出，持续赚取 STORY 代币",
+  "actorHowToPlaySignRightTrade": "角色 IP 可交易，赚取溢价收益",
+  "actorHowToPlayIssuePositioning": "定位：创作发行，多重收益，IP 长期增值",
+  "actorHowToPlayIssueAudience": "有创作能力，想靠角色 IP、短剧变现的创作者",
+  "actorHowToPlayIssueGuide": "发行角色 IP，绑定 AI 短剧，提升作品热度，拉高 IP 片酬与收益",
+  "actorHowToPlayIssueRightsTitle": "三重收益",
+  "actorHowToPlayIssueRightSignLabel": "签约分成：",
+  "actorHowToPlayIssueRightSign": "自有 IP 被签约，享 40% 分成",
+  "actorHowToPlayIssueRightPerformLabel": "演出收益：",
+  "actorHowToPlayIssueRightPerform": "签约自家 IP，演出赚 STORY",
+  "actorHowToPlayIssueRightValueLabel": "价值增值：",
+  "actorHowToPlayIssueRightValue": "IP 可交易，热度越高溢价越高",
+  "actorHowToPlayAudienceTitle": "适合人群",
+  "actorHowToPlayGuideTitle": "玩法指南",
+  "actorHowToPlayCreateHint": "可用 DreamOS 一键生成角色 IP 与 AI 短剧，高效产出优质内容",
+  "actorHowToPlayCreateCta": "去创作",
+  "nftSignInDevelopment": "功能暂未开放",
+  "nftSortCompleted": "完播",
+  "nftSortHeat": "热度",
+  "nftSortIpPower": "IP片酬",
+  "nftSortLowestPrice": "价格",
+  "nftSortLv1Pay": "片酬",
+  "nftSortMaxPay": "最高片酬",
+  "nftTradeUnavailable": "交易暂未开放",
+  "playerEpisodeBarCompleted": "已完结 · 全{count}集",
+  "@playerEpisodeBarCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeSynopsis": "第 {episodeNo} 集｜{synopsis}",
+  "@playerEpisodeSynopsis": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      },
+      "synopsis": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPlayFailedRetry": "播放失败，请稍后重试",
+  "publicProfileDramas": "短剧",
+  "publicProfileEmpty": "该用户暂无公开内容",
+  "publicProfileBlock": "拉黑",
+  "publicProfileUnblock": "解除拉黑",
+  "publicProfileBlockedByMeContent": "你已拉黑对方，无法查看TA的内容",
+  "publicProfileBlockedContent": "对方已将你拉黑，你无法查看TA的内容",
+  "publicProfileBlockConfirmTitle": "确认拉黑",
+  "publicProfileBlockConfirmMessage": "拉黑后，你将无法查看对方的作品。",
+  "publicProfileBlockSuccess": "已拉黑",
+  "publicProfileUnblockSuccess": "已解除拉黑",
+  "publicProfileFollowers": "粉丝",
+  "publicProfileFollowing": "关注",
+  "followTabMutual": "互关",
+  "profileLikesReceived": "获赞",
+  "profileLikesReceivedDialogMessage": "你已累计获得 {count} 个赞，感谢你的精彩创作！",
+  "@profileLikesReceivedDialogMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileTabLikes": "点赞",
+  "profileTabFavorites": "收藏",
+  "profileWalletTitle": "钱包",
+  "profileAddressCopied": "地址已复制",
+  "followActionFollow": "关注",
+  "followActionFollowBack": "回关",
+  "followActionFollowing": "已关注",
+  "followBlockedByMe": "黑名单用户，无法关注",
+  "followBlockedByTarget": "由于对方设置，你无法关注TA",
+  "likeBlockedByMe": "黑名单用户，无法点赞",
+  "likeBlockedByTarget": "由于对方设置，你无法点赞",
+  "favoriteBlockedByMe": "黑名单用户，无法收藏",
+  "favoriteBlockedByTarget": "由于对方设置，你无法收藏",
+  "ratingBlockedByMe": "黑名单用户，无法评分",
+  "ratingBlockedByTarget": "由于对方设置，你无法评分",
+  "followActionMutual": "互相关注",
+  "followUnfollowTitle": "取消关注",
+  "followUnfollowMessage": "确认不再关注 {handle} 吗？",
+  "@followUnfollowMessage": {
+    "placeholders": {
+      "handle": {
+        "type": "String"
+      }
+    }
+  },
+  "followUnfollowNo": "否",
+  "followUnfollowYes": "是",
+  "followListEmpty": "暂无用户",
+  "followFollowingEmpty": "暂无关注，去发现有趣的创作者吧～",
+  "followFollowingEmptyCta": "去看看",
+  "followFollowingEmptyGuest": "暂无关注",
+  "followFollowersEmpty": "暂无粉丝，去发布作品提升曝光吧～",
+  "followFollowersEmptyCta": "去发布",
+  "followFollowersEmptyGuest": "暂无粉丝",
+  "followMutualsEmpty": "暂无互关好友",
+  "followMutualsSelfOnly": "互关列表仅本人可见",
+  "followRelationsSelfOnly": "关系列表仅本人可见",
+  "followMoreTitle": "更多",
+  "followRemoveFollower": "移除粉丝",
+  "followRemoveFollowerSuccess": "已移除，对方不会收到通知",
+  "followUserHandleFallback": "@用户",
+  "publicProfileTitle": "用户主页",
+  "publicProfileUserFallback": "用户 #{id}",
+  "@publicProfileUserFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "watchHistoryEmpty": "暂无观看记录",
+  "watchHistoryClearTitle": "清空观看历史",
+  "watchHistoryClearMessage": "确定要清空所有观看历史吗？此操作无法撤销。",
+  "watchHistoryClearConfirm": "确定",
+  "gamePageTitle": "经纪人",
+  "gamePageSubtitle": "管理你的角色，派遣产生收益。",
+  "gameRiskAccount": "风险账户",
+  "gameRiskAccountDescription": "该账户信任系数异常，挖矿权重将受影响。",
+  "gameWeeklyStats": "本周数据",
+  "gameDeployedActors": "已派遣角色",
+  "gameMyActors": "我的角色",
+  "gameComingSoon": "即将上线",
+  "gameSignActor": "签约角色",
+  "gameGoProduce": "去拍剧",
+  "gameWorkingActors": "派遣中的角色",
+  "gameWeekPool": "本周奖池 (STORY)",
+  "gameWeekNominalOutput": "本周名义产出 (STORY)",
+  "gameWeekEstimatedOutput": "本周预估产出 (STORY)",
+  "gameMiningRules": "挖矿规则",
+  "agentV2RulesTitle": "经营玩法",
+  "agentV2RulesSummary": "签约角色、安排演出，每小时获得 STORY。\n升级角色，成倍提升每小时片酬。\n体力耗尽时及时补充，产出不间断。\n每周一 00:00 (UTC) 开始结算本期收益，前往收益页领取。",
+  "agentV2RulesHowToPlay": "怎么玩",
+  "agentV2RulesStartTitle": "怎么让角色开始赚钱？",
+  "agentV2RulesStartDescription": "安排候场角色演出，每小时消耗1点体力并根据片酬产出 STORY。\n产出的STORY在每期结束时统一结算，结算后可前往收益页面领取。",
+  "agentV2RulesStaminaTitle": "体力怎么管理？",
+  "agentV2RulesStaminaDescription": "演出中：每小时消耗 1 点体力，正常产出片酬\n体力耗尽：产出暂停为 0，需要及时处理\n休息：每小时自动恢复 1 点体力，但暂停片酬\n补充体力（付费）：瞬间回满 {staminaLimit}，立即恢复产出",
+  "@agentV2RulesStaminaDescription": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RulesBatchTitle": "可以批量操作吗？",
+  "agentV2RulesBatchDescription": "可以。页面底部提供一键演出、一键补充、一键休息，对在演位上的所有角色批量执行。",
+  "agentV2RulesEarnings": "能赚多少",
+  "agentV2RulesSalaryTitle": "片酬怎么算？",
+  "agentV2RulesSalaryDescription": "咖位越高、角色越贵、短剧越火，每小时片酬就越高。",
+  "agentV2RulesSalaryFormula": "单卡小时片酬 = 角色片酬 × 1 STORY",
+  "agentV2RulesRolePowerFormula": "角色片酬 = Lv.1 角色片酬 × 片酬系数",
+  "agentV2RulesIpSalaryFormula": "Lv.1 角色片酬 = 价格系数 × 热度系数",
+  "agentV2RulesCoefficientTitle": "系数说明",
+  "agentV2RulesSalaryExample": "林梦瑶 Lv3 主角 · P0=120{currency}（价格系数 ≈1.5046）· 热度 3.5\n→ 每小时片酬 = 5.0 × 1.5046 × 3.5 × 1 = 26.3 STORY\n如果只是 Lv1 群演，每小时仅 ≈5.3 STORY——升到 Lv3 涨了 5 倍",
+  "@agentV2RulesSalaryExample": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesSettlementTitle": "什么时候结算？",
+  "agentV2RulesSettlementDescription": "每 7 天为一个演出周期，每周一 00:00 (UTC) 截止。系统结算完毕后，本期片酬自动兑换为STORY，可前往收益页面领取。",
+  "agentV2RulesSettlementExample": "假设本周奖池 100,000 STORY：\n情况 A：全平台只有你产出 134 → 你拿 134，剩下不发放\n情况 B：全网产出 250,000 → 100,000 ÷ 250,000 = 40%，你的名义产出打四折\n情况 C：缩放后某人应得 6,000，但上限 5,000 → 只发 5,000",
+  "agentV2RulesStronger": "怎么变强",
+  "agentV2RulesUpgradeTitle": "怎么升级角色？",
+  "agentV2RulesUpgradeDescription": "升级条件：消耗 2 张同IP同等级分身 + IP参演短剧累计完播数达标\nLv1→Lv2：≥1万完播 · 片酬 1→3\nLv2→Lv3：≥5万完播 · 片酬 3→9\nLv3→Lv4：≥20万完播 · 片酬 9→27\nLv4→Lv5：≥100万完播 · 片酬 27→81",
+  "agentV2RulesPerforming": "演出中",
+  "agentV2RulesNormalSalary": "正常片酬",
+  "agentV2RulesSalaryCoefficient": "片酬系数：Lv1=1 · Lv2=3 · Lv3=9 · Lv4=27 · Lv5=81",
+  "agentV2RulesPriceCoefficientDescription": "价格系数（发行价 P0）：\n  • P0 ≤ 100{currency1} → 系数 = P0 ÷ 100（线性增长）\n  • P0 > 100{currency2} → 系数 = 1.6 × (P0/100)1.3 / [(P0/100)1.3 + 0.6]（渐近上限 1.6）",
+  "@agentV2RulesPriceCoefficientDescription": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesTrust2": "Trust2",
+  "agentV2RulesTrust2Factor": "平台Trust2",
+  "agentV2RulesSettlementCase1": "实发 = 名义产出，剩余额度作废",
+  "agentV2RulesSettlementCase2": "等比缩放：你实得 = 你的名义产出 × (奖池 ÷ 全网产出)",
+  "gameSettlementRecords": "每周结算记录",
+  "gameFilterComputingPower": "片酬",
+  "gameFilterLevel": "等级",
+  "gameFilterHeat": "热度",
+  "gameFilterStamina": "体力",
+  "gameHeatCoef": "热度系数",
+  "gameMiningCoef": "挖矿系数",
+  "gameActorPower": "角色片酬",
+  "gameActorPowerDetailTitle": "角色片酬详情",
+  "gameActorPowerFormula": "角色片酬 = IP片酬 × 挖矿系数 × CP系数 × Trust2",
+  "gameActorPowerIpFormula": "IP片酬 = 价格系数 × 热度系数 × Trust1",
+  "gameActorPowerHourlyOutput": "每小时产出",
+  "gameCpCoefficient": "CP 系数",
+  "gameTrust2": "Trust2",
+  "gameWeeklyNominalOutputLabel": "本周名义产出",
+  "gameRoundNominalOutputLabel": "本局名义产出",
+  "gameSupplement": "补充",
+  "gameRest": "休息",
+  "gameDeploy": "派遣",
+  "gameDeployActor": "派遣角色",
+  "gameStatusIdle": "闲置",
+  "gameStatusMining": "挖矿中",
+  "gameActorIpLabel": "角色IP {id}",
+  "@gameActorIpLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaProgress": "{current}/{max}",
+  "@gameStaminaProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismTitle": "体力机制",
+  "gameStaminaMechanismDesc": "派遣中的角色每小时消耗 1 点体力。体力耗尽后停止产出，休息时自动恢复。可用 {currency} 即时补充体力。",
+  "@gameStaminaMechanismDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismAction": "知道了",
+  "gameLevelBadge": "Lv{level}",
+  "@gameLevelBadge": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "gameEmptyDeployed": "暂无派遣中的角色",
+  "gameEmptyMyActors": "暂无角色，去签约吧",
+  "gameDeployConfirmTitle": "确认派遣该角色？",
+  "gameRestConfirmTitle": "确认让该角色休息？",
+  "gameRestConfirmDesc": "角色休息期间暂停挖矿产出，体力会随时间恢复。",
+  "gameRestConfirmAction": "确认休息",
+  "gameRestSuccessToast": "休息成功",
+  "gameDeploySlotFull": "派遣槽位已满（最多 5 位）",
+  "gameRefillTitle": "恢复体力",
+  "gameRefillCurrentStamina": "当前体力",
+  "gameRefillCost": "恢复费用",
+  "gameRefillConfirm": "恢复全部体力",
+  "gameRefillSuccess": "恢复体力成功",
+  "gameRefillFailed": "恢复体力失败，请重试",
+  "gameInsufficientUsdc": "{currency} 余额不足",
+  "@gameInsufficientUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "walletInsufficientStory": "STORY 余额不足",
+  "gameSupplementComingSoon": "补充体力功能即将上线",
+  "gameStatHelpWeekPoolTitle": "本周奖池",
+  "gameStatHelpWeekPoolSubtitle": "即 STORY 挖矿的每周硬性发放上限（周硬顶）",
+  "gameStatHelpWeekTotalPool": "本周总奖池",
+  "gameStatHelpWeekTotalPoolValue": "2,115,385 STORY",
+  "gameStatHelpWeekStakePool": "本周质押奖池（75%）",
+  "gameStatHelpWeekStakePoolValue": "1,586,538 STORY",
+  "gameStatHelpWeekInvitePool": "本周邀请奖池（25%）",
+  "gameStatHelpWeekInvitePoolValue": "528,846 STORY",
+  "gameStatHelpInitialHardCap": "初始周硬顶",
+  "gameStatHelpInitialHardCapValue": "2,115,385 STORY",
+  "gameStatHelpWeeklyDecay": "周衰减系数",
+  "gameStatHelpWeeklyDecayValue": "× 0.99572",
+  "gameStatHelpWeeklyDistributionFormula": "每周实际发放 = min(全网名义产出, 当周硬顶)",
+  "gameStatHelpUnusedQuotaNote": "未发出的剩余额度不发放、不回流、不补分",
+  "gameStatHelpNominalTitle": "本周名义产出",
+  "gameStatHelpNominalSummary": "我的所有角色的周累计名义产出累加",
+  "gameStatHelpNominalSummaryHint": "单卡公式见下方说明",
+  "gameStatHelpNominalFormula": "单卡名义产出 = 单卡小时权重 × R_base × 有效挖矿时长",
+  "gameStatHelpHourlyWeight": "单卡小时权重",
+  "gameStatHelpHourlyWeightValue": "= 角色片酬",
+  "gameStatHelpActorPower": "角色片酬",
+  "gameStatHelpActorPowerValue": "= IP片酬 × 挖矿系数 × CP系数 × Trust2",
+  "gameStatHelpCpCoef": "CP 系数",
+  "gameStatHelpRBase": "R_base",
+  "gameStatHelpRBaseValue": "1 STORY / 单位权重 / 小时",
+  "gameStatHelpEffectiveDuration": "有效挖矿时长",
+  "gameStatHelpEffectiveDurationValue": "质押中且体力 > 0 的累计时长",
+  "gameStatHelpActualTitle": "本周预估产出",
+  "gameStatHelpActualSubtitle": "预估产出受周硬顶和单地址封顶约束，本周结束时产生实际收益",
+  "gameStatHelpIfNominalLte": "若全网名义产出 ≤ 当周硬顶：",
+  "gameStatHelpUserActualEqNominal": "用户实得 = 用户名义产出",
+  "gameStatHelpIfNominalGt": "若全网名义产出 > 当周硬顶：",
+  "gameStatHelpUserActualFormula": "用户实得 = 用户名义产出 × 当周硬顶 / 全网名义产出",
+  "gameStatHelpAddressCap": "单地址周封顶",
+  "gameStatHelpAddressCapValue": "单个地址每周最多领取当周硬顶的 5%",
+  "theaterCategoryAll": "全部",
+  "theaterCategoryAncient": "古风",
+  "theaterCategoryFinance": "金融",
+  "theaterCategorySuspense": "悬疑",
+  "theaterCategorySciFi": "科幻",
+  "theaterCategoryRealStory": "真实改编",
+  "theaterCategoryUrban": "都市",
+  "theaterSortHottest": "最热",
+  "theaterSortNewest": "最新",
+  "theaterSortTopRated": "最高收藏",
+  "theaterSortCompletedView": "最高完播",
+  "theaterPlayCount": "{count} 次播放",
+  "@theaterPlayCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBasicInfo": "基本信息",
+  "createDramaEpisodes": "剧集管理",
+  "createDramaRoles": "绑定 IP",
+  "createDramaCover": "封面",
+  "createDramaCoverUpload": "上传",
+  "createDramaCoverPlaceholder": "支持 JPG/PNG，不超过 5MB",
+  "createDramaCoverCropTitle": "裁剪封面",
+  "createDramaName": "短剧标题",
+  "createDramaNameHint": "请输入短剧标题",
+  "createDramaSynopsis": "简介",
+  "createDramaTags": "标签",
+  "createDramaTagsHint": "输入标签并按回车添加 (如: 爱情, 喜剧)",
+  "createDramaTagsLoading": "加载标签中…",
+  "createDramaTagsEmpty": "暂无可用标签",
+  "createDramaTagsRetry": "重试",
+  "createDramaUploadDesc": "点击上传，提交后会按视频名称自动排序",
+  "@createDramaUploadDesc": {},
+  "createDramaEpisodesDesc": "批量上传视频文件，系统将自动按文件名排序生成剧集列表。支持拖拽排序、删除、编辑标题等操作。",
+  "@createDramaEpisodesDesc": {},
+  "createDramaVideoFileTypeHint": "限制文件类型 mp4, flv, wmv, asf, mkv, avi, rm, rmvb, mpg, mpeg, mov, webm 文件大小不超过2GB",
+  "@createDramaVideoFileTypeHint": {},
+  "createDramaUploadVideo": "上传视频",
+  "createDramaVideoEmpty": "还没有添加视频",
+  "createDramaVideoPickFailed": "选择视频失败",
+  "createDramaVideoAnyTooLarge": "所选视频中有文件超过2GB, 请调整后重新上传",
+  "createDramaVideoStatusUploading": "上传中",
+  "createDramaVideoStatusPaused": "上传已暂停",
+  "createDramaVideoStatusDone": "上传完成",
+  "createDramaEpisodeDescriptionHint": "分集描述",
+  "createDramaVideoStatusFailed": "上传失败",
+  "createDramaVideoTooLarge": "视频大小不能超过 2GB，无法上传",
+  "createDramaVideoUploadComplete": "全部视频上传完成",
+  "createDramaVideoUploadFailed": "{name} 上传失败",
+  "@createDramaVideoUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoPickOverflow": "最多只能再添加 {count} 集视频，多出的 {overflow} 个未加入",
+  "@createDramaVideoPickOverflow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "overflow": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaAddedVideos": "已添加的视频 ({count} 个文件)",
+  "@createDramaAddedVideos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosCount": "({count} 个文件)",
+  "@createDramaAddedVideosCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosLabel": "已添加的视频",
+  "createDramaRolesDesc": "为短剧创建人物，设定人物名称、头像与性格简介。",
+  "createDramaRolesRule1": "每部短剧最多绑定 5 个角色 IP，上架 7 天内可新增，发布后不可解除或更换。",
+  "createDramaRolesRule2": "绑定后，角色IP将关联短剧的完播和热度数据，用于升级角色和产出STORY。",
+  "@createDramaRolesRule2": {
+    "description": "绑定角色 IP 后，完播与热度数据的关联说明。"
+  },
+  "createDramaRolesExpireTime": "截止时间",
+  "createDramaRolesRule3": "绑定 IP 为选填，可不绑定直接发布。",
+  "createDramaAddRole": "添加人物",
+  "createDramaBindActor": "角色参演",
+  "createDramaRoleActing": "角色参演",
+  "createDramaSelectActor": "选择角色",
+  "createDramaBindActorTitle": "选择角色 IP",
+  "createDramaBindIpSelectedCount": "已选 {count} 个",
+  "@createDramaBindIpSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindIpEmpty": "暂无数据",
+  "createDramaBindIpMarketplace": "前往角色IP市场",
+  "createDramaBindIpConfirm": "确认绑定",
+  "createDramaBindActorSubtitle": "选择一名角色IP来饰演「{roleName}」",
+  "@createDramaBindActorSubtitle": {
+    "placeholders": {
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorOwnedCount": "持有 {count} 个角色IP",
+  "@createDramaBindActorOwnedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindActorIpLabel": "角色IP {code}",
+  "@createDramaBindActorIpLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorBoundTag": "已绑定",
+  "createDramaBindIpRemove": "移除",
+  "createDramaBindActorBoundToast": "已绑定 {name}",
+  "@createDramaBindActorBoundToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorUnbind": "解除绑定",
+  "createDramaBindActorExpired": "已超过 7天窗口期，不可新增绑定角色IP",
+  "createDramaBindActorEmptyTitle": "暂无可绑定的角色IP",
+  "createDramaBindActorEmptyDesc": "你需要先持有角色IP才能绑定到人物",
+  "createDramaBindActorGotoCreate": "去创建角色",
+  "createDramaPrevStep": "上一步",
+  "createDramaNextStep": "下一步",
+  "createDramaSubmit": "发布",
+  "createDramaRoleNameLabel": "人物名称",
+  "createDramaRoleNameHint": "请输入人物名称",
+  "createDramaRoleNameRequired": "请输入人物名",
+  "createDramaRoleBioLabel": "简介",
+  "createDramaRoleBioHint": "请输入人物简介",
+  "createDramaRoleBioRequired": "请输入人物简介",
+  "createDramaRoleAddTitle": "添加人物",
+  "createDramaRoleEditTitle": "编辑人物",
+  "createDramaRoleUploadAvatar": "上传头像",
+  "createDramaRoleSave": "保存",
+  "createDramaRoleDeleteConfirm": "确定删除该人物？",
+  "createDramaVideoDeleteConfirm": "确定删除“{name}”吗？",
+  "@createDramaVideoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoDeleteTitle": "删除视频",
+  "createDramaVideoPreviewUnavailable": "历史上传视频，暂不支持播放预览",
+  "createDramaRoleEmpty": "暂未添加人物",
+  "createDramaRoleBindComingSoon": "绑定角色功能即将上线",
+  "createDramaRoleAvatarCropTitle": "裁剪人物头像",
+  "createDramaRoleAvatarUploadFailed": "人物头像上传失败",
+  "createDramaPublishedSuccess": "发布成功",
+  "createDramaDraftRestored": "已同步草稿数据",
+  "createDramaDraftClear": "清除数据",
+  "createDramaDraftDiscard": "不保存返回",
+  "createDramaDraftSave": "存草稿",
+  "createDramaEditLoading": "加载中...",
+  "createDramaEditLoadError": "加载短剧信息失败，请重试",
+  "createDramaSubmitValidationTitle": "请填写短剧标题",
+  "createDramaSubmitValidationCover": "请上传封面图",
+  "createDramaSubmitValidationVideos": "请至少上传一个视频",
+  "createDramaSubmitValidationSession": "上传会话异常，请重新上传视频",
+  "createDramaUploadSessionFailed": "创建上传会话失败",
+  "createDramaSubmitValidationRoles": "请至少添加一个人物",
+  "createDramaStep1TitleRequired": "请输入短剧标题",
+  "createDramaStep1SynopsisRequired": "请输入简介",
+  "createDramaStep1CoverRequired": "请添加封面",
+  "createDramaStep1TagsRequired": "请选择标签",
+  "createDramaEpisodeDescriptionRequired": "请输入分集描述",
+  "settingsLanguage": "语言",
+  "settingsTheme": "主题",
+  "settingsThemeLight": "日间",
+  "settingsThemeDark": "夜间",
+  "settingsThemeSystem": "系统",
+  "settingsUI": "界面",
+  "settingsAppVersion": "版本",
+  "settingsVersionLatestToast": "当前版本为最新版本",
+  "settingsVersionCheckFailed": "版本检查失败，请稍后再试",
+  "appVersionUpdateTitle": "发现新版本",
+  "appVersionUpdateContentsLabel": "更新内容：",
+  "appVersionUpdateConfirm": "立即更新",
+  "appVersionUpdateLater": "以后再说",
+  "settingsTermsOfService": "服务条款",
+  "settingsPrivacyPolicy": "隐私政策",
+  "settingsDeleteAccount": "删除账户",
+  "settingsDeleteAccountConfirm": "您的账户将在 {deadline} 被删除。在此时间内，您可以再次登录以取消账户删除。",
+  "@settingsDeleteAccountConfirm": {
+    "placeholders": {
+      "deadline": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsDeleteAccountSuccess": "删除账户申请已提交",
+  "settingsClearCache": "清理缓存",
+  "settingsNetworkInspector": "网络请求",
+  "settingsClearCacheConfirm": "确认要清理缓存吗？",
+  "miningRulesHowToPlay": "派遣挖矿怎么玩",
+  "miningRulesFlowSubtitle": "一张图看懂从派人到领钱的全流程",
+  "miningRulesSection1Title": "派遣",
+  "miningRulesSection1Desc": "把空闲的角色「派遣」到下面的 5 个槽位里，他就开始自动挖矿、产出 STORY。",
+  "miningRulesSection1Bullet1": "每人最多同时派遣 5 位角色",
+  "miningRulesSection1Bullet2": "同一个角色IP也可以多张卡一起派遣",
+  "miningRulesSection1Bullet3": "派遣后每小时消耗 1 点体力，体力 > 0 就一直产出，体力 = 0 就停工",
+  "miningRulesSection2Title": "产出公式",
+  "miningRulesSection2Desc": "每张卡每小时的产出是这样算的：",
+  "miningRulesSection2Formula": "单卡小时产出 = 角色片酬 × 1 STORY",
+  "miningRulesSection2FactorsTitle": "其中：",
+  "miningRulesSection2Factor1": "角色片酬= IP片酬 × 挖矿系数 × CP系数 × Trust2",
+  "miningRulesSection2Factor2": "IP 片酬= 价格系数 × 热度系数 × Trust1",
+  "miningRulesSection2Factor3": "挖矿系数——咖位越高系数越大。Lv1=1.0 → Lv2=2.2 → Lv3=5.0 → Lv4=11 → Lv5=24",
+  "miningRulesSection2Factor4": "价格系数——发行价 P0：P0≤10{currency1} 线性增长 · P0>10{currency2} 渐近上限 1.6",
+  "@miningRulesSection2Factor4": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor5": "热度系数——近期剧表现越好热度越高（完播、点赞、收藏、评论）",
+  "miningRulesSection2Factor6": "CP 系数——暂未开放；Trust 默认 1.0",
+  "miningRulesSection2StaminaText": "体力只看\"有没有\"：{staminaLimit} 点和 1 点体力的每小时产出一样多。",
+  "@miningRulesSection2StaminaText": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesSection2ExampleTitle": "示例",
+  "miningRulesSection2ExampleDesc": "林梦瑶 Lv3 主角 · P0=12{currency}（价格系数 ≈1.0859）· 热度 3.5\n→ 每小时产出 = 5.0 × 1.0859 × 3.5 × 1 = 19.00325 STORY",
+  "@miningRulesSection2ExampleDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefTableTitle": "各系数说明",
+  "miningRulesCoefColCoef": "系数",
+  "miningRulesCoefColFactor": "决定因素",
+  "miningRulesCoefColDesc": "说明",
+  "miningRulesCoefMining": "挖矿系数",
+  "miningRulesCoefPrice": "价格系数",
+  "miningRulesCoefHeat": "热度系数",
+  "miningRulesCoefCp": "CP 系数",
+  "miningRulesCoefTrust": "Trust",
+  "miningRulesCoefMiningFactor": "咖位",
+  "miningRulesCoefPriceFactor": "发行价 P0",
+  "miningRulesCoefHeatFactor": "近期剧表现",
+  "miningRulesCoefCpFactor": "-",
+  "miningRulesCoefTrustFactor": "平台风控",
+  "miningRulesCoefMiningDesc": "Lv1=1.0 · Lv2=2.2 · Lv3=5.0 · Lv4=11 · Lv5=24",
+  "miningRulesCoefPriceDesc": "P0≤10{currency1} 线性增长 · P0>10{currency2} 渐近上限 1.6",
+  "@miningRulesCoefPriceDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefHeatDesc": "热度系数：角色IP参演短剧的完播、点赞、收藏、评分越多，热度越高",
+  "miningRulesCoefCpDesc": "暂未开放",
+  "miningRulesCoefTrustDesc": "默认 1.0",
+  "miningRulesSection3Title": "结算分配",
+  "miningRulesSection3Desc": "每周全平台有一个总奖池（周硬顶），初始约 2,115,385 STORY，之后逐周递减（每周 × 0.99572）。",
+  "miningRulesSettleColCondition": "条件",
+  "miningRulesSettleColRule": "分配规则",
+  "miningRulesSection3Case1Title": "全网名义产出 ≤ 当周硬顶",
+  "miningRulesSection3Case1Desc": "每人照单全收，剩余部分不发、不补",
+  "miningRulesSection3Case2Title": "全网名义产出 > 当周硬顶",
+  "miningRulesSection3Case2Desc": "等比缩放：你实得 = 你的名义产出 × 奖池 ÷ 全网产出",
+  "miningRulesSection3Case3Title": "单地址超过奖池 5%",
+  "miningRulesSection3Case3Desc": "超出部分不发，不回流，不补分",
+  "miningRulesSection3ExampleDesc": "假设本周奖池 100,000 STORY：\n情况 A：全平台只有你产出 134 → 你拿 134，剩下不发放\n情况 B：全网产出 250,000 → 等比缩放到 40%\n情况 C：缩放后某人应得 6,000，但上限 5,000 → 只发 5,000",
+  "miningRulesSection4Title": "体力管理",
+  "miningRulesTableStatus": "状态",
+  "miningRulesTableStaminaChange": "体力变化",
+  "miningRulesTableOutput": "产出",
+  "miningRulesStatusMining": "派遣中（挖矿）",
+  "miningRulesStaminaMining": "每小时 -1",
+  "miningRulesOutputNormal": "正常产出",
+  "miningRulesStatusZeroStamina": "体力耗尽",
+  "miningRulesStaminaZeroStamina": "不再变化",
+  "miningRulesOutputZero": "产出为 0",
+  "miningRulesStatusResting": "召回休息",
+  "miningRulesStaminaResting": "每小时 +1（自动恢复）",
+  "miningRulesOutputPaused": "暂停产出",
+  "miningRulesStatusPaidRefill": "补充体力（付费）",
+  "miningRulesStaminaPaidRefill": "瞬间回满 {staminaLimit}",
+  "@miningRulesStaminaPaidRefill": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesOutputRestored": "恢复产出",
+  "miningRulesSection4TipsTitle": "补充体力须知",
+  "miningRulesSection4Tip1": "只能一键加满，不能只买 10 点",
+  "miningRulesSection4Tip2": "价格只看咖位，与剩余体力无关",
+  "miningRulesSection4Tip3": "越靠近 0 补充越划算——同样价格买到最多的挖矿时长",
+  "miningRulesSection4PriceTitle": "补充价格",
+  "miningRulesPriceTableTier": "咖位",
+  "miningRulesPriceTableFullRefill": "一键加满",
+  "miningRulesLv1": "Lv1 群演",
+  "miningRulesLv2": "Lv2 配角",
+  "miningRulesLv3": "Lv3 主角",
+  "miningRulesLv4": "Lv4 巨星",
+  "miningRulesLv5": "Lv5 顶流",
+  "gameActorLevelName1": "群演",
+  "gameActorLevelName2": "配角",
+  "gameActorLevelName3": "主角",
+  "gameActorLevelName4": "巨星",
+  "gameActorLevelName5": "顶流",
+  "miningRulesLv1Price": "10 {currency}",
+  "@miningRulesLv1Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv2Price": "20 {currency}",
+  "@miningRulesLv2Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv3Price": "50 {currency}",
+  "@miningRulesLv3Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv4Price": "130 {currency}",
+  "@miningRulesLv4Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv5Price": "320 {currency}",
+  "@miningRulesLv5Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection5Title": "升级咖位",
+  "miningRulesSection5Desc": "3 张同角色同咖位的卡 + 合成费 + 该角色累计完播达标 = 升 1 级。升级后挖矿系数暴涨，每小时产出翻倍甚至翻几倍。",
+  "miningRulesUpgradePathSubtitle": "升级路径",
+  "miningRulesUpgradeColPath": "升级路径",
+  "miningRulesUpgradeColHeat": "累计完播门槛",
+  "miningRulesUpgradeColFee": "合成费",
+  "miningRulesUpgradePath12": "Lv1 → Lv2",
+  "miningRulesUpgradePath23": "Lv2 → Lv3",
+  "miningRulesUpgradePath34": "Lv3 → Lv4",
+  "miningRulesUpgradePath45": "Lv4 → Lv5",
+  "miningRulesUpgradeHeat12": "≥ 10,000",
+  "miningRulesUpgradeHeat23": "≥ 50,000",
+  "miningRulesUpgradeHeat34": "≥ 200,000",
+  "miningRulesUpgradeHeat45": "≥ 1,000,000",
+  "miningRulesUpgradeFee12": "10 {currency}",
+  "@miningRulesUpgradeFee12": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee23": "20 {currency}",
+  "@miningRulesUpgradeFee23": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee34": "40 {currency}",
+  "@miningRulesUpgradeFee34": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee45": "80 {currency}",
+  "@miningRulesUpgradeFee45": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSummaryTitle": "一句话总结",
+  "miningRulesSummaryDesc": "派人 → 产出 → 盯体力 → 领钱。体力快没了就补充或召回休息，热度靠角色的剧表现提升，升级让产出起飞。",
+  "playerNotInterested": "不感兴趣",
+  "playerNotInterestedDone": "已反馈，将减少此类推荐",
+  "playerClearScreen": "清屏",
+  "playerAutoPlay": "连播",
+  "playerReport": "举报",
+  "playerReportSuccess": "举报成功",
+  "commentReportSuccess": "提交成功，将为你尽快受理",
+  "reportSuccessTitle": "提交成功，我们将尽快受理",
+  "reportSuccessThanks": "感谢您对社区安全做的贡献！",
+  "reportSuccessAlsoYouCan": "同时你可以",
+  "reportSuccessDone": "完成",
+  "reportReduceRecommend": "减少推荐",
+  "reportReduceRecommendDone": "已减少推荐",
+  "reportSuccessContentFallback": "该内容",
+  "reportDescription": "举报描述",
+  "reportDescriptionPlaceholder": "请描述具体原因（选填）",
+  "reportReasonPorn": "低俗色情",
+  "reportReasonIllegal": "涉嫌违法犯罪",
+  "reportReasonSensitive": "内容敏感",
+  "reportReasonGambling": "涉黑赌博",
+  "reportReasonMinors": "侵害未成年人",
+  "reportReasonCopyright": "侵权投诉",
+  "reportReasonQuality": "质量问题",
+  "reportReasonNotLike": "我不喜欢",
+  "reportReasonOther": "其他",
+  "gameUpgrade": "升级",
+  "gameUpgradeTitle": "咖位升级",
+  "gameUpgradeCurrentLevel": "当前等级",
+  "gameUpgradeTargetLevel": "目标等级",
+  "gameUpgradeHeatThreshold": "参演短剧累计完播",
+  "gameUpgradeRequiredCount": "消耗同IP同等级角色",
+  "gameUpgradeFee": "升级费用",
+  "gameUpgradeNextLevelReq": "下一级升级要求",
+  "gameUpgradeBeforeAfter": "升级前后对比",
+  "gameUpgradeSelectMaterialDesc": "选择要消耗的同IP同等级角色",
+  "gameUpgradeMaterialCount": "{current}/{required}",
+  "@gameUpgradeMaterialCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeToLevel": "升级到 Lv{level} {levelName}",
+  "@gameUpgradeToLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterialLabel": "选择材料 ({current}/{required})",
+  "@gameUpgradeSelectMaterialLabel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterials": "请选择 {count} 个材料",
+  "@gameUpgradeSelectMaterials": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeConfirm": "确认升级",
+  "gameUpgradeSuccess": "升级成功",
+  "gameUpgradeFailed": "升级失败，请重试",
+  "gameUpgradeInsufficientMaterials": "材料不足",
+  "gameUpgradeNoMaterials": "没有可消耗的同IP同等级角色",
+  "creatorDramaStatusMinted": "已铸造",
+  "creatorDramaStatusOffline": "已下架",
+  "creatorDramaStatusUnavailable": "暂不可操作",
+  "creatorMintDramaNft": "铸造短剧NFT",
+  "creatorMintConfirmDesc": "确认铸造该短剧为链上 NFT，铸造后该短剧将可产生 STORY 挖矿收益。",
+  "creatorMintFee": "铸造手续费",
+  "creatorMintInsufficientUsdc": "{currency1} 余额不足，链上发行需要至少 1 {currency2}",
+  "@creatorMintInsufficientUsdc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintInvalidDramaId": "短剧 ID 无效",
+  "creatorMintInProgress": "铸造进行中，请稍候",
+  "creatorMintWalletNotReady": "Solana 钱包地址未就绪，请重新登录",
+  "creatorMintDigestEmpty": "发行签名数据为空，请稍后重试",
+  "creatorMintWalletMismatch": "铸造钱包与当前钱包不一致，请重新登录",
+  "creatorMintSuccess": "铸造成功！",
+  "@creatorMintDramaOnChain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintDramaOnChain": "《{name}》短剧NFT已上链",
+  "@creatorMintNftNumber": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintNftNumber": "NFT编号：{id}",
+  "creatorMintTxHash": "交易哈希：",
+  "gameSelectActor": "选择派遣角色",
+  "gameSelectActorDesc": "选择一位空闲中的角色进行派遣",
+  "agentV2SchedulePerformance": "演出",
+  "agentV2PerformAllTitle": "一键演出",
+  "agentV2PerformAllDescription": "将按片酬从高到低安排到空在演位",
+  "agentV2PerformAllFailed": "一键演出失败，请重试",
+  "agentV2PerformAllSuccess": "一键演出成功",
+  "agentV2PerformAllDepletedResult": "{successCount}位演出成功，{depletedCount}位体力耗尽暂无法演出",
+  "@agentV2PerformAllDepletedResult": {
+    "placeholders": {
+      "successCount": {
+        "type": "int"
+      },
+      "depletedCount": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RestAllSuccess": "一键休息成功",
+  "agentV2PerformAllCount": "{count}个角色",
+  "@agentV2PerformAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2TodoTitle": "待办",
+  "agentV2TodoVacancies": "还有 {count} 个在演位空缺",
+  "@agentV2TodoVacancies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2TodoStaminaDepleted": "{name} 体力仅剩 0，已停工",
+  "@agentV2TodoStaminaDepleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2TodoPerform": "去演出",
+  "agentV2TodoRefill": "去补充",
+  "agentV2TodoHealthy": "演出正常 · 体力充足",
+  "agentV2CandidateActorsTitle": "候选角色",
+  "agentV2CandidateActorsDescription": "休息中的角色每小时恢复1点体力",
+  "agentV2UpgradeableActorsTitle": "升级角色",
+  "agentV2UpgradeableActorsEmpty": "暂无可升级角色",
+  "agentV2NoActors": "暂无角色",
+  "agentV2UpgradeNow": "立即升级",
+  "agentV2UpgradeCompletion": "完播",
+  "agentV2UpgradeMaterials": "角色",
+  "agentV2UpgradeRequirementsTitle": "升级 {name}",
+  "agentV2UpgradeCompletionRemaining": "还需 {count} 完播",
+  "agentV2UpgradeCompletionHint": "观看该角色参演的短剧，或为它创作新剧，都可提升完播",
+  "agentV2UpgradeWatchDramas": "看参演短剧",
+  "agentV2UpgradeCreateDrama": "去创作短剧",
+  "agentV2UpgradeMaterialsRemaining": "还需 {count} 张同IP同等级角色",
+  "agentV2UpgradeMaterialsHint": "去角色主页签约更多「{name}」",
+  "agentV2UpgradeGetActors": "去获取角色",
+  "agentV2UpgradeActorsSyncing": "{count} 个新角色同步中，升级条件已更新",
+  "agentV2UpgradeConfirmSelectMaterials": "选择要消耗的同IP同等级演员",
+  "agentV2UpgradeConfirmSalaryLabel": "片酬",
+  "agentV2SalaryDetailTitle": "角色片酬",
+  "agentV2SalaryHourly": "每小时片酬",
+  "agentV2SalaryUnit": "STORY / 小时",
+  "agentV2SalaryFormula": "角色片酬 = IP片酬 × 片酬系数 × CP系数 × Trust2",
+  "agentV2SalaryFormulaLv1": "Lv.1 角色片酬 = 价格系数 × 热度系数",
+  "agentV2SalaryFormulaLevel": "Lv.{level}片酬 = Lv.1片酬 × 片酬系数",
+  "@agentV2SalaryFormulaLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryLv1Pay": "Lv.1 片酬",
+  "agentV2SalaryCoefficient": "片酬系数",
+  "agentV2SalaryCoefficientWithLevel": "片酬系数（Lv.{level} {roleName}）",
+  "@agentV2SalaryCoefficientWithLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2SalaryCpCoefficient": "CP 系数",
+  "agentV2PerformanceConfirmDescription": "该角色演出时自动产生片酬收益。演出中每小时消耗 1 点体力，体力耗尽则停止产出。",
+  "agentV2PerformanceConfirmTitle": "安排演出",
+  "agentV2PerformanceZeroFeePrefix": "该角色IP当前",
+  "agentV2PerformanceZeroFeeHighlight": "片酬为0",
+  "agentV2PerformanceZeroFeeSuffix": "，演出不会产生收益。且演出中每小时消耗 1 点体力，是否仍要继续？",
+  "agentV2PerformanceScheduledSuccess": "已安排演出",
+  "agentV2PerformanceSlotsFull": "演出位已满(最多5个)",
+  "gameDeployStaminaDepleted": "体力已耗尽，补充体力后可演出",
+  "agentMoreRules": "规则",
+  "agentMoreSalaryAndPool": "片酬与奖池",
+  "agentV2WeeklySalaryTitle": "升级·演出·赚片酬",
+  "agentV2WeeklySalaryLabel": "本周片酬",
+  "gameDeployConfirmDesc": "该角色将自动进行质押挖矿，持续为你产出 STORY 收益。注意：每个整点消耗 1 点体力，体力耗尽则停止产出。",
+  "gameRecallConfirm": "确认召回",
+  "gameRecallDesc": "召回此角色将暂停短剧的生产收益，且当前体力不受影响。",
+  "actorStatCompletionTitle": "完播",
+  "actorStatCompletionDesc": "该角色IP参演的所有短剧的完播次数之和",
+  "actorStatHeatTitle": "热度",
+  "actorStatHeatDesc": "该角色IP参演的所有短剧最近30天的热度之和",
+  "actorStatIpPowerTitle": "IP片酬",
+  "actorStatIpPowerDesc": "IP片酬 = 价格系数 × 热度系数 × Trust1",
+  "dramaFavoriteLabel": "收藏",
+  "dramaRatingLabel": "评分",
+  "dramaUnnamed": "未命名",
+  "videoNotReady": "视频尚未就绪，请稍后",
+  "inviteDirectSubordinates": "已邀请用户",
+  "@inviteTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteTotalCount": "共 {count} 人",
+  "inviteTotalLabel": "总人数",
+  "inviteActiveLabel": "有效用户",
+  "invitePendingLabel": "待激活",
+  "inviteEmpty": "暂无下级用户",
+  "@inviteRegisteredAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRegisteredAt": "注册于 {date}",
+  "gameUpgradeMaxLevel": "已达到顶级咖位",
+  "listNoMoreData": "没有更多数据了",
+  "iapSheetTitle": "购买点数",
+  "iapSheetSubtitle": "点数用于签约角色等 APP 内服务",
+  "iapBalance": "余额",
+  "iapConfirmPurchase": "确认购买",
+  "iapPurchaseSuccess": "购买成功",
+  "iapPurchaseFailed": "购买失败，请稍后重试",
+  "iapPurchaseFailedTitle": "购买失败",
+  "iapCrediting": "到账处理中，请稍候",
+  "iapNoProducts": "暂无可购买商品",
+  "iapSuccessConfirm": "确定",
+  "iapGainedPoints": "+{value}",
+  "@iapGainedPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "iapPointsCount": "{count} 点数",
+  "@iapPointsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameBatchRefillTransactionTooLarge": "批量补充交易数据过大，请减少演员数量后重试",
+  "agentV2RefillTitle": "补充体力",
+  "agentV2RefillCost": "花费",
+  "agentV2RefillActorButton": "该角色",
+  "agentV2RefillAllActors": "补充全部演出中角色",
+  "agentV2RefillActorCount": "{count} 位",
+  "@agentV2RefillActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RefillAllButton": "全部补充",
+  "agentV2RefillOr": "或",
+  "agentV2RestAll": "全部休息",
+  "agentV2RestActorCount": "{count}位",
+  "@agentV2RestActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2UpgradeRequirementsTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@agentV2UpgradeCompletionRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2UpgradeMaterialsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2UpgradeMaterialsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@agentV2UpgradeActorsSyncing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "salaryPoolRateUnit": "STORY / 小时",
+  "salaryPoolDecayInfo": "周衰减系数 ×0.99572",
+  "salaryPoolStakeLabel": "演出奖池（75%）",
+  "salaryPoolInviteLabel": "邀请奖池（25%）",
+  "salaryPoolRule1Title": "全网名义产出 ≤ 当周硬顶：",
+  "salaryPoolRule2Title": "全网名义产出 > 当周硬顶：",
+  "salaryPoolRule2Body": "用户实得 = 用户名义产出 ×（当周硬顶 ÷ 全网名义产出）",
+  "agentV3WeeklySalary": "本周片酬",
+  "agentV3PerformAll": "一键演出",
+  "agentV3RestAll": "一键休息",
+  "agentV3RestAllDescription": "将召回全部在演角色，停止消耗体力与产出",
+  "agentV3RefillAll": "一键补充",
+  "agentV3RefillAllDescription": "补满演出中角色的体力",
+  "agentV3RefillCost": "消耗",
+  "agentV3RefillNoActors": "暂无需要补充体力的角色",
+  "agentV3SignActor": "签约角色",
+  "agentV3Todo": "待办",
+  "agentV3Upgrade": "升级",
+  "agentV3UpgradeMaterialHint": "升级需消耗 {count} 张同IP同等级角色",
+  "@agentV3UpgradeMaterialHint": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "agentV3Waiting": "候场",
+  "agentV3WaitingActorsTitle": "候场角色",
+  "agentV3WaitingActorsDescription": "休息中的角色每小时恢复1点体力",
+  "agentV3Recycle": "回收",
+  "agentV3RecycleActorsTitle": "角色回收",
+  "agentV3RecyclePerforming": "演出中",
+  "agentV3RecycleReceive": "你将获得",
+  "agentV3RecyclePermanentWarning": "角色将被永久销毁，不可恢复",
+  "agentV3RecycleConfirm": "确认销毁",
+  "agentV3RecycleConfirmAgain": "再次点击销毁",
+  "agentV3RecycleSubmitted": "角色回收成功",
+  "agentV3RecycleEstimateUnavailable": "回收预估暂不可用，请重试",
+  "agentV3EnergyPack": "体力补给包",
+  "agentV3EnergyPackDescription": "补满角色体力，按角色等级消耗。",
+  "agentV3TrainingManual": "训练手册",
+  "agentV3TrainingManualDescription": "角色升级材料，升级时按角色等级消耗。",
+  "agentV3PurchaseButton": "购买",
+  "agentV3PurchaseWalletBalance": "余额 {balance} {currency}",
+  "@agentV3PurchaseWalletBalance": {
+    "placeholders": {"balance": {"type": "String"}, "currency": {"type": "String"}}
+  },
+  "agentV3PurchaseTitle": "购买{item}",
+  "@agentV3PurchaseTitle": {
+    "placeholders": {"item": {"type": "String"}}
+  },
+  "agentV3PurchaseUnitPrice": "单价",
+  "agentV3PurchaseQuantity": "数量",
+  "agentV3PurchaseTotal": "合计",
+  "agentV3PurchaseConfirm": "确认支付",
+  "agentV3PurchaseUnavailable": "当前环境暂未开放道具购买",
+  "agentV3PurchaseConfigUnavailable": "道具价格暂不可用，请稍后重试",
+  "agentV3PurchaseSubmitted": "购买成功，已放入道具背包（经纪人页面）",
+  "agentV3PurchaseCreditPending": "体力包仍在入账，请稍后重试",
+  "agentV3PurchaseCrediting": "扫链入账中",
+  "agentV3PurchaseBalance": "当前持有：{count}",
+  "@agentV3PurchaseBalance": {
+    "placeholders": {"count": {"type": "String"}}
+  },
+  "agentV3RefillTitle": "补满体力",
+  "agentV3RefillLevelCost": "Lv.{level} 消耗",
+  "@agentV3RefillLevelCost": {
+    "placeholders": {"level": {"type": "String"}}
+  },
+  "agentV3RefillAvailable": "可用",
+  "agentV3RefillUse": "使用",
+  "agentV3RefillSuccess": "体力已补满",
+  "agentV3RefillAllSuccess": "已补充 {actorCount} 位角色的体力（消耗补给包 {packCount}）",
+  "@agentV3RefillAllSuccess": {
+    "placeholders": {
+      "actorCount": {"type": "int"},
+      "packCount": {"type": "String"}
+    }
+  },
+  "agentV3RefillConfigUnavailable": "体力包消耗配置暂不可用",
+  "agentV3RefillInsufficient": "体力包余额不足"
+}

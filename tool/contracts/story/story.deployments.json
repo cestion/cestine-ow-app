@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "environments": {
+    "development": {
+      "cluster": "devnet",
+      "buildFeature": "devnet",
+      "protocolVersion": 2,
+      "programId": "6w1itXjxKn79S6WzR3tY6nkF7rx5DDJbYkH12a7uFyTk",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "4cd4b7cc6f906e424a3ef501118824d524c8299e8f94c53d63c14fb129f83c26",
+      "configPda": "A1JvbJXkmGMor15BTbmLSxmckjdgTUw83zq29jbEgC5B",
+      "authority": "NemsHzZjEDym11fUdfQRjLHqM71tdDoSRZWu1NnJmMo",
+      "admin": "5qccmZoXMeFo2dhDebZ2HU14BK2ZiWYYF83EJPqC5TuN",
+      "delegator": "3tDvtXupFSZVmkbcEiGeDUgFtNaTaLtVnQ1A8Ky1FDmx",
+      "treasury": "Dy9c2P6gaNeqg2Q9knTsahBUGZPuoB5rEZM7mAYkTRvo",
+      "collections": {
+        "drama": {
+          "name": "Story Drama",
+          "uri": "https://one-story-dev.s3.us-east-2.amazonaws.com/metadata/collection/drama/drama.json",
+          "royaltyBps": 0,
+          "collectionPda": "6dMHw1BNSAk58waZRrLnGgKau7fpg21bJUKHs6GwrZvq",
+          "collectionInfoPda": "B48LHWXFxRy2o2RYf166GUxVHBd3yzCYZbAdyT9zqm8g"
+        }
+      }
+    },
+    "test": {
+      "cluster": "devnet",
+      "buildFeature": "testnet",
+      "protocolVersion": 2,
+      "programId": "CJEnSe9eJ3s8qLQNdWrcHQpp6199s4NohcBBHZ3UeRQL",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "2c664599e31572b9e685f3a72bae1a6b087d0a4490ed20670fd30e9590b2c02b",
+      "configPda": "73BTooCphdDY7rFS9aHzGH2vD9pK2q4wZaNKSndNQ9Vo",
+      "authority": "NemsHzZjEDym11fUdfQRjLHqM71tdDoSRZWu1NnJmMo",
+      "admin": "5qccmZoXMeFo2dhDebZ2HU14BK2ZiWYYF83EJPqC5TuN",
+      "delegator": "3tDvtXupFSZVmkbcEiGeDUgFtNaTaLtVnQ1A8Ky1FDmx",
+      "treasury": "Dy9c2P6gaNeqg2Q9knTsahBUGZPuoB5rEZM7mAYkTRvo"
+    },
+    "production": {
+      "cluster": "mainnet-beta",
+      "buildFeature": "mainnet",
+      "protocolVersion": 1,
+      "programId": "7vGTZBAqjk9mArEnj1bZ7aRvAkeoksAcrzB7aEtzb8g1",
+      "contractCommit": "d7ffa721b88c30eee7446f5c69b733fef6c82f9b",
+      "idlSha256": "9254a15edb5e783280ad3048bfb066c6725ffc44de1ec7aa6a4430fc4f10919f"
+    }
+  }
+}

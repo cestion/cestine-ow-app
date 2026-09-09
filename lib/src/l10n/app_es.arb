@@ -1,0 +1,2657 @@
+{
+  "appName": "StoryFun",
+  "commonCancel": "Cancelar",
+  "commonNoData": "Sin datos",
+  "commonNo": "No",
+  "commonYes": "Sí",
+  "publishDrama": "Publicar Drama",
+  "publishVideo": "Publicar Video",
+  "publishVideoUploadTitle": "Subir archivo de vídeo",
+  "publishVideoFileHint": "Admite mp4, flv, wmv, mkv, avi, mov y webm. Máximo 2GB",
+  "publishVideoChooseFile": "Elegir archivo",
+  "publishVideoChangeFile": "Cambiar archivo",
+  "publishVideoChooseSource": "Elegir origen del vídeo",
+  "publishVideoChooseFromGallery": "Elegir de la galería",
+  "publishVideoChooseFromFiles": "Elegir de archivos",
+  "publishVideoPreparing": "Preparando vídeo…",
+  "publishVideoCoverTitle": "Portada del vídeo",
+  "publishVideoChangeCover": "Cambiar portada",
+  "publishVideoCoverHint": "JPG/PNG, máximo 5MB",
+  "publishVideoDescriptionLabel": "Descripción",
+  "publishVideoRequired": "(Obligatorio)",
+  "publishVideoDescriptionHint": "Añade una descripción (máximo 200 caracteres)",
+  "publishVideoSaveDraft": "Guardar borrador",
+  "publishVideoDraftEditModeNotSupported": "No se puede guardar el borrador en modo edición",
+  "publishVideoDraftNothingToSave": "No hay nada que guardar",
+  "publishVideoNext": "Siguiente",
+  "publishVideoCoverCropTitle": "Recortar portada del vídeo",
+  "publishVideoVideoTooLarge": "El archivo de vídeo no puede superar 2GB",
+  "publishVideoVideoPickFailed": "No se pudo seleccionar el vídeo. Inténtalo de nuevo",
+  "publishVideoInsufficientStorage": "No hay suficiente espacio en el dispositivo para preparar este vídeo",
+  "publishVideoPermissionDenied": "No se pudo acceder al vídeo. Revisa los permisos de fotos o archivos",
+  "publishVideoSourceUnavailable": "Este vídeo no está disponible temporalmente. Descarga el archivo de la nube e inténtalo de nuevo",
+  "publishVideoPrepareFailed": "No se pudo preparar el vídeo. Inténtalo de nuevo o elígelo desde Archivos",
+  "publishVideoMetadataUnavailable": "No se pudo leer el vídeo. Elige otro archivo",
+  "publishVideoCoverTooLarge": "La portada no puede superar 5MB",
+  "publishVideoCoverUnsupportedFormat": "Solo se admiten imágenes JPG/PNG",
+  "publishVideoCoverPickFailed": "No se pudo seleccionar la portada. Inténtalo de nuevo",
+  "publishVideoUploadSessionFailed": "No se pudo crear la sesión de carga",
+  "publishVideoPublishedSuccess": "Vídeo publicado",
+  "publishVideoUpdatedSuccess": "Vídeo actualizado",
+  "publishActorIp": "Lanzar IP",
+  "commonConfirm": "Confirmar",
+  "commonOk": "OK",
+  "commonNotice": "Aviso",
+  "commonRetry": "Reintentar",
+  "publicProfileLikedEmpty": "Aún no hay dramas con me gusta",
+  "profileTabDramas": "Dramas",
+  "profileTabWorks": "Obras",
+  "profileTabActorIp": "IP de personaje",
+  "@dramaUnlockConfirmLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockConfirmLabel": "Desbloquear por {price} {currency}",
+  "dramaAllEpisodes": "{count} episodios",
+  "dramaAllEpisodesFull": "Todos los {count} episodios",
+  "dramaLoading": "Cargando dramas destacados...",
+  "dramaEmpty": "Por el momento no hay miniseries",
+  "dramaRefresh": "Actualizar",
+  "@dramaAllEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navTheater": "Teatro",
+  "navHome": "Inicio",
+  "theaterTabShortDrama": "Drama",
+  "theaterTabRecommend": "Para Ti",
+  "playerWatchFullDrama": "Ver drama completo",
+  "playerStoryPerHourUnit": "STORY/h",
+  "navNft": "Mercado IP",
+  "navNftIp": "IP de personajes",
+  "watchFullDramaEpisodes": "Ver Drama · {count} Ep total",
+  "@watchFullDramaEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navCreate": "Creación",
+  "navProfile": "Perfil",
+  "navMy": "Gestor",
+  "aboutTitle": "Sobre nosotros",
+  "aboutVision": "IA · Web3 · Protocolos",
+  "aboutVisionDesc": "Tres fuerzas impulsoras que transforman la narrativa de una experiencia pasiva en una creación activa",
+  "aboutAiDesc": "Tus ideas se convierten automáticamente en historias",
+  "aboutWeb3Desc": "Tus creaciones siempre te pertenecerán",
+  "aboutProtocolDesc": "Tu historia puede prolongarse indefinidamente",
+  "aboutIdentityTitle": "Tu identidad narrativa",
+  "aboutIdentityDesc": "Tú mismo eres un universo narrativo en desarrollo",
+  "aboutIdentityCreator": "Creador",
+  "aboutIdentityCreatorDesc": "Escribir activamente la propia historia",
+  "aboutIdentityWitness": "Testigo",
+  "aboutIdentityWitnessDesc": "Participar y validar las historias de los demás",
+  "aboutIdentityCoCreator": "Colaborador",
+  "aboutIdentityCoCreatorDesc": "Acceder a la estructura narrativa y reescribirla",
+  "aboutIdentitySpreader": "difusor",
+  "aboutIdentitySpreaderDesc": "Difunde la historia que te mereces",
+  "aboutTokenomicsTitle": "STORY: Token de narratividad",
+  "aboutTokenomicsDesc": "Conviértete en coproductor de dramas cortos de IA, remodelando la distribución de beneficios en la industria del cine y la televisión.",
+  "aboutTokenomicsGov": "derecho de administración",
+  "aboutTokenomicsGovDesc": "Vota para decidir el tema y el rumbo del próximo cortometraje de IA",
+  "aboutTokenomicsRevenue": "derecho a percibir rendimientos",
+  "aboutTokenomicsRevenueDesc": "Beneficios derivados de las suscripciones a plataformas de intercambio, la concesión de derechos de autor y la venta de productos derivados",
+  "aboutTokenomicsAccess": "derechos de acceso",
+  "aboutTokenomicsAccessDesc": "Ve los últimos episodios antes que nadie y accede a contenido exclusivo",
+  "aboutStakingTitle": "Participación en los beneficios por pignoración",
+  "aboutStakingDesc": "Drama NFT · Personaje NFT · STORY → Apuesta para ganar dividendos",
+  "aboutStakingDrama": "Apuesta Drama NFT",
+  "aboutStakingDramaDesc": "Creador de miniseries · Obtener una participación en los ingresos",
+  "aboutStakingActor": "Apuesta Personaje NFT",
+  "aboutStakingActorDesc": "Roles que participan en sketches · Obtener una parte de los ingresos",
+  "aboutStakingStory": "Apuesta STORY",
+  "aboutStakingStoryDesc": "Pignorar en Short Videos · Reparto de ingresos",
+  "aboutHeroTitle": "Crea Tu Propia Historia",
+  "aboutHeroDesc": "Tu vida no es un guión que experimentar, sino una narrativa que estás escribiendo",
+  "loginTitle": "Inicio de sesión con correo",
+  "loginSubtitle": "Inicia sesión con OTP de correo Privy, creando automáticamente una wallet embebida de Solana.",
+  "loginPlaceholder": "Ingresa tu dirección de correo electrónico",
+  "loginEmailHintFormat": "tu@correo.com",
+  "loginVerificationFailed": "Verificación fallida",
+  "loginNeedCodeFirst": "Solicita primero un código de verificación",
+  "loginCreateWalletFailed": "No se pudo crear la billetera",
+  "loginGetTokenFailed": "No se pudo obtener el token de acceso",
+  "loginPrivyUnavailable": "El servicio de inicio de sesión no está disponible. Reinicia la app e inténtalo de nuevo",
+  "loginSendCodeFailed": "No se pudo enviar el código de verificación. Inténtalo de nuevo más tarde",
+  "loginTooManyRequests": "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo",
+  "loginVerificationSuccessful": "Verificación exitosa",
+  "loginSendCode": "Obtener código",
+  "loginSendingCode": "Enviando...",
+  "loginCodePlaceholder": "Ingresa el código de verificación de 6 dígitos",
+  "loginSubmit": "Iniciar sesión",
+  "loginSubmitting": "Iniciando sesión...",
+  "loginEmailRequired": "Por favor ingresa tu correo electrónico",
+  "loginCodeRequired": "Por favor ingresa el código de verificación",
+  "loginSuccess": "Inicio de sesión exitoso",
+  "loginErrorPrefix": "Error de inicio de sesión: ",
+  "loginCodeSent": "El código de verificación ha sido enviado a {email}",
+  "loginEmailLabel": "Correo electrónico",
+  "loginCodeLabel": "Código de verificación",
+  "loginVerifying": "Verificando, espere por favor...",
+  "loginVerifyAndSubmit": "Verificar e iniciar sesión",
+  "loginChangeEmail": "Cambiar correo electrónico",
+  "loginNotNow": "Ahora no",
+  "loginInvalidEmail": "Por favor ingresa un correo electrónico válido",
+  "@loginCodeSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "Agente",
+  "profileNotLoggedIn": "No has iniciado sesión",
+  "profileClickLogin": "Iniciar sesión / Registrarse",
+  "profileMyWallet": "Mi billetera",
+  "profileWallet": "Billetera",
+  "profileTradeStory": "Operar STORY",
+  "profileWalletCreating": "Creando...",
+  "walletNetworkSolana": "Solana",
+  "walletNetworkEvm": "EVM",
+  "profileEarnings": "Ingresos",
+  "profileMyNft": "Mis NFTs",
+  "profileMyFavorites": "Mis favoritos",
+  "profileWatchHistory": "Historial de reproducción",
+  "profileCreatorCatalog": "Creadores",
+  "profileIdentityAuth": "Verificación de identidad",
+  "profileAccountSecurity": "Seguridad de la cuenta",
+  "profileLanguage": "Idioma",
+  "profileAboutUs": "Sobre nosotros",
+  "profileHelpFeedback": "Ayuda y comentarios",
+  "profileLogout": "Cerrar sesión",
+  "profileLogoutConfirm": "¿Estás seguro de cerrar sesión?",
+  "profileLogoutSuccess": "Sesión cerrada exitosamente",
+  "mainPressBackAgainToExit": "Pulsa Atrás de nuevo para salir",
+  "languageSelectTitle": "Seleccionar idioma",
+  "languageChinese": "Chino simplificado",
+  "languageEnglish": "Inglés",
+  "searchTitle": "Buscar",
+  "searchHint": "Buscar dramas, obras, roles, usuarios...",
+  "searchEmpty": "Sin contenido relacionado",
+  "searchPlaceholder": "Buscar dramas, obras, roles, usuarios...",
+  "theaterSearchPlaceholder": "Buscar dramas, obras, roles, usuarios...",
+  "searchHistory": "Búsquedas recientes",
+  "searchClear": "Borrar historial",
+  "searchAction": "Buscar",
+  "searchHistoryCleared": "Historial de búsqueda borrado",
+  "searchKeywordTooShort": "Introduce al menos 2 caracteres",
+  "searchTabDramas": "Dramas",
+  "searchTabWorks": "Obras",
+  "searchTabActors": "IP de personaje",
+  "searchTabUsers": "Usuarios",
+  "searchEpisodeNo": "Ep. {episodeNo}",
+  "@searchEpisodeNo": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "searchMinutesAgo": "hace {count} min",
+  "@searchMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchHoursAgo": "hace {count} h",
+  "@searchHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDaysAgo": "hace {count} días",
+  "@searchDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramasCount": "Dramas ({count})",
+  "@searchDramasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchActorsCount": "Roles ({count})",
+  "@searchActorsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramaEpisodesWithCast": "{count} episodios | Reparto: {actors}",
+  "@searchDramaEpisodesWithCast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "actors": {
+        "type": "String"
+      }
+    }
+  },
+  "nftTitle": "Plaza de Roles NFT",
+  "nftLoading": "Cargando IP de personajes...",
+  "nftEmpty": "No hay IP de personajes",
+  "nftRefresh": "Actualizar",
+  "nftIdPrefix": "ID: #{id}",
+  "@nftIdPrefix": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "nftRarity": "Rareza",
+  "nftStatusStaked": "Pignorado",
+  "nftStatusIdle": "Inactivo",
+  "nftPrice": "Precio",
+  "dramaDetailTitle": "Detalle del drama",
+  "dramaDetailLoading": "Cargando…",
+  "dramaDetailRetry": "Inténtalo de nuevo",
+  "dramaDetailEpisodeList": "Lista de series",
+  "dramaDetailSynopsis": "Sinopsis",
+  "dramaDetailExpand": "Ver más",
+  "dramaDetailCollapse": "Cerrar",
+  "dramaDetailTabIntro": "Descripción",
+  "dramaDetailTabEpisodes": "Antología",
+  "dramaDetailTabComments": "Comentarios",
+  "dramaDetailTabRoles": "IP del personaje",
+  "dramaDetailSignMoreCharacterIps": "Contratar más IP de personajes",
+  "dramaDetailCharactersEmpty": "Aún no hay IP de personajes vinculadas",
+  "dramaDetailRoleSalary": "Salario {amount}",
+  "@dramaDetailRoleSalary": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleSalaryPerHour": "Salario {amount} STORY/h",
+  "@dramaDetailRoleSalaryPerHour": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleUnbound": "Sin vincular",
+  "dramaCastActorsTitle": "IP de personajes del reparto",
+  "dramaDetailCompletion": "{count} reproducciones completas",
+  "@dramaDetailCompletion": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailHeat": "{count} popularidad",
+  "@dramaDetailHeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailTotalEpisodes": "{count} episodios",
+  "@dramaDetailTotalEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingTitle": "Valorar la obra",
+  "dramaDetailWantToRate": "Valorar",
+  "dramaDetailNotRated": "Sin valorar",
+  "dramaDetailCompletionLabel": "Reproducciones completas",
+  "dramaDetailHeatLabel": "Popularidad",
+  "dramaDetailSynopsisLead": "Sinopsis: ",
+  "dramaDetailRatingEmpty": "Tu valoración: --",
+  "dramaDetailRatingValue": "Tu valoración: {rating}",
+  "@dramaDetailRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingConfirm": "Confirmar valoración",
+  "dramaDetailRatingSuccess": "Valoración exitosa: ¡{rating} estrellas!",
+  "@dramaDetailRatingSuccess": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailSelectEpisodeHint": "Selecciona un episodio para iniciar la reproducción",
+  "dramaFavorited": "Añadido a favoritos",
+  "dramaUnfavorited": "Eliminado de favoritos",
+  "dramaLiked": "Te gusta",
+  "dramaUnliked": "Ya no te gusta",
+  "playerFollowed": "Siguiendo",
+  "playerUnfollowed": "Dejaste de seguir",
+  "errorNetwork": "Error de red, por favor intenta de nuevo más tarde",
+  "errorTimeout": "La solicitud ha expirado, por favor intenta de nuevo",
+  "errorParse": "Error al analizar los datos de respuesta",
+  "errorUnauthorized": "Por favor inicia sesión primero",
+  "authSessionExpired": "La sesión ha expirado. Vuelve a iniciar sesión",
+  "errorNotFound": "Recurso no encontrado",
+  "errorOperationFailed": "Operación fallida",
+  "uploadErrorNetwork": "The network is unstable. Check your connection and try again",
+  "uploadErrorTimeout": "Upload timed out. Keep the app open and try again",
+  "uploadErrorSessionExpired": "The upload credentials expired. Upload the file again",
+  "uploadErrorSessionUnavailable": "An upload task could not be created. Try again",
+  "uploadErrorFileMissing": "The local video was moved or removed. Select it again",
+  "uploadErrorUnauthorized": "Your login or upload permission expired. Sign in and try again",
+  "uploadErrorRateLimited": "Too many upload requests. Try again shortly",
+  "uploadErrorRejected": "The upload service rejected this file. Check it and try again",
+  "uploadErrorServer": "The upload service is temporarily unavailable. Try again later",
+  "uploadErrorInvalidResponse": "The upload service returned an invalid response. Try again later",
+  "uploadErrorAccountChanged": "The signed-in account changed. Upload again with the current account",
+  "uploadErrorUnknown": "The video could not be uploaded. Try again",
+  "errorInvalidRoleId": "ID de personaje no válido. Actualiza la página e inténtalo de nuevo.",
+  "errorInvalidRoleNftAssetId": "assetId de Personaje NFT no válido. Actualiza la página e inténtalo de nuevo.",
+  "errorInvalidRoleCollectionAssetId": "assetId de colección de personaje no válido. Actualiza la página e inténtalo de nuevo.",
+  "roleNftLabelUnknown": "RoleNFT#Unknown",
+  "roleNftLabel": "RoleNFT#{prefix}",
+  "@roleNftLabel": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBusiness": "Operación fallida: {message}",
+  "@errorBusiness": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorUnknown": "Ocurrió un error desconocido: {message}",
+  "@errorUnknown": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotSupported": "Operación no soportada: {message}",
+  "@errorNotSupported": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "Antología",
+  "playerPlayFailed": "Reproducción fallida",
+  "playerDramaUnavailable": "Este drama no está disponible",
+  "playerContentUnavailable": "Este contenido no está publicado o ya no está disponible",
+  "creatorWorkNotFound": "La obra no existe y no se puede ver",
+  "creatorWorkNotPublished": "La obra no está publicada y todavía no se puede ver",
+  "creatorOfflineReasonUnavailable": "No hay motivo de retirada disponible",
+  "playerTapRetry": "Toca para reintentar",
+  "playerEpisodeTotal": "{count} episodios en total",
+  "@playerEpisodeTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeLabel": "Episodio {episodeNo}",
+  "@playerEpisodeLabel": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "playerLike": "Me gusta",
+  "playerComment": "Comentarios",
+  "playerFavorite": "Añadir a favoritos",
+  "playerShare": "Compartir",
+  "playerShareDramaEpisode": "{title} | Ep. {episodeNo}: {description} {url}. Mira hermosos dramas cortos de IA en StoryFun.",
+  "playerShareDramaEpisodeNoDesc": "{title} | Ep. {episodeNo} {url}. Mira hermosos dramas cortos de IA en StoryFun.",
+  "playerShareShortVideo": "{description} {url}. Mira hermosos videos cortos en StoryFun.",
+  "playerShareShortVideoNoDesc": "{url}. Mira hermosos videos cortos en StoryFun.",
+  "playerShareDrama": "{title} {url}. Mira hermosos dramas cortos de IA en StoryFun.",
+  "playerShareDramaNoTitle": "{url}. Mira hermosos dramas cortos de IA en StoryFun.",
+  "playerRatingLabel": "{rating} pts",
+  "@playerRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOrSignUp": "Iniciar sesión o Registrarse",
+  "loginEnterCode": "Ingresa el código de confirmación",
+  "loginCheckEmailDesc": "Por favor revisa {email} para un correo de privy.io e ingresa tu código a continuación.",
+  "@loginCheckEmailDesc": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "loginResendCountdown": "Reenviar código en {seconds}s",
+  "@loginResendCountdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResendBtn": "Reenviar",
+  "loginProtectedByPrivy": "Protegido por Privy",
+  "loginAgreeLead": "Acepto los",
+  "loginAgreeAnd": "y la",
+  "loginAgreeConfirmLead": "Al pulsar Confirmar, aceptas los",
+  "loginAgreeRequired": "Primero acepta los Términos de servicio y la Política de privacidad",
+  "deletingAccountPending": "Cuenta pendiente de eliminación",
+  "deletingAccountCancelDeletion": "Cancelar eliminación de cuenta",
+  "deletingAccountGoBack": "Volver",
+  "drawerEmailAccount": "Cuenta de correo electrónico",
+  "drawerClickToLogin": "Toca para iniciar sesión",
+  "drawerBuyStory": "Operar STORY",
+  "drawerDeposit": "Recargar",
+  "drawerWithdraw": "Retirar fondos",
+  "drawerNotifications": "Notificaciones",
+  "drawerNoNotifications": "No hay notificaciones",
+  "notificationTabSystem": "Sistema",
+  "notificationTabInteraction": "Actividad",
+  "notificationTagIpSign": "Contrato de IP de personaje",
+  "notificationTagRoleManagement": "Gestión de personaje",
+  "notificationTagShowRevenue": "Ingresos de actuación",
+  "notificationTagLike": "Me gusta",
+  "notificationTagFavorite": "Favorito",
+  "notificationSignedActor": "@{user} contrató la IP de personaje {actor}",
+  "notificationShareEarned": "Has ganado una parte de {amount}",
+  "notificationStaminaLow": "A {actor} le falta energía. Recárgala o deja que descanse",
+  "notificationCurrentStamina": "Energía actual {value}",
+  "notificationShowEnded": "La actuación de {range} ha terminado",
+  "notificationIncomeEarned": "Has ganado {amount}",
+  "notificationActionClaim": "Cobrar",
+  "notificationActionRefill": "Recargar",
+  "notificationInteractionLikedVideo": "Le gustó tu vídeo",
+  "notificationInteractionLikedDrama": "Le gustó tu minidrama «{title}»",
+  "notificationInteractionFavoritedVideo": "Guardó tu vídeo",
+  "notificationInteractionFavoritedDrama": "Guardó tu minidrama «{title}»",
+  "notificationInteractionCommented": "Comentó: {content}",
+  "notificationInteractionFollowedYou": "Te siguió",
+  "notificationActionMutualFollow": "Mutuo",
+  "notificationActionFollow": "Seguir",
+  "notificationRealtimeReceived": "Has recibido una nueva notificación",
+  "drawerEpisodeProgress": "{current}/{total} episodios",
+  "drawerNotificationSignedActor": "{actor} contrató la IP de personaje {target}",
+  "drawerNotificationLikedVideo": "A {actor} le gustó tu vídeo",
+  "drawerNotificationFavoritedDrama": "{actor} guardó tu drama corto {target}",
+  "depositTitle": "Recargar",
+  "insufficientBalanceTitle": "Saldo insuficiente",
+  "insufficientBalanceDetail": "El saldo de {currency} es insuficiente, te faltan {amount} {currency}",
+  "@insufficientBalanceDetail": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientBalancePrompt": "¿Ir a recargar?",
+  "insufficientBalanceRecharge": "Recargar",
+  "depositDesc": "Transfiere tokens desde un exchange u otra billetera a la dirección a continuación. El saldo se actualizará automáticamente una vez acreditado.",
+  "depositToken": "Token",
+  "depositNetwork": "Red",
+  "depositNetworkNote": "Confirma la red de transferencia. Usar la red incorrecta puede provocar la pérdida de activos.",
+  "depositAddress": "Dirección de recarga",
+  "depositAddressCopied": "Dirección copiada al portapapeles",
+  "depositSend": "Enviar",
+  "depositReceive": "Recibir",
+  "depositConvertNote": "Envía tokens a esta dirección y se convertirán automáticamente a USDC en tu cuenta de Story.fun.",
+  "depositMinNote": "Depósito mínimo: {minAmount} {token}",
+  "@depositMinNote": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "depositExchangeRateNote": "El tipo de cambio actual es {rate}. Monto acreditado = depósito × {rate}",
+  "@depositExchangeRateNote": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "depositWarning": "Deposita solo el token seleccionado en la red seleccionada. Otros activos no se pueden recuperar.\nConfirma la red de transferencia; errores de red pueden resultar en pérdida de activos.",
+  "withdrawTitle": "Retirar fondos",
+  "withdrawBalance": "Saldo disponible para retirar",
+  "withdrawToken": "Token",
+  "withdrawAddress": "Dirección para el retiro de fondos",
+  "withdrawAddressHint": "Por favor ingresa o pega la dirección del destinatario Solana",
+  "withdrawAddressHintEvm": "Ingresa o pega una dirección de destino EVM",
+  "withdrawInvalidEvmAddress": "Introduce una dirección EVM válida",
+  "withdrawInvalidSolanaAddress": "Introduce una dirección Solana válida",
+  "withdrawEvmGasNote": "Los retiros EVM requieren tokens nativos suficientes para el gas. La transferencia se envía directamente on-chain.",
+  "withdrawEvmFailed": "El retiro EVM falló. Inténtalo de nuevo más tarde.",
+  "withdrawAddressNote": "Comprueba que la dirección sea correcta, ya que una vez realizada la transferencia no se podrá revertir.",
+  "withdrawNetwork": "Red",
+  "withdrawAmount": "Monto",
+  "withdrawAmountHint": "Ingresa el monto a retirar",
+  "withdrawMax": "Máx",
+  "withdrawAvailableBalance": "Saldo {balance} {token}",
+  "@withdrawAvailableBalance": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinWarning": "Retiro mínimo: {minAmount} {token}\nPor favor verifica la dirección y la red cuidadosamente; las transacciones no se pueden revertir.",
+  "@withdrawMinWarning": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawConfirm": "Confirmar retirada",
+  "withdrawAll": "Todo",
+  "withdrawMinAmountError": "El monto mínimo de retiro es {minAmt} {token}",
+  "@withdrawMinAmountError": {
+    "placeholders": {
+      "minAmt": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawExceedBalanceError": "El monto a retirar no puede exceder el saldo disponible",
+  "withdrawSameAsWalletError": "La dirección de retiro no puede ser la misma que la de tu billetera",
+  "withdrawConfirmTitle": "Confirmar retirada",
+  "withdrawConfirmMessage": "¿Estás seguro de que deseas retirar {amount} {token} a la siguiente dirección Solana?\n\n{address}",
+  "@withdrawConfirmMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSuccessToast": "¡Solicitud de retiro enviada exitosamente!",
+  "withdrawFailedToast": "Retiro fallido. Por favor intenta de nuevo.",
+  "withdrawErrorToast": "Ocurrió un error durante el retiro: {error}",
+  "@withdrawErrorToast": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawAddressHintWithToken": "Introduce la dirección de monedero que ha recibido {token}",
+  "@withdrawAddressHintWithToken": {
+    "placeholders": {
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawFee": "Comisiones",
+  "withdrawFeeValue": "{fee} {token}",
+  "@withdrawFeeValue": {
+    "placeholders": {
+      "fee": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinAmount": "Retiro mínimo: {minAmount} {token}",
+  "@withdrawMinAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMaxAmount": "Monto máximo de retiro: {maxAmount} {token}",
+  "@withdrawMaxAmount": {
+    "placeholders": {
+      "maxAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSponsorSigning": "Firmando transacción...",
+  "withdrawSponsorSubmitting": "Enviando transacción en cadena...",
+  "withdrawSponsorSuccess": "¡Retiro enviado exitosamente!",
+  "withdrawSponsorFailed": "Error al enviar la transacción. Por favor intenta de nuevo.",
+  "withdrawOrderProcessing": "Procesando orden",
+  "withdrawOrderSuccess": "Orden completada",
+  "withdrawOrderFailed": "Orden fallida",
+  "withdrawOrderStatus": "Estado de la orden: {status}",
+  "@withdrawOrderStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "qrScannerTitle": "Escanear código QR",
+  "qrScannerHint": "Alinea el código QR dentro del marco para escanear",
+  "drawerProfile": "Mi cuenta",
+  "drawerCreatorManagement": "Gestión de creadores",
+  "drawerInvite": "Invitación",
+  "inviteTitle": "Invitar amigos",
+  "inviteTotalPeople": "Número total de personas invitadas",
+  "inviteTotalRewards": "Recompensas totales de invitación",
+  "inviteWeeklyPool": "Fondo de recompensas por invitaciones de esta semana",
+  "inviteShareSection": "Comparte tu enlace o código de invitación",
+  "inviteCodeLabel": "Código de invitación",
+  "inviteCodeCopiedSuccess": "¡Código de invitación copiado al portapapeles!",
+  "inviteInvitedLabel": "Invitados",
+  "inviteRewardLabel": "Recompensas",
+  "inviteBindCodePlaceholder": "Introduce el código de invitación",
+  "inviteBindConfirm": "Confirmar",
+  "inviteBindSuccess": "Código de invitación vinculado correctamente",
+  "inviteBindCodeInvalid": "Código de invitación no válido",
+  "inviteBindCodeAlreadyBound": "Esta cuenta ya tiene un código de invitación vinculado",
+  "inviteBindCode": "Vincular código de invitación",
+  "inviteBindCodePromptHint": "Puedes vincularlo más tarde en la página de Invitación",
+  "inviteFaqPoolTitle": "¿Qué es el fondo semanal de recompensas por invitación?",
+  "inviteFaqPoolBody": "El fondo semanal de recompensas por invitación es un fondo independiente creado para la actividad de invitaciones. Premia las invitaciones de la semana en curso y no se deduce de las ganancias de los invitados. El fondo tiene un tope de pago semanal; al alcanzarlo, los pagos se reducen proporcionalmente según la participación. Las estadísticas se reinician cada lunes.",
+  "inviteFaqSettlementTitle": "¿Cuándo se liquidan las recompensas por invitación?",
+  "inviteFaqSettlementBody": "Las recompensas por invitación se liquidan en el mismo ciclo que los salarios de agentes: las estadísticas se cierran cada lunes a las 00:00 (UTC). Tras la liquidación, puedes reclamarlas en la página de Recompensas.",
+  "inviteViewHistory": "Ver el historial de ingresos",
+  "inviteLinkSection": "Enlace de invitación",
+  "inviteLinkSubtitle": "Si un amigo se registra con tu enlace, contrata y envía un personaje, recibirás una recompensa extra de STORY.",
+  "inviteCopyButton": "Copiar enlace",
+  "inviteCopiedSuccess": "¡Enlace de invitación copiado al portapapeles!",
+  "inviteRulesSection": "Normas de invitación",
+  "inviteRuleSourceTitle": "Origen de las recompensas",
+  "inviteRuleSourceSubtitle": "Subconjunto de invitaciones independientes",
+  "inviteRuleSourceBody": "Las recompensas por invitaciones proceden de un subfondo de invitaciones independiente dentro del fondo común de minería de NFT (que representa el 25 % del fondo común total) y no se deducen de las ganancias de los invitados. El subfondo de invitaciones tiene un límite máximo semanal independiente; una vez alcanzado dicho límite, se reduce proporcionalmente según las participaciones.",
+  "inviteRuleBaseTitle": "Base de cálculo",
+  "inviteRuleBaseSubtitle": "Según lo recibido STORY",
+  "inviteRuleBaseBody": "La recompensa se calcula en función de los STORY que la persona invitada haya recibido realmente en este periodo, y no en función de la producción nominal. Los STORY que la persona invitada haya minado por sí misma no se ven afectados; la recompensa por invitación se abona de forma adicional.",
+  "inviteRuleLevelTitle": "Alcance de la recompensa",
+  "inviteRuleLevelSubtitle": "Solo invitaciones directas",
+  "inviteRuleLevelBody": "Las recompensas por invitación se pagan solo por los usuarios que invites directamente. No hay comisiones multinivel ni indirectas.",
+  "inviteRuleConditionTitle": "Condiciones de validez",
+  "inviteRuleConditionSubtitle": "Solo las afiliadas activas dan derecho a recibir recompensas",
+  "inviteRuleConditionBody": "Solo se considerará un referido válido si la persona invitada ha minado STORY o ha realizado algún pago con {currency}. Los registros con números de teléfono falsos no generan recompensas. Una vez establecida la relación de invitación, esta no se puede modificar.",
+  "@inviteRuleConditionBody": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerTxHistory": "Historial de transacciones",
+  "drawerFinanceDashboard": "Panel de Finanzas",
+  "financeDashboardComingSoon": "El Panel de Finanzas arrives pronto. Estén atentos.",
+  "financeDashboardLedgerBizSigningFee": "Tarifa de contratación",
+  "financeDashboardLedgerBizManualCredit": "Abono manual",
+  "financeDashboardLedgerBizManualDebit": "Débito manual",
+  "financeDashboardLedgerBizStaminaPurchase": "Costo de compra de energía",
+  "financeDashboardLedgerBizSynthesisUpgrade": "Costo de mejora por fusión",
+  "financeDashboardLedgerBizTransactionFee": "Comisión de transacción",
+  "drawerWhitepaper": "Libro blanco",
+  "drawerSettings": "Configuración",
+  "commonClose": "Cerrar",
+  "commonLoadFailed": "Error al cargar",
+  "commonNone": "Ninguno",
+  "commonUntitled": "Sin título",
+  "actorDetailTitle": "Inicio del actor",
+  "actorDetailCastDramas": "Participar en un sketch",
+  "actorDetailTabCast": "Participación",
+  "actorDetailTabInfo": "Info",
+  "actorDetailNoCastRecords": "No hay registros de participación",
+  "actorBondingCurve": "Curva conjunta de precios",
+  "actorContractAddress": "Dirección del contrato",
+  "actorCurrentPosition": "Ubicación actual",
+  "actorCurrentPrice": "Precio actual {price} {currency}",
+  "@actorCurrentPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorFloorPrice": "Precio mínimo",
+  "actorGoTrade": "Comerciar",
+  "profileWalletTrade": "Comerciar",
+  "actorHeatCoefficient": "Coeficiente de popularidad",
+  "actorIpPower": "Salario de IP",
+  "actorPayMax": "Máx",
+  "actorPayUpgradeTitle": "Reglas de aumento salarial",
+  "actorPayUpgradeReachHint": "El número actual de reproducciones completas de dramas de este IP permite subir el rol a",
+  "actorPayUpgradeCompletions": "{count} reproducciones completas",
+  "@actorPayUpgradeCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayUpgradeMultiplier": "Salario ×{value}",
+  "@actorPayUpgradeMultiplier": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayTitle": "{name} · Salario",
+  "@actorPayTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorLv1PayHint": "Contrata para obtener un personaje de nivel 1",
+  "actorLv1PayFormula": "Salario Lv.1 = Coeficiente de precio × Coeficiente de popularidad",
+  "actorLv1PayEquals": "={value}",
+  "@actorLv1PayEquals": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerTitle": "{name} · Salario de IP",
+  "@actorIpPowerTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerFormula": "Salario de IP = Coeficiente de precio × Coeficiente de popularidad × Trust1",
+  "actorPriceCoefficient": "Coeficiente de precio",
+  "actorPriceCoefficientValue": "Coeficiente de precio {value}",
+  "@actorPriceCoefficientValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientHelpA11y": "Ver detalles del coeficiente de precio",
+  "actorPriceCoefficientDialogFormulaLe100": "Coeficiente = P0 ÷ 10",
+  "actorPriceCoefficientDialogDescLe100": "Crecimiento lineal",
+  "actorPriceCoefficientDialogTitleGt100": "P0 > 10 {currency}",
+  "@actorPriceCoefficientDialogTitleGt100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientDialogFormulaGt100": "Coeficiente = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]",
+  "actorPriceCoefficientDialogDescGt100": "El crecimiento se ralentiza, con un tope de 1.6",
+  "actorPriceCoefficientDialogTitleLe100": "P0 ≤ 10 {currency}",
+  "@actorPriceCoefficientDialogTitleLe100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientFactorDesc": "P0 ≤ 10 {currency1} coeficiente = P0/10 (crecimiento lineal)\nP0 > 10 {currency2} → coeficiente = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6] (límite asintótico 1.6)",
+  "@actorPriceCoefficientFactorDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "actorHeatCoefficientFactorDesc": "Multiplicador de popularidad del IP del personaje en los últimos 30 días, según las interacciones como reproducciones completas, «me gusta» y guardados",
+  "actorTrustFactorDesc": "Coeficiente de control de riesgos de la plataforma, valor predeterminado 1.0",
+  "actorStatCompletion": "Reproducciones completas",
+  "actorIdCopied": "El número se ha copiado",
+  "actorInitialPrice": "Precio inicial: {price} {currency}",
+  "@actorInitialPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpLabel": "Personaje IP {label}",
+  "@actorIpLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIssueInfo": "Información de lanzamiento",
+  "actorIssuer": "Lanzador {name}",
+  "@actorIssuer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorMintedCount": "Acuñado {minted}/{maxSupply}",
+  "@actorMintedCount": {
+    "placeholders": {
+      "minted": {
+        "type": "int"
+      },
+      "maxSupply": {
+        "type": "int"
+      }
+    }
+  },
+  "actorPriceCurve": "Curva de precios",
+  "actorSign": "Contratar",
+  "actorConfirmSign": "Confirmar contratación",
+  "actorSignPriceLabel": "Precio de contratación",
+  "actorPriceAxisLabel": "Precio ({currency})",
+  "@actorPriceAxisLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignPriceDescription": "El precio de contratación aumenta automáticamente con el número de contratados; contratar antes resulta más ventajoso.",
+  "actorSignPriceFormula": "Fórmula: Precio = Precio inicial × 5^(Número de contratados ÷ Emisión total)",
+  "actorSignedCountAxisLabel": "Número de contratados",
+  "actorSignRemainingCount": "Quedan {count} unidades",
+  "actorSignSoldOut": "Agotado",
+  "@actorSignRemainingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignSupplySummary": "Total {total} · Restante {remaining}",
+  "@actorSignSupplySummary": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPricingFixed": "Precio fijo",
+  "actorPricingCurve": "Precio de la curva",
+  "actorPriceCurveDisclaimer": "El precio inicial no representa la valoración de la plataforma; el aumento de la curva no implica una subida del precio en el mercado secundario; la plataforma no garantiza ninguna rentabilidad.",
+  "actorPriceStatInitialPrice": "Precio inicial",
+  "actorPriceStatCurrentPrice": "Precio actual",
+  "actorPriceStatTailPrice": "Precio de adjudicación",
+  "actorPriceStatTotalSupply": "Suministro total",
+  "actorPriceStatSigned": "Contratado",
+  "actorPriceStatRemaining": "Resto",
+  "actorPricingType": "Tipos de fijación de precios",
+  "contentBadgeOfficialIssue": "Lanzamiento oficial",
+  "contentBadgeCommunityIssue": "Lanzamiento comunitario",
+  "contentBadgePartnerIssue": "Lanzamiento de socio",
+  "contentBadgeVerifiedIssue": "Lanzamiento de creadores verificados",
+  "contentBadgeOfficialDrama": "Miniseries oficial",
+  "contentBadgeCommunityDrama": "Sketchs de barrio",
+  "contentBadgePartnerDrama": "Miniseries de nuestros socios",
+  "contentBadgeVerifiedDrama": "Seriados cortos de creadores certificados",
+  "actorIpCopied": "La copia se ha realizado correctamente",
+  "actorRiskIp": "IP de riesgo",
+  "actorRiskIpDescription": "Este personaje IP tiene un coeficiente de confianza anormal; el peso de minería se verá afectado.",
+  "actorIpVault": "Tesorería de IP de personajes",
+  "actorIpVaultDescription": "El 30% de los ingresos por contratación se deposita automáticamente en la tesorería de la IP del personaje para respaldar el desarrollo a largo plazo del ecosistema de la IP. El 30% de los ingresos por regalías del mercado secundario también se destina a dicha tesorería, creando así una reserva de fondos sostenible. La versión V1 de la tesorería solo ofrece visualización de datos y, por el momento, no permite la distribución de fondos.",
+  "actorIpVaultSignIncomePrefix": "Ingresos por contratación · Acumulado ",
+  "actorIpVaultSecondaryRoyaltyPrefix": "Regalías de segundo nivel · Acumulación ",
+  "actorFixedPriceDialogDesc": "Este modelo de IP de personajes se basa en un precio fijo: cada personaje firma un contrato a un precio único, y las variaciones en las ventas no afectan al precio.",
+  "actorCurvePriceDialogDesc": "El precio sube automáticamente con el número de contratados según la curva conjunta; contratar antes resulta más ventajoso",
+  "actorFixedPriceNote1": "Una vez que el lanzador fija un precio, todas las contrataciones se liquidan a ese precio.",
+  "actorFixedPriceNote2": "El precio no aumenta por más personajes que se contraten.",
+  "actorFixedPriceNote3": "Ideal para compradores que deseen fijar los costes",
+  "actorIssueFixedPriceDesc": "La IP de este personaje sigue un modelo de precio fijo: todas las contrataciones se liquidan a un precio fijo, independientemente de las ventas.",
+  "actorSignSlippageNote": "Se ha activado la protección contra el slippage del 1 %; si el precio supera ese límite, la operación se cancelará.",
+  "actorSignSuccessTitle": "¡Contratado!",
+  "actorSignSuccessMessage": "Personaje «{name}» contratado con éxito",
+  "@actorSignSuccessMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignSuccessNftId": "N.º de NFT: {nftId}",
+  "@actorSignSuccessNftId": {
+    "placeholders": {
+      "nftId": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignChainConfigMissing": "La configuración en cadena está incompleta. Por favor intenta de nuevo más tarde.",
+  "actorSignPriceSoldOut": "Precio de contratación · Agotado",
+  "actorSignPriceRemaining": "Precio de contratación · Quedan {count}",
+  "@actorSignPriceRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignedCount": "Ya se han firmado {count}",
+  "@actorSignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorStatusLabelOffline": "Desconectado",
+  "actorStatusLabelOnline": "Conectado",
+  "actorStatusLabelPending": "En revisión",
+  "actorStatusLabelRejected": "Rechazado",
+  "actorTotalSupply": "Suministro total",
+  "commentTagAuthor": "Autor",
+  "commentTagMe": "Yo",
+  "commentTagFriend": "Tu amigo",
+  "commentTagFan": "Tu seguidor",
+  "commentTagFirst": "Primer comentario",
+  "commentTagAuthorLiked": "Le gusta al autor",
+  "commentsAnonymous": "Usuario anónimo",
+  "commentsEmpty": "No hay comentarios aún",
+  "commentsHint": "Publica un gran comentario...",
+  "commentsInvalidContent": "Introduce contenido válido",
+  "commentsReply": "Responder",
+  "commentsViewReplies": "Ver {count} respuestas",
+  "@commentsViewReplies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsCollapseReplies": "Contraer",
+  "commentsViewMoreReplies": "Mostrar más",
+  "commentsReplyHint": "Responder a {nickname}",
+  "@commentsReplyHint": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsDeleteCommentTitle": "¿Eliminar este comentario?",
+  "commentsDeleteReplyTitle": "¿Eliminar esta respuesta?",
+  "commentsReplyCommentNotExists": "El comentario no existe",
+  "commentsBlockedByMe": "El usuario está en tu lista negra, no puedes comentar",
+  "commentsBlockedByTarget": "No puedes comentar a este usuario debido a su configuración",
+  "commentsTabComments": "Comentarios",
+  "commentsTabAllComments": "Todos los comentarios",
+  "commentsTabDramas": "Escena corta",
+  "commentsTabActors": "Personaje",
+  "timeJustNow": "justo ahora",
+  "timeYesterday": "ayer",
+  "timeDayBeforeYesterday": "anteayer",
+  "timeMinutesAgo": "hace {count} min",
+  "timeHoursAgo": "hace {count} h",
+  "timeDaysAgo": "hace {count} d",
+  "commentsTitle": "Comentarios ({count})",
+  "@commentsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createActorTitle": "Crear rol",
+  "createActorHeroTitle": "Acuñar NFT de personaje",
+  "createActorHeroSubtitle": "Crea roles de IA exclusivos, vincula la distribución de ganancias para participar en dramas",
+  "createActorNameLabel": "Nombre del rol",
+  "createActorNameHint": "Ingresa el nombre del rol",
+  "createActorBioLabel": "Biografía del rol",
+  "createActorBioHint": "Describe el trasfondo del personaje",
+  "createActorGenderLabel": "Género",
+  "createActorGenderMale": "Hombre",
+  "createActorGenderFemale": "Mujer",
+  "createActorMintParams": "Parámetros de acuñación NFT",
+  "createActorTokenStandard": "Estándares de tokens",
+  "createActorChain": "Cadena",
+  "createActorMinHolding": "Tenencia mínima",
+  "createActorMintNft": "Acuñar NFT",
+  "createActorIpTitle": "Lanzar IP de personaje",
+  "createActorIpSubtitle": "Tras lanzar la IP de un personaje, se pueden contratar personajes bajo esa IP, y estos pueden enviarse a realizar tareas para generar ingresos.",
+  "createActorSelectMaterial": "Seleccionar material de los roles",
+  "createActorDreamOsBadge": "Ir a DreamOS",
+  "createActorSelectMaterialDesc": "Entra en el proyecto DreamOS → Crea un personaje → Entra en Story.fun para emitir IP",
+  "createActorSelectButton": "Seleccionar rol",
+  "createActorNameLabelNew": "Nombre del rol",
+  "createActorNamePlaceholder": "Introduce el nombre del rol",
+  "createActorBioLabelNew": "Descripción",
+  "createActorBioPlaceholder": "Introduce la biografía del personaje",
+  "createActorParamsTitle": "Parámetros de lanzamiento del IP del personaje",
+  "createActorParamsSubtitle": "Establece los parámetros de lanzamiento del IP del personaje. No se pueden modificar tras el lanzamiento.",
+  "createActorTotalSupplyLabel": "Suministro total de personajes",
+  "createActorTotalSupplyDesc": "Rango de suministro total: 100 - 5.000.",
+  "createActorTotalSupplyPlaceholder": "100 - 5,000",
+  "createActorPricingFixed": "Precio fijo",
+  "createActorPricingCurve": "Precio de la curva",
+  "createActorFixedPriceLabel": "Precio fijo ({currency})",
+  "@createActorFixedPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorInitialPriceLabel": "Precio inicial ({currency})",
+  "@createActorInitialPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorFixedPricePlaceholder": "10 - 1,000",
+  "createActorFixedPriceDesc": "Cada personaje se contrata a un precio fijo que no varía en función de las ventas.",
+  "createActorInitialPricePlaceholder": "10 - 1,000",
+  "createActorInitialPriceDesc": "El precio inicial es el precio de partida de la curva conjunta. Por cada personaje contratado, el precio aumenta automáticamente según la fórmula P = P₀ × 5^(número de contratados ÷ emisión total). Contratar pronto resulta más ventajoso.",
+  "createActorFormIncomplete": "Completa primero los recursos del personaje, el nombre, la biografía y los parámetros de lanzamiento",
+  "createActorValidationNameRequired": "Por favor ingresa el nombre del rol",
+  "createActorValidationNameTooLong": "El nombre del personaje debe tener 20 caracteres o menos",
+  "createActorValidationBioRequired": "Por favor ingresa la biografía",
+  "createActorValidationBioTooLong": "La biografía debe tener 500 caracteres o menos",
+  "createActorValidationTotalSupplyRequired": "Introduce un suministro total de NFT válido",
+  "createActorValidationTotalSupplyPositiveInteger": "El suministro total de NFT debe ser un número entero positivo",
+  "createActorValidationTotalSupplyRange": "El suministro total de personajes debe estar entre 100 y 5.000",
+  "createActorValidationPriceRequired": "Por favor ingresa un precio de acuñación válido",
+  "createActorValidationPriceInvalid": "El precio de Mint debe ser mayor o igual a 10 y no superar 1.000",
+  "createActorValidationPriceMaxDecimals": "El precio de acuñación puede tener máximo 2 decimales",
+  "createActorSelectMaterialRequired": "Por favor selecciona el material del personaje",
+  "createActorCancelButton": "Cancelar",
+  "createActorConfirmButton": "Confirmar lanzamiento",
+  "createActorIssueFee": "Tarifa",
+  "createActorSuccessTitle": "{name} · ¡Lanzamiento exitoso!",
+  "@createActorSuccessTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessDesc": "IP de personaje {id}",
+  "@createActorSuccessDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessTip": "El emisor también debe firmar para obtener este personaje~",
+  "createActorCloseButton": "Más tarde",
+  "createActorViewButton": "Ir a firmar",
+  "createActorEmptyTitle": "Aún no tienes ningún lanzamiento de NFT que cumpla los requisitos y sea generado automáticamente por el sistema en DreamOS.",
+  "createActorGotoDreamOs": "Ir a DreamOS para crear",
+  "createActorSearchPlaceholder": "Buscar materiales de personaje",
+  "createActorInvalidOrderId": "El número de pedido del IP del personaje no es válido. Actualiza e inténtalo de nuevo",
+  "createDramaTitle": "Crear drama",
+  "createDramaTitleLabel": "Título del cortometraje",
+  "createDramaTitleHint": "Ingresa el nombre del drama",
+  "createDramaSynopsisLabel": "Sinopsis",
+  "createDramaSynopsisHint": "¿Qué tipo de historia se cuenta...? (máximo 1000 caracteres)",
+  "createDramaAiSettings": "Configuración de generación IA",
+  "createDramaVisualStyle": "Estilo visual",
+  "createDramaVisualStyleRealistic": "Realista",
+  "createDramaEpisodeDuration": "Duración del episodio",
+  "createDramaEpisodeDurationValue": "3-5 min",
+  "createDramaTotalEpisodes": "Episodios totales",
+  "createDramaTotalEpisodesValue": "8 episodios",
+  "createDramaGenreLabel": "Tipo",
+  "createDramaGenreDrama": "Drama",
+  "createDramaGenreComedy": "Comedia",
+  "createDramaGenreAction": "Acción",
+  "createDramaGenreRomance": "Romance",
+  "createDramaGenreSciFi": "Ciencia ficción",
+  "createDramaGenreMystery": "Suspense",
+  "createDramaGenreHorror": "Terror",
+  "createDramaGenreAnimation": "Animación",
+  "createDramaHeroTitle": "Creación de drama IA",
+  "createDramaHeroSubtitle": "Generación con un clic de tu próximo drama exitoso",
+  "createDramaStartGeneration": "Iniciar generación",
+  "creatorDramaManagementTab": "Gestión de miniseries",
+  "creatorDramaNftTab": "NFT de cortometrajes",
+  "creatorHeaderSubtitle": "Publicación, revisión y producción de miniseries.",
+  "creatorV2Subtitle": "Publica y gestiona miniseries y vídeos.",
+  "creatorV2DramaTabCount": "Miniseries ({count})",
+  "creatorV2VideoTabCount": "Vídeos ({count})",
+  "creatorV2NoVideos": "Todavía no hay vídeos",
+  "creatorLoginPrompt": "Inicia sesión para ver tus creaciones",
+  "creatorNoCreatedActors": "No hay roles creados",
+  "creatorNoPublishedDramas": "No hay dramas publicados",
+  "creatorOwnedNftCount": "Número de NFT que posee",
+  "creatorCreateDrama": "Crear drama",
+  "creatorPublishNewDrama": "Publicar un nuevo cortometraje",
+  "creatorPublishedDramas": "Publicar un cortometraje",
+  "creatorReviewFilterAll": "Todo",
+  "creatorReviewFilterApproved": "Aprobado",
+  "creatorReviewFilterPending": "En revisión",
+  "creatorReviewFilterRejected": "No aprobado",
+  "creatorReviewFilterOffline": "Retirado",
+  "creatorDramaOtherReason": "Otro motivo",
+  "creatorDramaStatusOnline": "Aprobado",
+  "creatorDramaStatusPendingReview": "En revisión",
+  "creatorDramaStatusReviewRejected": "No aprobado",
+  "creatorDramaStatusPendingOnline": "Pendiente de publicación",
+  "creatorDramaAuditReason": "Motivo de rechazo: {reason}",
+  "@creatorDramaAuditReason": {
+    "placeholders": {
+      "reason": {}
+    }
+  },
+  "creatorDramaNftMinted": "Ya se ha fundido",
+  "creatorDramaEpisodeCount": "{count} episodios",
+  "@creatorDramaEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorDramaEdit": "Editar",
+  "creatorDramaDelete": "Eliminar",
+  "creatorActorDelete": "Eliminar rol",
+  "creatorDeleteDramaConfirm": "¿Deseas eliminar este sketch?",
+  "creatorDeleteVideoConfirmTitle": "Confirmar eliminación del video",
+  "creatorDeleteVideoConfirmMessage": "¿Seguro que quieres eliminar “{name}”?\nEsta acción no se puede deshacer.",
+  "@creatorDeleteVideoConfirmMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorDeleteActorConfirm": "¿Deseas eliminar a este personaje?",
+  "creatorDeleting": "Eliminando...",
+  "creatorNoDramas": "Por el momento no hay miniseries",
+  "creatorNoNfts": "De momento no hay NFT de miniseries",
+  "creatorsComingSoon": "Próximamente",
+  "creatorsHeroSubtitle": "Descubre creadores destacados",
+  "creatorsHeroTitle": "Creadores",
+  "dramaBatchUnlockAll": "Desbloquear todos",
+  "dramaBatchUnlockDiscount": "Descuento por desbloqueo por lotes {discount}%",
+  "@dramaBatchUnlockDiscount": {
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaBatchUnlockSubtitle": "Desbloquea todos los episodios de una vez para una mejor oferta",
+  "dramaBatchUnlockSuccess": "Desbloqueo exitoso, por favor comienza a ver",
+  "dramaDetailAllFree": "Todos gratis",
+  "dramaDetailBoundActors": "{count} roles vinculados",
+  "@dramaDetailBoundActors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodeCount": "{count} episodios",
+  "@dramaDetailEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodePrice": "Precio por episodio",
+  "dramaDetailFree": "Gratis",
+  "dramaDetailFreeEpisodes": "Primeros {count} gratis",
+  "@dramaDetailFreeEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailMainCharacters": "Roles principales",
+  "dramaDetailNftMinted": "NFT acuñado",
+  "dramaDetailNoEpisodes": "No hay episodios",
+  "dramaDetailPaid": "De pago",
+  "dramaDetailPendingActor": "Personaje pendiente",
+  "dramaDetailRoleCount": "Roles",
+  "dramaUnlockFailedRetry": "Error al desbloquear, por favor intenta de nuevo",
+  "dramaUnlockFetchTimeout": "Tiempo de espera agotado al obtener la dirección de reproducción, por favor intenta de nuevo",
+  "dramaUnlockLoginRequired": "Por favor inicia sesión para desbloquear episodios",
+  "dramaUnlockMessage": "El episodio {epNo} requiere pago para desbloquear\nPrecio: {price} {currency}\nDescuento por lotes: {discount}",
+  "@dramaUnlockMessage": {
+    "placeholders": {
+      "epNo": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "discount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockSuccessFetching": "Desbloqueo exitoso, obteniendo dirección de reproducción...",
+  "dramaUnlockTitle": "Desbloquear episodios",
+  "editActorTitle": "Editar rol",
+  "editDramaTitle": "Editar un sketch",
+  "editVideoTitle": "Editar vídeo",
+  "editSaveChanges": "Guardar cambios",
+  "editProfileTitle": "Editar perfil",
+  "editNicknameLabel": "Apodo",
+  "editRoleNameLabel": "Nombre de usuario",
+  "editNicknameHint": "Ingresa tu apodo",
+  "editNicknameRequired": "Por favor ingresa un apodo",
+  "editProfileBioLabel": "Biografía",
+  "editProfileBioHint": "Por favor ingresa la biografía",
+  "editProfileEmailLabel": "Dirección de correo electrónico",
+  "editAvatarCropTitle": "Recortar avatar",
+  "profileUpdateSuccess": "Perfil actualizado",
+  "incomeClaimAmount": "Reclamar {amount} {currency}",
+  "@incomeClaimAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimFailed": "Reclamación fallida",
+  "incomeClaimMessage": "Monto reclamable: {amount} {currency}\nLas ganancias se transferirán a tu saldo de billetera",
+  "@incomeClaimMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimSuccess": "Reclamación exitosa",
+  "incomeClaimTitle": "Cobrar los ingresos",
+  "incomeConfirmClaim": "Confirmar recepción",
+  "incomeHistoryTab": "Historial",
+  "incomeInviteHeroSubtitle": "Invita a amigos a consumir e interactuar, cuanto más activo sea el invitado mayor será la recompensa",
+  "incomeInviteHeroTitle": "Invita amigos para obtener rebajas",
+  "incomeInviteNoRecords": "No hay registros de rebajas",
+  "incomeInvitePaidUnlockDesc": "Amigos pagan para desbloquear episodios",
+  "incomeInvitePaidUnlockTitle": "Desbloqueo de pago",
+  "incomeInviteRecords": "Registros de rebajas",
+  "incomeInviteRegisterDesc": "Amigos se registran a través de tu enlace de referido",
+  "incomeInviteRegisterTitle": "Registro por invitación",
+  "incomeInviteRules": "Reglas de rebajas",
+  "incomeInviteShareLink": "Compartir enlace de invitación",
+  "incomeInviteStakeDesc": "Amigos apuestan NFTs o STORY",
+  "incomeInviteStakeTitle": "Inversión en staking",
+  "incomeInviteTab": "Rebajas por invitación",
+  "incomeInviteWatchDesc": "Amigos ven dramas para ganar puntos",
+  "incomeInviteWatchTitle": "Ver dramas",
+  "incomeNoHistory": "No hay registros de historial",
+  "incomeNoRecords": "No hay registros de ganancias",
+  "incomeNothingToClaim": "Nada que reclamar",
+  "incomeOverviewTab": "Resumen",
+  "incomePendingClaim": "Reclamación pendiente",
+  "incomeRecords": "Registros de ganancias",
+  "incomeThisMonth": "Este mes",
+  "incomeToday": "Hoy",
+  "incomeTotalEarnings": "Ganancias acumuladas",
+  "incomeCumulativeStory": "Acumulado STORY",
+  "incomeCumulativeUsdc": "{currency} acumulado",
+  "@incomeCumulativeUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimableStory": "Se puede recoger STORY",
+  "incomeClaimableUsdc": "Se puede retirar {currency}",
+  "@incomeClaimableUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeSettlingStory": "Mi salario",
+  "incomeSettlingHint": "Liquidando; reclamable después de la llegada",
+  "incomeHelpTotalStoryDesc": "Cantidad total de STORY acumulada en todos los ciclos históricos (incluidas las ya cobradas y las pendientes de cobrar).",
+  "incomeHelpTotalUsdcDesc": "Ingresos acumulados en {currency} procedentes de la participación en los ingresos por contratos y de los derechos de autor secundarios de todos los personajes históricos.",
+  "@incomeHelpTotalUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeHelpSettlingStoryDesc": "Se convierte automáticamente en STORY tras la liquidación del sistema",
+  "incomeHelpClaimableStoryDesc": "Las STORY ya liquidadas se pueden retirar a tu monedero personal.",
+  "incomeHelpClaimableUsdcDesc": "El {currency} ya liquidado se puede retirar a la cartera personal.",
+  "@incomeHelpClaimableUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeFilterAll": "Todo",
+  "incomeFilterMining": "Ingresos por cesión de personal",
+  "incomeFilterInvite": "Ganancias por invitaciones",
+  "incomeMiningReward": "Ingresos por cesión de personal",
+  "incomeInviteReward": "Ganancias por invitaciones",
+  "incomeUsdcActorSignShare": "Participación por contratación de personajes",
+  "incomeClaimNoWallet": "Por favor vincula tu billetera primero",
+  "incomeClaimCurrencyTitle": "Reclamar {currency}",
+  "@incomeClaimCurrencyTitle": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawMessage": "¿Confirmar retiro de {amount} {currency} a tu billetera Solana?\nDestinatario: {address}",
+  "@incomeClaimWithdrawMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawConfirm": "Confirmar retiro",
+  "incomeClaimWithdrawSubmitted": "¡Retiro exitoso!",
+  "incomeClaimWithdrawFailed": "Retiro fallido, por favor intenta de nuevo",
+  "incomeClaimAction": "Recoger",
+  "nftCreateActorIp": "Crear IP de personaje",
+  "nftHeaderSubtitle": "Explora y colecciona personajes NFT exclusivos",
+  "nftHeaderTitle": "Plaza de Personajes NFT",
+  "nftSearchHint": "Buscar dramas, obras, roles, usuarios...",
+  "actorHowToPlayTitle": "¿Cómo se juega con los personajes de IP?",
+  "actorHowToPlayHelpTooltip": "Instrucciones de juego",
+  "actorHowToPlaySignTab": "IP contratadas",
+  "actorHowToPlaySignSubtitle": "Ganar salario pasivamente",
+  "actorHowToPlayIssueTab": "Lanzar IP",
+  "actorHowToPlayIssueSubtitle": "Monetización de la creación",
+  "actorHowToPlaySignPositioning": "Enfoque: sin requisitos previos para crear contenido, ingresos fáciles y seguros",
+  "actorHowToPlaySignAudience": "Usuarios normales que no quieren crear contenido, sino obtener ingresos de STORY sin mucho esfuerzo",
+  "actorHowToPlaySignGuide": "Contrata IP de personajes de alta popularidad y bien pagados; programa actuaciones en la página del Agente y obtén beneficios",
+  "actorHowToPlaySignRightsTitle": "Doble beneficio",
+  "actorHowToPlaySignRightPerform": "Organiza actuaciones y gana tokens STORY de forma continua",
+  "actorHowToPlaySignRightTrade": "Los personajes son propiedad intelectual negociable, lo que permite obtener beneficios adicionales.",
+  "actorHowToPlayIssuePositioning": "Posicionamiento: crear y lanzar, múltiples fuentes de ingresos, revalorización de la IP a largo plazo",
+  "actorHowToPlayIssueAudience": "Creadores con talento creativo que desean monetizar sus personajes y sus series cortas",
+  "actorHowToPlayIssueGuide": "Lanza IP de personajes, vincúlalas a miniseries con IA, aumenta la popularidad de las obras y eleva el salario y los ingresos de la IP",
+  "actorHowToPlayIssueRightsTitle": "Triple beneficio",
+  "actorHowToPlayIssueRightSignLabel": "Participación por contratación:",
+  "actorHowToPlayIssueRightSign": "Si contratan tu IP, recibes un 40% de participación",
+  "actorHowToPlayIssueRightPerformLabel": "Ingresos de la actuación:",
+  "actorHowToPlayIssueRightPerform": "Contrata tu propia IP y gana STORY con las actuaciones",
+  "actorHowToPlayIssueRightValueLabel": "Valor añadido:",
+  "actorHowToPlayIssueRightValue": "La IP es negociable; cuanto mayor sea la popularidad, mayor será la prima.",
+  "actorHowToPlayAudienceTitle": "Público objetivo",
+  "actorHowToPlayGuideTitle": "Guía de juego",
+  "actorHowToPlayCreateHint": "Con DreamOS puedes generar con un solo clic la IP de un personaje y miniseries de IA, lo que te permite producir contenido de alta calidad de forma eficiente.",
+  "actorHowToPlayCreateCta": "A crear",
+  "nftSignInDevelopment": "Esta función aún no está disponible",
+  "nftSortCompleted": "Reproducciones completas",
+  "nftSortHeat": "Popularidad",
+  "nftSortLowestPrice": "Precio",
+  "nftSortLv1Pay": "Salario",
+  "nftSortMaxPay": "Salario máximo",
+  "nftTradeUnavailable": "Comercio aún no disponible",
+  "playerEpisodeBarCompleted": "Todos los {count} episodios · Completado",
+  "@playerEpisodeBarCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeSynopsis": "Ep {episodeNo} | {synopsis}",
+  "@playerEpisodeSynopsis": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      },
+      "synopsis": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPlayFailedRetry": "Reproducción fallida, por favor intenta de nuevo más tarde",
+  "publicProfileDramas": "Escena corta",
+  "publicProfileEmpty": "No hay contenido público",
+  "publicProfileBlock": "Bloquear",
+  "publicProfileUnblock": "Desbloquear",
+  "publicProfileBlockedByMeContent": "Has bloqueado a este usuario, por lo que no puedes ver su contenido",
+  "publicProfileBlockedContent": "Este usuario te ha bloqueado, por lo que no puedes ver su contenido",
+  "publicProfileBlockConfirmTitle": "¿Bloquear a este usuario?",
+  "publicProfileBlockConfirmMessage": "Después de bloquearlo, no podrás ver sus obras.",
+  "publicProfileBlockSuccess": "Usuario bloqueado",
+  "publicProfileUnblockSuccess": "Usuario desbloqueado",
+  "publicProfileFollowers": "Seguidores",
+  "publicProfileFollowing": "Seguidos",
+  "followTabMutual": "Mutuos",
+  "profileLikesReceived": "Me gusta",
+  "profileLikesReceivedDialogMessage": "¡Has recibido {count} me gusta! Gracias por tus creaciones.",
+  "profileTabLikes": "Me gusta",
+  "profileTabFavorites": "Favoritos",
+  "profileWalletTitle": "Cartera",
+  "profileAddressCopied": "Dirección copiada",
+  "followActionFollow": "Seguir",
+  "followActionFollowBack": "Seguir también",
+  "followActionFollowing": "Siguiendo",
+  "followBlockedByMe": "El usuario está en tu lista negra, no puedes seguir",
+  "followBlockedByTarget": "No puedes seguir a este usuario debido a su configuración",
+  "likeBlockedByMe": "El usuario está en tu lista negra, no puedes dar me gusta",
+  "likeBlockedByTarget": "No puedes dar me gusta a este contenido debido a la configuración del creador",
+  "favoriteBlockedByMe": "El usuario está en tu lista negra, no puedes marcar como favorito",
+  "favoriteBlockedByTarget": "No puedes marcar como favorito este contenido debido a la configuración del creador",
+  "ratingBlockedByMe": "El usuario está en tu lista negra, no puedes calificar",
+  "ratingBlockedByTarget": "No puedes calificar este drama debido a la configuración del creador",
+  "followActionMutual": "Mutuo",
+  "followUnfollowTitle": "Dejar de seguir",
+  "followUnfollowMessage": "¿Dejar de seguir a {handle}?",
+  "@followUnfollowMessage": {
+    "placeholders": {
+      "handle": {
+        "type": "String"
+      }
+    }
+  },
+  "followUnfollowNo": "No",
+  "followUnfollowYes": "Sí",
+  "followListEmpty": "Aún no hay usuarios",
+  "followFollowingEmpty": "Aún no sigues a nadie. ¡Descubre creadores interesantes!",
+  "followFollowingEmptyCta": "Explorar",
+  "followFollowingEmptyGuest": "Sin seguidos",
+  "followFollowersEmpty": "Aún no tienes seguidores. Publica una obra para ganar visibilidad~",
+  "followFollowersEmptyCta": "Publicar",
+  "followFollowersEmptyGuest": "Sin seguidores",
+  "followMutualsEmpty": "Aún no hay seguidores mutuos",
+  "followMutualsSelfOnly": "Los mutuos solo son visibles para ti",
+  "followRelationsSelfOnly": "Las listas de relación solo son visibles para ti",
+  "followMoreTitle": "Más",
+  "followRemoveFollower": "Eliminar seguidor",
+  "followRemoveFollowerSuccess": "Eliminado. No recibirán notificación",
+  "followUserHandleFallback": "@usuario",
+  "publicProfileTitle": "Perfil de usuario",
+  "publicProfileUserFallback": "Usuario #{id}",
+  "@publicProfileUserFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "watchHistoryEmpty": "No hay historial de reproducción",
+  "watchHistoryClearTitle": "Borrar historial de reproducción",
+  "watchHistoryClearMessage": "¿Seguro que quieres borrar todo el historial de reproducción? Esta acción no se puede deshacer.",
+  "watchHistoryClearConfirm": "Confirmar",
+  "gamePageTitle": "Agente",
+  "gamePageSubtitle": "Gestiona a tus roles y asignales tareas para generar ingresos.",
+  "gameRiskAccount": "Cuenta de riesgo",
+  "gameRiskAccountDescription": "Esta cuenta tiene un coeficiente de confianza anormal; el peso de minería se verá afectado.",
+  "gameWeeklyStats": "Estadísticas semanales",
+  "gameDeployedActors": "Roles desplegados",
+  "gameMyActors": "Mis roles",
+  "gameComingSoon": "Próximamente",
+  "gameSignActor": "Contratar personajes",
+  "gameGoProduce": "Ir a rodar una serie",
+  "gameWorkingActors": "Roles en régimen de cesión temporal",
+  "gameWeekPool": "Fondo de recompensas de esta semana (STORY)",
+  "gameWeekNominalOutput": "Producción nominal de esta semana (STORY)",
+  "gameWeekEstimatedOutput": "Producción prevista para esta semana (STORY)",
+  "gameMiningRules": "Normas de minería",
+  "agentV2RulesTitle": "Gestión",
+  "agentV2RulesSummary": "Contrata personajes y programa actuaciones para obtener STORY cada hora.\nMejora los personajes para multiplicar su salario por hora.\nRecarga la energía a tiempo para que la producción no se detenga.\nLa liquidación del período comienza cada lunes a las 00:00 (UTC); reclámala en la página de Ganancias.",
+  "agentV2RulesHowToPlay": "Cómo funciona",
+  "agentV2RulesStartTitle": "¿Cómo empiezan a generar ganancias los personajes?",
+  "agentV2RulesStartDescription": "Programa una actuación para un personaje disponible. Cada hora consume 1 punto de energía y produce STORY según su salario.\nEl STORY producido se liquida al final de cada período y puede reclamarse después en la página de Ganancias.",
+  "agentV2RulesStaminaTitle": "¿Cómo se gestiona la energía?",
+  "agentV2RulesStaminaDescription": "Actuando: consume 1 punto de energía por hora y genera el salario normal\nSin energía: la producción se detiene en 0 y requiere atención\nDescansando: recupera 1 punto de energía por hora, pero pausa el salario\nRecarga (de pago): recupera al instante hasta {staminaLimit} y reanuda la producción",
+  "@agentV2RulesStaminaDescription": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RulesBatchTitle": "¿Puedo realizar acciones en lote?",
+  "agentV2RulesBatchDescription": "Sí. Usa Actuar todos, Recargar todos o Descansar todos al final de la página para aplicar una acción a todos los personajes de los espacios de actuación.",
+  "agentV2RulesEarnings": "Ganancias",
+  "agentV2RulesSalaryTitle": "¿Cómo se calcula el salario?",
+  "agentV2RulesSalaryDescription": "Cuanto mayor sea el prestigio, más caro el papel y más popular la miniserie, mayor será el salario por hora.",
+  "agentV2RulesSalaryFormula": "Salario por hora de cada carta = Salario del personaje × 1 STORY",
+  "agentV2RulesRolePowerFormula": "Salario del personaje = Salario del personaje Lv.1 × Coeficiente salarial",
+  "agentV2RulesIpSalaryFormula": "Salario del personaje Lv.1 = Coeficiente de precio × Coeficiente de popularidad",
+  "agentV2RulesCoefficientTitle": "Detalles de los coeficientes",
+  "agentV2RulesSalaryExample": "Lin Mengyao · Protagonista Lv3 · P0=120{currency} (coeficiente de precio ≈1.5046) · popularidad 3.5\n→ Salario por hora = 5.0 × 1.5046 × 3.5 × 1 = 26.3 STORY\nComo extra Lv1 solo ganaría ≈5.3 STORY por hora; subir a Lv3 multiplica las ganancias por cinco.",
+  "@agentV2RulesSalaryExample": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesSettlementTitle": "¿Cuándo se liquida?",
+  "agentV2RulesSettlementDescription": "Cada ciclo de actuación dura 7 días y cierra cada lunes a las 00:00 (UTC). Tras la liquidación del sistema, el salario del período se convierte automáticamente en STORY y se puede reclamar en la página de Ganancias.",
+  "agentV2RulesSettlementExample": "Supongamos que el fondo de recompensas de esta semana es de 100,000 STORY:\nCaso A: Solo tú produces 134 en toda la plataforma → recibes 134 y el resto no se distribuye\nCaso B: La producción de la red es 250,000 → 100,000 ÷ 250,000 = 40%, así que tu producción nominal se reduce al 40%\nCaso C: Tras el ajuste alguien debería recibir 6,000, pero el límite es 5,000 → solo se distribuyen 5,000",
+  "agentV2RulesStronger": "Cómo fortalecerse",
+  "agentV2RulesUpgradeTitle": "¿Cómo mejoro un personaje?",
+  "agentV2RulesUpgradeDescription": "Requisitos: consume 2 duplicados de la misma IP y nivel + alcanza el objetivo acumulado de reproducciones completas de las series de la IP\nNivel 1 → Nivel 2: ≥ 10 000 reproducciones completas · Salario 1→3\nNivel 2 → Nivel 3: ≥ 50 000 reproducciones completas · Salario 3→9\nNivel 3 → Nivel 4: ≥ 200 000 reproducciones completas · Salario 9→27\nNivel 4 → Nivel 5: ≥ 1 millón de reproducciones completas · Salario 27→81",
+  "agentV2RulesPerforming": "Actuando",
+  "agentV2RulesNormalSalary": "Salario normal",
+  "agentV2RulesSalaryCoefficient": "Coeficiente salarial: Lv1=1 · Lv2=3 · Lv3=9 · Lv4=27 · Lv5=81",
+  "agentV2RulesPriceCoefficientDescription": "Coeficiente de precio (precio de emisión P0):\n  • P0 ≤ 100 {currency1} → coeficiente = P0 ÷ 100 (crecimiento lineal)\n  • P0 > 100{currency2} → coeficiente = 1,6 × (P0/100)¹.³ / [(P0/100)¹.³ + 0,6] (límite asintótico 1,6)",
+  "@agentV2RulesPriceCoefficientDescription": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesTrust2": "Trust2",
+  "agentV2RulesTrust2Factor": "Trust2 de la plataforma",
+  "agentV2RulesSettlementCase1": "Pago real = producción nominal; la capacidad no utilizada caduca",
+  "agentV2RulesSettlementCase2": "Ajuste proporcional: pago real = producción nominal × (fondo de recompensas ÷ producción de la red)",
+  "gameSettlementRecords": "Registro de liquidaciones semanales",
+  "gameFilterComputingPower": "Salario",
+  "gameFilterLevel": "Nivel",
+  "gameFilterHeat": "Popularidad",
+  "gameFilterStamina": "Energía",
+  "gameHeatCoef": "Coeficiente de popularidad",
+  "gameMiningCoef": "Coeficiente de minería",
+  "gameActorPower": "Salario del personaje",
+  "gameActorPowerDetailTitle": "Detalles del salario del personaje",
+  "gameActorPowerFormula": "Salario del personaje = Salario de IP × Coeficiente de minería × Coeficiente CP × Trust2",
+  "gameActorPowerIpFormula": "Salario de IP = Coeficiente de precio × Coeficiente de popularidad × Trust1",
+  "gameActorPowerHourlyOutput": "Producción por hora",
+  "gameCpCoefficient": "Coeficiente CP",
+  "gameTrust2": "Trust2",
+  "gameWeeklyNominalOutputLabel": "Producción nominal de esta semana",
+  "gameRoundNominalOutputLabel": "Producción nominal del período",
+  "gameSupplement": "Añadido",
+  "gameRest": "Descanso",
+  "gameDeploy": "Envío",
+  "gameDeployActor": "Contratación de personajes",
+  "gameStatusIdle": "inactivo",
+  "gameStatusMining": "Minería en curso",
+  "gameActorIpLabel": "Personaje IP {id}",
+  "@gameActorIpLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaProgress": "{current}/{max}",
+  "@gameStaminaProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismTitle": "Mecánica de energía",
+  "gameStaminaMechanismDesc": "Los roles desplegados consumen 1 punto de energía por hora. Dejan de generar ganancias cuando se agota su energía y la recuperan automáticamente mientras descansan. Puedes usar {currency} para reponer la energía al instante.",
+  "@gameStaminaMechanismDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismAction": "Entendido",
+  "gameLevelBadge": "Nv{level}",
+  "@gameLevelBadge": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "gameEmptyDeployed": "No hay roles desplegados actualmente",
+  "gameEmptyMyActors": "Aún no tienes personajes. Contrata uno para comenzar.",
+  "gameDeployConfirmTitle": "¿Desplegar este personaje?",
+  "gameRestConfirmTitle": "¿Descansar este personaje?",
+  "gameRestConfirmDesc": "La minería se pausa mientras el personaje descansa; la energía se recupera con el tiempo.",
+  "gameRestConfirmAction": "Confirmar descanso",
+  "gameRestSuccessToast": "Descanso iniciado",
+  "gameDeploySlotFull": "Los espacios de despliegue están llenos (máx 5)",
+  "gameRefillTitle": "Recuperar energía",
+  "gameRefillCurrentStamina": "Energía actual",
+  "gameRefillCost": "Gastos de recuperación",
+  "gameRefillConfirm": "Recuperar toda la energía",
+  "gameRefillSuccess": "Recuperación de la energía: completada",
+  "gameRefillFailed": "No se ha podido recuperar la energía. Inténtalo de nuevo.",
+  "gameInsufficientUsdc": "Saldo insuficiente de {currency}",
+  "@gameInsufficientUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameBatchRefillTransactionTooLarge": "La transacción de recarga por lotes es demasiado grande. Reduce el número de actores e inténtalo de nuevo.",
+  "agentV2RefillTitle": "Recargar energía",
+  "agentV2RefillCost": "Coste",
+  "agentV2RefillActorButton": "Este personaje",
+  "agentV2RefillAllActors": "Recargar todos los personajes en actuación",
+  "agentV2RefillActorCount": "{count} personajes",
+  "agentV2RefillAllButton": "Recargar todos",
+  "agentV2RefillOr": "o",
+  "agentV2RestAll": "Descansar todos",
+  "agentV2RestActorCount": "{count} personajes",
+  "walletInsufficientStory": "Saldo insuficiente de STORY",
+  "gameSupplementComingSoon": "Recarga de energía próximamente",
+  "gameStatHelpWeekPoolTitle": "Fondo de recompensas de esta semana",
+  "gameStatHelpWeekPoolSubtitle": "Es decir, el límite máximo de distribución semanal obligatorio para la minería de STORY (límite máximo semanal)",
+  "gameStatHelpWeekTotalPool": "Fondo de recompensas semanal total",
+  "gameStatHelpWeekTotalPoolValue": "2,115,385 STORY",
+  "gameStatHelpWeekStakePool": "Fondo de recompensas de staking de esta semana (75%)",
+  "gameStatHelpWeekStakePoolValue": "1,586,538 STORY",
+  "gameStatHelpWeekInvitePool": "Fondo de recompensas por invitaciones de esta semana (25%)",
+  "gameStatHelpWeekInvitePoolValue": "528,846 STORY",
+  "gameStatHelpInitialHardCap": "Techo rígido de la primera semana",
+  "gameStatHelpInitialHardCapValue": "2,115,385 STORY",
+  "gameStatHelpWeeklyDecay": "Coeficiente de atenuación semanal",
+  "gameStatHelpWeeklyDecayValue": "× 0.99572",
+  "gameStatHelpWeeklyDistributionFormula": "Distribución real semanal = min(producción nominal de toda la red, límite máximo de esa semana)",
+  "gameStatHelpUnusedQuotaNote": "Las cuotas restantes no asignadas no se concederán, no se recuperarán ni se compensarán con puntos.",
+  "gameStatHelpNominalTitle": "Producción nominal de esta semana",
+  "gameStatHelpNominalSummary": "Suma de la producción nominal semanal de todos mis roles",
+  "gameStatHelpNominalSummaryHint": "La fórmula para una sola tarjeta se explica a continuación.",
+  "gameStatHelpNominalFormula": "Producción nominal por tarjeta = Peso horario por tarjeta × R_base × Duración efectiva de minería",
+  "gameStatHelpHourlyWeight": "Ponderación por hora de una sola tarjeta",
+  "gameStatHelpHourlyWeightValue": "= Salario del personaje",
+  "gameStatHelpActorPower": "Salario del personaje",
+  "gameStatHelpActorPowerValue": "= Salario IP × Coeficiente de minería × Coeficiente CP × Trust2",
+  "gameStatHelpCpCoef": "Coeficiente CP",
+  "gameStatHelpRBase": "R_base",
+  "gameStatHelpRBaseValue": "1 STORY / Ponderación unitaria / Hora",
+  "gameStatHelpEffectiveDuration": "Tiempo efectivo de minería",
+  "gameStatHelpEffectiveDurationValue": "Tiempo total en el que ha estado en prenda y su energía era &gt; 0",
+  "gameStatHelpActualTitle": "Producción prevista para esta semana",
+  "gameStatHelpActualSubtitle": "La producción estimada está limitada por el techo semanal y el límite por dirección; la recompensa real se liquida al final de la semana",
+  "gameStatHelpIfNominalLte": "Si la producción nominal de toda la red es ≤ al límite máximo de esa semana:",
+  "gameStatHelpUserActualEqNominal": "Ingresos reales del usuario = Ingresos nominales del usuario",
+  "gameStatHelpIfNominalGt": "Si la producción nominal de toda la red es superior al límite máximo de esa semana:",
+  "gameStatHelpUserActualFormula": "Ganancias reales del usuario = Producción nominal del usuario × Límite máximo de la semana / Producción nominal de toda la red",
+  "gameStatHelpAddressCap": "Límite semanal por dirección",
+  "gameStatHelpAddressCapValue": "Cada dirección puede recibir, como máximo, el 5 % del límite máximo semanal de esa misma semana.",
+  "theaterCategoryAll": "Todo",
+  "theaterCategoryAncient": "Histórico",
+  "theaterCategoryFinance": "Finanzas",
+  "theaterCategorySuspense": "Suspenso",
+  "theaterCategorySciFi": "Ciencia ficción",
+  "theaterCategoryRealStory": "Basado en hechos reales",
+  "theaterCategoryUrban": "Urbano",
+  "theaterSortHottest": "Lo más popular",
+  "theaterSortNewest": "Últimas noticias",
+  "theaterSortTopRated": "Más guardados",
+  "theaterSortCompletedView": "Más completados",
+  "theaterPlayCount": "{count} reproducciones",
+  "@theaterPlayCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBasicInfo": "Información básica",
+  "createDramaEpisodes": "Gestión de series",
+  "createDramaRoles": "Vincular IP",
+  "createDramaCover": "Portada",
+  "createDramaCoverUpload": "Subir",
+  "createDramaCoverPlaceholder": "Soporta JPG/PNG, hasta 5MB",
+  "createDramaCoverCropTitle": "Recortar portada",
+  "createDramaName": "Título del cortometraje",
+  "createDramaNameHint": "Introduce el título del sketch",
+  "createDramaSynopsis": "Descripción",
+  "createDramaTags": "Etiqueta",
+  "createDramaTagsHint": "Escribe una etiqueta y presiona enter para agregar (ej. Amor, Comedia)",
+  "createDramaTagsLoading": "Cargando etiquetas…",
+  "createDramaTagsEmpty": "No hay etiquetas disponibles",
+  "createDramaTagsRetry": "Inténtalo de nuevo",
+  "createDramaUploadDesc": "Haz clic en «Subir»; una vez enviado, se ordenarán automáticamente por nombre de vídeo.",
+  "@createDramaUploadDesc": {},
+  "createDramaEpisodesDesc": "Al subir archivos de vídeo de forma masiva, el sistema generará automáticamente una lista de episodios ordenados por nombre de archivo. Se pueden realizar operaciones como ordenar mediante arrastrar y soltar, eliminar y editar títulos.",
+  "@createDramaEpisodesDesc": {},
+  "createDramaVideoFileTypeHint": "Formatos soportados: mp4, flv, wmv, asf, mkv, avi, rm, rmvb, mpg, mpeg, mov, webm. Tamaño máximo 2GB.",
+  "@createDramaVideoFileTypeHint": {},
+  "createDramaUploadVideo": "Subir vídeo",
+  "createDramaVideoEmpty": "No se han añadido videos aún",
+  "createDramaVideoPickFailed": "Error al seleccionar video",
+  "createDramaVideoAnyTooLarge": "Uno o más videos superan los 2GB, ajuste e intente de nuevo",
+  "createDramaVideoStatusUploading": "Cargando...",
+  "createDramaVideoStatusPaused": "Carga en pausa",
+  "createDramaVideoStatusDone": "La subida se ha completado",
+  "createDramaEpisodeDescriptionHint": "Descripción del episodio",
+  "createDramaVideoStatusFailed": "Error al subir el archivo",
+  "createDramaVideoTooLarge": "El tamaño del video no puede superar los 2 GB y no se puede subir.",
+  "createDramaVideoUploadComplete": "Todos los videos subidos",
+  "createDramaVideoUploadFailed": "Error al subir {name}",
+  "@createDramaVideoUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoPickOverflow": "Puedes agregar hasta {count} episodios más. {overflow} extras fueron omitidos.",
+  "@createDramaVideoPickOverflow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "overflow": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaAddedVideos": "Videos añadidos ({count} archivos)",
+  "@createDramaAddedVideos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosCount": "({count} archivos)",
+  "@createDramaAddedVideosCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosLabel": "Vídeos añadidos",
+  "createDramaRolesDesc": "Crea roles para el cortometraje y establece su nombre, foto de perfil y breve descripción de su personalidad.",
+  "createDramaRolesRule1": "Cada drama puede vincular hasta 5 IP de personajes. Se pueden añadir durante los 7 días posteriores a la publicación; después no se pueden quitar ni sustituir.",
+  "createDramaRolesRule2": "Una vez vinculada, la IP del personaje se asocia a los datos de finalización y popularidad del drama para mejoras y recompensas STORY.",
+  "@createDramaRolesRule2": {
+    "description": "Dentro de los 7 días posteriores a la aprobación del drama, se pueden vincular IP de personajes; los datos de reproducción del periodo se acumulan en las IP vinculadas."
+  },
+  "createDramaRolesExpireTime": "Fecha límite",
+  "createDramaRolesRule3": "Vincular una IP es opcional; puedes publicar sin hacerlo.",
+  "createDramaAddRole": "Añadir rol",
+  "createDramaBindActor": "Reparto",
+  "createDramaRoleActing": "Reparto",
+  "createDramaSelectActor": "Seleccionar rol",
+  "createDramaBindActorTitle": "Seleccionar personaje IP",
+  "createDramaBindIpSelectedCount": "{count} seleccionados",
+  "createDramaBindIpEmpty": "Sin datos",
+  "createDramaBindIpMarketplace": "Ir al mercado de IP de personajes",
+  "createDramaBindIpConfirm": "Confirmar vínculo",
+  "createDramaBindActorSubtitle": "Elige un personaje para interpretar el papel de «{roleName}»",
+  "@createDramaBindActorSubtitle": {
+    "placeholders": {
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorOwnedCount": "Posee {count} direcciones IP de personajes",
+  "@createDramaBindActorOwnedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindActorIpLabel": "Personaje IP {code}",
+  "@createDramaBindActorIpLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorBoundTag": "Ya está vinculado",
+  "createDramaBindIpRemove": "Quitar",
+  "createDramaBindActorBoundToast": "Vinculado {name}",
+  "@createDramaBindActorBoundToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorUnbind": "Desvincular",
+  "createDramaBindActorExpired": "El plazo de vinculación de 7 días ha vencido. No se pueden añadir nuevas vinculaciones de IP de personaje.",
+  "createDramaBindActorEmptyTitle": "No hay personaje IP para vincular",
+  "createDramaBindActorEmptyDesc": "Necesitas poseer un Personaje IP antes de vincularlo a un rol",
+  "createDramaBindActorGotoCreate": "Crear rol",
+  "createDramaPrevStep": "Paso anterior",
+  "createDramaNextStep": "Siguiente paso",
+  "createDramaSubmit": "Publicar",
+  "createDramaRoleNameLabel": "Nombre del rol",
+  "createDramaRoleNameHint": "Introduce el nombre del rol",
+  "createDramaRoleNameRequired": "Por favor ingresa el nombre del rol",
+  "createDramaRoleBioLabel": "Descripción del rol",
+  "createDramaRoleBioHint": "Introduce la descripción del rol",
+  "createDramaRoleBioRequired": "La descripción del rol es obligatoria",
+  "createDramaRoleAddTitle": "Añadir rol",
+  "createDramaRoleEditTitle": "Editar rol",
+  "createDramaRoleUploadAvatar": "Subir foto de perfil",
+  "createDramaRoleSave": "Guardar",
+  "createDramaRoleDeleteConfirm": "¿Eliminar este personaje?",
+  "createDramaVideoDeleteConfirm": "¿Eliminar \"{name}\"?",
+  "@createDramaVideoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoDeleteTitle": "Eliminar video",
+  "createDramaVideoPreviewUnavailable": "Los videos subidos anteriormente no se pueden previsualizar por el momento",
+  "createDramaRoleEmpty": "No se han añadido roles aún",
+  "createDramaRoleBindComingSoon": "Vinculación de roles próximamente",
+  "createDramaRoleAvatarCropTitle": "Recortar avatar del rol",
+  "createDramaRoleAvatarUploadFailed": "Error al subir avatar del rol",
+  "createDramaPublishedSuccess": "Publicado correctamente",
+  "createDramaDraftRestored": "Se restauró tu borrador sin finalizar",
+  "createDramaDraftClear": "Borrar datos",
+  "createDramaDraftDiscard": "Descartar y volver",
+  "createDramaDraftSave": "Guardar borrador",
+  "createDramaEditLoading": "Cargando...",
+  "createDramaEditLoadError": "Error al cargar la información del drama, por favor intenta de nuevo",
+  "createDramaSubmitValidationTitle": "Por favor ingresa el título del drama",
+  "createDramaSubmitValidationCover": "Por favor sube una imagen de portada",
+  "createDramaSubmitValidationVideos": "Por favor sube al menos un video",
+  "createDramaSubmitValidationSession": "Sesión de subida inválida, por favor vuelve a subir los videos",
+  "createDramaUploadSessionFailed": "Error al crear la sesión de subida",
+  "createDramaSubmitValidationRoles": "Por favor agrega al menos un rol",
+  "createDramaStep1TitleRequired": "Introduce el título del sketch",
+  "createDramaStep1SynopsisRequired": "Escriba una breve descripción",
+  "createDramaStep1CoverRequired": "Por favor agrega una portada",
+  "createDramaStep1TagsRequired": "Por favor selecciona etiquetas",
+  "createDramaEpisodeDescriptionRequired": "Por favor introduce la descripción del episodio",
+  "settingsLanguage": "Idioma",
+  "settingsTheme": "Tema",
+  "settingsThemeLight": "Claro",
+  "settingsThemeDark": "Oscuro",
+  "settingsThemeSystem": "Sistema",
+  "settingsUI": "Interfaz",
+  "settingsAppVersion": "Versión",
+  "settingsVersionLatestToast": "Estás en la última versión",
+  "settingsVersionCheckFailed": "No se pudo comprobar la actualización. Inténtalo de nuevo más tarde.",
+  "appVersionUpdateTitle": "Nueva versión disponible",
+  "appVersionUpdateContentsLabel": "Contenido de la actualización:",
+  "appVersionUpdateConfirm": "Actualizar ahora",
+  "appVersionUpdateLater": "Más tarde",
+  "settingsTermsOfService": "Términos de servicio",
+  "settingsPrivacyPolicy": "Política de privacidad",
+  "settingsDeleteAccount": "Eliminar cuenta",
+  "settingsDeleteAccountConfirm": "Tu cuenta se eliminará el {deadline}. Durante este período, puedes iniciar sesión de nuevo para cancelar la eliminación de la cuenta.",
+  "settingsDeleteAccountSuccess": "Solicitud de eliminación de cuenta enviada",
+  "settingsClearCache": "Limpiar caché",
+  "settingsNetworkInspector": "Inspector de red",
+  "settingsClearCacheConfirm": "¿Estás seguro de limpiar la caché?",
+  "miningRulesHowToPlay": "¿Cómo se juega a «Envío de mineros»?",
+  "miningRulesFlowSubtitle": "Todo el proceso, desde el envío de personal hasta el cobro, explicado en un solo gráfico",
+  "miningRulesSection1Title": "1. Enviar a alguien a extraer minerales",
+  "miningRulesSection1Desc": "Si «asignas» a un rol que esté libre a cualquiera de las 5 ranuras siguientes, empezará a minar automáticamente y a generar STORY.",
+  "miningRulesSection1Bullet1": "Cada persona puede enviar un máximo de 5 roles a la vez.",
+  "miningRulesSection1Bullet2": "Se pueden asignar varias tarjetas a un mismo personaje IP",
+  "miningRulesSection1Bullet3": "Cada hora tras su envío se consume 1 punto de ⚡energía; mientras la energía sea &gt; 0, la producción continúa; cuando la energía sea = 0, se detiene la producción.",
+  "miningRulesSection2Title": "2. Cálculo de beneficios, fórmula de rendimiento",
+  "miningRulesSection2Desc": "La producción por tarjeta y por hora se calcula de la siguiente manera:",
+  "miningRulesSection2Formula": "Producción por hora por tarjeta = Salario del personaje × 1 STORY",
+  "miningRulesSection2FactorsTitle": "Tres froles determinantes:",
+  "miningRulesSection2Factor1": "Coeficiente de minería: cuanto mayor sea el nivel, mayor será el coeficiente. Nivel 1 = 1,0 → Nivel 2 = 2,2 → Nivel 3 = 5,0 → Nivel 4 = 11 → Nivel 5 = 24",
+  "miningRulesSection2Factor2": "Salario de IP = Coeficiente de precio × Coeficiente de popularidad × Trust1",
+  "miningRulesCoefTableTitle": "Detalles de coeficientes",
+  "miningRulesCoefColCoef": "Coeficiente",
+  "miningRulesCoefColFactor": "Determinado por",
+  "miningRulesCoefColDesc": "Detalles",
+  "miningRulesCoefMining": "Coeficiente de minería",
+  "miningRulesCoefPrice": "Coeficiente de precio",
+  "miningRulesCoefHeat": "Coeficiente de popularidad",
+  "miningRulesCoefCp": "Coeficiente de CP",
+  "miningRulesCoefTrust": "Trust",
+  "miningRulesCoefMiningFactor": "Nivel",
+  "miningRulesCoefPriceFactor": "Precio de lanzamiento P0",
+  "miningRulesCoefHeatFactor": "Rendimiento reciente de los dramas",
+  "miningRulesCoefCpFactor": "-",
+  "miningRulesCoefTrustFactor": "Control de riesgos de la plataforma",
+  "miningRulesCoefMiningDesc": "Lv1=1.0 · Lv2=2.2 · Lv3=5.0 · Lv4=11 · Lv5=24",
+  "miningRulesCoefPriceDesc": "Lineal si P0≤10{currency1} · límite asintótico de 1,6 si P0>10{currency2}",
+  "@miningRulesCoefPriceDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefHeatDesc": "Coeficiente de popularidad: cuantas más reproducciones completas, «me gusta», guardados y valoraciones tengan las series de la IP del personaje, mayor será la popularidad",
+  "miningRulesCoefCpDesc": "Aún no disponible",
+  "miningRulesCoefTrustDesc": "Valor predeterminado: 1,0",
+  "miningRulesSettleColCondition": "Condición",
+  "miningRulesSettleColRule": "Regla de distribución",
+  "miningRulesUpgradePathSubtitle": "Ruta de mejora",
+  "miningRulesUpgradeColPath": "Ruta de mejora",
+  "miningRulesUpgradeColHeat": "Umbral de reproducciones completas acumuladas",
+  "miningRulesUpgradeColFee": "Comisión de síntesis",
+  "miningRulesUpgradePath12": "Lv1 → Lv2",
+  "miningRulesUpgradePath23": "Lv2 → Lv3",
+  "miningRulesUpgradePath34": "Lv3 → Lv4",
+  "miningRulesUpgradePath45": "Lv4 → Lv5",
+  "miningRulesUpgradeHeat12": "≥ 10,000",
+  "miningRulesUpgradeHeat23": "≥ 50,000",
+  "miningRulesUpgradeHeat34": "≥ 200,000",
+  "miningRulesUpgradeHeat45": "≥ 1,000,000",
+  "miningRulesUpgradeFee12": "10 {currency}",
+  "@miningRulesUpgradeFee12": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee23": "20 {currency}",
+  "@miningRulesUpgradeFee23": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee34": "40 {currency}",
+  "@miningRulesUpgradeFee34": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee45": "80 {currency}",
+  "@miningRulesUpgradeFee45": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor3": "R_base: valor fijo, actualmente es 1 STORY; es posible que se ajuste manualmente en el futuro.",
+  "miningRulesSection2StaminaText": "La energía solo se mide por «si la tienes o no», no por cuánta te queda: tanto {staminaLimit} puntos como 1 punto de energía producen lo mismo por hora; lo único que importa es si estás minando o no.",
+  "@miningRulesSection2StaminaText": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesSection2ExampleTitle": "Por ejemplo:",
+  "miningRulesSection2ExampleDesc": "Lin Mengyao · Protagonista Lv3 · P0=12{currency} (coeficiente de precio ≈1.0859) · popularidad 3.5\n→ Producción por hora = 5.0 × 1.0859 × 3.5 × 1 = 19.00325 STORY",
+  "@miningRulesSection2ExampleDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection3Title": "3. Se reparte dinero, pero hay un límite máximo",
+  "miningRulesSection3Desc": "Cada semana toda la plataforma tiene un fondo de recompensas total (límite semanal fijo), comenzando en aproximadamente 2,115,385 STORY, disminuyendo semana a semana (semanal × 0.99572). La distribución de recompensas se divide en tres casos:",
+  "miningRulesSection3Case1Title": "Producción nominal en todas las plataformas ≤ Bote de esta semana",
+  "miningRulesSection3Case1Desc": "Cada persona recibirá la cantidad indicada en la lista; el fondo de premios restante no se repartirá ni se completará.",
+  "miningRulesSection3Case2Title": "Producción nominal en todas las plataformas &gt; Bote de esta semana",
+  "miningRulesSection3Case2Desc": "Escalado proporcional: tu ganancia real = tu producción nominal × fondo de recompensas ÷ producción total de la plataforma",
+  "miningRulesSection3Case3Title": "Una sola dirección supera el 5 % del fondo de recompensas",
+  "miningRulesSection3Case3Desc": "La parte que exceda el límite no se abonará, no se revertirá ni se compensará con puntos adicionales.",
+  "miningRulesSection3ExampleDesc": "Suponiendo que el fondo de recompensas semanal es 100,000 STORY:\nCaso A: Eres la única persona en la plataforma, y produces 134 en una semana → Obtienes 134, y los 99,866 restantes no se distribuyen\nCaso B: La producción total de la plataforma es 250,000, todos se escalan al 40% (100,000÷250,000)\nCaso C: Las recompensas proporcionales para alguien son 6,000, pero la dirección individual está limitada a 5,000 → Solo se distribuyen 5,000",
+  "miningRulesSection4Title": "4. Hay que cuidar la energía para poder seguir excavando",
+  "miningRulesTableStatus": "Estado",
+  "miningRulesTableStaminaChange": "Cambios en la energía",
+  "miningRulesTableOutput": "Resultados",
+  "miningRulesStatusMining": "En proceso de asignación (minería)",
+  "miningRulesStaminaMining": "Por hora -1",
+  "miningRulesOutputNormal": "Producción normal",
+  "miningRulesStatusZeroStamina": "Energía = 0",
+  "miningRulesStaminaZeroStamina": "Ya no cambia",
+  "miningRulesOutputZero": "El resultado es 0",
+  "miningRulesStatusResting": "Descanso por convocatoria",
+  "miningRulesStaminaResting": "+1 por hora (recuperación automática)",
+  "miningRulesOutputPaused": "Suspender la producción",
+  "miningRulesStatusPaidRefill": "Recargar energía (de pago)",
+  "miningRulesStaminaPaidRefill": "Recarga instantánea de {staminaLimit}",
+  "@miningRulesStaminaPaidRefill": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesOutputRestored": "Recuperación de la producción",
+  "miningRulesSection4TipsTitle": "Tres cosas que debes saber sobre la recuperación de la energía:",
+  "miningRulesSection4Tip1": "Solo se puede repostar hasta el máximo con un solo clic; no se puede comprar solo 10 puntos.",
+  "miningRulesSection4Tip2": "El precio depende únicamente del nivel, no de la energía que te quede. Cuesta lo mismo recargar al máximo cuando la energía está a 0 que cuando está a 100.",
+  "miningRulesSection4Tip3": "Cuanto más se acerque a 0, más rentable es la recarga: por el mismo precio, obtienes el máximo tiempo adicional de minería.",
+  "miningRulesSection4PriceTitle": "Precios adicionales según el nivel:",
+  "miningRulesPriceTableTier": "Importancia",
+  "miningRulesPriceTableFullRefill": "Llenar el depósito con un solo clic",
+  "miningRulesLv1": "Nivel 1: Figurante",
+  "miningRulesLv2": "Nivel 2: Personaje secundario",
+  "miningRulesLv3": "Nivel 3: Protagonista",
+  "miningRulesLv4": "Nivel 4: Superestrella",
+  "miningRulesLv5": "Nivel 5: Superestrella",
+  "miningRulesLv1Price": "15 {currency}",
+  "@miningRulesLv1Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv2Price": "36 {currency}",
+  "@miningRulesLv2Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv3Price": "87 {currency}",
+  "@miningRulesLv3Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv4Price": "208 {currency}",
+  "@miningRulesLv4Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv5Price": "465 {currency}",
+  "@miningRulesLv5Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection5Title": "5. Sube de categoría y gana más",
+  "miningRulesSection5Desc": "3 tarjetas de personajes del mismo nivel + la tarifa de síntesis + alcanzar el objetivo de reproducciones completas acumuladas de dicho personaje = subir 1 nivel. Tras subir de nivel, el coeficiente de minería se dispara y la producción por hora se duplica o incluso se multiplica varias veces.",
+  "miningRulesSummaryTitle": "Resumen en una frase",
+  "miningRulesSummaryDesc": "Asigna → Produce → Vigila la energía → Cobra. Cuando la energía esté baja, recárgala o devuelve al personaje a descansar; la popularidad crece con el rendimiento de las series del personaje, y mejorar multiplica la producción.",
+  "playerNotInterested": "No me interesa",
+  "playerNotInterestedDone": "Hemos recibido tu comentario. Mostraremos menos contenido como este",
+  "playerClearScreen": "Pantalla limpia",
+  "playerAutoPlay": "Reproducción continua",
+  "playerReport": "Reportar",
+  "playerReportSuccess": "Reportado exitosamente",
+  "commentReportSuccess": "Enviado con éxito, lo procesaremos pronto",
+  "reportSuccessTitle": "Enviado con éxito, lo procesaremos pronto",
+  "reportSuccessThanks": "¡Gracias por contribuir a la seguridad de la comunidad!",
+  "reportSuccessAlsoYouCan": "También puedes",
+  "reportSuccessDone": "Listo",
+  "reportReduceRecommend": "Ver menos",
+  "reportReduceRecommendDone": "Mostraremos menos",
+  "reportSuccessContentFallback": "Este contenido",
+  "reportDescription": "Descripción del reporte",
+  "reportDescriptionPlaceholder": "Describe los detalles (Opcional)",
+  "reportReasonPorn": "Pornografía y vulgaridad",
+  "reportReasonIllegal": "Ilegal o criminal",
+  "reportReasonSensitive": "Contenido sensible",
+  "reportReasonGambling": "Juegos de azar o violencia",
+  "reportReasonMinors": "Daño a menores",
+  "reportReasonCopyright": "Infracción de derechos de autor",
+  "reportReasonQuality": "Problema de calidad",
+  "reportReasonNotLike": "No me gusta",
+  "reportReasonOther": "Otros",
+  "gameUpgrade": "Mejorar",
+  "gameUpgradeTitle": "Mejora de Nivel",
+  "gameUpgradeCurrentLevel": "Nivel Actual",
+  "gameUpgradeTargetLevel": "Nivel Objetivo",
+  "gameUpgradeHeatThreshold": "Reproducciones completas acumuladas de dramas",
+  "gameUpgradeRequiredCount": "Consumir roles del mismo IP y nivel",
+  "gameUpgradeFee": "Costo de Mejora",
+  "gameUpgradeNextLevelReq": "Requisitos del siguiente nivel",
+  "gameUpgradeBeforeAfter": "Antes y después de mejorar",
+  "gameUpgradeSelectMaterialDesc": "Seleccionar roles del mismo IP y nivel para consumir",
+  "gameUpgradeMaterialCount": "{current}/{required}",
+  "@gameUpgradeMaterialCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeToLevel": "Mejorar a Lv{level} {levelName}",
+  "@gameUpgradeToLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterialLabel": "Seleccionar Materiales ({current}/{required})",
+  "@gameUpgradeSelectMaterialLabel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterials": "Seleccione {count} materiales",
+  "@gameUpgradeSelectMaterials": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeConfirm": "Confirmar Mejora",
+  "gameUpgradeSuccess": "Mejora exitosa",
+  "gameUpgradeFailed": "Mejora fallida, por favor intente de nuevo",
+  "gameUpgradeInsufficientMaterials": "Materiales insuficientes",
+  "gameUpgradeNoMaterials": "No hay roles del mismo IP y nivel disponibles para consumir",
+  "creatorDramaStatusMinted": "Acuñado",
+  "creatorDramaStatusOffline": "Retirado",
+  "creatorDramaStatusUnavailable": "Temporalmente no disponible",
+  "creatorMintDramaNft": "Acuñar NFT del drama",
+  "creatorMintConfirmDesc": "Confirmar acuñación de este drama como NFT en cadena. Después de acuñar, este drama generará recompensas de minería STORY.",
+  "creatorMintFee": "Tarifa de acuñación",
+  "creatorMintInsufficientUsdc": "Saldo {currency1} insuficiente. El lanzamiento en cadena requiere al menos 1 {currency2}.",
+  "@creatorMintInsufficientUsdc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintInvalidDramaId": "ID de drama no válido",
+  "creatorMintInProgress": "Acuñación en curso, por favor espera",
+  "creatorMintWalletNotReady": "La dirección de la wallet de Solana no está lista. Inicia sesión de nuevo",
+  "creatorMintDigestEmpty": "Los datos de la firma de lanzamiento están vacíos. Inténtalo de nuevo más tarde.",
+  "creatorMintWalletMismatch": "La wallet de acuñación no coincide con la wallet actual. Inicia sesión de nuevo",
+  "creatorMintSuccess": "¡Acuñación exitosa!",
+  "@creatorMintDramaOnChain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintDramaOnChain": "El NFT del drama \"{name}\" ha sido acuñado en cadena",
+  "@creatorMintNftNumber": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintNftNumber": "Número de NFT: {id}",
+  "creatorMintTxHash": "Hash de transacción: ",
+  "gameSelectActor": "Seleccionar rol para desplegar",
+  "gameSelectActorDesc": "Selecciona un personaje inactivo para enviarlo a trabajar",
+  "agentV2SchedulePerformance": "Actuar",
+  "agentV2PerformAllTitle": "Actuar Todo",
+  "agentV2PerformAllDescription": "Los personajes con mayor salario ocuparán primero los puestos disponibles",
+  "agentV2PerformAllFailed": "La actuación con un toque ha fallado. Inténtalo de nuevo",
+  "agentV2PerformAllSuccess": "Actuación con un toque completada",
+  "agentV2PerformAllDepletedResult": "{successCount} actuaron correctamente; {depletedCount} no pueden actuar por falta de energía",
+  "agentV2RestAllSuccess": "Descanso con un toque completado",
+  "agentV2PerformAllCount": "{count} personajes",
+  "@agentV2PerformAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2CandidateActorsTitle": "Roles candidatos",
+  "agentV2CandidateActorsDescription": "Los roles en descanso recuperan 1 punto de energía por hora",
+  "agentV2UpgradeableActorsTitle": "Mejorar roles",
+  "agentV2UpgradeableActorsEmpty": "No hay roles disponibles para mejorar",
+  "agentV2NoActors": "No hay roles",
+  "agentV2UpgradeNow": "Mejorar ahora",
+  "agentV2UpgradeCompletion": "Reproducciones completas",
+  "agentV2UpgradeMaterials": "Roles",
+  "agentV2UpgradeRequirementsTitle": "Mejorar {name}",
+  "@agentV2UpgradeRequirementsTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionRemaining": "Faltan {count} reproducciones completas",
+  "@agentV2UpgradeCompletionRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionHint": "Mira dramas con este personaje o crea uno nuevo para aumentar las reproducciones completas",
+  "agentV2UpgradeWatchDramas": "Ver sus dramas",
+  "agentV2UpgradeCreateDrama": "Crear un drama",
+  "agentV2UpgradeMaterialsRemaining": "Faltan {count} roles del mismo IP y nivel",
+  "@agentV2UpgradeMaterialsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeMaterialsHint": "Contrata más personajes «{name}» desde el perfil del personaje",
+  "@agentV2UpgradeMaterialsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeGetActors": "Obtener roles",
+  "agentV2UpgradeActorsSyncing": "Sincronizando {count} personaje(s) nuevo(s); se actualizaron los requisitos de mejora",
+  "@agentV2UpgradeActorsSyncing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryDetailTitle": "Salario del personaje",
+  "agentV2SalaryHourly": "Salario por hora",
+  "agentV2SalaryUnit": "STORY / hora",
+  "agentV2SalaryFormula": "Salario del personaje = Salario de IP × Coeficiente salarial × Coeficiente CP × Trust2",
+  "agentV2SalaryFormulaLv1": "Salario del personaje Lv.1 = Coeficiente de precio × Coeficiente de popularidad",
+  "agentV2SalaryFormulaLevel": "Salario Lv.{level} = Salario Lv.1 × Coeficiente salarial",
+  "@agentV2SalaryFormulaLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryLv1Pay": "Salario Lv.1",
+  "agentV2SalaryCoefficient": "Coeficiente salarial",
+  "agentV2SalaryCoefficientWithLevel": "Coeficiente salarial (Lv.{level} {roleName})",
+  "@agentV2SalaryCoefficientWithLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2SalaryCpCoefficient": "Coeficiente CP",
+  "agentV2PerformanceConfirmDescription": "Este personaje gana salario automáticamente al actuar. Cada hora de actuación consume 1 punto de energía; cuando la energía se agota, deja de ganar.",
+  "agentV2PerformanceConfirmTitle": "Programar actuación",
+  "agentV2PerformanceZeroFeePrefix": "La IP de este personaje actualmente tiene ",
+  "agentV2PerformanceZeroFeeHighlight": "remuneración 0",
+  "agentV2PerformanceZeroFeeSuffix": ", por lo que la actuación no generará ingresos. Además, durante la actuación se consume 1 punto de energía por hora. ¿Quieres continuar?",
+  "agentV2PerformanceScheduledSuccess": "Actuación programada",
+  "agentV2PerformanceSlotsFull": "Los espacios de actuación están llenos (máx. 5)",
+  "gameDeployStaminaDepleted": "La energía se ha agotado. Recárgala antes de actuar",
+  "agentMoreRules": "Reglas",
+  "agentMoreSalaryAndPool": "Salario y fondo de recompensas",
+  "agentV2WeeklySalaryTitle": "Subir Nivel · Actuar · Ganar Salario",
+  "gameDeployConfirmDesc": "Este personaje participará automáticamente en la minería mediante staking y generará continuamente ganancias en STORY para ti. Nota: Se consume 1 punto de energía al comienzo de cada hora. La generación de ganancias se detiene cuando se agota la energía.",
+  "gameRecallConfirm": "Confirmar retiro",
+  "gameRecallDesc": "Retirar a este personaje pausará las recompensas de producción de dramas, pero la energía actual no se verá afectada.",
+  "actorStatCompletionTitle": "Reproducciones completas",
+  "actorStatCompletionDesc": "Total de reproducciones completas en todos los dramas en los que ha participado este personaje",
+  "actorStatHeatTitle": "Popularidad",
+  "actorStatHeatDesc": "Popularidad total de los últimos 30 días de todas las miniseries en las que participa este IP de personaje",
+  "dramaFavoriteLabel": "Favorito",
+  "dramaRatingLabel": "Calificación",
+  "dramaUnnamed": "Sin título",
+  "videoNotReady": "El video no está listo, por favor inténtalo más tarde",
+  "inviteDirectSubordinates": "Usuarios invitados",
+  "@inviteTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteTotalCount": "Total: {count} usuarios",
+  "inviteTotalLabel": "Total de usuarios",
+  "inviteActiveLabel": "Usuarios activos",
+  "invitePendingLabel": "Pendiente de activación",
+  "inviteEmpty": "Aún no hay usuarios subordinados",
+  "@inviteRegisteredAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRegisteredAt": "Registrado el {date}",
+  "searchNoData": "Sin contenido relacionado",
+  "gameActorLevelName1": "Extra",
+  "gameActorLevelName2": "De reparto",
+  "gameActorLevelName3": "Protagonista",
+  "gameActorLevelName4": "Superestrella",
+  "gameActorLevelName5": "Primer nivel",
+  "gameUpgradeMaxLevel": "Nivel máximo alcanzado",
+  "listNoMoreData": "No hay más datos",
+  "@agentV2RefillActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2RestActorCount": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDelete": "Eliminar",
+  "financeDashboardActorVaultRanking": "Clasificación de bóvedas de IP de personajes",
+  "financeDashboardCoveredActorIp": "IP de personajes incluidos",
+  "financeDashboardFeeMint": "Comisión de contratación",
+  "financeDashboardFeeRoyalty": "Regalías secundarias",
+  "financeDashboardFeeItemPurchase": "Compra de objetos",
+  "financeDashboardFeeTx": "Comisión de transacción",
+  "financeDashboardPageTitle": "Panel financiero de la plataforma",
+  "financeDashboardRecentUsdcLedger": "Ingresos recientes en USDC",
+  "financeDashboardTabStoryRelease": "Resumen de liberación de STORY",
+  "financeDashboardTabUsdcIncome": "Detalles de ingresos en USDC",
+  "financeDashboardTabVaultFunds": "Acumulación de fondos en bóvedas",
+  "financeDashboardTotalStoryReleased": "Total de STORY liberado",
+  "financeDashboardTotalUsdcIncome": "Ingresos totales en USDC",
+  "financeDashboardTotalVaultFunds": "Fondos totales en bóvedas",
+  "financeDashboardViewMore": "Ver más",
+  "miningRulesSection2Factor4": "Coeficiente de precio — precio de emisión P0: crecimiento lineal si P0≤10{currency1} · se aproxima al límite de 1,6 si P0>10{currency2}",
+  "@miningRulesSection2Factor4": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor5": "Coeficiente de popularidad — cuanto mejor sea el rendimiento reciente de los dramas, mayor será la popularidad (reproducciones completas, Me gusta, guardados y comentarios)",
+  "miningRulesSection2Factor6": "Coeficiente de CP — aún no disponible; Trust tiene un valor predeterminado de 1,0",
+  "nftSortIpPower": "Salario de IP",
+  "notificationDelete": "Eliminar",
+  "notificationDeleteFailed": "No se pudo eliminar. Inténtalo de nuevo más tarde",
+  "salaryPoolDecayInfo": "Factor de reducción semanal ×0,99572",
+  "salaryPoolInviteLabel": "Fondo de recompensas por invitación (25%)",
+  "salaryPoolRateUnit": "STORY / hora",
+  "salaryPoolRule1Title": "Producción nominal total ≤ límite semanal:",
+  "salaryPoolRule2Body": "Pago real = producción nominal del usuario × (límite semanal ÷ producción nominal total)",
+  "salaryPoolRule2Title": "Producción nominal total > límite semanal:",
+  "salaryPoolStakeLabel": "Fondo de recompensas por actuación (75%)",
+  "storyReleaseCategoryInvestors": "Inversores",
+  "storyReleaseCategoryLiquidity": "Launchpad + Liquidez",
+  "storyReleaseCategoryMarketOps": "Operaciones de mercado",
+  "storyReleaseCategoryNftMiningPool": "Fondo de minería NFT",
+  "storyReleaseCategoryTeam": "Equipo",
+  "storyReleaseCategoryTreasury": "Tesorería",
+  "storyReleaseFieldAmount": "Cantidad",
+  "storyReleaseFieldHardLimit": "Límite semanal",
+  "storyReleaseFieldInviteRewards": "Minería por invitación",
+  "storyReleaseFieldMiningRewards": "Minería por staking",
+  "storyReleaseFieldPeriod": "Periodo",
+  "storyReleaseFieldProgress": "Progreso de liberación",
+  "storyReleaseFieldRatio": "Proporción",
+  "storyReleaseFieldReleased": "Liberado",
+  "storyReleaseFieldTarget": "Destino de la asignación",
+  "storyReleaseFieldUsageRate": "Tasa de uso",
+  "storyReleaseTabAllocation": "Asignación total de STORY",
+  "storyReleaseTabMiningRelease": "Liberación reciente de minería",
+  "storyReleaseTotalSupplyBadge": "Total {total} STORY",
+  "@storyReleaseTotalSupplyBadge": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2WeeklySalaryLabel": "Salario de esta semana",
+  "actorPriceUnitName": "Puntos",
+  "actorStatIpPowerDesc": "Salario IP = Coeficiente de precio × Coeficiente de calor × Trust1",
+  "actorStatIpPowerTitle": "Salario IP",
+  "agentV2TodoHealthy": "Actuaciones normales · Energía suficiente",
+  "agentV2TodoPerform": "Actuar",
+  "agentV2TodoRefill": "Recargar",
+  "agentV2TodoStaminaDepleted": "{name} tiene 0 de energía y dejó de trabajar",
+  "@agentV2TodoStaminaDepleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2TodoTitle": "Pendientes",
+  "agentV2TodoVacancies": "{count} puesto(s) de actuación disponibles",
+  "@agentV2TodoVacancies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeConfirmSalaryLabel": "Salario",
+  "agentV2UpgradeConfirmSelectMaterials": "Selecciona personajes del mismo IP y nivel para consumir",
+  "commentsReplyTo": "Responder a @{nickname}: ",
+  "@commentsReplyTo": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "iapBalance": "Saldo",
+  "iapConfirmPurchase": "Confirmar compra",
+  "iapCrediting": "Acreditación en curso, espere",
+  "iapGainedPoints": "+{value}",
+  "@iapGainedPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "iapNoProducts": "No hay productos disponibles",
+  "iapOrderInFlight": "Tienes un pedido sin terminar para este artículo, inténtalo más tarde",
+  "iapPointsCount": "{count} puntos",
+  "@iapPointsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "iapPurchaseFailed": "Compra fallida, inténtalo de nuevo",
+  "iapPurchaseFailedTitle": "Compra fallida",
+  "iapPurchaseSuccess": "Compra exitosa",
+  "iapSheetSubtitle": "Los puntos se usan para servicios de la app, como firmar personajes",
+  "iapSheetTitle": "Comprar puntos",
+  "iapSuccessConfirm": "Aceptar",
+  "agentV3WeeklySalary": "Salario semanal",
+  "agentV3PerformAll": "Actuar todo",
+  "agentV3RestAll": "Descansar todos",
+  "agentV3RestAllDescription": "Retira a todos los personajes en actuación para detener el consumo de energía y las ganancias",
+  "agentV3RefillAll": "Recargar todos",
+  "agentV3RefillAllDescription": "Rellena la energía de los personajes en actuación",
+  "agentV3RefillCost": "Consume",
+  "agentV3RefillNoActors": "Ningún personaje necesita recuperar energía",
+  "agentV3SignActor": "Firmar personajes",
+  "agentV3Todo": "Tareas",
+  "agentV3Upgrade": "Mejorar",
+  "agentV3UpgradeMaterialHint": "La mejora consume {count} personajes con la misma IP y nivel",
+  "@agentV3UpgradeMaterialHint": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "agentV3Waiting": "En espera",
+  "agentV3WaitingActorsTitle": "Personajes en espera",
+  "agentV3WaitingActorsDescription": "Los personajes en descanso recuperan 1 de energía por hora",
+  "agentV3Recycle": "Reciclar",
+  "agentV3RecycleActorsTitle": "Reciclar personajes",
+  "agentV3RecyclePerforming": "En actuación",
+  "agentV3RecycleReceive": "Recibirás",
+  "agentV3RecyclePermanentWarning": "El personaje se destruirá permanentemente y no se podrá recuperar",
+  "agentV3RecycleConfirm": "Confirmar destrucción",
+  "agentV3RecycleConfirmAgain": "Toca de nuevo para destruir",
+  "agentV3RecycleSubmitted": "Personaje reciclado correctamente",
+  "agentV3RecycleEstimateUnavailable": "No se puede obtener la estimación de reciclaje. Inténtalo de nuevo",
+  "agentV3EnergyPack": "Paquete de energía",
+  "agentV3EnergyPackDescription": "Restaura por completo la energía del personaje; se consume según su nivel.",
+  "agentV3TrainingManual": "Manual de entrenamiento",
+  "agentV3TrainingManualDescription": "Material para mejorar personajes; se consume según el nivel del personaje al mejorarlo.",
+  "agentV3PurchaseButton": "Comprar",
+  "agentV3PurchaseWalletBalance": "Saldo {balance} {currency}",
+  "@agentV3PurchaseWalletBalance": {
+    "placeholders": {"balance": {"type": "String"}, "currency": {"type": "String"}}
+  },
+  "agentV3PurchaseTitle": "Comprar {item}",
+  "@agentV3PurchaseTitle": {
+    "placeholders": {"item": {"type": "String"}}
+  },
+  "agentV3PurchaseUnitPrice": "Precio unitario",
+  "agentV3PurchaseQuantity": "Cantidad",
+  "agentV3PurchaseTotal": "Total",
+  "agentV3PurchaseConfirm": "Confirmar pago",
+  "agentV3PurchaseUnavailable": "La compra de artículos no está disponible en este entorno",
+  "agentV3PurchaseConfigUnavailable": "El precio del artículo no está disponible. Inténtalo de nuevo más tarde",
+  "agentV3PurchaseSubmitted": "Compra realizada. Se añadió a la mochila de objetos (página del Agente)",
+  "agentV3PurchaseCreditPending": "Los paquetes de energía aún se están acreditando. Inténtalo de nuevo en breve",
+  "agentV3PurchaseCrediting": "Verificando y acreditando",
+  "agentV3PurchaseBalance": "Disponible: {count}",
+  "@agentV3PurchaseBalance": {
+    "placeholders": {"count": {"type": "String"}}
+  },
+  "agentV3RefillTitle": "Rellenar energía",
+  "agentV3RefillLevelCost": "Nv.{level} consume",
+  "agentV3RefillAvailable": "Disponible",
+  "agentV3RefillUse": "Usar",
+  "agentV3RefillSuccess": "Energía rellenada",
+  "agentV3RefillAllSuccess": "Se recargó la energía de {actorCount} personajes (se usaron {packCount} paquetes de energía)",
+  "@agentV3RefillAllSuccess": {
+    "placeholders": {
+      "actorCount": {"type": "int"},
+      "packCount": {"type": "String"}
+    }
+  },
+  "agentV3RefillConfigUnavailable": "La configuración de consumo no está disponible",
+  "agentV3RefillInsufficient": "No hay suficientes paquetes de energía"
+}

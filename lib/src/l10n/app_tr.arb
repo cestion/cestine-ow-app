@@ -1,0 +1,2657 @@
+{
+  "appName": "StoryFun",
+  "commonCancel": "İptal et",
+  "commonNoData": "Veri yok",
+  "commonNo": "Hayır",
+  "commonYes": "Evet",
+  "publishDrama": "Dram Yayınla",
+  "publishVideo": "Video Yayınla",
+  "publishVideoUploadTitle": "Video dosyası yükle",
+  "publishVideoFileHint": "mp4, flv, wmv, mkv, avi, mov ve webm desteklenir. En fazla 2GB",
+  "publishVideoChooseFile": "Dosya seç",
+  "publishVideoChangeFile": "Dosyayı değiştir",
+  "publishVideoChooseSource": "Video kaynağını seç",
+  "publishVideoChooseFromGallery": "Galeriden seç",
+  "publishVideoChooseFromFiles": "Dosyalardan seç",
+  "publishVideoPreparing": "Video hazırlanıyor…",
+  "publishVideoCoverTitle": "Video kapağı",
+  "publishVideoChangeCover": "Kapağı değiştir",
+  "publishVideoCoverHint": "JPG/PNG, en fazla 5MB",
+  "publishVideoDescriptionLabel": "Açıklama",
+  "publishVideoRequired": "(Zorunlu)",
+  "publishVideoDescriptionHint": "Açıklama ekle (en fazla 200 karakter)",
+  "publishVideoSaveDraft": "Taslağı kaydet",
+  "publishVideoDraftEditModeNotSupported": "Düzenleme modunda taslak kaydedilemez",
+  "publishVideoDraftNothingToSave": "Kaydedilecek bir şey yok",
+  "publishVideoNext": "İleri",
+  "publishVideoCoverCropTitle": "Video kapağını kırp",
+  "publishVideoVideoTooLarge": "Video dosyası 2GB'ı aşamaz",
+  "publishVideoVideoPickFailed": "Video seçilemedi. Tekrar deneyin",
+  "publishVideoInsufficientStorage": "Bu videoyu hazırlamak için cihazda yeterli alan yok",
+  "publishVideoPermissionDenied": "Videoya erişilemedi. Fotoğraf veya dosya izinlerini kontrol edin",
+  "publishVideoSourceUnavailable": "Bu video şu anda kullanılamıyor. Bulut dosyasını indirip tekrar deneyin",
+  "publishVideoPrepareFailed": "Video hazırlanamadı. Tekrar deneyin veya Dosyalar'dan seçin",
+  "publishVideoMetadataUnavailable": "Video bilgileri okunamadı. Başka bir dosya seçin",
+  "publishVideoCoverTooLarge": "Kapak resmi 5MB'ı aşamaz",
+  "publishVideoCoverUnsupportedFormat": "Yalnızca JPG/PNG görseller desteklenir",
+  "publishVideoCoverPickFailed": "Kapak seçilemedi. Tekrar deneyin",
+  "publishVideoUploadSessionFailed": "Yükleme oturumu oluşturulamadı",
+  "publishVideoPublishedSuccess": "Video yayınlandı",
+  "publishVideoUpdatedSuccess": "Video güncellendi",
+  "publishActorIp": "IP Çıkışı",
+  "commonConfirm": "Onayla",
+  "commonOk": "Tamam",
+  "commonNotice": "Bilgi",
+  "commonRetry": "Yeniden dene",
+  "publicProfileLikedEmpty": "Henüz beğenilen dizi yok",
+  "profileTabDramas": "Kısa Diziler",
+  "profileTabWorks": "Eserler",
+  "profileTabActorIp": "Karakter IP",
+  "@dramaUnlockConfirmLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockConfirmLabel": "{price} {currency} ile kilidi aç",
+  "dramaAllEpisodes": "{count} bölüm",
+  "dramaAllEpisodesFull": "Tüm {count} bölüm",
+  "dramaLoading": "Öne çıkan diziler yükleniyor...",
+  "dramaEmpty": "Şu anda kısa dizi yok",
+  "dramaRefresh": "Yenile",
+  "@dramaAllEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navTheater": "Tiyatro",
+  "navHome": "Ana Sayfa",
+  "theaterTabShortDrama": "Dram",
+  "theaterTabRecommend": "Senin İçin",
+  "playerWatchFullDrama": "Tüm dramayı izle",
+  "playerStoryPerHourUnit": "STORY/h",
+  "navNft": "IP Pazarı",
+  "navNftIp": "Karakter IP'si",
+  "watchFullDramaEpisodes": "Dramayı İzle · Toplam {count} Böl",
+  "@watchFullDramaEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navCreate": "Yaratım",
+  "navProfile": "Profil",
+  "navMy": "Menajer",
+  "aboutTitle": "Hakkımızda",
+  "aboutVision": "AI · Web3 · Protokol",
+  "aboutVisionDesc": "Üç itici güç, anlatıyı pasif bir deneyimden aktif bir üretime dönüştürüyor",
+  "aboutAiDesc": "Düşüncelerin, kendiliğinden hikayeye dönüşüyor",
+  "aboutWeb3Desc": "Yarattıkların, her zaman sana aittir",
+  "aboutProtocolDesc": "Hikayen sonsuza dek devam edebilir",
+  "aboutIdentityTitle": "Anlatıcı kimliğiniz",
+  "aboutIdentityDesc": "Sen, başlı başına gelişmekte olan bir hikâye evrenisin",
+  "aboutIdentityCreator": "Yaratıcı",
+  "aboutIdentityCreatorDesc": "Kendi öyküsünü aktif olarak yazmak",
+  "aboutIdentityWitness": "Tanık",
+  "aboutIdentityWitnessDesc": "Başkalarının anlatılarına katılmak ve bunları doğrulamak",
+  "aboutIdentityCoCreator": "Ortak yaratıcı",
+  "aboutIdentityCoCreatorDesc": "Anlatı yapısına girip yeniden yazmak",
+  "aboutIdentitySpreader": "Yaygınlaştırıcı",
+  "aboutIdentitySpreaderDesc": "Hak ettiğin hikayeyi anlat",
+  "aboutTokenomicsTitle": "STORY: Anlatım Hakkı Token",
+  "aboutTokenomicsDesc": "Yapay zeka dizilerinin ortak yapımcısı olarak film ve televizyon sektörü kar dağılımını yeniden şekillendirin.",
+  "aboutTokenomicsGov": "Yönetim yetkisi",
+  "aboutTokenomicsGovDesc": "Oylama ile bir sonraki AI kısa dizisinin konusunu ve gidişatını belirleyin",
+  "aboutTokenomicsRevenue": "Gelir hakkı",
+  "aboutTokenomicsRevenueDesc": "Paylaşım platformu abonelikleri, telif hakkı lisansları ve yan ürün satışlarından elde edilen gelir",
+  "aboutTokenomicsAccess": "Erişim hakkı",
+  "aboutTokenomicsAccessDesc": "En yeni bölümleri ilk izleyen siz olun, özel içeriklere erişin",
+  "aboutStakingTitle": "Rehin payı",
+  "aboutStakingDesc": "Dizi NFT · Karakter NFT · STORY → Stake ile temettü kazanın",
+  "aboutStakingDrama": "Dizi NFT Stake",
+  "aboutStakingDramaDesc": "Kısa dizi yaratıcısı · Gelir paylaşımı",
+  "aboutStakingActor": "Karakter NFT Stake",
+  "aboutStakingActorDesc": "Roller kısa filmlerde rol alır · Gelir payı alır",
+  "aboutStakingStory": "STORY Stake",
+  "aboutStakingStoryDesc": "Kısa videolara yatırım · Gelir paylaşımı",
+  "aboutHeroTitle": "Kendi Hikayeni Yarat",
+  "aboutHeroDesc": "Hayatın deneyimlenecek bir senaryo değil, senin yazdığın bir anlatıdır",
+  "loginTitle": "E-posta Girişi",
+  "loginSubtitle": "Privy e-posta OTP ile giriş yapın, Solana gömülü cüzdanı otomatik oluşturun.",
+  "loginPlaceholder": "E-posta adresinizi girin",
+  "loginEmailHintFormat": "sizin@eposta.com",
+  "loginVerificationFailed": "Doğrulama başarısız",
+  "loginNeedCodeFirst": "Lütfen önce bir doğrulama kodu isteyin",
+  "loginCreateWalletFailed": "Cüzdan oluşturulamadı",
+  "loginGetTokenFailed": "Erişim jetonu alınamadı",
+  "loginPrivyUnavailable": "Giriş hizmeti kullanılamıyor. Lütfen uygulamayı yeniden başlatıp tekrar deneyin",
+  "loginSendCodeFailed": "Doğrulama kodu gönderilemedi. Lütfen daha sonra tekrar deneyin",
+  "loginTooManyRequests": "Çok fazla istek. Lütfen bekleyip tekrar deneyin",
+  "loginVerificationSuccessful": "Doğrulama başarılı",
+  "loginSendCode": "Kod al",
+  "loginSendingCode": "Gönderiliyor...",
+  "loginCodePlaceholder": "6 haneli doğrulama kodunu girin",
+  "loginSubmit": "Giriş yap",
+  "loginSubmitting": "Giriş yapılıyor...",
+  "loginEmailRequired": "Lütfen e-posta adresinizi girin",
+  "loginCodeRequired": "Lütfen doğrulama kodunu girin",
+  "loginSuccess": "Giriş başarılı",
+  "loginErrorPrefix": "Giriş hatası: ",
+  "loginCodeSent": "Doğrulama kodu {email} adresine gönderildi",
+  "loginEmailLabel": "E-posta",
+  "loginCodeLabel": "Doğrulama Kodu",
+  "loginVerifying": "Doğrulanıyor, lütfen bekleyin...",
+  "loginVerifyAndSubmit": "Doğrula ve Giriş Yap",
+  "loginChangeEmail": "E-posta Değiştir",
+  "loginNotNow": "Şimdi Değil",
+  "loginInvalidEmail": "Lütfen geçerli bir e-posta adresi girin",
+  "@loginCodeSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "Menajer",
+  "profileNotLoggedIn": "Giriş Yapılmadı",
+  "profileClickLogin": "Giriş Yap / Kayıt Ol",
+  "profileMyWallet": "Cüzdanım",
+  "profileWallet": "Cüzdan",
+  "profileWalletCreating": "Oluşturuluyor...",
+  "walletNetworkSolana": "Solana",
+  "walletNetworkEvm": "EVM",
+  "profileEarnings": "Gelir",
+  "profileMyNft": "NFT'lerim",
+  "profileMyFavorites": "Favorilerim",
+  "profileWatchHistory": "İzleme Geçmişi",
+  "profileCreatorCatalog": "Yaratıcılar",
+  "profileIdentityAuth": "Kimlik Doğrulama",
+  "profileAccountSecurity": "Hesap Güvenliği",
+  "profileLanguage": "Dil",
+  "profileAboutUs": "Hakkımızda",
+  "profileHelpFeedback": "Yardım ve Geri Bildirim",
+  "profileLogout": "Çıkış Yap",
+  "profileLogoutConfirm": "Çıkış yapmak istediğinizden emin misiniz?",
+  "profileLogoutSuccess": "Başarıyla çıkış yapıldı",
+  "mainPressBackAgainToExit": "Çıkmak için geri düğmesine tekrar basın",
+  "languageSelectTitle": "Dil Seçin",
+  "languageChinese": "Basitleştirilmiş Çince",
+  "languageEnglish": "İngilizce",
+  "searchTitle": "Ara",
+  "searchHint": "Dizi, eser, rol, kullanıcı ara...",
+  "searchEmpty": "İlgili içerik yok",
+  "searchPlaceholder": "Dizi, eser, rol, kullanıcı ara...",
+  "theaterSearchPlaceholder": "Dizi, eser, rol, kullanıcı ara...",
+  "searchHistory": "Son aramalar",
+  "searchClear": "Geçmişi temizle",
+  "searchAction": "Ara",
+  "searchHistoryCleared": "Arama geçmişi temizlendi",
+  "searchKeywordTooShort": "En az 2 karakter girin",
+  "searchTabDramas": "Diziler",
+  "searchTabWorks": "Eserler",
+  "searchTabActors": "Karakter IP",
+  "searchTabUsers": "Kullanıcılar",
+  "searchEpisodeNo": "Bölüm {episodeNo}",
+  "@searchEpisodeNo": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "searchMinutesAgo": "{count} dk önce",
+  "@searchMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchHoursAgo": "{count} sa önce",
+  "@searchHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDaysAgo": "{count} gün önce",
+  "@searchDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramasCount": "Dramalar ({count})",
+  "@searchDramasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchActorsCount": "Roller ({count})",
+  "@searchActorsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramaEpisodesWithCast": "{count} bölüm | Kadro: {actors}",
+  "@searchDramaEpisodesWithCast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "actors": {
+        "type": "String"
+      }
+    }
+  },
+  "nftTitle": "NFT Rol Meydanı",
+  "nftLoading": "Karakter IP'leri yükleniyor...",
+  "nftEmpty": "Karakter IP'si yok",
+  "nftRefresh": "Yenile",
+  "nftIdPrefix": "ID: #{id}",
+  "@nftIdPrefix": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "nftRarity": "Nadirlik",
+  "nftStatusStaked": "Rehinli",
+  "nftStatusIdle": "Boşta",
+  "nftPrice": "Fiyat",
+  "dramaDetailTitle": "Drama Detayları",
+  "dramaDetailLoading": "Yükleniyor…",
+  "dramaDetailRetry": "Tekrar dene",
+  "dramaDetailEpisodeList": "Dizi Listesi",
+  "dramaDetailSynopsis": "Özet",
+  "dramaDetailExpand": "Genişlet",
+  "dramaDetailCollapse": "Kapat",
+  "dramaDetailTabIntro": "Tanıtım",
+  "dramaDetailTabEpisodes": "Seçkiler",
+  "dramaDetailTabComments": "Yorumlar",
+  "dramaDetailTabRoles": "Karakter IP’si",
+  "dramaDetailSignMoreCharacterIps": "Daha fazla karakter IP'si imzala",
+  "dramaDetailCharactersEmpty": "Henüz bağlı karakter IP'si yok",
+  "dramaDetailRoleSalary": "Ücret {amount}",
+  "@dramaDetailRoleSalary": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleSalaryPerHour": "Ücret {amount} STORY/saat",
+  "@dramaDetailRoleSalaryPerHour": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleUnbound": "Bağlı değil",
+  "dramaCastActorsTitle": "Oyuncu karakter IP'leri",
+  "dramaDetailCompletion": "{count} tam izlenme",
+  "@dramaDetailCompletion": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailHeat": "{count} popülerlik",
+  "@dramaDetailHeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailTotalEpisodes": "{count} Bölüm",
+  "@dramaDetailTotalEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingTitle": "Eseri oy ver",
+  "dramaDetailWantToRate": "Puan ver",
+  "dramaDetailNotRated": "Puan yok",
+  "dramaDetailCompletionLabel": "Tam izlenme",
+  "dramaDetailHeatLabel": "Popülerlik",
+  "dramaDetailSynopsisLead": "Özet: ",
+  "dramaDetailRatingEmpty": "Değerlendirmeniz: --",
+  "dramaDetailRatingValue": "Değerlendirmeniz: {rating}",
+  "@dramaDetailRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingConfirm": "Değerlendirmeyi Onayla",
+  "dramaDetailRatingSuccess": "Değerlendirme başarılı: {rating} yıldız!",
+  "@dramaDetailRatingSuccess": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailSelectEpisodeHint": "Oynatmayı başlatmak için bir bölüm seçin",
+  "dramaFavorited": "Favorilere eklendi",
+  "dramaUnfavorited": "Favorilerden kaldırıldı",
+  "dramaLiked": "Beğenildi",
+  "dramaUnliked": "Beğeni kaldırıldı",
+  "playerFollowed": "Takip edildi",
+  "playerUnfollowed": "Takipten çıkıldı",
+  "errorNetwork": "Ağ hatası, lütfen daha sonra tekrar deneyin",
+  "errorTimeout": "İstek zaman aşımına uğradı, lütfen tekrar deneyin",
+  "errorParse": "Yanıt verileri ayrıştırılamadı",
+  "errorUnauthorized": "Lütfen önce giriş yapın",
+  "authSessionExpired": "Oturum süresi doldu. Lütfen tekrar giriş yapın",
+  "errorNotFound": "Kaynak bulunamadı",
+  "errorOperationFailed": "İşlem başarısız",
+  "uploadErrorNetwork": "The network is unstable. Check your connection and try again",
+  "uploadErrorTimeout": "Upload timed out. Keep the app open and try again",
+  "uploadErrorSessionExpired": "The upload credentials expired. Upload the file again",
+  "uploadErrorSessionUnavailable": "An upload task could not be created. Try again",
+  "uploadErrorFileMissing": "The local video was moved or removed. Select it again",
+  "uploadErrorUnauthorized": "Your login or upload permission expired. Sign in and try again",
+  "uploadErrorRateLimited": "Too many upload requests. Try again shortly",
+  "uploadErrorRejected": "The upload service rejected this file. Check it and try again",
+  "uploadErrorServer": "The upload service is temporarily unavailable. Try again later",
+  "uploadErrorInvalidResponse": "The upload service returned an invalid response. Try again later",
+  "uploadErrorAccountChanged": "The signed-in account changed. Upload again with the current account",
+  "uploadErrorUnknown": "The video could not be uploaded. Try again",
+  "errorInvalidRoleId": "Geçersiz karakter ID'si. Lütfen sayfayı yenileyin ve tekrar deneyin.",
+  "errorInvalidRoleNftAssetId": "Geçersiz karakter NFT assetId'si. Lütfen sayfayı yenileyin ve tekrar deneyin.",
+  "errorInvalidRoleCollectionAssetId": "Geçersiz karakter koleksiyonu assetId'si. Lütfen sayfayı yenileyin ve tekrar deneyin.",
+  "roleNftLabelUnknown": "RoleNFT#Unknown",
+  "roleNftLabel": "RoleNFT#{prefix}",
+  "@roleNftLabel": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBusiness": "İşlem başarısız: {message}",
+  "@errorBusiness": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorUnknown": "Bilinmeyen bir hata oluştu: {message}",
+  "@errorUnknown": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotSupported": "Desteklenmeyen işlem: {message}",
+  "@errorNotSupported": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "Seçkiler",
+  "playerPlayFailed": "Oynatma başarısız",
+  "playerDramaUnavailable": "Bu dizi oynatılamıyor",
+  "playerContentUnavailable": "Bu içerik yayınlanmamış veya artık kullanılamıyor",
+  "creatorWorkNotFound": "Eser mevcut değil ve görüntülenemiyor",
+  "creatorWorkNotPublished": "Eser yayınlanmadı ve henüz görüntülenemiyor",
+  "creatorOfflineReasonUnavailable": "Yayından kaldırma nedeni yok",
+  "playerTapRetry": "Dokunarak yeniden deneyin",
+  "playerEpisodeTotal": "Toplam {count} bölüm",
+  "@playerEpisodeTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeLabel": "Bölüm {episodeNo}",
+  "@playerEpisodeLabel": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "playerLike": "Beğen",
+  "playerComment": "Yorumlar",
+  "playerFavorite": "Favori",
+  "playerShare": "Paylaş",
+  "playerShareDramaEpisode": "{title} | Bölüm {episodeNo}: {description} {url} . StoryFun'da güzel AI kısa diziler izle.",
+  "playerShareDramaEpisodeNoDesc": "{title} | Bölüm {episodeNo} {url} . StoryFun'da güzel AI kısa diziler izle.",
+  "playerShareShortVideo": "{description} {url}. StoryFun'da güzel kısa videolar izle.",
+  "playerShareShortVideoNoDesc": "{url}. StoryFun'da güzel kısa videolar izle.",
+  "playerShareDrama": "{title} {url} . StoryFun'da güzel AI kısa diziler izle.",
+  "playerShareDramaNoTitle": "{url} . StoryFun'da güzel AI kısa diziler izle.",
+  "playerRatingLabel": "{rating} puan",
+  "@playerRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOrSignUp": "Giriş Yap veya Kayıt Ol",
+  "loginEnterCode": "Onay kodunu girin",
+  "loginCheckEmailDesc": "Lütfen {email} adresinden privy.io e-postasını kontrol edin ve kodu aşağıya girin.",
+  "@loginCheckEmailDesc": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "loginResendCountdown": "Kodu {seconds}s içinde yeniden gönder",
+  "@loginResendCountdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResendBtn": "Yeniden Gönder",
+  "loginProtectedByPrivy": "Privy tarafından korunuyor",
+  "loginAgreeLead": "Şunları kabul ediyorum:",
+  "loginAgreeAnd": "ve",
+  "loginAgreeConfirmLead": "Onay’a dokunmak, şunları kabul ettiğiniz anlamına gelir:",
+  "loginAgreeRequired": "Lütfen önce Hizmet Şartları ve Gizlilik Politikasını kabul edin",
+  "deletingAccountPending": "Hesap silinmeyi bekliyor",
+  "deletingAccountCancelDeletion": "Hesap silmeyi iptal et",
+  "deletingAccountGoBack": "Geri",
+  "drawerEmailAccount": "E-posta hesabı",
+  "drawerClickToLogin": "Dokunarak giriş yapın",
+  "drawerBuyStory": "STORY İşlem",
+  "drawerDeposit": "Para yükleme",
+  "drawerWithdraw": "Para çekme",
+  "drawerNotifications": "Bildirimler",
+  "drawerNoNotifications": "Bildirim yok",
+  "notificationTabSystem": "Sistem",
+  "notificationTabInteraction": "Etkinlik",
+  "notificationTagIpSign": "Karakter IP sözleşmesi",
+  "notificationTagRoleManagement": "Karakter yönetimi",
+  "notificationTagShowRevenue": "Performans kazancı",
+  "notificationTagLike": "Beğeni",
+  "notificationTagFavorite": "Favori",
+  "notificationSignedActor": "@{user}, {actor} karakter IP'siyle sözleşme yaptı",
+  "notificationShareEarned": "{amount} pay kazandınız",
+  "notificationStaminaLow": "'{actor} dayanıklılığını tüketti. Yenileyin veya dinlendirin'",
+  "notificationCurrentStamina": "Mevcut dayanıklılık {value}",
+  "notificationShowEnded": "{range} performansı sona erdi",
+  "notificationIncomeEarned": "{amount} kazandınız",
+  "notificationActionClaim": "Al",
+  "notificationActionRefill": "Yenile",
+  "notificationInteractionLikedVideo": "Videonuzu beğendi",
+  "notificationInteractionLikedDrama": "“{title}” kısa dizinizi beğendi",
+  "notificationInteractionFavoritedVideo": "Videonuzu kaydetti",
+  "notificationInteractionFavoritedDrama": "“{title}” kısa dizinizi kaydetti",
+  "notificationInteractionCommented": "Yorum yaptı: {content}",
+  "notificationInteractionFollowedYou": "Sizi takip etti",
+  "notificationActionMutualFollow": "Karşılıklı",
+  "notificationActionFollow": "Takip et",
+  "notificationRealtimeReceived": "Yeni bir bildirim aldınız",
+  "drawerEpisodeProgress": "{current}/{total} bölüm",
+  "drawerNotificationSignedActor": "{actor}, {target} karakter IP'siyle sözleşme yaptı",
+  "drawerNotificationLikedVideo": "{actor} videonuzu beğendi",
+  "drawerNotificationFavoritedDrama": "{actor} kısa diziniz {target} öğesini kaydetti",
+  "depositTitle": "Para yükleme",
+  "insufficientBalanceTitle": "Bakiye yetersiz",
+  "insufficientBalanceDetail": "{currency} bakiyesi yetersiz, {amount} {currency} eksik",
+  "@insufficientBalanceDetail": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientBalancePrompt": "Yükleme yapılsın mı?",
+  "insufficientBalanceRecharge": "Yükleme yap",
+  "depositDesc": "Lütfen bir borsadan veya başka bir cüzdandan aşağıdaki adrese transfer edin. Yatırım onaylandıktan sonra bakiye otomatik olarak güncellenir.",
+  "depositToken": "Token",
+  "depositNetwork": "Ağ",
+  "depositNetworkNote": "Lütfen transfer ağını doğrulayın. Yanlış ağ kullanımı varlık kaybına yol açabilir.",
+  "depositAddress": "Yükleme adresi",
+  "depositAddressCopied": "Adres panoya kopyalandı",
+  "depositSend": "Gönder",
+  "depositReceive": "Al",
+  "depositConvertNote": "Tokenları bu adrese gönderin, Story.fun hesabınızda otomatik olarak USDC'ye dönüştürülecektir.",
+  "depositMinNote": "Minimum yatırma: {minAmount} {token}",
+  "@depositMinNote": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "depositExchangeRateNote": "Güncel döviz kuru {rate}. Hesaba geçen tutar = yatırma × {rate}",
+  "@depositExchangeRateNote": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "depositWarning": "Yalnızca seçilen ağdaki seçilen tokenı yatırın. Diğer varlıklar kurtarılamaz.\nLütfen aktarım ağını doğrulayın; ağ hataları varlık kaybına neden olabilir.",
+  "withdrawTitle": "Para çekme",
+  "withdrawBalance": "Çekilebilir bakiye",
+  "withdrawToken": "Token",
+  "withdrawAddress": "Para çekme adresi",
+  "withdrawAddressHint": "Lütfen Solana alıcı adresini yapıştırın veya girin",
+  "withdrawAddressHintEvm": "Lütfen bir EVM alıcı adresi girin veya yapıştırın",
+  "withdrawInvalidEvmAddress": "Lütfen geçerli bir EVM adresi girin",
+  "withdrawInvalidSolanaAddress": "Lütfen geçerli bir Solana adresi girin",
+  "withdrawEvmGasNote": "EVM çekimleri için gas ücreti olarak yeterli native token gerekir. Transfer doğrudan zincir üzerinde gönderilir.",
+  "withdrawEvmFailed": "EVM çekimi başarısız oldu. Lütfen daha sonra tekrar deneyin.",
+  "withdrawAddressNote": "Adresin doğru olduğunu lütfen kontrol edin; para transferi yapıldıktan sonra geri alınamaz.",
+  "withdrawNetwork": "Ağ",
+  "withdrawAmount": "Tutar",
+  "withdrawAmountHint": "Çekim tutarını girin",
+  "withdrawMax": "Maks",
+  "withdrawAvailableBalance": "Bakiye {balance} {token}",
+  "@withdrawAvailableBalance": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinWarning": "Minimum çekim: {minAmount} {token}\nLütfen adresi ve ağı dikkatlice kontrol edin; işlemler geri alınamaz.",
+  "@withdrawMinWarning": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawConfirm": "Para çekme işlemini onayla",
+  "withdrawAll": "Tümü",
+  "withdrawMinAmountError": "Minimum çekim tutarı {minAmt} {token}",
+  "@withdrawMinAmountError": {
+    "placeholders": {
+      "minAmt": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawExceedBalanceError": "Çekim tutarı mevcut bakiyeyi aşamaz",
+  "withdrawSameAsWalletError": "Çekim adresi mevcut cüzdan adresinizle aynı olamaz",
+  "withdrawConfirmTitle": "Para çekme işlemini onayla",
+  "withdrawConfirmMessage": "Aşağıdaki Solana adresine {amount} {token} çekmek istediğinizden emin misiniz?\n\n{address}",
+  "@withdrawConfirmMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSuccessToast": "Çekim talebi başarıyla gönderildi!",
+  "withdrawFailedToast": "Çekim başarısız. Lütfen tekrar deneyin.",
+  "withdrawErrorToast": "Çekim sırasında bir hata oluştu: {error}",
+  "@withdrawErrorToast": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawAddressHintWithToken": "{token}'i alacak cüzdan adresini girin",
+  "@withdrawAddressHintWithToken": {
+    "placeholders": {
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawFee": "İşlem ücreti",
+  "withdrawFeeValue": "{fee} {token}",
+  "@withdrawFeeValue": {
+    "placeholders": {
+      "fee": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinAmount": "Minimum çekim: {minAmount} {token}",
+  "@withdrawMinAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMaxAmount": "Maksimum çekim tutarı: {maxAmount} {token}",
+  "@withdrawMaxAmount": {
+    "placeholders": {
+      "maxAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSponsorSigning": "İşlem imzalanıyor...",
+  "withdrawSponsorSubmitting": "Zincir üzeri işlem gönderiliyor...",
+  "withdrawSponsorSuccess": "Çekim başarıyla gönderildi!",
+  "withdrawSponsorFailed": "İşlem gönderimi başarısız. Lütfen tekrar deneyin.",
+  "withdrawOrderProcessing": "Sipariş işleniyor",
+  "withdrawOrderSuccess": "Sipariş tamamlandı",
+  "withdrawOrderFailed": "Sipariş başarısız",
+  "withdrawOrderStatus": "Sipariş durumu: {status}",
+  "@withdrawOrderStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "qrScannerTitle": "QR Kodu Tara",
+  "qrScannerHint": "Taramak için QR kodunu çerçeveye hizalayın",
+  "drawerProfile": "Kişisel Sayfa",
+  "drawerCreatorManagement": "İçerik Yönetimi",
+  "drawerInvite": "Davet",
+  "inviteTitle": "Arkadaşlarını Davet Et",
+  "inviteTotalPeople": "Toplam davet edilen kişi sayısı",
+  "inviteTotalRewards": "Toplam Davet Ödülü",
+  "inviteWeeklyPool": "Bu Haftanın Davet Ödül havuzu",
+  "inviteShareSection": "Özel davet bağlantını veya davet kodunu paylaş",
+  "inviteCodeLabel": "Davet Kodu",
+  "inviteCodeCopiedSuccess": "Davet kodu panoya kopyalandı!",
+  "inviteInvitedLabel": "Davet edilen",
+  "inviteRewardLabel": "Ödüller",
+  "inviteBindCodePlaceholder": "Davet kodunu girin",
+  "inviteBindConfirm": "Onayla",
+  "inviteBindSuccess": "Davet kodu başarıyla bağlandı",
+  "inviteBindCodeInvalid": "Davet kodu geçersiz",
+  "inviteBindCodeAlreadyBound": "Bu hesap zaten bir davet koduna bağlı",
+  "inviteBindCode": "Davet kodunu bağla",
+  "inviteBindCodePromptHint": "Daha sonra Davet sayfasından bağlayabilirsiniz",
+  "inviteFaqPoolTitle": "Haftalık davet ödül havuzu nedir?",
+  "inviteFaqPoolBody": "Haftalık davet ödül havuzu, davet etkinliği için oluşturulan bağımsız bir ödül havuzudur. Mevcut haftadaki davet eylemlerini ödüllendirir ve davet edilenlerin kazançlarından kesilmez. Havuzun haftalık bir ödeme üst sınırı vardır; sınıra ulaşıldığında ödemeler pay oranına göre orantılı olarak azaltılır. İstatistikler her Pazartesi sıfırlanır.",
+  "inviteFaqSettlementTitle": "Davet ödülleri ne zaman ödenir?",
+  "inviteFaqSettlementBody": "Davet ödülleri, acente sayfasındaki maaşlarla aynı döngüde toplu olarak ödenir: istatistikler her Pazartesi 00:00 (UTC) itibarıyla kapanır. Ödeme sonrası Ödüller sayfasından talep edebilirsiniz.",
+  "inviteViewHistory": "Kazanç geçmişini görüntüle",
+  "inviteLinkSection": "Davet bağlantısı",
+  "inviteLinkSubtitle": "Arkadaşların bağlantın üzerinden kayıt olur, karakter imzalayıp gönderirse ekstra STORY ödülü kazanırsın.",
+  "inviteCopyButton": "Bağlantıyı kopyala",
+  "inviteCopiedSuccess": "Davet linki panoya kopyalandı!",
+  "inviteRulesSection": "Davet Kuralları",
+  "inviteRuleSourceTitle": "Ödül Kaynağı",
+  "inviteRuleSourceSubtitle": "Bağımsız Davet Alt Havuzu",
+  "inviteRuleSourceBody": "Davet ödülleri, NFT madencilik havuzundaki bağımsız davet alt havuzundan (toplam madencilik havuzunun %25’ini oluşturur) sağlanır ve davet edilen kişinin kazançlarından kesilmez. Davet alt havuzunun bağımsız bir haftalık üst sınırı vardır; bu sınıra ulaşıldığında, pay oranına göre orantılı olarak azaltılır.",
+  "inviteRuleBaseTitle": "Hesaplama tabanı",
+  "inviteRuleBaseSubtitle": "Gerçekte yaşanan STORY",
+  "inviteRuleBaseBody": "Ödül, davet edilen kişinin bu dönemde fiilen elde ettiği STORY miktarına göre hesaplanır; nominal üretime göre hesaplanmaz. Davet edilen kişinin kendi kazandığı STORY miktarından bu durum etkilenmez; davet ödülü ek olarak verilir.",
+  "inviteRuleLevelTitle": "Ödül kapsamı",
+  "inviteRuleLevelSubtitle": "Yalnızca doğrudan davetler",
+  "inviteRuleLevelBody": "Davet ödülleri yalnızca doğrudan davet ettiğiniz kullanıcılar için ödenir. Çok seviyeli veya dolaylı komisyon yoktur.",
+  "inviteRuleConditionTitle": "Geçerlilik Koşulları",
+  "inviteRuleConditionSubtitle": "Sadece etkin üye sayısından ödül kazanılabilir",
+  "inviteRuleConditionBody": "Davet edilen kişinin gerçekten STORY madenciliği yapmış olması veya {currency} ile ödeme yapmış olması gerekir ki, bu durumda geçerli bir alt üye olarak kabul edilir. Geçersiz numaralarla yapılan kayıtlar ödül kazandırmaz. Davet ilişkisi bir kez kurulduktan sonra değiştirilemez.",
+  "@inviteRuleConditionBody": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerTxHistory": "İşlem geçmişi",
+  "drawerFinanceDashboard": "Finans Paneli",
+  "financeDashboardComingSoon": "Finans Paneli yakında geliyor. Bizi izleyin.",
+  "financeDashboardLedgerBizSigningFee": "Sözleşme ücreti",
+  "financeDashboardLedgerBizManualCredit": "Manuel bakiye ekleme",
+  "financeDashboardLedgerBizManualDebit": "Manuel bakiye düşme",
+  "financeDashboardLedgerBizStaminaPurchase": "Dayanıklılık satın alma ücreti",
+  "financeDashboardLedgerBizSynthesisUpgrade": "Birleştirme yükseltme ücreti",
+  "financeDashboardLedgerBizTransactionFee": "İşlem ücreti",
+  "drawerWhitepaper": "Beyaz Kitap",
+  "drawerSettings": "Ayarlar",
+  "commonClose": "Kapat",
+  "commonLoadFailed": "Yükleme başarısız",
+  "commonNone": "Yok",
+  "commonUntitled": "Başlıksız",
+  "actorDetailTitle": "Oyuncu Ana Sayfası",
+  "actorDetailCastDramas": "Kısa oyunda rol almak",
+  "actorDetailTabCast": "Rol",
+  "actorDetailTabInfo": "Bilgi",
+  "actorDetailNoCastRecords": "Oyunculuk kaydı yok",
+  "actorBondingCurve": "Fiyat birleşim eğrisi",
+  "actorContractAddress": "Sözleşme adresi",
+  "actorCurrentPosition": "Şu anki konum",
+  "actorCurrentPrice": "Şu anki fiyat {price} {currency}",
+  "@actorCurrentPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorFloorPrice": "En düşük fiyat",
+  "actorGoTrade": "İşlem Yap",
+  "profileWalletTrade": "İşlem Yap",
+  "actorHeatCoefficient": "Popülerlik katsayısı",
+  "actorIpPower": "IP Ücreti",
+  "actorPayMax": "Maks",
+  "actorPayUpgradeTitle": "Ücret artış kuralları",
+  "actorPayUpgradeReachHint": "Bu IP'nin yer aldığı kısa dizilerin mevcut tam izlenme sayısı rolü şu seviyeye yükseltebilir",
+  "actorPayUpgradeCompletions": "{count} tam izlenme",
+  "@actorPayUpgradeCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayUpgradeMultiplier": "Ücret ×{value}",
+  "@actorPayUpgradeMultiplier": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayTitle": "{name} · Ücret",
+  "@actorPayTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorLv1PayHint": "Sözleşme yaparak Lv.1 karakter kazan",
+  "actorLv1PayFormula": "Lv.1 ücret = Fiyat katsayısı × Popülerlik katsayısı",
+  "actorLv1PayEquals": "={value}",
+  "@actorLv1PayEquals": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerTitle": "{name} · IP Ücreti",
+  "@actorIpPowerTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerFormula": "IP Ücreti = Fiyat katsayısı × Popülerlik katsayısı × Trust1",
+  "actorPriceCoefficient": "Fiyat katsayısı",
+  "actorPriceCoefficientValue": "Fiyat katsayısı {value}",
+  "@actorPriceCoefficientValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientHelpA11y": "Fiyat katsayısı açıklamasını görüntüle",
+  "actorPriceCoefficientDialogFormulaLe100": "Katsayı = P0 ÷ 10",
+  "actorPriceCoefficientDialogDescLe100": "Doğrusal artış",
+  "actorPriceCoefficientDialogTitleGt100": "P0 > 10 {currency}",
+  "@actorPriceCoefficientDialogTitleGt100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientDialogFormulaGt100": "Katsayı = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]",
+  "actorPriceCoefficientDialogDescGt100": "Artış yavaşlar, üst sınır 1.6",
+  "actorPriceCoefficientDialogTitleLe100": "P0 ≤ 10 {currency}",
+  "@actorPriceCoefficientDialogTitleLe100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientFactorDesc": "P0 ≤ 10 {currency1} katsayı = P0/10 (doğrusal artış)\nP0 > 10 {currency2} → katsayı = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6] (asimptotik üst sınır 1.6)",
+  "@actorPriceCoefficientFactorDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "actorHeatCoefficientFactorDesc": "Karakter IP'sinin son 30 günlük popülerlik çarpanı; kısa dizilerin tam izlenmesi, beğeniler, favorilere ekleme gibi etkileşimlere bağlıdır",
+  "actorTrustFactorDesc": "Platform risk kontrol katsayısı, varsayılan değer 1.0",
+  "actorStatCompletion": "Tam izlenme",
+  "actorIdCopied": "Numara kopyalandı",
+  "actorInitialPrice": "Başlangıç Fiyatı: {price} {currency}",
+  "@actorInitialPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpLabel": "Karakter IP {label}",
+  "@actorIpLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIssueInfo": "Yayınlama bilgileri",
+  "actorIssuer": "Yayınlayan {name}",
+  "@actorIssuer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorMintedCount": "Basılmış {minted}/{maxSupply}",
+  "@actorMintedCount": {
+    "placeholders": {
+      "minted": {
+        "type": "int"
+      },
+      "maxSupply": {
+        "type": "int"
+      }
+    }
+  },
+  "actorPriceCurve": "Fiyat eğrisi",
+  "actorSign": "Sözleşme",
+  "actorConfirmSign": "Sözleşmeyi onayla",
+  "actorSignPriceLabel": "Sözleşme fiyatı",
+  "actorSignPriceDescription": "İmza sayısı arttıkça sözleşme fiyatı otomatik olarak yükselir; erken imza yapanlar daha avantajlı fiyatlardan yararlanır.",
+  "actorPriceAxisLabel": "Fiyat ({currency})",
+  "@actorPriceAxisLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignPriceFormula": "Formül: Fiyat = Başlangıç fiyatı × 5^(İmzalanan sayı ÷ Toplam arz)",
+  "actorSignedCountAxisLabel": "İmzalanan sayı",
+  "actorSignRemainingCount": "{count} adet kaldı",
+  "actorSignSoldOut": "Tükendi",
+  "@actorSignRemainingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignSupplySummary": "Toplam {total} · Kalan {remaining}",
+  "@actorSignSupplySummary": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPricingFixed": "Sabit fiyat",
+  "actorPricingCurve": "Eğri fiyatı",
+  "actorPriceCurveDisclaimer": "Başlangıç fiyatı, platformun değerlemesini yansıtmaz; grafikteki artış, ikincil piyasadaki fiyat artışını ifade etmez; platform herhangi bir getiri taahhüdünde bulunmaz.",
+  "actorPriceStatInitialPrice": "Başlangıç fiyatı",
+  "actorPriceStatCurrentPrice": "Güncel fiyat",
+  "actorPriceStatTailPrice": "Kapanış fiyatı",
+  "actorPriceStatTotalSupply": "Toplam arz",
+  "actorPriceStatSigned": "İmzalandı",
+  "actorPriceStatRemaining": "Kalan",
+  "actorPricingType": "Fiyatlandırma türü",
+  "contentBadgeOfficialIssue": "Resmî yayınlama",
+  "contentBadgeCommunityIssue": "Topluluk yayınlaması",
+  "contentBadgePartnerIssue": "Ortak yayınlama",
+  "contentBadgeVerifiedIssue": "Doğrulanmış içerik üreticileri yayınlar",
+  "contentBadgeOfficialDrama": "Resmi kısa dizi",
+  "contentBadgeCommunityDrama": "Mahalle Kısa Tiyatro Oyunu",
+  "contentBadgePartnerDrama": "Ortaklarla Hazırlanan Kısa Diziler",
+  "contentBadgeVerifiedDrama": "Onaylı Yaratıcıların Kısa Dizileri",
+  "actorIpCopied": "Kopyalama işlemi başarıyla tamamlandı",
+  "actorRiskIp": "Riskli IP",
+  "actorRiskIpDescription": "Bu Karakter IP'sinin güvenilirlik katsayısında anormallik var; madencilik ağırlığı etkilenecektir.",
+  "actorIpVault": "Karakter IP Kasası",
+  "actorIpVaultDescription": "İmza gelirlerinin %30'u, IP ekosisteminin uzun vadeli gelişimini desteklemek amacıyla otomatik olarak Karakter IP Kasası'na aktarılır. İkincil piyasa telif gelirlerinin de %30'u aynı kasaya aktarılır ve böylece sürekli bir fon havuzu oluşturulur. V1 sürümündeki kasa yalnızca veri gösterimi için kullanılır; şimdilik dağıtım yapılmamaktadır.",
+  "actorIpVaultSignIncomePrefix": "İmza geliri · Birikim ",
+  "actorIpVaultSecondaryRoyaltyPrefix": "İkinci Kademe Telif Ücreti · Birikim ",
+  "actorFixedPriceDialogDesc": "Bu Karakter IP'si sabit fiyat modelini kullanır; her karakter tek tip bir fiyat üzerinden sözleşme imzalar ve satışlardaki değişiklikler fiyatı etkilemez.",
+  "actorCurvePriceDialogDesc": "Fiyat, birleşik eğri formülüne göre imzalanan sayıyla birlikte otomatik olarak artar; erken imzalayanlar daha avantajlıdır",
+  "actorFixedPriceNote1": "Yayınlayan sabit bir fiyat belirledikten sonra, tüm imzalar bu fiyat üzerinden hesaplanır.",
+  "actorFixedPriceNote2": "İmzalanan karakter sayısı artsa bile fiyat yükselmez.",
+  "actorFixedPriceNote3": "Maliyetlerini sabit tutmak isteyen alıcılar için uygundur",
+  "actorIssueFixedPriceDesc": "Bu Karakter IP'si sabit fiyat modelini kullanır; tüm imzalar sabit fiyat üzerinden hesaplanır ve satışlardaki değişikliklerden etkilenmez.",
+  "actorSignSlippageNote": "%1 kayma koruması etkinleştirildi; fiyat bu sınırı aştığında işlem iptal edilecektir",
+  "actorSignSuccessTitle": "Sözleşme tamamlandı!",
+  "actorSignSuccessMessage": "Rol «{name}» başarıyla imzalandı",
+  "@actorSignSuccessMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignSuccessNftId": "NFT numarası: {nftId}",
+  "@actorSignSuccessNftId": {
+    "placeholders": {
+      "nftId": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignChainConfigMissing": "Zincir üzeri yapılandırma eksik. Lütfen daha sonra tekrar deneyin.",
+  "actorSignPriceSoldOut": "Sözleşme fiyatı · Tükendi",
+  "actorSignPriceRemaining": "Sözleşme fiyatı · Kalan {count}",
+  "@actorSignPriceRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignedCount": "Sözleşme imzalanmış {count}",
+  "@actorSignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorStatusLabelOffline": "Çevrimdışı",
+  "actorStatusLabelOnline": "Çevrimiçi",
+  "actorStatusLabelPending": "İnceleniyor",
+  "actorStatusLabelRejected": "Reddedildi",
+  "actorTotalSupply": "Toplam arz",
+  "commentTagAuthor": "Yazar",
+  "commentTagMe": "Ben",
+  "commentTagFriend": "Arkadaşın",
+  "commentTagFan": "Takipçin",
+  "commentTagFirst": "İlk yorum",
+  "commentTagAuthorLiked": "Yazar beğendi",
+  "commentsAnonymous": "Anonim kullanıcı",
+  "commentsEmpty": "Henüz yorum yok",
+  "commentsHint": "Harika bir yorum gönder...",
+  "commentsInvalidContent": "Geçerli bir içerik girin",
+  "commentsReply": "Yanıtla",
+  "commentsViewReplies": "{count} yanıtı görüntüle",
+  "@commentsViewReplies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsCollapseReplies": "Daralt",
+  "commentsViewMoreReplies": "Daha fazla göster",
+  "commentsReplyHint": "{nickname} kişisine yanıt ver",
+  "@commentsReplyHint": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsDeleteCommentTitle": "Bu yorum silinsin mi?",
+  "commentsDeleteReplyTitle": "Bu yanıt silinsin mi?",
+  "commentsReplyCommentNotExists": "Yorum mevcut değil",
+  "commentsBlockedByMe": "Bu kullanıcı kara listenizde, yorum yapamazsınız",
+  "commentsBlockedByTarget": "Bu kullanıcının ayarları nedeniyle yorum yapamazsınız",
+  "commentsTabComments": "Yorumlar",
+  "commentsTabAllComments": "Tüm yorumlar",
+  "commentsTabDramas": "Kısa dizi",
+  "commentsTabActors": "Karakter",
+  "timeJustNow": "az önce",
+  "timeYesterday": "dün",
+  "timeDayBeforeYesterday": "evvelsi gün",
+  "timeMinutesAgo": "{count} dk önce",
+  "timeHoursAgo": "{count} sa önce",
+  "timeDaysAgo": "{count} gün önce",
+  "commentsTitle": "Yorumlar ({count})",
+  "@commentsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createActorTitle": "Rol Oluştur",
+  "createActorHeroTitle": "Karakter NFT'si Bas",
+  "createActorHeroSubtitle": "Özel AI roller oluşturun, kâr paylaşımını bağlayarak drama katılımı",
+  "createActorNameLabel": "Rol Adı",
+  "createActorNameHint": "Rol adını girin",
+  "createActorBioLabel": "Rol Biyografisi",
+  "createActorBioHint": "Karakterin geçmişini açıklayın",
+  "createActorGenderLabel": "Cinsiyet",
+  "createActorGenderMale": "Erkek",
+  "createActorGenderFemale": "Kadın",
+  "createActorMintParams": "NFT Basma Parametreleri",
+  "createActorTokenStandard": "Token standardı",
+  "createActorChain": "Zincir",
+  "createActorMinHolding": "Minimum Tutma",
+  "createActorMintNft": "NFT Bas",
+  "createActorIpTitle": "Karakter IP yayınla",
+  "createActorIpSubtitle": "Bir karakter IP'si yayınlandıktan sonra bu IP kapsamında karakterler imzalanabilir ve görevlendirilerek gelir elde edilebilir.",
+  "createActorSelectMaterial": "Rol görsellerini seçin",
+  "createActorDreamOsBadge": "DreamOS'a git",
+  "createActorSelectMaterialDesc": "DreamOS projesine gir → Karakter oluştur → IP yayınlamak için Story.fun'a gir",
+  "createActorSelectButton": "Rol Seç",
+  "createActorNameLabelNew": "Rolün adı",
+  "createActorNamePlaceholder": "Rolün adını girin",
+  "createActorBioLabelNew": "Tanıtım",
+  "createActorBioPlaceholder": "Lütfen karakterin IP tanıtımını girin",
+  "createActorParamsTitle": "Karakter IP yayınlama parametreleri",
+  "createActorParamsSubtitle": "Karakter IP yayınlama parametrelerini ayarlayın. Yayınlandıktan sonra değiştirilemez.",
+  "createActorTotalSupplyLabel": "Toplam karakter arzı",
+  "createActorTotalSupplyDesc": "Toplam arz aralığı: 100 - 5.000.",
+  "createActorTotalSupplyPlaceholder": "100 - 5,000",
+  "createActorPricingFixed": "Sabit fiyat",
+  "createActorPricingCurve": "Eğri fiyatı",
+  "createActorFixedPriceLabel": "Sabit fiyat ({currency})",
+  "@createActorFixedPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorInitialPriceLabel": "Başlangıç fiyatı ({currency})",
+  "@createActorInitialPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorFixedPricePlaceholder": "10 - 1,000",
+  "createActorFixedPriceDesc": "Her bir karakter sabit bir fiyattan satın alınır; bu fiyat satış rakamlarına göre değişmez.",
+  "createActorInitialPricePlaceholder": "10 - 1,000",
+  "createActorInitialPriceDesc": "Başlangıç fiyatı, birleşik eğrinin başlangıç fiyatıdır. Her karakter imzalandığında fiyat, P = P₀ × 5^(imzalanan sayı ÷ toplam arz) formülüne göre otomatik olarak artar. Erken imzalayanlar daha avantajlı fiyat elde eder.",
+  "createActorFormIncomplete": "Lütfen önce karakter kaynağını, adı, tanıtımı ve yayınlama parametrelerini doldurun",
+  "createActorValidationNameRequired": "Lütfen rol adını girin",
+  "createActorValidationNameTooLong": "Karakter adı 20 karakter veya daha az olmalıdır",
+  "createActorValidationBioRequired": "Lütfen biyografiyi girin",
+  "createActorValidationBioTooLong": "Biyografi 500 karakter veya daha az olmalıdır",
+  "createActorValidationTotalSupplyRequired": "Lütfen geçerli bir toplam NFT arzı girin",
+  "createActorValidationTotalSupplyPositiveInteger": "Toplam NFT arzı pozitif bir tam sayı olmalıdır",
+  "createActorValidationTotalSupplyRange": "Toplam karakter arzı 100 ile 5.000 arasında olmalıdır",
+  "createActorValidationPriceRequired": "Lütfen geçerli bir basma fiyatı girin",
+  "createActorValidationPriceInvalid": "Mint fiyatı en az 10 olmalı ve 1.000'i aşmamalıdır",
+  "createActorValidationPriceMaxDecimals": "Basma fiyatı en fazla 2 ondalık basamak olabilir",
+  "createActorSelectMaterialRequired": "Lütfen karakter materyalini seçin",
+  "createActorCancelButton": "İptal et",
+  "createActorConfirmButton": "Yayınlamayı onayla",
+  "createActorIssueFee": "Ücret",
+  "createActorSuccessTitle": "{name} · Yayınlama başarılı!",
+  "@createActorSuccessTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessDesc": "Karakter IP {id}",
+  "@createActorSuccessDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessTip": "Yayınlayan da bu karakteri almak için imzalamalı~",
+  "createActorCloseButton": "Sonra",
+  "createActorViewButton": "İmzala",
+  "createActorEmptyTitle": "DreamOS'ta sistem tarafından otomatik oluşturulan, koşulları karşılayan bir NFT yayını henüz yok.",
+  "createActorGotoDreamOs": "DreamOS'a gidip oluşturun",
+  "createActorSearchPlaceholder": "Karakter materyali ara",
+  "createActorInvalidOrderId": "Karakter IP sipariş numarası geçersiz. Lütfen yenileyip tekrar deneyin",
+  "createDramaTitle": "Drama Oluştur",
+  "createDramaTitleLabel": "Kısa dizi başlığı",
+  "createDramaTitleHint": "Drama adını girin",
+  "createDramaSynopsisLabel": "Özet",
+  "createDramaSynopsisHint": "Ne tür bir hikaye anlatıyor... (En fazla 1000 karakter)",
+  "createDramaAiSettings": "AI Üretim Ayarları",
+  "createDramaVisualStyle": "Görsel Stil",
+  "createDramaVisualStyleRealistic": "Gerçekçi",
+  "createDramaEpisodeDuration": "Bölüm Süresi",
+  "createDramaEpisodeDurationValue": "3-5 dk",
+  "createDramaTotalEpisodes": "Toplam Bölüm",
+  "createDramaTotalEpisodesValue": "8 bölüm",
+  "createDramaGenreLabel": "Tür",
+  "createDramaGenreDrama": "Drama",
+  "createDramaGenreComedy": "Komedi",
+  "createDramaGenreAction": "Aksiyon",
+  "createDramaGenreRomance": "Romantik",
+  "createDramaGenreSciFi": "Bilim kurgu",
+  "createDramaGenreMystery": "Gerilim",
+  "createDramaGenreHorror": "Korku",
+  "createDramaGenreAnimation": "Animasyon",
+  "createDramaHeroTitle": "AI Drama Üretimi",
+  "createDramaHeroSubtitle": "Bir tıklamayla bir sonraki hit dramınızı üretin",
+  "createDramaStartGeneration": "Üretimi Başlat",
+  "creatorDramaManagementTab": "Kısa dizilerin yönetimi",
+  "creatorDramaNftTab": "Kısa dizi NFT",
+  "creatorHeaderSubtitle": "Kısa diziler için yayınlama, denetleme ve basım.",
+  "creatorV2Subtitle": "Kısa dizileri ve videoları yayınlayın ve yönetin.",
+  "creatorV2DramaTabCount": "Kısa diziler ({count})",
+  "creatorV2VideoTabCount": "Videolar ({count})",
+  "creatorV2NoVideos": "Henüz video yok",
+  "creatorLoginPrompt": "Yaratıklarınızı görüntülemek için giriş yapın",
+  "creatorNoCreatedActors": "Oluşturulmuş rol yok",
+  "creatorNoPublishedDramas": "Yayınlanmış dizi yok",
+  "creatorOwnedNftCount": "Elinde bulunan NFT sayısı",
+  "creatorCreateDrama": "Dizi oluştur",
+  "creatorPublishNewDrama": "Yeni kısa dizi Yayınla",
+  "creatorPublishedDramas": "Kısa dizi yayınla",
+  "creatorReviewFilterAll": "Tümü",
+  "creatorReviewFilterApproved": "Onaylandı",
+  "creatorReviewFilterPending": "İnceleniyor",
+  "creatorReviewFilterRejected": "Başarısız",
+  "creatorReviewFilterOffline": "Yayından kaldırıldı",
+  "creatorDramaOtherReason": "Diğer neden",
+  "creatorDramaStatusOnline": "Onaylandı",
+  "creatorDramaStatusPendingReview": "İnceleniyor",
+  "creatorDramaStatusReviewRejected": "Başarısız",
+  "creatorDramaStatusPendingOnline": "Yayın Bekliyor",
+  "creatorDramaAuditReason": "Red nedeni: {reason}",
+  "@creatorDramaAuditReason": {
+    "placeholders": {
+      "reason": {}
+    }
+  },
+  "creatorDramaNftMinted": "Döküm tamamlandı",
+  "creatorDramaEpisodeCount": "{count} bölüm",
+  "@creatorDramaEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorDramaEdit": "Düzenle",
+  "creatorDramaDelete": "Sil",
+  "creatorActorDelete": "Rolyu sil",
+  "creatorDeleteDramaConfirm": "Bu kısa videoyu silmek istiyor musunuz?",
+  "creatorDeleteVideoConfirmTitle": "Video silme onayı",
+  "creatorDeleteVideoConfirmMessage": "“{name}” videosunu silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.",
+  "@creatorDeleteVideoConfirmMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorDeleteActorConfirm": "Bu karakteri silmek istiyor musunuz?",
+  "creatorDeleting": "Siliniyor...",
+  "creatorNoDramas": "Şu anda kısa dizi yok",
+  "creatorNoNfts": "Şu anda kısa dizi NFT'si bulunmamaktadır",
+  "creatorsComingSoon": "Yakında",
+  "creatorsHeroSubtitle": "Önde gelen yaratıcıları keşfedin",
+  "creatorsHeroTitle": "Yaratıcılar",
+  "dramaBatchUnlockAll": "Tümünü Aç",
+  "dramaBatchUnlockDiscount": "Toplu açma indirimi {discount}%",
+  "@dramaBatchUnlockDiscount": {
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaBatchUnlockSubtitle": "Daha iyi bir anlaşma için tüm bölümleri tek seferde açın",
+  "dramaBatchUnlockSuccess": "Açma başarılı, lütfen izlemeye başlayın",
+  "dramaDetailAllFree": "Tümü Ücretsiz",
+  "dramaDetailBoundActors": "{count} rol bağlı",
+  "@dramaDetailBoundActors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodeCount": "{count} bölüm",
+  "@dramaDetailEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodePrice": "Tek bölüm fiyatı",
+  "dramaDetailFree": "Ücretsiz",
+  "dramaDetailFreeEpisodes": "İlk {count} ücretsiz",
+  "@dramaDetailFreeEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailMainCharacters": "Ana Roller",
+  "dramaDetailNftMinted": "NFT Basıldı",
+  "dramaDetailNoEpisodes": "Bölüm yok",
+  "dramaDetailPaid": "Ücretli",
+  "dramaDetailPendingActor": "Karakter bekleniyor",
+  "dramaDetailRoleCount": "Roller",
+  "dramaUnlockFailedRetry": "Açma başarısız, lütfen tekrar deneyin",
+  "dramaUnlockFetchTimeout": "Oynatma adresi alma zaman aşımı, lütfen tekrar deneyin",
+  "dramaUnlockLoginRequired": "Bölümleri açmak için lütfen giriş yapın",
+  "dramaUnlockMessage": "Bölüm {epNo} açmak için ödeme gerektirir\nFiyat: {price} {currency}\nToplu açma indirimi: {discount}",
+  "@dramaUnlockMessage": {
+    "placeholders": {
+      "epNo": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "discount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockSuccessFetching": "Açma başarılı, oynatma adresi alınıyor...",
+  "dramaUnlockTitle": "Bölümlerin kilidini aç",
+  "editActorTitle": "Rolyu düzenle",
+  "editDramaTitle": "Kısa oyun düzenleme",
+  "editVideoTitle": "Videoyu düzenle",
+  "editSaveChanges": "Değişiklikleri kaydet",
+  "editProfileTitle": "Profili Düzenle",
+  "editNicknameLabel": "Takma ad",
+  "editRoleNameLabel": "Kullanıcı adı",
+  "editNicknameHint": "Takma adınızı girin",
+  "editNicknameRequired": "Lütfen takma ad girin",
+  "editProfileBioLabel": "Biyografi",
+  "editProfileBioHint": "Lütfen biyografiyi girin",
+  "editProfileEmailLabel": "E-posta adresi",
+  "editAvatarCropTitle": "Avatarı Kırp",
+  "profileUpdateSuccess": "Profil güncellendi",
+  "incomeClaimAmount": "{amount} {currency} Talep Et",
+  "@incomeClaimAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimFailed": "Talep başarısız",
+  "incomeClaimMessage": "Talep edilebilir tutar: {amount} {currency}\nKazançlar cüzdan bakiyenize aktarılacaktır",
+  "@incomeClaimMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimSuccess": "Talep başarılı",
+  "incomeClaimTitle": "Kazançları almak",
+  "incomeConfirmClaim": "Alındığını onayla",
+  "incomeHistoryTab": "Geçmiş",
+  "incomeInviteHeroSubtitle": "Arkadaşlarınızı tüketmeye ve etkileşime davet edin, ne kadar aktif olurlarsa ödül o kadar yüksek olur",
+  "incomeInviteHeroTitle": "Arkadaşlarınızı Davet Edin, Nakit Para Kazanın",
+  "incomeInviteNoRecords": "Nakit para kaydı yok",
+  "incomeInvitePaidUnlockDesc": "Arkadaşlar bölüm açmak için ödeme yapar",
+  "incomeInvitePaidUnlockTitle": "Ücretli Açma",
+  "incomeInviteRecords": "Nakit Para Kayıtları",
+  "incomeInviteRegisterDesc": "Arkadaşlar referans linkinizle kayıt olur",
+  "incomeInviteRegisterTitle": "Davet Kaydı",
+  "incomeInviteRules": "Nakit Para Kuralları",
+  "incomeInviteShareLink": "Davet Linkini Paylaş",
+  "incomeInviteStakeDesc": "Arkadaşlar NFT veya STORY stake eder",
+  "incomeInviteStakeTitle": "Stake Yatırımı",
+  "incomeInviteTab": "Davet Nakit Paras",
+  "incomeInviteWatchDesc": "Arkadaşlar puan kazanmak için drama izler",
+  "incomeInviteWatchTitle": "Drama İzle",
+  "incomeNoHistory": "Geçmiş kaydı yok",
+  "incomeNoRecords": "Kazanç kaydı yok",
+  "incomeNothingToClaim": "Talep edilecek bir şey yok",
+  "incomeOverviewTab": "Genel Bakış",
+  "incomePendingClaim": "Talep Bekliyor",
+  "incomeRecords": "Kazanç Kayıtları",
+  "incomeThisMonth": "Bu Ay",
+  "incomeToday": "Bugün",
+  "incomeTotalEarnings": "Toplam kazanç",
+  "incomeCumulativeStory": "Toplam STORY",
+  "incomeCumulativeUsdc": "Toplam {currency}",
+  "@incomeCumulativeUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimableStory": "STORY'yi alabilirsiniz",
+  "incomeClaimableUsdc": "{currency} çekilebilir",
+  "@incomeClaimableUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeSettlingStory": "Ücretim",
+  "incomeSettlingHint": "Hesaplanıyor; geldikten sonra talep edilebilir",
+  "incomeHelpTotalStoryDesc": "Tüm dönemler boyunca toplamda kazanılan STORY miktarı (alınan ve alınmamış olanlar dahil).",
+  "incomeHelpTotalUsdcDesc": "Tarih boyunca tüm karakterlerin sözleşme payları ve ikincil telif gelirlerinden elde edilen toplam {currency} geliri.",
+  "@incomeHelpTotalUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeHelpSettlingStoryDesc": "Sistem hesaplamasından sonra otomatik olarak STORY’ye dönüştürülür",
+  "incomeHelpClaimableStoryDesc": "Ödemesi tamamlanmış STORY'leri kişisel cüzdanınıza aktarabilirsiniz.",
+  "incomeHelpClaimableUsdcDesc": "Hesaplaşması tamamlanmış {currency}’leri kişisel cüzdanınıza aktarabilirsiniz.",
+  "@incomeHelpClaimableUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeFilterAll": "Tümü",
+  "incomeFilterMining": "Gönderim Geliri",
+  "incomeFilterInvite": "Davet Kazancı",
+  "incomeMiningReward": "Gönderim Geliri",
+  "incomeInviteReward": "Davet Kazancı",
+  "incomeUsdcActorSignShare": "Karakter imza gelir payı",
+  "incomeClaimNoWallet": "Lütfen önce cüzdanınızı bağlayın",
+  "incomeClaimCurrencyTitle": "{currency} Talep Et",
+  "@incomeClaimCurrencyTitle": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawMessage": "Solana cüzdanınıza {amount} {currency} çekmek istediğinizden emin misiniz?\nAlıcı: {address}",
+  "@incomeClaimWithdrawMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawConfirm": "Çekimi Onayla",
+  "incomeClaimWithdrawSubmitted": "Çekim başarılı!",
+  "incomeClaimWithdrawFailed": "Çekim başarısız, lütfen tekrar deneyin",
+  "incomeClaimAction": "Almak",
+  "nftCreateActorIp": "Karakter IP Oluştur",
+  "nftHeaderSubtitle": "Özel karakter NFT'lerini keşfedin ve toplayın",
+  "nftHeaderTitle": "Karakter NFT Meydanı",
+  "nftSearchHint": "Dizi, eser, rol, kullanıcı ara...",
+  "actorHowToPlayTitle": "Karakter IP’si nasıl oynanır?",
+  "actorHowToPlayHelpTooltip": "Oyun Talimatları",
+  "actorHowToPlaySignTab": "İmzalanan IP'ler",
+  "actorHowToPlaySignSubtitle": "Pasif olarak ücret kazan",
+  "actorHowToPlayIssueTab": "IP yayınla",
+  "actorHowToPlayIssueSubtitle": "Yaratıcılıktan Gelir Elde Etme",
+  "actorHowToPlaySignPositioning": "Hedef kitle: Yaratıcılık konusunda hiçbir engel yok, kolayca ve istikrarlı bir şekilde kazanç elde edin",
+  "actorHowToPlaySignAudience": "Yaratıcı içerik üretmek istemeyen, STORY gelirini kolayca elde etmek isteyen sıradan kullanıcılar",
+  "actorHowToPlaySignGuide": "Yüksek popülerliğe ve yüksek ücrete sahip karakter IP'leri imzala; Ajan sayfasından gösterileri ayarlayarak kazanç elde et",
+  "actorHowToPlaySignRightsTitle": "Çifte kazanç",
+  "actorHowToPlaySignRightPerform": "Gösteri düzenleyin ve sürekli olarak STORY tokeni kazanın",
+  "actorHowToPlaySignRightTrade": "Karakter IP’leri takas edilebilir ve prim geliri elde edilebilir",
+  "actorHowToPlayIssuePositioning": "Konumlandırma: yarat ve yayınla, çoklu gelir akışı, uzun vadeli IP değer artışı",
+  "actorHowToPlayIssueAudience": "Yaratıcı yeteneklere sahip, karakter IP’leri ve kısa diziler yoluyla gelir elde etmek isteyen içerik üreticiler",
+  "actorHowToPlayIssueGuide": "Karakter IP'leri yayınlayın, AI kısa dizileriyle eşleştirin, popülerliği artırın ve IP ücretleri ile gelirini yükseltin",
+  "actorHowToPlayIssueRightsTitle": "Üçlü getiri",
+  "actorHowToPlayIssueRightSignLabel": "İmza gelir payı:",
+  "actorHowToPlayIssueRightSign": "Kendi IP'n imzalandığında %40 pay alırsın",
+  "actorHowToPlayIssueRightPerformLabel": "Gösteri gelirleri:",
+  "actorHowToPlayIssueRightPerform": "Kendi IP'ni imzala, gösterilerle STORY kazan",
+  "actorHowToPlayIssueRightValueLabel": "Değer artışı:",
+  "actorHowToPlayIssueRightValue": "IP'ler alınıp satılabilir; popülerlik arttıkça prim de artar",
+  "actorHowToPlayAudienceTitle": "Uygun Kişiler",
+  "actorHowToPlayGuideTitle": "Oyun Kılavuzu",
+  "actorHowToPlayCreateHint": "DreamOS ile tek bir tıklamayla karakter IP'leri ve AI kısa dizileri oluşturabilir, yüksek verimlilikle kaliteli içerik üretebilirsiniz",
+  "actorHowToPlayCreateCta": "Yaratmaya başla",
+  "nftSignInDevelopment": "Bu özellik henüz kullanıma açılmamıştır",
+  "nftSortCompleted": "Tam izlenme",
+  "nftSortHeat": "Popülerlik",
+  "nftSortLowestPrice": "Fiyat",
+  "nftSortLv1Pay": "Ücret",
+  "nftSortMaxPay": "Maksimum ücret",
+  "nftTradeUnavailable": "Ticaret henüz mevcut değil",
+  "playerEpisodeBarCompleted": "Tüm {count} bölüm · Tamamlandı",
+  "@playerEpisodeBarCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeSynopsis": "Bölüm {episodeNo} | {synopsis}",
+  "@playerEpisodeSynopsis": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      },
+      "synopsis": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPlayFailedRetry": "Oynatma başarısız, lütfen daha sonra tekrar deneyin",
+  "publicProfileDramas": "Kısa dizi",
+  "publicProfileEmpty": "Herkese açık içerik yok",
+  "publicProfileBlock": "Engelle",
+  "publicProfileUnblock": "Engeli kaldır",
+  "publicProfileBlockedByMeContent": "Bu kullanıcıyı engellediğiniz için içeriklerini görüntüleyemezsiniz",
+  "publicProfileBlockedContent": "Bu kullanıcı sizi engellediği için içeriklerini görüntüleyemezsiniz",
+  "publicProfileBlockConfirmTitle": "Bu kullanıcı engellensin mi?",
+  "publicProfileBlockConfirmMessage": "Engelledikten sonra bu kullanıcının eserlerini görüntüleyemezsiniz.",
+  "publicProfileBlockSuccess": "Kullanıcı engellendi",
+  "publicProfileUnblockSuccess": "Kullanıcının engeli kaldırıldı",
+  "publicProfileFollowers": "Takipçiler",
+  "publicProfileFollowing": "Takip",
+  "followTabMutual": "Karşılıklı",
+  "profileLikesReceived": "Beğeni",
+  "profileLikesReceivedDialogMessage": "{count} beğeni aldın, harika içeriklerin için teşekkürler!",
+  "profileTabLikes": "Beğeniler",
+  "profileTabFavorites": "Favoriler",
+  "profileWalletTitle": "Cüzdan",
+  "profileAddressCopied": "Adres kopyalandı",
+  "followActionFollow": "Takip et",
+  "followActionFollowBack": "Geri takip",
+  "followActionFollowing": "Takip ediliyor",
+  "followBlockedByMe": "Bu kullanıcı kara listenizde, takip edemezsiniz",
+  "followBlockedByTarget": "Bu kullanıcının ayarları nedeniyle takip edemezsiniz",
+  "likeBlockedByMe": "Bu kullanıcı kara listenizde, beğenemezsiniz",
+  "likeBlockedByTarget": "Bu kullanıcının ayarları nedeniyle beğenemezsiniz",
+  "favoriteBlockedByMe": "Bu kullanıcı kara listenizde, favorilere ekleyemezsiniz",
+  "favoriteBlockedByTarget": "Bu kullanıcının ayarları nedeniyle favorilere ekleyemezsiniz",
+  "ratingBlockedByMe": "Bu kullanıcı kara listenizde, puan veremezsiniz",
+  "ratingBlockedByTarget": "Bu kullanıcının ayarları nedeniyle puan veremezsiniz",
+  "followActionMutual": "Karşılıklı",
+  "followUnfollowTitle": "Takipten çık",
+  "followUnfollowMessage": "{handle} takipten çıkılsın mı?",
+  "@followUnfollowMessage": {
+    "placeholders": {
+      "handle": {
+        "type": "String"
+      }
+    }
+  },
+  "followUnfollowNo": "Hayır",
+  "followUnfollowYes": "Evet",
+  "followListEmpty": "Henüz kullanıcı yok",
+  "followFollowingEmpty": "Henüz kimseyi takip etmiyorsun. İlginç yaratıcıları keşfet~",
+  "followFollowingEmptyCta": "Göz at",
+  "followFollowingEmptyGuest": "Takip yok",
+  "followFollowersEmpty": "Henüz takipçin yok. Daha fazla görünürlük için eser yayınla~",
+  "followFollowersEmptyCta": "Yayınla",
+  "followFollowersEmptyGuest": "Takipçi yok",
+  "followMutualsEmpty": "Henüz karşılıklı takip yok",
+  "followMutualsSelfOnly": "Karşılıklı takip listesini yalnızca siz görebilirsiniz",
+  "followRelationsSelfOnly": "Takip listelerini yalnızca siz görebilirsiniz",
+  "followMoreTitle": "Diğer",
+  "followRemoveFollower": "Takipçiyi kaldır",
+  "followRemoveFollowerSuccess": "Kaldırıldı. Bildirim gönderilmez",
+  "followUserHandleFallback": "@kullanıcı",
+  "publicProfileTitle": "Kullanıcı Profili",
+  "publicProfileUserFallback": "Kullanıcı #{id}",
+  "@publicProfileUserFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "watchHistoryEmpty": "İzleme geçmişi yok",
+  "watchHistoryClearTitle": "İzleme geçmişini temizle",
+  "watchHistoryClearMessage": "Tüm izleme geçmişini temizlemek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+  "watchHistoryClearConfirm": "Onayla",
+  "gamePageTitle": "Menajer",
+  "gamePageSubtitle": "Rollerini yönet, görevlendirerek gelir elde et.",
+  "gameRiskAccount": "Riskli Hesap",
+  "gameRiskAccountDescription": "Bu hesabın güven katsayısı anormal; madencilik ağırlığı etkilenecektir.",
+  "gameWeeklyStats": "Haftalık İstatistikler",
+  "gameDeployedActors": "Dağıtılmış Roller",
+  "gameMyActors": "Rollerim",
+  "gameComingSoon": "Yakında",
+  "gameSignActor": "Karakter imzala",
+  "gameGoProduce": "Dizi çekmeye gitmek",
+  "gameWorkingActors": "Görevlendirilmiş roller",
+  "gameWeekPool": "Bu Haftanın Ödül havuzu (STORY)",
+  "gameWeekNominalOutput": "Bu Haftanın Nominal Üretimi (STORY)",
+  "gameWeekEstimatedOutput": "Bu Haftanın Tahmini Üretimi (STORY)",
+  "gameMiningRules": "Madencilik kuralları",
+  "agentV2RulesTitle": "İşletme",
+  "agentV2RulesSummary": "Karakterlerle sözleşme yapıp performans planlayarak her saat STORY kazanın.\nKarakterleri yükselterek saatlik ücretlerini katlayın.\nÜretimin durmaması için dayanıklılık bittiğinde hemen doldurun.\nDönem kazançlarının hesaplaşması her pazartesi 00:00'da (UTC) başlar; Kazançlar sayfasından alın.",
+  "agentV2RulesHowToPlay": "Nasıl çalışır?",
+  "agentV2RulesStartTitle": "Karakterler nasıl kazanmaya başlar?",
+  "agentV2RulesStartDescription": "Müsait bir karakteri performansa atayın. Her saat 1 dayanıklılık harcar ve ücretine göre STORY üretir.\nÜretilen STORY her dönemin sonunda topluca hesaplanır ve ardından Kazançlar sayfasından alınabilir.",
+  "agentV2RulesStaminaTitle": "Dayanıklılık nasıl yönetilir?",
+  "agentV2RulesStaminaDescription": "Performansta: saatte 1 dayanıklılık harcar ve normal ücret üretir\nDayanıklılık bitti: üretim 0'da durur ve müdahale gerekir\nDinlenmede: saatte 1 dayanıklılık otomatik yenilenir, ancak ücret durur\nDayanıklılık doldurma (ücretli): anında {staminaLimit} seviyesine çıkar ve üretimi sürdürür",
+  "@agentV2RulesStaminaDescription": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RulesBatchTitle": "Toplu işlem yapabilir miyim?",
+  "agentV2RulesBatchDescription": "Evet. Performans yuvalarındaki tüm karakterlere işlem uygulamak için sayfanın altındaki Tümünü Oynat, Tümünü Doldur veya Tümünü Dinlendir seçeneklerini kullanın.",
+  "agentV2RulesEarnings": "Kazançlar",
+  "agentV2RulesSalaryTitle": "Ücret nasıl hesaplanır?",
+  "agentV2RulesSalaryDescription": "Ün ne kadar yüksekse, rol ne kadar değerliyse ve kısa dizi ne kadar popülerse saatlik ücret o kadar yüksek olur.",
+  "agentV2RulesSalaryFormula": "Kart başına saatlik ücret = Karakter Ücreti × 1 STORY",
+  "agentV2RulesRolePowerFormula": "Karakter ücreti = Lv.1 karakter ücreti × Ücret katsayısı",
+  "agentV2RulesIpSalaryFormula": "Lv.1 karakter ücreti = Fiyat katsayısı × Popülerlik katsayısı",
+  "agentV2RulesCoefficientTitle": "Katsayı ayrıntıları",
+  "agentV2RulesSalaryExample": "Lin Mengyao · Lv3 Başrol · P0=120{currency} (fiyat katsayısı ≈1.5046) · popülerlik 3.5\n→ Saatlik ücret = 5.0 × 1.5046 × 3.5 × 1 = 26.3 STORY\nLv1 Figüran olsaydı saatte yalnızca ≈5.3 STORY kazanırdı; Lv3'e yükseltmek kazancı beş kat artırır.",
+  "@agentV2RulesSalaryExample": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesSettlementTitle": "Ne zaman hesaplanır?",
+  "agentV2RulesSettlementDescription": "Her performans döngüsü 7 gündür ve her pazartesi 00:00'da (UTC) kapanır. Sistem hesaplaması tamamlandıktan sonra bu dönemin ücreti otomatik olarak STORY’ye dönüştürülür ve Kazançlar sayfasından alınabilir.",
+  "agentV2RulesSettlementExample": "Bu haftaki ödül havuzunun 100,000 STORY olduğunu varsayalım:\nDurum A: Platform genelinde yalnızca siz 134 üretirsiniz → 134 alırsınız, kalan dağıtılmaz\nDurum B: Ağ üretimi 250,000 → 100,000 ÷ 250,000 = %40; nominal üretiminiz %40'a ölçeklenir\nDurum C: Ölçeklemeden sonra birinin 6,000 alması gerekir ancak üst sınır 5,000'dir → yalnızca 5,000 dağıtılır",
+  "agentV2RulesStronger": "Güçlenme",
+  "agentV2RulesUpgradeTitle": "Bir karakter nasıl yükseltilir?",
+  "agentV2RulesUpgradeDescription": "Koşullar: aynı IP ve seviyede 2 kopya tüket + IP'nin dizilerindeki toplam tam izlenme hedefini karşıla\nSeviye 1 → Seviye 2: ≥10.000 tam izlenme · Ücret 1→3\nSeviye 2 → Seviye 3: ≥50.000 tam izlenme · Ücret 3→9\nSeviye 3 → Seviye 4: ≥200.000 tam izlenme · Ücret 9→27\nSeviye 4 → Seviye 5: ≥1 milyon tam izlenme · Ücret 27→81",
+  "agentV2RulesPerforming": "Performansta",
+  "agentV2RulesNormalSalary": "Normal ücret",
+  "agentV2RulesSalaryCoefficient": "Ücret katsayısı: Lv1=1 · Lv2=3 · Lv3=9 · Lv4=27 · Lv5=81",
+  "agentV2RulesPriceCoefficientDescription": "Fiyat katsayısı (ihraç fiyatı P0):\n  • P0 ≤ 100{currency1} → Katsayı = P0 ÷ 100 (doğrusal artış)\n  • P0 > 100{currency2} → Katsayı = 1,6 × (P0/100)¹.³ / [(P0/100)¹.³ + 0,6] (asimtotik üst sınır 1,6)",
+  "@agentV2RulesPriceCoefficientDescription": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesTrust2": "Trust2",
+  "agentV2RulesTrust2Factor": "Platform Trust2 değeri",
+  "agentV2RulesSettlementCase1": "Gerçek ödeme = nominal üretim; kullanılmayan kapasite sona erer",
+  "agentV2RulesSettlementCase2": "Orantılı ölçekleme: gerçek ödemeniz = nominal üretiminiz × (ödül havuzu ÷ ağ üretimi)",
+  "gameSettlementRecords": "Haftalık Hesap Kapatma Kayıtları",
+  "gameFilterComputingPower": "Ücret",
+  "gameFilterLevel": "Seviye",
+  "gameFilterHeat": "Popülerlik",
+  "gameFilterStamina": "Dayanıklılık",
+  "gameHeatCoef": "Popülerlik katsayısı",
+  "gameMiningCoef": "Madencilik katsayısı",
+  "gameActorPower": "Karakter Ücreti",
+  "gameActorPowerDetailTitle": "Karakter Ücreti Detayları",
+  "gameActorPowerFormula": "Karakter Ücreti = IP Ücreti × Madencilik katsayısı × CP katsayısı × Trust2",
+  "gameActorPowerIpFormula": "IP Ücreti = Fiyat katsayısı × Popülerlik katsayısı × Trust1",
+  "gameActorPowerHourlyOutput": "Saatlik çıktı",
+  "gameCpCoefficient": "CP katsayısı",
+  "gameTrust2": "Trust2",
+  "gameWeeklyNominalOutputLabel": "Bu haftanın nominal üretimi",
+  "gameRoundNominalOutputLabel": "Dönem Nominal Çıktı",
+  "gameSupplement": "Ek bilgi",
+  "gameRest": "Dinlenme",
+  "gameDeploy": "Gönderme",
+  "gameDeployActor": "Karakter Gönder",
+  "gameStatusIdle": "Kullanılmayan",
+  "gameStatusMining": "Madencilik devam ediyor",
+  "gameActorIpLabel": "Karakter IP {id}",
+  "@gameActorIpLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaProgress": "{current}/{max}",
+  "@gameStaminaProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismTitle": "Dayanıklılık sistemi",
+  "gameStaminaMechanismDesc": "Görevlendirilen aktörler saatte 1 dayanıklılık puanı harcar. Dayanıklılık tükendiğinde getiri üretimi durur ve dinlenirken otomatik olarak yenilenir. {currency} kullanarak dayanıklılığı anında yenileyebilirsiniz.",
+  "@gameStaminaMechanismDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismAction": "Anladım",
+  "gameLevelBadge": "Sv{level}",
+  "@gameLevelBadge": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "gameEmptyDeployed": "Şu anda dağıtılmış rol yok",
+  "gameEmptyMyActors": "Henüz karakteriniz yok. Başlamak için bir karakter imzalayın.",
+  "gameDeployConfirmTitle": "Bu karakteri dağıtmak istiyor musunuz?",
+  "gameRestConfirmTitle": "Bu karakteri dinlendirmek istiyor musunuz?",
+  "gameRestConfirmDesc": "Karakter dinlenirken madencilik duraklatılır; dayanıklılık zamanla yenilenir.",
+  "gameRestConfirmAction": "Dinlenmeyi Onayla",
+  "gameRestSuccessToast": "Dinlenme başladı",
+  "gameDeploySlotFull": "Dağıtım slotları dolu (maks 5)",
+  "gameRefillTitle": "Dayanıklılığını geri kazanmak",
+  "gameRefillCurrentStamina": "Şu anki dayanıklılık",
+  "gameRefillCost": "Geri kazanım masrafları",
+  "gameInsufficientUsdc": "{currency} bakiyesi yetersiz",
+  "@gameInsufficientUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameRefillConfirm": "Tüm dayanıklılığını geri kazan",
+  "gameRefillSuccess": "Dayanıklılığın geri kazanılması başarılı oldu",
+  "gameRefillFailed": "Dayanıklılık yenileme işlemi başarısız oldu, lütfen tekrar deneyin",
+  "gameBatchRefillTransactionTooLarge": "Toplu güç yenileme işlemi çok büyük. Oyuncu sayısını azaltıp tekrar deneyin.",
+  "agentV2RefillTitle": "Dayanıklılık yenile",
+  "agentV2RefillCost": "Maliyet",
+  "agentV2RefillActorButton": "Bu karakter",
+  "agentV2RefillAllActors": "Sahnedeki tüm karakterleri yenile",
+  "agentV2RefillActorCount": "{count} karakter",
+  "agentV2RefillAllButton": "Tümünü yenile",
+  "agentV2RefillOr": "veya",
+  "agentV2RestAll": "Tümünü dinlendir",
+  "agentV2RestActorCount": "{count} karakter",
+  "walletInsufficientStory": "STORY bakiyesi yetersiz",
+  "gameSupplementComingSoon": "Dayanıklılık doldurma yakında",
+  "gameStatHelpWeekPoolTitle": "Bu Haftanın Ödül havuzu",
+  "gameStatHelpWeekPoolSubtitle": "Yani, STORY madenciliğinde haftalık zorunlu dağıtım üst sınırı (haftalık üst sınır)",
+  "gameStatHelpWeekTotalPool": "Bu haftanın toplam ödül havuzu",
+  "gameStatHelpWeekTotalPoolValue": "2,115,385 STORY",
+  "gameStatHelpWeekStakePool": "Bu haftanın staking ödül havuzu (%75)",
+  "gameStatHelpWeekStakePoolValue": "1,586,538 STORY",
+  "gameStatHelpWeekInvitePool": "Bu haftanın davet ödül havuzu (%25)",
+  "gameStatHelpWeekInvitePoolValue": "528,846 STORY",
+  "gameStatHelpInitialHardCap": "İlk hafta sabit tavan",
+  "gameStatHelpInitialHardCapValue": "2,115,385 STORY",
+  "gameStatHelpWeeklyDecay": "Haftalık zayıflama katsayısı",
+  "gameStatHelpWeeklyDecayValue": "× 0.99572",
+  "gameStatHelpWeeklyDistributionFormula": "Haftalık fiili dağıtım = min(tüm ağın nominal üretimi, o haftanın üst sınırı)",
+  "gameStatHelpUnusedQuotaNote": "Kullanılmayan kalan kotalar dağıtılmaz, geri dönmez ve puan olarak telafi edilmez.",
+  "gameStatHelpNominalTitle": "Bu Haftanın Nominal Üretimi",
+  "gameStatHelpNominalSummary": "Tüm rollerimin haftalık toplam nominal üretiminin toplamı",
+  "gameStatHelpNominalSummaryHint": "Tek kart formülü için aşağıdaki açıklamaya bakınız",
+  "gameStatHelpNominalFormula": "Kart başına nominal üretim = Kart başına saatlik ağırlık × R_base × Etkili madencilik süresi",
+  "gameStatHelpHourlyWeight": "Tek kart saat ağırlığı",
+  "gameStatHelpHourlyWeightValue": "= Karakter Ücreti",
+  "gameStatHelpActorPower": "Karakter Ücreti",
+  "gameStatHelpActorPowerValue": "= IP Ücreti × Madencilik Katsayısı × CP Katsayısı × Trust2",
+  "gameStatHelpCpCoef": "CP katsayısı",
+  "gameStatHelpRBase": "R_base",
+  "gameStatHelpRBaseValue": "1 STORY / Birim ağırlık / Saat",
+  "gameStatHelpEffectiveDuration": "Etkili madencilik süresi",
+  "gameStatHelpEffectiveDurationValue": "Rehin altında olan ve dayanıklılık değeri &gt; 0 olan toplam süre",
+  "gameStatHelpActualTitle": "Bu haftaki tahmini üretim",
+  "gameStatHelpActualSubtitle": "Tahmini üretim haftalık üst sınır ve tek adres üst sınırıyla kısıtlanır; gerçek ödül hafta sonunda oluşur",
+  "gameStatHelpIfNominalLte": "Eğer ağ genelindeki nominal üretim, o haftanın üst sınırına eşitse veya bu sınırın altındaysa:",
+  "gameStatHelpUserActualEqNominal": "Kullanıcının eline geçen tutar = Kullanıcının nominal üretimi",
+  "gameStatHelpIfNominalGt": "Eğer ağ genelindeki nominal üretim &gt; o haftanın üst sınırı ise:",
+  "gameStatHelpUserActualFormula": "Kullanıcının eline geçen miktar = Kullanıcının nominal üretimi × O haftanın sabit tavanı / Ağın toplam nominal üretimi",
+  "gameStatHelpAddressCap": "Tek adres için haftalık üst sınır",
+  "gameStatHelpAddressCapValue": "Her adres, haftalık olarak o haftanın üst sınırının en fazla %5’ini alabilir.",
+  "theaterCategoryAll": "Tümü",
+  "theaterCategoryAncient": "Tarihi",
+  "theaterCategoryFinance": "Finans",
+  "theaterCategorySuspense": "Gerilim",
+  "theaterCategorySciFi": "Bilim kurgu",
+  "theaterCategoryRealStory": "Gerçek bir olaydan uyarlanmıştır",
+  "theaterCategoryUrban": "Şehir",
+  "theaterSortHottest": "En popüler",
+  "theaterSortNewest": "En son",
+  "theaterSortTopRated": "En Çok Eklenenler",
+  "theaterSortCompletedView": "En Çok Tamamlanan",
+  "theaterPlayCount": "{count} oynatma",
+  "@theaterPlayCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBasicInfo": "Temel Bilgiler",
+  "createDramaEpisodes": "Dizi Yönetimi",
+  "createDramaRoles": "IP Bağla",
+  "createDramaCover": "Kapak",
+  "createDramaCoverUpload": "Yükle",
+  "createDramaCoverPlaceholder": "JPG/PNG desteklenir, maks. 5 MB",
+  "createDramaCoverCropTitle": "Kapak Kırp",
+  "createDramaName": "Kısa dizi başlığı",
+  "createDramaNameHint": "Lütfen kısa oyunun adını girin",
+  "createDramaSynopsis": "Tanıtım",
+  "createDramaTags": "Etiket",
+  "createDramaTagsHint": "Etiket yazın ve eklemek için Enter'a basın (ör. Aşk, Komedi)",
+  "createDramaTagsLoading": "Etiketler yükleniyor…",
+  "createDramaTagsEmpty": "Kullanılabilir etiket yok",
+  "createDramaTagsRetry": "Tekrar dene",
+  "createDramaUploadDesc": "\"Yükle\"ye tıklayın; gönderildikten sonra videolar adlarına göre otomatik olarak sıralanacaktır",
+  "@createDramaUploadDesc": {},
+  "createDramaEpisodesDesc": "Video dosyalarını toplu olarak yüklediğinizde, sistem dosya adlarına göre otomatik olarak bir bölüm listesi oluşturur. Sürükleyip bırakarak sıralama, silme ve başlık düzenleme gibi işlemleri destekler.",
+  "@createDramaEpisodesDesc": {},
+  "createDramaVideoFileTypeHint": "Desteklenen formatlar: mp4, flv, wmv, asf, mkv, avi, rm, rmvb, mpg, mpeg, mov, webm. Maks dosya boyutu 2GB.",
+  "@createDramaVideoFileTypeHint": {},
+  "createDramaUploadVideo": "Videoyu yükle",
+  "createDramaVideoEmpty": "Henüz video eklenmedi",
+  "createDramaVideoPickFailed": "Video seçme başarısız",
+  "createDramaVideoAnyTooLarge": "2GB'yi aşan video dosyaları var, lütfen düzenleyip yeniden seçin",
+  "createDramaVideoStatusUploading": "Yükleniyor",
+  "createDramaVideoStatusPaused": "Yükleme duraklatıldı",
+  "createDramaVideoStatusDone": "Yükleme tamamlandı",
+  "createDramaEpisodeDescriptionHint": "Bölüm açıklaması",
+  "createDramaVideoStatusFailed": "Yükleme başarısız",
+  "createDramaVideoTooLarge": "Video boyutu 2 GB'ı aşamaz ve yüklenemez",
+  "createDramaVideoUploadComplete": "Tüm videolar yüklendi",
+  "createDramaVideoUploadFailed": "{name} yükleme başarısız",
+  "@createDramaVideoUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoPickOverflow": "En fazla {count} bölüm daha ekleyebilirsiniz. {overflow} fazla atlandı.",
+  "@createDramaVideoPickOverflow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "overflow": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaAddedVideos": "Eklenen videolar ({count} dosya)",
+  "@createDramaAddedVideos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosCount": "({count} dosya)",
+  "@createDramaAddedVideosCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosLabel": "Eklenen videolar",
+  "createDramaRolesDesc": "Kısa dizi için rol oluşturun; rolün adını, profil resmini ve kişilik tanımını belirleyin.",
+  "createDramaRolesRule1": "Her kısa diziye en fazla 5 Karakter IP'si bağlanabilir. Yayından sonraki 7 gün içinde yenileri eklenebilir; sonrasında bağlar kaldırılamaz veya değiştirilemez.",
+  "createDramaRolesRule2": "Bağlanan Karakter IP'si, yükseltmeler ve STORY ödülleri için dizinin tamamlanma ve popülerlik verileriyle ilişkilendirilir.",
+  "@createDramaRolesRule2": {
+    "description": "Dizi onaylandıktan sonraki 7 gün içinde karakter IP'leri bağlanabilir; bu dönemin izlenme verileri bağlı karakter IP'lerinde birikir."
+  },
+  "createDramaRolesExpireTime": "Son kullanma tarihi",
+  "createDramaRolesRule3": "IP bağlamak isteğe bağlıdır; bağlamadan da yayınlayabilirsiniz.",
+  "createDramaAddRole": "Rol ekle",
+  "createDramaBindActor": "Role Katılım",
+  "createDramaRoleActing": "Role Katılım",
+  "createDramaSelectActor": "Rol Seç",
+  "createDramaBindActorTitle": "Karakter IP Seç",
+  "createDramaBindIpSelectedCount": "{count} seçildi",
+  "createDramaBindIpEmpty": "Veri yok",
+  "createDramaBindIpMarketplace": "Karakter IP Pazarına Git",
+  "createDramaBindIpConfirm": "Bağlamayı onayla",
+  "createDramaBindActorSubtitle": "\"{roleName}\" rolünü oynayacak bir karakter seçin",
+  "@createDramaBindActorSubtitle": {
+    "placeholders": {
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorOwnedCount": "{count} adet karakter IP'si bulunuyor",
+  "@createDramaBindActorOwnedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindActorIpLabel": "Karakter IP {code}",
+  "@createDramaBindActorIpLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorBoundTag": "Bağlandı",
+  "createDramaBindIpRemove": "Kaldır",
+  "createDramaBindActorBoundToast": "{name} bağlandı",
+  "@createDramaBindActorBoundToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorUnbind": "Bağlantıyı Kaldır",
+  "createDramaBindActorExpired": "7 günlük bağlama süresi doldu. Yeni karakter IP bağlantısı eklenemez.",
+  "createDramaBindActorEmptyTitle": "Bağlanacak karakter IP'si yok",
+  "createDramaBindActorEmptyDesc": "Bir role bağlamadan önce bir Karakter IP'sine sahip olmanız gerekir",
+  "createDramaBindActorGotoCreate": "Rol Oluştur",
+  "createDramaPrevStep": "Önceki adım",
+  "createDramaNextStep": "Bir sonraki adım",
+  "createDramaSubmit": "Yayınla",
+  "createDramaRoleNameLabel": "Rol adı",
+  "createDramaRoleNameHint": "Lütfen rol adını girin",
+  "createDramaRoleNameRequired": "Lütfen rol adını girin",
+  "createDramaRoleBioLabel": "Rol Tanıtımı",
+  "createDramaRoleBioHint": "Lütfen rol tanıtımını girin",
+  "createDramaRoleBioRequired": "Rol tanıtımı gereklidir",
+  "createDramaRoleAddTitle": "Rol ekle",
+  "createDramaRoleEditTitle": "Rolü Düzenle",
+  "createDramaRoleUploadAvatar": "Profil resmini yükle",
+  "createDramaRoleSave": "Kaydet",
+  "createDramaRoleDeleteConfirm": "Bu karakteri silmek istiyor musunuz?",
+  "createDramaVideoDeleteConfirm": "\"{name}\" silinsin mi?",
+  "@createDramaVideoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoDeleteTitle": "Videoyu Sil",
+  "createDramaVideoPreviewUnavailable": "Daha önce yüklenen videolar şu anda önizlenemiyor",
+  "createDramaRoleEmpty": "Henüz eklenen rol yok",
+  "createDramaRoleBindComingSoon": "Rol bağlama yakında",
+  "createDramaRoleAvatarCropTitle": "Rol Avatarını Kırp",
+  "createDramaRoleAvatarUploadFailed": "Rol avatarı yükleme başarısız",
+  "createDramaPublishedSuccess": "Başarıyla yayınlandı",
+  "createDramaDraftRestored": "Tamamlanmamız taslağınız geri yüklendi",
+  "createDramaDraftClear": "Verileri temizle",
+  "createDramaDraftDiscard": "Kaydetmeden dön",
+  "createDramaDraftSave": "Taslağı kaydet",
+  "createDramaEditLoading": "Yükleniyor...",
+  "createDramaEditLoadError": "Drama bilgisi yüklenemedi, lütfen tekrar deneyin",
+  "createDramaSubmitValidationTitle": "Lütfen drama başlığını girin",
+  "createDramaSubmitValidationCover": "Lütfen bir kapak görseli yükleyin",
+  "createDramaSubmitValidationVideos": "Lütfen en az bir video yükleyin",
+  "createDramaSubmitValidationSession": "Yükleme oturumu geçersiz, lütfen videoları tekrar yükleyin",
+  "createDramaUploadSessionFailed": "Yükleme oturumu oluşturulamadı",
+  "createDramaSubmitValidationRoles": "Lütfen en az bir rol ekleyin",
+  "createDramaStep1TitleRequired": "Lütfen kısa oyunun adını girin",
+  "createDramaStep1SynopsisRequired": "Lütfen kısa bir tanıtım yazısı girin",
+  "createDramaStep1CoverRequired": "Lütfen bir kapak ekleyin",
+  "createDramaStep1TagsRequired": "Lütfen etiket seçin",
+  "createDramaEpisodeDescriptionRequired": "Lütfen bölüm açıklamasını girin",
+  "settingsLanguage": "Dil",
+  "settingsTheme": "Tema",
+  "settingsThemeLight": "Açık",
+  "settingsThemeDark": "Koyu",
+  "settingsThemeSystem": "Sistem",
+  "settingsUI": "Arayüz",
+  "settingsAppVersion": "Sürüm",
+  "settingsVersionLatestToast": "En son sürümü kullanıyorsunuz",
+  "settingsVersionCheckFailed": "Sürüm kontrolü başarısız. Lütfen daha sonra tekrar deneyin.",
+  "appVersionUpdateTitle": "Yeni sürüm mevcut",
+  "appVersionUpdateContentsLabel": "Güncelleme içeriği:",
+  "appVersionUpdateConfirm": "Şimdi güncelle",
+  "appVersionUpdateLater": "Daha sonra",
+  "settingsTermsOfService": "Hizmet Şartları",
+  "settingsPrivacyPolicy": "Gizlilik Politikası",
+  "settingsDeleteAccount": "Hesabı Sil",
+  "settingsDeleteAccountConfirm": "Hesabınız {deadline} tarihinde silinecek. Bu süre içinde tekrar giriş yaparak hesap silmeyi iptal edebilirsiniz.",
+  "settingsDeleteAccountSuccess": "Hesap silme talebi gönderildi",
+  "settingsClearCache": "Önbelleği Temizle",
+  "settingsNetworkInspector": "Ağ Denetleyici",
+  "settingsClearCacheConfirm": "Önbelleği temizlemek istediğinizden emin misiniz?",
+  "miningRulesHowToPlay": "Madencilik görevleri nasıl oynanır?",
+  "miningRulesFlowSubtitle": "Bir resimle, görevlendirme sürecinden ödeme almaya kadar tüm süreci bir bakışta anlayın",
+  "miningRulesSection1Title": "1. Birini madencilik yapmaya gönder",
+  "miningRulesSection1Desc": "Boşta olan rolyu aşağıdaki 5 yuvaya “gönderirseniz”, rol otomatik olarak madencilik yapmaya ve STORY üretmeye başlar.",
+  "miningRulesSection1Bullet1": "Her kişi aynı anda en fazla 5 rol gönderebilir",
+  "miningRulesSection1Bullet2": "Aynı karakter IP'sinden birden fazla kart aynı anda görevlendirilebilir",
+  "miningRulesSection1Bullet3": "Gönderildikten sonra her 1 saatte bir 1 puan ⚡dayanıklılık tüketir; dayanıklılık &gt; 0 olduğunda üretim devam eder, dayanıklılık = 0 olduğunda üretim durur",
+  "miningRulesSection2Title": "2. Para hesaplama, verim formülü",
+  "miningRulesSection2Desc": "Her kartın saatlik üretimi şu şekilde hesaplanır:",
+  "miningRulesSection2Formula": "Tek Kart Saatlik Çıktı = Karakter Ücreti × 1 STORY",
+  "miningRulesSection2FactorsTitle": "Üç belirleyici faktör:",
+  "miningRulesSection2Factor1": "Madencilik katsayısı — Seviye ne kadar yüksekse katsayı da o kadar büyük olur. Seviye 1 = 1,0 → Seviye 2 = 2,2 → Seviye 3 = 5,0 → Seviye 4 = 11 → Seviye 5 = 24",
+  "miningRulesSection2Factor2": "IP Ücreti = Fiyat katsayısı × Popülerlik katsayısı × Trust1",
+  "miningRulesCoefTableTitle": "Katsayı ayrıntıları",
+  "miningRulesCoefColCoef": "Katsayı",
+  "miningRulesCoefColFactor": "Belirleyen etken",
+  "miningRulesCoefColDesc": "Ayrıntılar",
+  "miningRulesCoefMining": "Madencilik katsayısı",
+  "miningRulesCoefPrice": "Fiyat katsayısı",
+  "miningRulesCoefHeat": "Popülerlik katsayısı",
+  "miningRulesCoefCp": "CP katsayısı",
+  "miningRulesCoefTrust": "Trust",
+  "miningRulesCoefMiningFactor": "Seviye",
+  "miningRulesCoefPriceFactor": "Yayın fiyatı P0",
+  "miningRulesCoefHeatFactor": "Son dizi performansı",
+  "miningRulesCoefCpFactor": "-",
+  "miningRulesCoefTrustFactor": "Platform risk kontrolü",
+  "miningRulesCoefMiningDesc": "Lv1=1.0 · Lv2=2.2 · Lv3=5.0 · Lv4=11 · Lv5=24",
+  "miningRulesCoefPriceDesc": "P0≤10{currency1} iken doğrusal · P0>10{currency2} iken 1,6 asimptotik üst sınır",
+  "@miningRulesCoefPriceDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefHeatDesc": "Popülerlik katsayısı: karakter IP'sinin yer aldığı dizilerde tam izlenme, beğeni, kaydetme ve puan arttıkça popülerlik yükselir",
+  "miningRulesCoefCpDesc": "Henüz kullanıma açık değil",
+  "miningRulesCoefTrustDesc": "Varsayılan değer 1,0",
+  "miningRulesSettleColCondition": "Koşul",
+  "miningRulesSettleColRule": "Dağıtım kuralı",
+  "miningRulesUpgradePathSubtitle": "Yükseltme yolu",
+  "miningRulesUpgradeColPath": "Yükseltme yolu",
+  "miningRulesUpgradeColHeat": "Birikmiş tam izlenme eşiği",
+  "miningRulesUpgradeColFee": "Birleştirme ücreti",
+  "miningRulesUpgradePath12": "Lv1 → Lv2",
+  "miningRulesUpgradePath23": "Lv2 → Lv3",
+  "miningRulesUpgradePath34": "Lv3 → Lv4",
+  "miningRulesUpgradePath45": "Lv4 → Lv5",
+  "miningRulesUpgradeHeat12": "≥ 10,000",
+  "miningRulesUpgradeHeat23": "≥ 50,000",
+  "miningRulesUpgradeHeat34": "≥ 200,000",
+  "miningRulesUpgradeHeat45": "≥ 1,000,000",
+  "miningRulesUpgradeFee12": "10 {currency}",
+  "@miningRulesUpgradeFee12": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee23": "20 {currency}",
+  "@miningRulesUpgradeFee23": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee34": "40 {currency}",
+  "@miningRulesUpgradeFee34": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee45": "80 {currency}",
+  "@miningRulesUpgradeFee45": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor3": "R_base — Sabit değer; şu anda 1 STORY olarak ayarlanmıştır; platformda ilerleyen zamanlarda manuel olarak değiştirilebilir",
+  "miningRulesSection2StaminaText": "Dayanıklılık, “var mı yok mu”ya bakılır, ne kadar kaldığına bakılmaz: {staminaLimit} puanlık dayanıklılık ile 1 puanlık dayanıklılığın saat başına üretimi aynıdır; dayanıklılık, sadece madencilik yapıp yapmadığınıza bağlıdır.",
+  "@miningRulesSection2StaminaText": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesSection2ExampleTitle": "Örnek vermek gerekirse:",
+  "miningRulesSection2ExampleDesc": "Lin Mengyao · Lv3 Başrol · P0=12{currency} (fiyat katsayısı ≈1.0859) · popülerlik 3.5\n→ Saatlik üretim = 5.0 × 1.0859 × 3.5 × 1 = 19.00325 STORY",
+  "@miningRulesSection2ExampleDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection3Title": "3. Para dağıtılıyor, ancak bir üst sınır var",
+  "miningRulesSection3Desc": "Her hafta tüm platformda toplam ödül havuzu (haftalık sert kapak) belirlenir, yaklaşık 2.115.385 STORY'den başlar ve her hafta azalır (haftalık × 0.99572). Ödül dağıtımı üç duruma ayrılır:",
+  "miningRulesSection3Case1Title": "Tüm platformların nominal üretimi ≤ Bu haftanın ödül havuzu",
+  "miningRulesSection3Case1Desc": "Herkes listede belirtilen tutarı tam olarak alır; kalan ödül havuzu dağıtılmaz ve tamamlanmaz.",
+  "miningRulesSection3Case2Title": "Tüm platformların toplam nominal üretimi &gt; Bu haftanın ödül havuzu",
+  "miningRulesSection3Case2Desc": "Orantılı ölçeklendirme: Gerçek kazancınız = Nominal üretiminiz × Ödül havuzu ÷ Platformun toplam üretimi",
+  "miningRulesSection3Case3Title": "Tek bir adresin payı ödül havuzunun %5’ini aşıyor",
+  "miningRulesSection3Case3Desc": "Aşım kısmı ödenmez, geri aktarılmaz ve puan olarak telafi edilmez",
+  "miningRulesSection3ExampleDesc": "Haftalık ödül havuzunun 100.000 STORY olduğunu varsayalım:\nDurum A: Platformda tek siz varsınız ve bir haftada 134 üretiyorsunuz → 134 alırsınız, kalan 99.866 dağıtılmaz\nDurum B: Toplam platform çıktısı 250.000, herkes %40'a ölçeklenir (100.000÷250.000)\nDurum C: Birinin oransal ödülü 6.000 tek adres limiti 5.000 → Yalnızca 5.000 dağıtılır",
+  "miningRulesSection4Title": "4. Dayanıklılığını iyi idare etmelisin ki kazmaya devam edebilesin",
+  "miningRulesTableStatus": "Durum",
+  "miningRulesTableStaminaChange": "Dayanıklılıktaki değişiklikler",
+  "miningRulesTableOutput": "Çıktı",
+  "miningRulesStatusMining": "Gönderiliyor (madencilik)",
+  "miningRulesStaminaMining": "Saat başına -1",
+  "miningRulesOutputNormal": "Normal üretim",
+  "miningRulesStatusZeroStamina": "Dayanıklılık = 0",
+  "miningRulesStaminaZeroStamina": "Artık değişmeyecek",
+  "miningRulesOutputZero": "Çıktı 0'dır",
+  "miningRulesStatusResting": "Dinlenme molası",
+  "miningRulesStaminaResting": "Saat başına +1 (otomatik yenilenir)",
+  "miningRulesOutputPaused": "Üretimin askıya alınması",
+  "miningRulesStatusPaidRefill": "Dayanıklılık Yenileme (Ücretli)",
+  "miningRulesStaminaPaidRefill": "Anında {staminaLimit}'e kadar doluyor",
+  "@miningRulesStaminaPaidRefill": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesOutputRestored": "Üretimin yeniden başlatılması",
+  "miningRulesSection4TipsTitle": "Dayanıklılık takviyesiyle ilgili 3 şey:",
+  "miningRulesSection4Tip1": "Sadece tek tuşla tam dolum yapılabilir, sadece 10 puanlık satın alma yapılamaz",
+  "miningRulesSection4Tip2": "Fiyat sadece seviyenize göre belirlenir, kalan dayanıklılığınız ne kadar olduğuna bakılmaz. Dayanıklılığınız 0 iken de, 100 iken de tam olarak doldurmak için ödenen para aynıdır.",
+  "miningRulesSection4Tip3": "0’a ne kadar yakınsa, ekleme o kadar kârlı olur — aynı parayla en fazla ek madencilik süresi elde edersiniz",
+  "miningRulesSection4PriceTitle": "Her seviyenin ek ücretleri:",
+  "miningRulesPriceTableTier": "Statü",
+  "miningRulesPriceTableFullRefill": "Tek Tıkla Doldur",
+  "miningRulesLv1": "Seviye 1: Figüran",
+  "miningRulesLv2": "Seviye 2 Yardımcı Karakter",
+  "miningRulesLv3": "Seviye 3: Ana Karakter",
+  "miningRulesLv4": "Seviye 4 Süperstar",
+  "miningRulesLv5": "Seviye 5 En Popüler",
+  "miningRulesLv1Price": "15 {currency}",
+  "@miningRulesLv1Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv2Price": "36 {currency}",
+  "@miningRulesLv2Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv3Price": "87 {currency}",
+  "@miningRulesLv3Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv4Price": "208 {currency}",
+  "@miningRulesLv4Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv5Price": "465 {currency}",
+  "@miningRulesLv5Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection5Title": "5. Seviyenizi yükseltin, daha fazla kazanın",
+  "miningRulesSection5Desc": "Aynı seviyedeki 3 karakter kartı + birleştirme ücreti + söz konusu karakterin toplam tam izlenme hedefinin karşılanması = 1 seviye atlama. Seviye atladıktan sonra madencilik katsayısı ani bir artış gösterir ve saatlik üretim iki katına, hatta birkaç katına çıkar.",
+  "miningRulesSummaryTitle": "Tek cümleyle özetlemek gerekirse",
+  "miningRulesSummaryDesc": "Görevlendir → Üret → Dayanıklılığı izle → Ödülü al. Dayanıklılık azaldığında doldur veya geri çağırıp dinlendir; popülerlik, karakterin dizi performansıyla yükselir ve yükseltme üretimi katlar.",
+  "playerNotInterested": "İlgilenmiyorum",
+  "playerNotInterestedDone": "Geri bildiriminiz alındı. Buna benzer daha az video göstereceğiz",
+  "playerClearScreen": "Ekranı temizle",
+  "playerAutoPlay": "Otomatik oynat",
+  "playerReport": "Rapor Et",
+  "playerReportSuccess": "Başarıyla raporlandı",
+  "commentReportSuccess": "Başarıyla gönderildi, en kısa sürede işleme alacağız",
+  "reportSuccessTitle": "Başarıyla gönderildi. En kısa sürede inceleyeceğiz",
+  "reportSuccessThanks": "Topluluk güvenliğine katkılarınız için teşekkürler!",
+  "reportSuccessAlsoYouCan": "Ayrıca şunları yapabilirsiniz",
+  "reportSuccessDone": "Tamam",
+  "reportReduceRecommend": "Daha az göster",
+  "reportReduceRecommendDone": "Daha az gösterilecek",
+  "reportSuccessContentFallback": "Bu içerik",
+  "reportDescription": "Rapor Açıklaması",
+  "reportDescriptionPlaceholder": "Detayları açıklayın (İsteğe bağlı)",
+  "reportReasonPorn": "Pornografi ve Müstehcenlik",
+  "reportReasonIllegal": "Yasa Dışı veya Suç",
+  "reportReasonSensitive": "Hassas İçerik",
+  "reportReasonGambling": "Kumar veya Şiddet",
+  "reportReasonMinors": "Yaş Çocuklara Zarar",
+  "reportReasonCopyright": "Telif Hakkı İhlali",
+  "reportReasonQuality": "Kalite Sorunu",
+  "reportReasonNotLike": "Beğenmedim",
+  "reportReasonOther": "Diğer",
+  "gameUpgrade": "Yükselt",
+  "gameUpgradeTitle": "Seviye Yükseltme",
+  "gameUpgradeCurrentLevel": "Mevcut Seviye",
+  "gameUpgradeTargetLevel": "Hedef Seviye",
+  "gameUpgradeHeatThreshold": "Birikmiş drama tam izlenme sayısı",
+  "gameUpgradeRequiredCount": "Aynı IP ve seviye rolleri tüket",
+  "gameUpgradeFee": "Yükseltme Ücreti",
+  "gameUpgradeNextLevelReq": "Sonraki seviye gereksinimleri",
+  "gameUpgradeBeforeAfter": "Yükseltme öncesi ve sonrası",
+  "gameUpgradeSelectMaterialDesc": "Tüketilecek aynı IP ve seviye rolleri seç",
+  "gameUpgradeMaterialCount": "{current}/{required}",
+  "@gameUpgradeMaterialCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeToLevel": "Lv{level} {levelName} seviyesine yükselt",
+  "@gameUpgradeToLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterialLabel": "Malzeme Seç ({current}/{required})",
+  "@gameUpgradeSelectMaterialLabel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterials": "{count} malzeme seçin",
+  "@gameUpgradeSelectMaterials": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeConfirm": "Yükseltmeyi Onayla",
+  "gameUpgradeSuccess": "Yükseltme başarılı",
+  "gameUpgradeFailed": "Yükseltme başarısız, lütfen tekrar deneyin",
+  "gameUpgradeInsufficientMaterials": "Yetersiz malzeme",
+  "gameUpgradeNoMaterials": "Tüketilebilir aynı IP ve seviyede aktör bulunamadı",
+  "creatorDramaStatusMinted": "Basıldı",
+  "creatorDramaStatusOffline": "Kaldırıldı",
+  "creatorDramaStatusUnavailable": "Geçici olarak kullanılamıyor",
+  "creatorMintDramaNft": "Drama NFT'si Bas",
+  "creatorMintConfirmDesc": "Bu dramayı zincir içi NFT olarak basmayı onaylayın. Basıldıktan sonra bu drama STORY madenciliği ödülleri üretecektir.",
+  "creatorMintFee": "Basım ücreti",
+  "creatorMintInsufficientUsdc": "{currency1} bakiyesi yetersiz. Zincir üzeri yayınlama için en az 1 {currency2} gerekir.",
+  "@creatorMintInsufficientUsdc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintInvalidDramaId": "Geçersiz drama kimliği",
+  "creatorMintInProgress": "Basım devam ediyor, lütfen bekleyin",
+  "creatorMintWalletNotReady": "Solana cüzdan adresi hazır değil. Lütfen tekrar giriş yapın",
+  "creatorMintDigestEmpty": "Yayınlama imza verisi boş. Lütfen biraz sonra tekrar deneyin.",
+  "creatorMintWalletMismatch": "Basım cüzdanı mevcut cüzdanla eşleşmiyor. Lütfen tekrar giriş yapın",
+  "creatorMintSuccess": "Basım başarılı!",
+  "@creatorMintDramaOnChain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintDramaOnChain": "\"{name}\" dramasının NFT'si zincir içine basıldı",
+  "@creatorMintNftNumber": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintNftNumber": "NFT Numarası: {id}",
+  "creatorMintTxHash": "İşlem Hash'i: ",
+  "gameSelectActor": "Dağıtılacak aktörü seçin",
+  "gameSelectActorDesc": "Boşta olan bir karakter seç ve görevlendir",
+  "agentV2SchedulePerformance": "Sahne Al",
+  "agentV2PerformAllTitle": "Tek Tıfla Sahne Al",
+  "agentV2PerformAllDescription": "Ücreti yüksek karakterler boş gösteri yerlerine önce atanır",
+  "agentV2PerformAllFailed": "Tek dokunuşla gösteri başarısız oldu. Lütfen tekrar deneyin",
+  "agentV2PerformAllSuccess": "Tek dokunuşla gösteri başarılı",
+  "agentV2PerformAllDepletedResult": "{successCount} oyuncu başarıyla sahne aldı, {depletedCount} oyuncu tükenen enerjisi nedeniyle sahne alamadı",
+  "agentV2RestAllSuccess": "Tek dokunuşla dinlendirme başarılı",
+  "agentV2PerformAllCount": "{count} karakter",
+  "@agentV2PerformAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2CandidateActorsTitle": "Aday roller",
+  "agentV2CandidateActorsDescription": "Dinlenen roller saatte 1 dayanıklılık puanı yeniler",
+  "agentV2UpgradeableActorsTitle": "Rolleri yükselt",
+  "agentV2UpgradeableActorsEmpty": "Yükseltilebilecek rol yok",
+  "agentV2NoActors": "Rol yok",
+  "agentV2UpgradeNow": "Şimdi yükselt",
+  "agentV2UpgradeCompletion": "Tam izlenme",
+  "agentV2UpgradeMaterials": "Roller",
+  "agentV2UpgradeRequirementsTitle": "{name} rolünü yükselt",
+  "@agentV2UpgradeRequirementsTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionRemaining": "{count} tam izlenme daha gerekli",
+  "@agentV2UpgradeCompletionRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionHint": "Bu karakterin yer aldığı dizileri izleyin veya tam izlenmeleri artırmak için yeni bir dizi oluşturun",
+  "agentV2UpgradeWatchDramas": "Dizilerini izle",
+  "agentV2UpgradeCreateDrama": "Dizi oluştur",
+  "agentV2UpgradeMaterialsRemaining": "Aynı IP ve seviyede {count} rol daha gerekli",
+  "@agentV2UpgradeMaterialsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeMaterialsHint": "Karakter profilinden daha fazla \"{name}\" karakteri imzalayın",
+  "@agentV2UpgradeMaterialsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeGetActors": "Rol edin",
+  "agentV2UpgradeActorsSyncing": "{count} yeni karakter eşitleniyor; yükseltme koşulları güncellendi",
+  "@agentV2UpgradeActorsSyncing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryDetailTitle": "Karakter ücret ayrıntıları",
+  "agentV2SalaryHourly": "Saatlik ücret",
+  "agentV2SalaryUnit": "STORY / saat",
+  "agentV2SalaryFormula": "Karakter ücreti = IP ücreti × Ücret katsayısı × CP katsayısı × Trust2",
+  "agentV2SalaryFormulaLv1": "Lv.1 karakter ücreti = Fiyat katsayısı × Popülerlik katsayısı",
+  "agentV2SalaryFormulaLevel": "Lv.{level} ücret = Lv.1 ücret × Ücret katsayısı",
+  "@agentV2SalaryFormulaLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryLv1Pay": "Lv.1 ücret",
+  "agentV2SalaryCoefficient": "Ücret katsayısı",
+  "agentV2SalaryCoefficientWithLevel": "Ücret katsayısı (Lv.{level} {roleName})",
+  "@agentV2SalaryCoefficientWithLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2SalaryCpCoefficient": "CP katsayısı",
+  "agentV2PerformanceConfirmDescription": "Bu karakter, performans sırasında otomatik olarak ücret kazanır. Her saat performans 1 puan dayanıklılık harcar; dayanıklılık bitince kazanç durur.",
+  "agentV2PerformanceConfirmTitle": "Performans ayarla",
+  "agentV2PerformanceZeroFeePrefix": "Bu karakterin IP'si şu anda ",
+  "agentV2PerformanceZeroFeeHighlight": "ücret 0",
+  "agentV2PerformanceZeroFeeSuffix": ", bu yüzden gösteri gelir getirmeyecek. Ayrıca gösteri sırasında her saat 1 enerji puanı harcanır. Yine de devam etmek istiyor musun?",
+  "agentV2PerformanceScheduledSuccess": "Gösteri planlandı",
+  "agentV2PerformanceSlotsFull": "Gösteri alanları dolu (en fazla 5)",
+  "gameDeployStaminaDepleted": "Dayanıklılık tükendi. Gösteriden önce doldurun",
+  "agentMoreRules": "Kurallar",
+  "agentMoreSalaryAndPool": "Ücret ve ödül havuzu",
+  "agentV2WeeklySalaryTitle": "Seviye Atla · Sahne Al · Ücret Kazan",
+  "agentV2WeeklySalaryLabel": "Bu haftaki ücret",
+  "gameDeployConfirmDesc": "Bu karakter otomatik olarak staking madenciliğine katılır ve sizin için sürekli STORY getirisi üretir. Not: Her saat başında 1 dayanıklılık puanı harcanır. Dayanıklılık tükendiğinde getiri üretimi durur.",
+  "gameRecallConfirm": "Geri çağırmayı onayla",
+  "gameRecallDesc": "Bu karakteri geri çağırmak drama üretim ödüllerini duraklatacak ancak mevcut dayanıklılığı etkilemeyecektir.",
+  "actorStatCompletionTitle": "Tam izlenme",
+  "actorStatCompletionDesc": "Bu karakterin rol aldığı tüm dramlardaki toplam tam izlenme sayısı",
+  "actorStatHeatTitle": "Popülerlik",
+  "actorStatHeatDesc": "Bu karakter IP'sinin yer aldığı tüm kısa dizilerin son 30 günlük toplam popülerliği",
+  "dramaFavoriteLabel": "Favori",
+  "dramaRatingLabel": "Puan",
+  "dramaUnnamed": "İsimsiz",
+  "videoNotReady": "Video hazır değil, lütfen daha sonra tekrar deneyin",
+  "inviteDirectSubordinates": "Davet edilen kullanıcılar",
+  "@inviteTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteTotalCount": "Toplam: {count} kullanıcı",
+  "inviteTotalLabel": "Toplam kullanıcı",
+  "inviteActiveLabel": "Aktif kullanıcılar",
+  "invitePendingLabel": "Aktivasyon bekliyor",
+  "inviteEmpty": "Henüz ast kullanıcı yok",
+  "@inviteRegisteredAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRegisteredAt": "{date} tarihinde kayıt oldu",
+  "searchNoData": "İlgili içerik yok",
+  "gameActorLevelName1": "Ekstra",
+  "gameActorLevelName2": "Yardımcı oyuncu",
+  "gameActorLevelName3": "Başrol",
+  "gameActorLevelName4": "Süperstar",
+  "gameActorLevelName5": "Üst düzey",
+  "gameUpgradeMaxLevel": "Maksimum seviyeye ulaşıldı",
+  "listNoMoreData": "Daha fazla veri yok",
+  "@agentV2RefillActorCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@agentV2RestActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "salaryPoolRateUnit": "STORY / saat",
+  "salaryPoolDecayInfo": "Haftalık zayıflama katsayısı ×0.99572",
+  "salaryPoolStakeLabel": "Performans Ödül havuzu (%75)",
+  "salaryPoolInviteLabel": "Davet Ödül havuzu (%25)",
+  "salaryPoolRule1Title": "Ağ genelindeki nominal üretim ≤ haftalık üst sınır:",
+  "salaryPoolRule2Title": "Ağ genelindeki nominal üretim > haftalık üst sınır:",
+  "salaryPoolRule2Body": "Kullanıcının eline geçen tutar = kullanıcının nominal üretimi × (haftalık üst sınır ÷ ağın toplam nominal üretimi)",
+  "actorStatIpPowerTitle": "IP ücreti",
+  "actorStatIpPowerDesc": "IP ücreti = Fiyat katsayısı × Popülerlik katsayısı × Trust1",
+  "agentV2TodoHealthy": "Gösteriler normal · Dayanıklılık yeterli",
+  "agentV2TodoPerform": "Sahne al",
+  "agentV2TodoRefill": "Yenile",
+  "agentV2TodoVacancies": "{count} boş gösteri yeri var",
+  "@agentV2TodoVacancies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeConfirmSalaryLabel": "Ücret",
+  "agentV2UpgradeConfirmSelectMaterials": "Tüketilecek aynı IP ve seviyedeki karakterleri seçin",
+  "commentsReplyTo": "@{nickname} kullanıcısına yanıt ver: ",
+  "@commentsReplyTo": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDelete": "Sil",
+  "financeDashboardActorVaultRanking": "Karakter IP kasası sıralaması",
+  "financeDashboardCoveredActorIp": "Kapsanan karakter IP'leri",
+  "financeDashboardFeeMint": "Sözleşme ücreti",
+  "financeDashboardFeeRoyalty": "İkincil telif",
+  "financeDashboardFeeItemPurchase": "Eşya satın alma",
+  "financeDashboardFeeTx": "İşlem ücreti",
+  "financeDashboardPageTitle": "Platform finans panosu",
+  "financeDashboardRecentUsdcLedger": "Son USDC gelirleri",
+  "financeDashboardTabStoryRelease": "STORY dağıtım özeti",
+  "financeDashboardTabUsdcIncome": "USDC gelir ayrıntıları",
+  "financeDashboardTabVaultFunds": "Kasa fonu birikimi",
+  "financeDashboardTotalStoryReleased": "Dağıtılan toplam STORY",
+  "financeDashboardTotalUsdcIncome": "Toplam USDC geliri",
+  "financeDashboardTotalVaultFunds": "Toplam kasa fonu",
+  "financeDashboardViewMore": "Daha fazla göster",
+  "miningRulesSection2Factor4": "Fiyat katsayısı — ihraç fiyatı P0: P0≤10{currency1} doğrusal büyüme · P0>10{currency2} için 1,6 üst sınırına yaklaşır",
+  "@miningRulesSection2Factor4": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor5": "Popülerlik katsayısı — son dizi performansı ne kadar iyiyse popülerlik o kadar yüksektir (tam izlenme, beğeni, kaydetme, yorum)",
+  "miningRulesSection2Factor6": "CP katsayısı — henüz kullanıma açık değil; Trust varsayılan olarak 1,0'dır",
+  "nftSortIpPower": "IP ücreti",
+  "notificationDelete": "Sil",
+  "notificationDeleteFailed": "Silinemedi. Lütfen daha sonra tekrar deneyin",
+  "storyReleaseCategoryInvestors": "Yatırımcılar",
+  "storyReleaseCategoryLiquidity": "Launchpad + Likidite",
+  "storyReleaseCategoryMarketOps": "Piyasa operasyonları",
+  "storyReleaseCategoryNftMiningPool": "NFT madencilik havuzu",
+  "storyReleaseCategoryTeam": "Ekip",
+  "storyReleaseCategoryTreasury": "Hazine",
+  "storyReleaseFieldAmount": "Miktar",
+  "storyReleaseFieldHardLimit": "Haftalık üst sınır",
+  "storyReleaseFieldInviteRewards": "Davet madenciliği",
+  "storyReleaseFieldMiningRewards": "Stake madenciliği",
+  "storyReleaseFieldPeriod": "Dönem",
+  "storyReleaseFieldProgress": "Dağıtım ilerlemesi",
+  "storyReleaseFieldRatio": "Oran",
+  "storyReleaseFieldReleased": "Dağıtıldı",
+  "storyReleaseFieldTarget": "Tahsis hedefi",
+  "storyReleaseFieldUsageRate": "Kullanım oranı",
+  "storyReleaseTabAllocation": "Toplam STORY tahsisi",
+  "storyReleaseTabMiningRelease": "Son madencilik dağıtımı",
+  "storyReleaseTotalSupplyBadge": "Toplam {total} STORY",
+  "@storyReleaseTotalSupplyBadge": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceUnitName": "Puan",
+  "agentV2TodoStaminaDepleted": "{name} 0 enerjiye sahip ve çalışmayı durdurdu",
+  "@agentV2TodoStaminaDepleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2TodoTitle": "Yapılacaklar",
+  "iapBalance": "Bakiye",
+  "iapConfirmPurchase": "Satın almayı onayla",
+  "iapCrediting": "Ödeme işleniyor, lütfen bekleyin",
+  "iapGainedPoints": "+{value}",
+  "@iapGainedPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "iapNoProducts": "Mevcut ürün yok",
+  "iapOrderInFlight": "Bu ürün için tamamlanmamış bir siparişiniz var, lütfen daha sonra tekrar deneyin",
+  "iapPointsCount": "{count} puan",
+  "@iapPointsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "iapPurchaseFailed": "Satın alma başarısız oldu, lütfen tekrar deneyin",
+  "iapPurchaseFailedTitle": "Satın alma başarısız",
+  "iapPurchaseSuccess": "Satın alma başarılı",
+  "iapSheetSubtitle": "Puanlar; karakter sözleşmesi gibi uygulama içi hizmetlerde kullanılır",
+  "iapSheetTitle": "Puan satın al",
+  "iapSuccessConfirm": "Tamam",
+  "profileTradeStory": "STORY işlem",
+  "agentV3WeeklySalary": "Haftalık ücret",
+  "agentV3PerformAll": "Tümünü sahnele",
+  "agentV3RestAll": "Tümünü dinlendir",
+  "agentV3RestAllDescription": "Enerji tüketimini ve kazancı durdurmak için sahnedeki tüm karakterleri geri çağır",
+  "agentV3RefillAll": "Tümünü yenile",
+  "agentV3RefillAllDescription": "Sahnedeki karakterlerin enerjisini tamamen doldur",
+  "agentV3RefillCost": "Harcar",
+  "agentV3RefillNoActors": "Enerji yenilemesi gereken karakter yok",
+  "agentV3SignActor": "Karakter imzala",
+  "agentV3Todo": "Yapılacaklar",
+  "agentV3Upgrade": "Yükselt",
+  "agentV3UpgradeMaterialHint": "Yükseltme, aynı IP ve seviyeye sahip {count} karakter tüketir",
+  "@agentV3UpgradeMaterialHint": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "agentV3Waiting": "Beklemede",
+  "agentV3WaitingActorsTitle": "Bekleyen Karakterler",
+  "agentV3WaitingActorsDescription": "Dinlenen karakterler saatte 1 dayanıklılık yeniler",
+  "agentV3Recycle": "Geri dönüştür",
+  "agentV3RecycleActorsTitle": "Karakterleri Geri Dönüştür",
+  "agentV3RecyclePerforming": "Sahnede",
+  "agentV3RecycleReceive": "Şunları alacaksınız",
+  "agentV3RecyclePermanentWarning": "Karakter kalıcı olarak yok edilecek ve geri alınamayacak",
+  "agentV3RecycleConfirm": "Yok etmeyi onayla",
+  "agentV3RecycleConfirmAgain": "Yok etmek için tekrar dokun",
+  "agentV3RecycleSubmitted": "Karakter başarıyla geri dönüştürüldü",
+  "agentV3RecycleEstimateUnavailable": "Geri dönüşüm tahmini alınamıyor. Lütfen tekrar deneyin",
+  "agentV3EnergyPack": "Enerji paketi",
+  "agentV3EnergyPackDescription": "Karakter enerjisini tamamen yeniler; karakter seviyesine göre tüketilir.",
+  "agentV3TrainingManual": "Eğitim kılavuzu",
+  "agentV3TrainingManualDescription": "Karakter yükseltme malzemesidir; yükseltme sırasında karakter seviyesine göre tüketilir.",
+  "agentV3PurchaseButton": "Satın al",
+  "agentV3PurchaseWalletBalance": "Bakiye {balance} {currency}",
+  "@agentV3PurchaseWalletBalance": {
+    "placeholders": {"balance": {"type": "String"}, "currency": {"type": "String"}}
+  },
+  "agentV3PurchaseTitle": "{item} satın al",
+  "@agentV3PurchaseTitle": {
+    "placeholders": {"item": {"type": "String"}}
+  },
+  "agentV3PurchaseUnitPrice": "Birim fiyat",
+  "agentV3PurchaseQuantity": "Adet",
+  "agentV3PurchaseTotal": "Toplam",
+  "agentV3PurchaseConfirm": "Ödemeyi onayla",
+  "agentV3PurchaseUnavailable": "Bu ortamda öğe satın alma kullanılamıyor",
+  "agentV3PurchaseConfigUnavailable": "Öğe fiyatı kullanılamıyor. Lütfen daha sonra tekrar deneyin",
+  "agentV3PurchaseSubmitted": "Satın alma başarılı. Eşya çantasına eklendi (Menajer sayfası)",
+  "agentV3PurchaseCreditPending": "Enerji paketleri hâlâ aktarılıyor. Lütfen kısa süre sonra tekrar deneyin",
+  "agentV3PurchaseCrediting": "Zincir taranıyor ve aktarılıyor",
+  "agentV3PurchaseBalance": "Mevcut: {count}",
+  "@agentV3PurchaseBalance": {
+    "placeholders": {"count": {"type": "String"}}
+  },
+  "agentV3RefillTitle": "Enerjiyi tamamen doldur",
+  "agentV3RefillLevelCost": "Sv.{level} tüketir",
+  "agentV3RefillAvailable": "Kullanılabilir",
+  "agentV3RefillUse": "Kullan",
+  "agentV3RefillSuccess": "Enerji tamamen dolduruldu",
+  "agentV3RefillAllSuccess": "{actorCount} karakterin enerjisi yenilendi ({packCount} enerji paketi kullanıldı)",
+  "@agentV3RefillAllSuccess": {
+    "placeholders": {
+      "actorCount": {"type": "int"},
+      "packCount": {"type": "String"}
+    }
+  },
+  "agentV3RefillConfigUnavailable": "Enerji paketi tüketim ayarı kullanılamıyor",
+  "agentV3RefillInsufficient": "Yeterli enerji paketi yok"
+}

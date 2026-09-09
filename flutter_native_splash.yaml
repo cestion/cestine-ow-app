@@ -1,0 +1,21 @@
+# After re-running `dart run flutter_native_splash:create`, restore iOS
+# LaunchScreen.storyboard root backgroundColor to named color
+# `LaunchBackgroundColor` (supports dark #111113). The generator hardcodes white.
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/splash_logo.png
+  color_dark: "#111113"
+  image_dark: assets/images/splash_logo_dark.png
+
+  # Android 12+ clips the splash icon to a circle. Source must be square
+  # (1152×1152, logo within ~768px diameter) or OEMs stretch wide wordmarks.
+  android_12:
+    color: "#FFFFFF"
+    image: assets/images/splash_logo_android12.png
+    color_dark: "#111113"
+    image_dark: assets/images/splash_logo_dark_android12.png
+
+  android: true
+  ios: true
+  web: false
+  fullscreen: false

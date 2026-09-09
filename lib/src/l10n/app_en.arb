@@ -1,0 +1,2749 @@
+{
+  "appName": "StoryFun",
+  "commonCancel": "Cancel",
+  "commonNoData": "No data",
+  "commonNo": "No",
+  "commonYes": "Yes",
+  "publishDrama": "Post Drama",
+  "publishVideo": "Post Video",
+  "publishVideoUploadTitle": "Upload video file",
+  "publishVideoFileHint": "Supports mp4, flv, wmv, mkv, avi, mov and webm. Maximum 2GB",
+  "publishVideoChooseFile": "Choose file",
+  "publishVideoChangeFile": "Replace file",
+  "publishVideoChooseSource": "Choose video source",
+  "publishVideoChooseFromGallery": "Choose from gallery",
+  "publishVideoChooseFromFiles": "Choose from files",
+  "publishVideoPreparing": "Preparing video…",
+  "publishVideoCoverTitle": "Video cover",
+  "publishVideoChangeCover": "Replace cover",
+  "publishVideoCoverHint": "JPG/PNG, up to 5MB",
+  "publishVideoDescriptionLabel": "Description",
+  "publishVideoRequired": "(Required)",
+  "publishVideoDescriptionHint": "Add a description (up to 200 characters)",
+  "publishVideoSaveDraft": "Save draft",
+  "publishVideoDraftEditModeNotSupported": "Cannot save draft in edit mode",
+  "publishVideoDraftNothingToSave": "Nothing to save",
+  "publishVideoNext": "Next",
+  "publishVideoCoverCropTitle": "Crop video cover",
+  "publishVideoVideoTooLarge": "This video is over 2GB. Please choose a smaller video",
+  "publishVideoVideoPickFailed": "Could not select the video. Try again",
+  "publishVideoInsufficientStorage": "Not enough device storage to prepare this video",
+  "publishVideoPermissionDenied": "Could not access this video. Check photo or file permissions",
+  "publishVideoSourceUnavailable": "This video is temporarily unavailable. Download cloud files and try again",
+  "publishVideoPrepareFailed": "Could not prepare the video. Try again or choose it from Files",
+  "publishVideoMetadataUnavailable": "Could not read the video details. Choose another file",
+  "publishVideoCoverTooLarge": "The cover image cannot exceed 5MB",
+  "publishVideoCoverUnsupportedFormat": "Only JPG/PNG images are supported",
+  "publishVideoCoverPickFailed": "Could not select the cover. Try again",
+  "publishVideoUploadSessionFailed": "Could not create an upload session. Try again",
+  "publishVideoPublishedSuccess": "Video posted",
+  "publishVideoUpdatedSuccess": "Video updated",
+  "publishActorIp": "Launch IP",
+  "commonConfirm": "Confirm",
+  "commonOk": "Got it",
+  "commonNotice": "Notice",
+  "commonRetry": "Retry",
+  "publicProfileLikedEmpty": "No liked dramas yet",
+  "profileTabDramas": "Dramas",
+  "profileTabWorks": "Works",
+  "profileTabActorIp": "Character IP",
+  "@dramaUnlockConfirmLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockConfirmLabel": "Unlock for {price} {currency}",
+  "dramaAllEpisodes": "All {count} episodes",
+  "dramaAllEpisodesFull": "All {count} episodes",
+  "dramaLoading": "Loading dramas...",
+  "dramaEmpty": "No dramas available",
+  "dramaRefresh": "Refresh",
+  "@dramaAllEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navTheater": "Theater",
+  "navHome": "Home",
+  "theaterTabShortDrama": "Drama",
+  "theaterTabRecommend": "For You",
+  "playerWatchFullDrama": "Watch full drama",
+  "playerStoryPerHourUnit": "STORY/h",
+  "navNft": "IP Market",
+  "navNftIp": "Character IP",
+  "watchFullDramaEpisodes": "Watch Drama · {count} Ep Total",
+  "@watchFullDramaEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navCreate": "Create",
+  "navProfile": "Profile",
+  "navMy": "Manager",
+  "aboutTitle": "About Us",
+  "aboutVision": "AI · Web3 · Protocol",
+  "aboutVisionDesc": "Driven by three forces, transforming passive narrative experiences into active generation.",
+  "aboutAiDesc": "Your ideas automatically turn into stories",
+  "aboutWeb3Desc": "Your creations belong to you forever",
+  "aboutProtocolDesc": "Your stories can continue infinitely",
+  "aboutIdentityTitle": "Your Narrative Identity",
+  "aboutIdentityDesc": "You are a narrative universe unfolding in yourself",
+  "aboutIdentityCreator": "Creator",
+  "aboutIdentityCreatorDesc": "Actively writing one's own narrative",
+  "aboutIdentityWitness": "Witness",
+  "aboutIdentityWitnessDesc": "Participating in and validating other narratives",
+  "aboutIdentityCoCreator": "Co-creator",
+  "aboutIdentityCoCreatorDesc": "Entering and rewriting the narrative structure",
+  "aboutIdentitySpreader": "Spreader",
+  "aboutIdentitySpreaderDesc": "Spreading narratives you find valuable",
+  "aboutTokenomicsTitle": "STORY: Narrative Rights Token",
+  "aboutTokenomicsDesc": "Become a co-producer of AI dramas, restructuring the revenue distribution of the film industry.",
+  "aboutTokenomicsGov": "Governance",
+  "aboutTokenomicsGovDesc": "Vote to decide the genre and direction of the next AI drama",
+  "aboutTokenomicsRevenue": "Revenue Sharing",
+  "aboutTokenomicsRevenueDesc": "Share platform subscriptions, copyright licensing, and merchandise sales dividends",
+  "aboutTokenomicsAccess": "Access",
+  "aboutTokenomicsAccessDesc": "Sneak peek of the latest episodes, unlock exclusive content",
+  "aboutStakingTitle": "Staking Dividends",
+  "aboutStakingDesc": "Drama NFT · Character NFT · STORY → Stake for dividends",
+  "aboutStakingDrama": "Drama NFT Staking",
+  "aboutStakingDramaDesc": "Drama Creator · Receive dividends",
+  "aboutStakingActor": "Character NFT Staking",
+  "aboutStakingActorDesc": "Character stars in drama · Receive dividends",
+  "aboutStakingStory": "STORY Staking",
+  "aboutStakingStoryDesc": "Stake to drama · Share revenue",
+  "aboutHeroTitle": "Create Your Own Story",
+  "aboutHeroDesc": "Your life is not a script to be experienced, but a narrative being written by you",
+  "loginTitle": "Email Login",
+  "loginSubtitle": "Login via Privy Email OTP, which will automatically create a Solana embedded wallet.",
+  "loginPlaceholder": "Enter your email address",
+  "loginEmailHintFormat": "your@email.com",
+  "loginVerificationFailed": "Verification failed",
+  "loginNeedCodeFirst": "Please request a verification code first",
+  "loginCreateWalletFailed": "Failed to create wallet",
+  "loginGetTokenFailed": "Failed to get access token",
+  "loginPrivyUnavailable": "Login service is unavailable. Please restart the app and try again",
+  "loginSendCodeFailed": "Failed to send verification code. Please try again later",
+  "loginTooManyRequests": "Too many requests. Please wait and try again",
+  "loginVerificationSuccessful": "Verification successful",
+  "loginSendCode": "Get Code",
+  "loginSendingCode": "Sending...",
+  "loginCodePlaceholder": "Enter 6-digit verification code",
+  "loginSubmit": "Login",
+  "loginSubmitting": "Logging in...",
+  "loginEmailRequired": "Please enter your email",
+  "loginCodeRequired": "Please enter verification code",
+  "loginSuccess": "Login Successful",
+  "loginErrorPrefix": "Login failed: ",
+  "loginCodeSent": "Verification code has been sent to {email}",
+  "loginEmailLabel": "Email",
+  "loginCodeLabel": "Verification Code",
+  "loginVerifying": "Verifying, please wait...",
+  "loginVerifyAndSubmit": "Verify and Login",
+  "loginChangeEmail": "Change Email",
+  "loginNotNow": "Not Now",
+  "loginInvalidEmail": "Please enter a valid email address",
+  "@loginCodeSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "Agent",
+  "profileNotLoggedIn": "Not Logged In",
+  "profileClickLogin": "Login / Register",
+  "profileMyWallet": "My Wallet",
+  "profileWallet": "Wallet",
+  "profileTradeStory": "Trade STORY",
+  "profileWalletCreating": "Creating...",
+  "walletNetworkSolana": "Solana",
+  "walletNetworkEvm": "EVM",
+  "profileEarnings": "Earnings",
+  "profileMyNft": "My NFTs",
+  "profileMyFavorites": "My Favorites",
+  "profileWatchHistory": "Watch History",
+  "profileCreatorCatalog": "Creators",
+  "profileIdentityAuth": "Identity Verification",
+  "profileAccountSecurity": "Account Security",
+  "profileLanguage": "Language",
+  "profileAboutUs": "About Us",
+  "profileHelpFeedback": "Help & Feedback",
+  "profileLogout": "Logout",
+  "profileLogoutConfirm": "Are you sure to log out?",
+  "profileLogoutSuccess": "Logged out successfully",
+  "mainPressBackAgainToExit": "Press back again to exit",
+  "languageSelectTitle": "Select Language",
+  "languageChinese": "简体中文",
+  "languageEnglish": "English",
+  "searchTitle": "Search",
+  "searchHint": "Search dramas, works, characters, users...",
+  "searchEmpty": "No related content",
+  "searchNoData": "No related content",
+  "searchPlaceholder": "Search dramas, works, characters, users...",
+  "theaterSearchPlaceholder": "Search dramas, works, characters, users...",
+  "searchHistory": "Recent searches",
+  "searchClear": "Clear history",
+  "searchAction": "Search",
+  "searchHistoryCleared": "Search history cleared",
+  "searchKeywordTooShort": "Enter at least 2 characters",
+  "searchTabDramas": "Dramas",
+  "searchTabWorks": "Works",
+  "searchTabActors": "Character IP",
+  "searchTabUsers": "Users",
+  "searchEpisodeNo": "Ep. {episodeNo}",
+  "@searchEpisodeNo": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "searchMinutesAgo": "{count} min ago",
+  "@searchMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchHoursAgo": "{count} hr ago",
+  "@searchHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDaysAgo": "{count} days ago",
+  "@searchDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramasCount": "Dramas ({count})",
+  "@searchDramasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchActorsCount": "Characters ({count})",
+  "@searchActorsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramaEpisodesWithCast": "All {count} episodes | Cast: {actors}",
+  "@searchDramaEpisodesWithCast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "actors": {
+        "type": "String"
+      }
+    }
+  },
+  "nftTitle": "NFT Character Square",
+  "nftLoading": "Loading Character IPs...",
+  "nftEmpty": "No Character IPs",
+  "nftRefresh": "Refresh",
+  "nftIdPrefix": "ID: #{id}",
+  "@nftIdPrefix": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "nftRarity": "Rarity",
+  "nftStatusStaked": "Staked",
+  "nftStatusIdle": "Idle",
+  "nftPrice": "Price",
+  "dramaDetailTitle": "Drama Detail",
+  "dramaDetailLoading": "Loading…",
+  "dramaDetailRetry": "Retry",
+  "dramaDetailEpisodeList": "Episodes",
+  "dramaDetailSynopsis": "Synopsis",
+  "dramaDetailExpand": "Expand",
+  "dramaDetailCollapse": "Collapse",
+  "dramaDetailTabIntro": "Intro",
+  "dramaDetailTabEpisodes": "Episodes",
+  "dramaDetailTabComments": "Comments",
+  "dramaDetailTabRoles": "Character IP",
+  "dramaDetailSignMoreCharacterIps": "Sign more character IPs",
+  "dramaDetailCharactersEmpty": "No character IPs bound yet",
+  "dramaDetailRoleSalary": "Salary {amount}",
+  "@dramaDetailRoleSalary": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleSalaryPerHour": "Salary {amount} STORY/h",
+  "@dramaDetailRoleSalaryPerHour": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleUnbound": "Unbound",
+  "dramaCastActorsTitle": "Cast character IPs",
+  "dramaDetailCompletion": "{count} completed views",
+  "@dramaDetailCompletion": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailHeat": "{count} heat",
+  "@dramaDetailHeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailTotalEpisodes": "{count} Episodes",
+  "@dramaDetailTotalEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingTitle": "Rate this Drama",
+  "dramaDetailWantToRate": "Rate this",
+  "dramaDetailNotRated": "Not rated",
+  "dramaDetailCompletionLabel": "Completed Views",
+  "dramaDetailHeatLabel": "Heat",
+  "dramaDetailSynopsisLead": "Synopsis: ",
+  "dramaDetailRatingEmpty": "Your rating: --",
+  "dramaDetailRatingValue": "Your rating: {rating}",
+  "@dramaDetailRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingConfirm": "Confirm Rating",
+  "dramaDetailRatingSuccess": "Rated successfully: {rating} stars!",
+  "@dramaDetailRatingSuccess": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailSelectEpisodeHint": "Select an episode to start playback",
+  "dramaFavorited": "Favorited",
+  "dramaUnfavorited": "Unfavorited",
+  "dramaLiked": "Liked",
+  "dramaUnliked": "Unliked",
+  "playerFollowed": "Followed",
+  "playerUnfollowed": "Unfollowed",
+  "errorNetwork": "Network error, please try again later",
+  "errorTimeout": "Request timed out, please try again",
+  "errorParse": "Failed to parse response data",
+  "errorUnauthorized": "Please log in first",
+  "authSessionExpired": "Your session has expired. Please sign in again",
+  "errorNotFound": "Resource not found",
+  "iapOrderInFlight": "You have an unfinished order for this item, please try again later",
+  "errorOperationFailed": "Operation failed",
+  "uploadErrorNetwork": "The network is unstable. Check your connection and try again",
+  "uploadErrorTimeout": "Upload timed out. Keep the app open and try again",
+  "uploadErrorSessionExpired": "The upload credentials expired. Upload the file again",
+  "uploadErrorSessionUnavailable": "An upload task could not be created. Try again",
+  "uploadErrorFileMissing": "The local video was moved or removed. Select it again",
+  "uploadErrorUnauthorized": "Your login or upload permission expired. Sign in and try again",
+  "uploadErrorRateLimited": "Too many upload requests. Try again shortly",
+  "uploadErrorRejected": "The upload service rejected this file. Check it and try again",
+  "uploadErrorServer": "The upload service is temporarily unavailable. Try again later",
+  "uploadErrorInvalidResponse": "The upload service returned an invalid response. Try again later",
+  "uploadErrorAccountChanged": "The signed-in account changed. Upload again with the current account",
+  "uploadErrorUnknown": "The video could not be uploaded. Try again",
+  "uploadErrorFileTypeNotAllowed": "This video format is not supported. Choose another file",
+  "uploadErrorFileSizeExceeded": "The file is too large. Choose another file",
+  "uploadErrorMultipartInvalid": "The upload record expired. Upload the video again",
+  "uploadStatusWaitingNetwork": "Waiting for network...",
+  "uploadStatusMerging": "Merging video...",
+  "uploadActionPause": "Pause",
+  "uploadActionResume": "Resume upload",
+  "uploadCellularDialogMessage": "You are not on Wi-Fi. Continue uploading over mobile data?",
+  "errorInvalidRoleId": "Invalid character ID. Please refresh the page and try again.",
+  "errorInvalidRoleNftAssetId": "Invalid character NFT assetId. Please refresh the page and try again.",
+  "errorInvalidRoleCollectionAssetId": "Invalid character collection assetId. Please refresh the page and try again.",
+  "roleNftLabelUnknown": "RoleNFT#Unknown",
+  "roleNftLabel": "RoleNFT#{prefix}",
+  "@roleNftLabel": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBusiness": "Operation failed: {message}",
+  "@errorBusiness": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorUnknown": "An unknown error occurred: {message}",
+  "@errorUnknown": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotSupported": "Operation not supported: {message}",
+  "@errorNotSupported": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "Episodes",
+  "playerPlayFailed": "Playback failed",
+  "playerDramaUnavailable": "This drama is unavailable",
+  "playerContentUnavailable": "This content is not published or is no longer available",
+  "creatorWorkNotFound": "This work does not exist and cannot be viewed",
+  "creatorWorkNotPublished": "This work is not published and cannot be viewed yet",
+  "creatorOfflineReasonUnavailable": "No delisting reason is available",
+  "playerTapRetry": "Tap to retry",
+  "playerEpisodeTotal": "{count} episodes",
+  "@playerEpisodeTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeLabel": "Episode {episodeNo}",
+  "@playerEpisodeLabel": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "playerLike": "Like",
+  "playerComment": "Comment",
+  "playerFavorite": "Favorite",
+  "playerShare": "Share",
+  "playerShareDramaEpisode": "{title} | Ep.{episodeNo}: {description} {url}. Watch beautiful AI short dramas on StoryFun.",
+  "@playerShareDramaEpisode": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "episodeNo": {
+        "type": "int"
+      },
+      "description": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDramaEpisodeNoDesc": "{title} | Ep.{episodeNo} {url}. Watch beautiful AI short dramas on StoryFun.",
+  "@playerShareDramaEpisodeNoDesc": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "episodeNo": {
+        "type": "int"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareShortVideo": "{description} {url}. Watch beautiful short videos on StoryFun.",
+  "@playerShareShortVideo": {
+    "placeholders": {
+      "description": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareShortVideoNoDesc": "{url}. Watch beautiful short videos on StoryFun.",
+  "@playerShareShortVideoNoDesc": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDrama": "{title} {url}. Watch beautiful AI short dramas on StoryFun.",
+  "@playerShareDrama": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerShareDramaNoTitle": "{url}. Watch beautiful AI short dramas on StoryFun.",
+  "@playerShareDramaNoTitle": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerRatingLabel": "{rating} pts",
+  "@playerRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOrSignUp": "Log in or Sign up",
+  "loginEnterCode": "Enter confirmation code",
+  "loginCheckEmailDesc": "Please check {email} for an email from privy.io and enter your code below.",
+  "@loginCheckEmailDesc": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "loginResendCountdown": "Resend code in {seconds}s",
+  "@loginResendCountdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResendBtn": "Resend",
+  "loginProtectedByPrivy": "Protected by Privy",
+  "loginAgreeLead": "I agree to the",
+  "loginAgreeAnd": "and",
+  "loginAgreeConfirmLead": "By clicking Confirm, you agree to the",
+  "loginAgreeRequired": "Please agree to the Terms of Service and Privacy Policy first",
+  "deletingAccountPending": "Account pending deletion",
+  "deletingAccountCancelDeletion": "Cancel account deletion",
+  "deletingAccountGoBack": "Go back",
+  "drawerEmailAccount": "Email account",
+  "drawerClickToLogin": "Click to log in",
+  "drawerBuyStory": "Trade STORY",
+  "drawerDeposit": "Deposit",
+  "drawerWithdraw": "Withdraw",
+  "drawerNotifications": "Notifications",
+  "drawerNoNotifications": "No notifications",
+  "notificationTabSystem": "System",
+  "notificationTabInteraction": "Activity",
+  "notificationTagIpSign": "Character IP signed",
+  "notificationTagRoleManagement": "Character management",
+  "notificationTagShowRevenue": "Performance earnings",
+  "notificationTagLike": "Like",
+  "notificationTagFavorite": "Favorite",
+  "notificationSignedActor": "@{user} signed character IP {actor}",
+  "notificationShareEarned": "You earned a {amount} share",
+  "notificationStaminaLow": "{actor} is out of stamina. Refill or let them rest",
+  "notificationCurrentStamina": "Current stamina {value}",
+  "notificationShowEnded": "{range} performance ended",
+  "notificationIncomeEarned": "You earned {amount}",
+  "notificationActionClaim": "Claim",
+  "notificationActionRefill": "Refill",
+  "notificationInteractionLikedVideo": "Liked your video",
+  "notificationInteractionLikedDrama": "Liked your short drama “{title}”",
+  "notificationInteractionFavoritedVideo": "Saved your video",
+  "notificationInteractionFavoritedDrama": "Saved your short drama “{title}”",
+  "notificationInteractionCommented": "Commented: {content}",
+  "notificationInteractionFollowedYou": "Followed you",
+  "notificationActionMutualFollow": "Mutual",
+  "notificationActionFollow": "Follow",
+  "notificationDelete": "Delete",
+  "notificationDeleteFailed": "Failed to delete, please try again later",
+  "notificationRealtimeReceived": "You received a new notification",
+  "drawerEpisodeProgress": "{current}/{total} episodes",
+  "drawerNotificationSignedActor": "{actor} signed character IP {target}",
+  "drawerNotificationLikedVideo": "{actor} liked your video",
+  "drawerNotificationFavoritedDrama": "{actor} saved your short drama {target}",
+  "depositTitle": "Deposit",
+  "insufficientBalanceTitle": "Insufficient Balance",
+  "insufficientBalanceDetail": "{currency} balance is insufficient, you are short {amount} {currency}",
+  "@insufficientBalanceDetail": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientBalancePrompt": "Go to recharge?",
+  "insufficientBalanceRecharge": "Recharge",
+  "depositDesc": "Please transfer tokens from an exchange or another wallet to the address below. The balance will update automatically once credited.",
+  "depositToken": "Token",
+  "depositNetwork": "Network",
+  "depositNetworkNote": "Please confirm the transfer network. Using the wrong network may result in loss of assets.",
+  "depositAddress": "Deposit Address",
+  "depositAddressCopied": "Address copied to clipboard",
+  "depositSend": "Send",
+  "depositReceive": "Receive",
+  "depositConvertNote": "Send tokens to this address and they will be automatically converted to USDC in your Story.fun account.",
+  "depositMinNote": "Minimum deposit: {minAmount} {token}",
+  "@depositMinNote": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "depositExchangeRateNote": "Current exchange rate is {rate}. Credited amount = deposit × {rate}",
+  "@depositExchangeRateNote": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "depositWarning": "Only deposit the selected token on the selected network. Other assets cannot be recovered.\nPlease confirm the transfer network; network errors may result in asset loss.",
+  "withdrawTitle": "Withdraw",
+  "withdrawBalance": "Withdrawable Balance",
+  "withdrawToken": "Token",
+  "withdrawAddress": "Withdrawal Address",
+  "withdrawAddressHint": "Please enter or paste Solana recipient address",
+  "withdrawAddressHintEvm": "Please enter or paste an EVM recipient address",
+  "withdrawInvalidEvmAddress": "Please enter a valid EVM address",
+  "withdrawInvalidSolanaAddress": "Please enter a valid Solana address",
+  "withdrawEvmGasNote": "EVM withdrawals require enough native tokens for gas. The transfer is sent directly on-chain.",
+  "withdrawEvmFailed": "EVM withdrawal failed. Please try again later.",
+  "withdrawAddressNote": "Please confirm the address is correct. Once transferred, it cannot be recalled.",
+  "withdrawNetwork": "Network",
+  "withdrawAmount": "Amount",
+  "withdrawAmountHint": "Enter withdrawal amount",
+  "withdrawMax": "Max",
+  "withdrawAvailableBalance": "Balance {balance} {token}",
+  "@withdrawAvailableBalance": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinWarning": "Min withdrawal: {minAmount} {token}\nPlease check the address and network carefully; transactions cannot be recalled.",
+  "@withdrawMinWarning": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawConfirm": "Confirm Withdraw",
+  "withdrawAll": "All",
+  "withdrawMinAmountError": "Minimum withdrawal amount is {minAmt} {token}",
+  "@withdrawMinAmountError": {
+    "placeholders": {
+      "minAmt": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawExceedBalanceError": "Withdrawal amount cannot exceed available balance",
+  "withdrawSameAsWalletError": "Withdrawal address cannot be the same as your wallet address",
+  "withdrawConfirmTitle": "Confirm Withdrawal",
+  "withdrawConfirmMessage": "Are you sure you want to withdraw {amount} {token} to the following Solana address?\n\n{address}",
+  "@withdrawConfirmMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSuccessToast": "Withdrawal request submitted successfully!",
+  "withdrawFailedToast": "Withdrawal failed. Please try again.",
+  "withdrawErrorToast": "An error occurred during withdrawal: {error}",
+  "@withdrawErrorToast": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawAddressHintWithToken": "Enter recipient {token} wallet address",
+  "@withdrawAddressHintWithToken": {
+    "placeholders": {
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawFee": "Fee",
+  "withdrawFeeValue": "{fee} {token}",
+  "@withdrawFeeValue": {
+    "placeholders": {
+      "fee": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinAmount": "Min withdrawal: {minAmount} {token}",
+  "@withdrawMinAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMaxAmount": "Maximum withdrawal amount: {maxAmount} {token}",
+  "@withdrawMaxAmount": {
+    "placeholders": {
+      "maxAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSponsorSigning": "Signing transaction...",
+  "withdrawSponsorSubmitting": "Submitting on-chain transaction...",
+  "withdrawSponsorSuccess": "Withdrawal submitted successfully!",
+  "withdrawSponsorFailed": "Transaction submission failed. Please try again.",
+  "withdrawOrderProcessing": "Order processing",
+  "withdrawOrderSuccess": "Order completed",
+  "withdrawOrderFailed": "Order failed",
+  "withdrawOrderStatus": "Order status: {status}",
+  "@withdrawOrderStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "qrScannerTitle": "Scan QR Code",
+  "qrScannerHint": "Align QR code within the frame to scan",
+  "drawerProfile": "Personal Center",
+  "drawerCreatorManagement": "Creator Management",
+  "drawerInvite": "Invite",
+  "inviteTitle": "Invite Friends",
+  "inviteTotalPeople": "Total Invitees",
+  "inviteTotalRewards": "Total Invitation Rewards",
+  "inviteWeeklyPool": "Weekly Invite Reward Pool",
+  "inviteViewHistory": "View Records",
+  "inviteShareSection": "Share your invite link or code",
+  "inviteLinkSection": "Invitation Link",
+  "inviteLinkSubtitle": "Friends register through your link, sign contract and dispatch characters, and you will get extra STORY rewards",
+  "inviteCodeLabel": "Invite Code",
+  "inviteCopyButton": "Copy Link",
+  "inviteCopiedSuccess": "Invitation link copied to clipboard!",
+  "inviteCodeCopiedSuccess": "Invite code copied to clipboard!",
+  "inviteInvitedLabel": "Invited",
+  "inviteRewardLabel": "Rewards",
+  "inviteBindCode": "Bind invite code",
+  "inviteBindCodePromptHint": "You can bind it later on the Invite page",
+  "inviteBindCodePlaceholder": "Enter invite code",
+  "inviteBindConfirm": "Confirm",
+  "inviteBindSuccess": "Invite code bound successfully",
+  "inviteBindCodeInvalid": "Invalid invite code",
+  "inviteBindCodeAlreadyBound": "This account has already bound an invite code",
+  "inviteRulesSection": "Invitation Rules",
+  "inviteFaqPoolTitle": "What is the weekly invite reward pool?",
+  "inviteFaqPoolBody": "The weekly invite reward pool is an independent pool set up for invite activity. It rewards invite actions in the current week and is not deducted from invitees' earnings. The pool has a weekly payout cap; after the cap is reached, payouts are scaled down by share. Statistics reset every Monday.",
+  "inviteFaqSettlementTitle": "When are invite rewards settled?",
+  "inviteFaqSettlementBody": "Invite rewards are settled in the same cycle as agent salaries: stats cut off every Monday at 00:00 (UTC). After settlement, claim them on the Rewards page.",
+  "inviteRuleSourceTitle": "Source of Rewards",
+  "inviteRuleSourceSubtitle": "Independent Invitation Sub-pool",
+  "inviteRuleSourceBody": "Invitation rewards come from an independent invitation sub-pool in the NFT mining pool (accounting for 25% of the total mining pool), which is not deducted from the invitee's earnings. The invitation sub-pool has an independent weekly cap, and will be scaled down proportionally based on share after reaching the cap.",
+  "inviteRuleBaseTitle": "Calculation Base",
+  "inviteRuleBaseSubtitle": "By Actual STORY Received",
+  "inviteRuleBaseBody": "Rewards are calculated based on the actual STORY received by the invitee in this period, not on nominal output. The STORY mined by the invitee themselves is not affected, and the invitation reward is paid extra.",
+  "inviteRuleLevelTitle": "Reward Scope",
+  "inviteRuleLevelSubtitle": "Direct invites only",
+  "inviteRuleLevelBody": "Invitation rewards are paid only for users you invite directly. There is no multi-level or indirect commission.",
+  "inviteRuleConditionTitle": "Validity Condition",
+  "inviteRuleConditionSubtitle": "Only active downlines generate rewards",
+  "inviteRuleConditionBody": "The invitee must have actually mined STORY or made {currency} payments to be counted as an active downline. Empty registrations do not generate rewards. The invitation relationship cannot be changed once established.",
+  "@inviteRuleConditionBody": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerTxHistory": "Transaction History",
+  "drawerFinanceDashboard": "Finance Dashboard",
+  "financeDashboardComingSoon": "Finance Dashboard is coming soon. Stay tuned.",
+  "financeDashboardPageTitle": "Platform Finance Dashboard",
+  "financeDashboardTotalUsdcIncome": "Total {currency} Income",
+  "@financeDashboardTotalUsdcIncome": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardTotalStoryReleased": "Total STORY Released",
+  "financeDashboardTabUsdcIncome": "{currency} Income Details",
+  "@financeDashboardTabUsdcIncome": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardTabVaultFunds": "Vault fund accumulation",
+  "financeDashboardTabStoryRelease": "STORY Release Overview",
+  "financeDashboardFeeMint": "Signing fee",
+  "financeDashboardFeeRoyalty": "Secondary Royalty",
+  "financeDashboardFeeItemPurchase": "Purchase Items",
+  "financeDashboardFeeTx": "Transaction Fee",
+  "financeDashboardLedgerBizSigningFee": "Signing Fee",
+  "financeDashboardLedgerBizManualCredit": "Manual Credit",
+  "financeDashboardLedgerBizManualDebit": "Manual Debit",
+  "financeDashboardLedgerBizStaminaPurchase": "Stamina Purchase Fee",
+  "financeDashboardLedgerBizSynthesisUpgrade": "Synthesis Upgrade Fee",
+  "financeDashboardLedgerBizTransactionFee": "Transaction Fee",
+  "financeDashboardRecentUsdcLedger": "Recent {currency} Income",
+  "@financeDashboardRecentUsdcLedger": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "financeDashboardViewMore": "View More",
+  "financeDashboardTotalVaultFunds": "Total Vault Funds",
+  "financeDashboardCoveredActorIp": "Covered Character IP",
+  "financeDashboardActorVaultRanking": "Character IP Vault ranking",
+  "storyReleaseTabAllocation": "STORY Allocation",
+  "storyReleaseTabMiningRelease": "Recent Mining Release",
+  "storyReleaseFieldPeriod": "Period",
+  "storyReleaseFieldHardLimit": "Weekly Hard Cap",
+  "storyReleaseFieldMiningRewards": "Staking Mining",
+  "storyReleaseFieldInviteRewards": "Invite Mining",
+  "storyReleaseFieldUsageRate": "Usage Rate",
+  "storyReleaseFieldTarget": "Allocation Target",
+  "storyReleaseFieldRatio": "Ratio",
+  "storyReleaseFieldAmount": "Amount",
+  "storyReleaseFieldReleased": "Released",
+  "storyReleaseFieldProgress": "Release Progress",
+  "storyReleaseCategoryNftMiningPool": "NFT Mining Pool",
+  "storyReleaseCategoryTeam": "Team",
+  "storyReleaseCategoryInvestors": "Investors",
+  "storyReleaseCategoryLiquidity": "Launchpad + Liquidity",
+  "storyReleaseCategoryTreasury": "Treasury",
+  "storyReleaseCategoryMarketOps": "Market Operations",
+  "storyReleaseTotalSupplyBadge": "Total {total} STORY",
+  "@storyReleaseTotalSupplyBadge": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerWhitepaper": "Whitepaper",
+  "drawerSettings": "Settings",
+  "commonClose": "Close",
+  "commonDelete": "Delete",
+  "commonLoadFailed": "Failed to load",
+  "commonNone": "None",
+  "commonUntitled": "Untitled",
+  "actorDetailTitle": "Actor Home",
+  "actorDetailCastDramas": "Cast Dramas",
+  "actorDetailTabCast": "Cast",
+  "actorDetailTabInfo": "Info",
+  "actorDetailNoCastRecords": "No cast records",
+  "actorBondingCurve": "Bonding Curve",
+  "actorContractAddress": "Contract Address",
+  "actorCurrentPosition": "Current Position",
+  "actorCurrentPrice": "Current Price {price} {currency}",
+  "@actorCurrentPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorFloorPrice": "Floor Price",
+  "actorGoTrade": "Trade",
+  "profileWalletTrade": "Trade",
+  "actorHeatCoefficient": "Heat coefficient",
+  "actorIpPower": "IP Salary",
+  "actorPayMax": "Max",
+  "actorPayUpgradeTitle": "Salary upgrade rules",
+  "actorPayUpgradeReachHint": "Current completed views of dramas this IP appears in can support upgrading to",
+  "actorPayUpgradeCompletions": "{count} completed views",
+  "@actorPayUpgradeCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayUpgradeMultiplier": "Salary ×{value}",
+  "@actorPayUpgradeMultiplier": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayTitle": "{name} · Salary",
+  "@actorPayTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorLv1PayHint": "Sign to get a Lv.1 character",
+  "actorLv1PayFormula": "Lv.1 salary = Price coefficient × Heat coefficient",
+  "actorLv1PayEquals": "={value}",
+  "@actorLv1PayEquals": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerTitle": "{name} · IP Salary",
+  "@actorIpPowerTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerFormula": "IP Salary = Price coefficient × Heat coefficient × Trust1",
+  "actorPriceCoefficient": "Price Coefficient",
+  "actorPriceCoefficientValue": "Price Coefficient {value}",
+  "@actorPriceCoefficientValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientHelpA11y": "View price coefficient details",
+  "actorPriceUnitName": "Points",
+  "actorPriceCoefficientDialogFormulaLe100": "Coefficient = P0 ÷ 10",
+  "actorPriceCoefficientDialogDescLe100": "Linear growth",
+  "actorPriceCoefficientDialogTitleGt100": "P0 > 10 {currency}",
+  "@actorPriceCoefficientDialogTitleGt100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientDialogFormulaGt100": "Coefficient = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]",
+  "actorPriceCoefficientDialogDescGt100": "Growth slows, capped at 1.6",
+  "actorPriceCoefficientDialogTitleLe100": "P0 ≤ 10 {currency}",
+  "@actorPriceCoefficientDialogTitleLe100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientFactorDesc": "P0 ≤ 10 {currency1} coefficient = P0/10 (linear growth)\nP0 > 10 {currency2} → coefficient = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6] (asymptotic cap 1.6)",
+  "@actorPriceCoefficientFactorDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "actorHeatCoefficientFactorDesc": "Character IP 30-day heat multiplier, based on engagement such as completed views, likes, and saves",
+  "actorTrustFactorDesc": "Platform risk coefficient, default 1.0",
+  "actorStatCompletion": "Completed Views",
+  "actorIdCopied": "ID copied",
+  "actorInitialPrice": "Initial Price: {price} {currency}",
+  "@actorInitialPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpLabel": "Actor IP {label}",
+  "@actorIpLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIssueInfo": "Launch details",
+  "actorIssuer": "Launcher {name}",
+  "@actorIssuer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorMintedCount": "Minted {minted}/{maxSupply}",
+  "@actorMintedCount": {
+    "placeholders": {
+      "minted": {
+        "type": "int"
+      },
+      "maxSupply": {
+        "type": "int"
+      }
+    }
+  },
+  "actorPriceCurve": "Price Curve",
+  "actorSign": "Sign",
+  "actorConfirmSign": "Confirm signing",
+  "actorSignPriceLabel": "Signing price",
+  "actorSignPriceDescription": "Signing price rises automatically as more characters are signed. Early signers get better rates.",
+  "actorSignPriceFormula": "Formula: Price = Initial Price × 5^(Signed Count ÷ Total Supply)",
+  "actorPriceAxisLabel": "Price ({currency})",
+  "@actorPriceAxisLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignedCountAxisLabel": "Signed count",
+  "actorSignRemainingCount": "{count} remaining",
+  "@actorSignRemainingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignSoldOut": "Sold out",
+  "actorSignSupplySummary": "Total {total} · Remaining {remaining}",
+  "@actorSignSupplySummary": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPricingFixed": "Fixed Price",
+  "actorPricingCurve": "Curve Price",
+  "actorPriceCurveDisclaimer": "The initial price does not represent the platform's valuation; an upward trend on the chart does not indicate a rise in secondary market prices; and the platform does not guarantee returns.",
+  "actorPriceStatInitialPrice": "Starting Price",
+  "actorPriceStatCurrentPrice": "Current Price",
+  "actorPriceStatTailPrice": "Reserve Price",
+  "actorPriceStatTotalSupply": "Total supply",
+  "actorPriceStatSigned": "Signed",
+  "actorPriceStatRemaining": "Remaining",
+  "actorPricingType": "Pricing Type",
+  "contentBadgeOfficialIssue": "Official launch",
+  "contentBadgeCommunityIssue": "Community launch",
+  "contentBadgePartnerIssue": "Partner launch",
+  "contentBadgeVerifiedIssue": "Launch by verified creators",
+  "contentBadgeOfficialDrama": "Official Drama",
+  "contentBadgeCommunityDrama": "Community Drama",
+  "contentBadgePartnerDrama": "Partner Drama",
+  "contentBadgeVerifiedDrama": "Verified Creator Drama",
+  "actorIpCopied": "Copied",
+  "actorRiskIp": "Risk IP",
+  "actorRiskIpDescription": "This character IP has an abnormal trust coefficient; mining weight will be affected.",
+  "actorIpVault": "Character IP Vault",
+  "actorIpVaultDescription": "30% of signing revenue is automatically allocated to the character's IP vault to support the long-term development of the IP ecosystem. Similarly, 30% of secondary-market royalty revenue is also allocated to the vault, creating a sustainable funding pool. In Version 1, the vault only provides data visualization and is not yet open for distribution.",
+  "actorIpVaultSignIncomePrefix": "Signing revenue · Accumulated ",
+  "actorIpVaultSecondaryRoyaltyPrefix": "Secondary Royalty · Accumulated ",
+  "actorFixedPriceDialogDesc": "This character IP uses fixed pricing. Every sign is settled at the same price regardless of sales volume.",
+  "actorCurvePriceDialogDesc": "Price rises automatically with signed count along the bonding curve. Early signers get better prices.",
+  "actorFixedPriceNote1": "After the launcher sets a fixed price, all signings settle at that price.",
+  "actorFixedPriceNote2": "Price does not increase as more characters are signed.",
+  "actorFixedPriceNote3": "Suitable for buyers who want predictable costs",
+  "actorIssueFixedPriceDesc": "This character IP uses fixed pricing. All signings settle at the fixed price and do not change with sales volume.",
+  "actorSignSlippageNote": "1% slippage protection is enabled. The transaction will be canceled if the price exceeds the limit.",
+  "actorSignSuccessTitle": "Signed!",
+  "actorSignSuccessMessage": "Character \"{name}\" signed successfully",
+  "@actorSignSuccessMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignSuccessNftId": "NFT ID: {nftId}",
+  "@actorSignSuccessNftId": {
+    "placeholders": {
+      "nftId": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignChainConfigMissing": "On-chain configuration is incomplete. Please try again later.",
+  "actorSignPriceSoldOut": "Signing price · Sold out",
+  "actorSignPriceRemaining": "Signing price · {count} remaining",
+  "@actorSignPriceRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignedCount": "Signed {count}",
+  "@actorSignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorStatusLabelOffline": "Offline",
+  "actorStatusLabelOnline": "Online",
+  "actorStatusLabelPending": "Pending",
+  "actorStatusLabelRejected": "Rejected",
+  "actorTotalSupply": "Total supply",
+  "commentsAnonymous": "Anonymous",
+  "commentsEmpty": "No comments yet",
+  "commentsHint": "Post a great comment...",
+  "commentsInvalidContent": "Please enter valid content",
+  "commentsReply": "Reply",
+  "commentsViewReplies": "View {count} replies",
+  "@commentsViewReplies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsCollapseReplies": "Collapse",
+  "commentsViewMoreReplies": "Show more",
+  "commentsReplyHint": "Reply to {nickname}",
+  "@commentsReplyHint": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsDeleteCommentTitle": "Delete this comment?",
+  "commentsDeleteReplyTitle": "Delete this reply?",
+  "commentTagAuthor": "Author",
+  "commentTagMe": "Me",
+  "commentTagFriend": "Friend",
+  "commentTagFan": "Fan",
+  "commentTagFirst": "First",
+  "commentTagAuthorLiked": "Author liked",
+  "commentsReplyTo": "Reply to @{nickname}: ",
+  "@commentsReplyTo": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsReplyCommentNotExists": "Comment does not exist",
+  "commentsBlockedByMe": "This user is on your blocklist, you cannot comment",
+  "commentsBlockedByTarget": "You cannot comment on this user due to their settings",
+  "commentsTabComments": "Comments",
+  "commentsTabAllComments": "All comments",
+  "commentsTabDramas": "Dramas",
+  "commentsTabActors": "Characters",
+  "timeJustNow": "just now",
+  "timeYesterday": "yesterday",
+  "timeDayBeforeYesterday": "the day before yesterday",
+  "timeMinutesAgo": "{count}m ago",
+  "timeHoursAgo": "{count}h ago",
+  "timeDaysAgo": "{count}d ago",
+  "commentsTitle": "Comments ({count})",
+  "@commentsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createActorTitle": "Create Character",
+  "createActorHeroTitle": "Mint Character NFT",
+  "createActorHeroSubtitle": "Create exclusive AI characters, bind profit sharing to participate in dramas",
+  "createActorNameLabel": "Character Name",
+  "createActorNameHint": "Enter character name",
+  "createActorBioLabel": "Character Bio",
+  "createActorBioHint": "Describe character background",
+  "createActorGenderLabel": "Gender",
+  "createActorGenderMale": "Male",
+  "createActorGenderFemale": "Female",
+  "createActorMintParams": "NFT Mint Parameters",
+  "createActorTokenStandard": "Token Standard",
+  "createActorChain": "Chain",
+  "createActorMinHolding": "Min Holding",
+  "createActorMintNft": "Mint NFT",
+  "createActorIpTitle": "Issue Character IP",
+  "createActorIpSubtitle": "After issuing a character IP, you can sign characters under it and deploy them to earn rewards.",
+  "createActorSelectMaterial": "Select character material",
+  "createActorDreamOsBadge": "Go to DreamOS",
+  "createActorSelectMaterialDesc": "Open DreamOS project → Create character → Enter Story.fun to issue IP",
+  "createActorSelectButton": "Select character",
+  "createActorNameLabelNew": "Character name",
+  "createActorNamePlaceholder": "Enter character name",
+  "createActorBioLabelNew": "Bio",
+  "createActorBioPlaceholder": "Please enter the character IP introduction.",
+  "createActorFixedPriceLabel": "Fixed Price ({currency})",
+  "@createActorFixedPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorInitialPriceLabel": "Initial Price ({currency})",
+  "@createActorInitialPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorParamsTitle": "Character IP issuance parameters",
+  "createActorParamsSubtitle": "Set character IP issuance parameters. They cannot be changed after launch.",
+  "createActorTotalSupplyLabel": "Total supply",
+  "createActorTotalSupplyDesc": "Total supply range is 100 - 5,000.",
+  "createActorTotalSupplyPlaceholder": "100 - 5,000",
+  "createActorPricingFixed": "Fixed price",
+  "createActorPricingCurve": "Curve price",
+  "createActorFixedPricePlaceholder": "10 - 1,000",
+  "createActorFixedPriceDesc": "Each character is purchased at a fixed price that does not change with sales volume.",
+  "createActorInitialPricePlaceholder": "10 - 1,000",
+  "createActorInitialPriceDesc": "Initial price is the bonding-curve start price. Each signed character raises the price by P = P₀ × 5^(signed/total). Early signers get better deals.",
+  "createActorFormIncomplete": "Please complete the character assets, name, bio, and launch parameters first.",
+  "createActorValidationNameRequired": "Please enter character name",
+  "createActorValidationNameTooLong": "Character name must be 20 characters or fewer",
+  "createActorValidationBioRequired": "Please enter bio",
+  "createActorValidationBioTooLong": "Bio must be 500 characters or fewer",
+  "createActorValidationTotalSupplyRequired": "Please enter a valid total NFT supply",
+  "createActorValidationTotalSupplyPositiveInteger": "Total NFT supply must be a positive integer",
+  "createActorValidationTotalSupplyRange": "Total character supply must be between 100 and 5,000",
+  "createActorValidationPriceRequired": "Please enter a valid Mint price",
+  "createActorValidationPriceInvalid": "Mint price must be at least 10 and not exceed 1,000",
+  "createActorValidationPriceMaxDecimals": "Mint price can have at most 2 decimal places",
+  "createActorSelectMaterialRequired": "Please select character material",
+  "createActorCancelButton": "Cancel",
+  "createActorConfirmButton": "Confirm launch",
+  "createActorIssueFee": "Fee",
+  "createActorSuccessTitle": "{name} · Launch successful!",
+  "@createActorSuccessTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessDesc": "Character IP {id}",
+  "@createActorSuccessDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessTip": "Issuers also need to sign to obtain this character~",
+  "createActorCloseButton": "Maybe later",
+  "createActorViewButton": "Go sign",
+  "createActorEmptyTitle": "You haven't created any NFT launch yet that meets the criteria and is automatically generated by the system in DreamOS.",
+  "createActorGotoDreamOs": "Go to DreamOS",
+  "createActorSearchPlaceholder": "Search character materials",
+  "createActorInvalidOrderId": "The Character IP order number is invalid. Please refresh and try again",
+  "createDramaTitle": "Create Drama",
+  "createDramaTitleLabel": "Drama Title",
+  "createDramaTitleHint": "Enter drama name",
+  "createDramaSynopsisLabel": "Synopsis",
+  "createDramaSynopsisHint": "What kind of story is it... (up to 1000 characters)",
+  "createDramaAiSettings": "AI Generation Settings",
+  "createDramaVisualStyle": "Visual Style",
+  "createDramaVisualStyleRealistic": "Realistic",
+  "createDramaEpisodeDuration": "Episode Duration",
+  "createDramaEpisodeDurationValue": "3-5 min",
+  "createDramaTotalEpisodes": "Total Episodes",
+  "createDramaTotalEpisodesValue": "8 episodes",
+  "createDramaGenreLabel": "Genre",
+  "createDramaGenreDrama": "Drama",
+  "createDramaGenreComedy": "Comedy",
+  "createDramaGenreAction": "Action",
+  "createDramaGenreRomance": "Romance",
+  "createDramaGenreSciFi": "Sci-Fi",
+  "createDramaGenreMystery": "Mystery",
+  "createDramaGenreHorror": "Horror",
+  "createDramaGenreAnimation": "Animation",
+  "createDramaHeroTitle": "AI Drama Creation",
+  "createDramaHeroSubtitle": "One-click generation of your next hit drama",
+  "createDramaStartGeneration": "Start Generation",
+  "creatorDramaManagementTab": "Drama Management",
+  "creatorDramaNftTab": "Drama NFT",
+  "creatorHeaderSubtitle": "Posting, reviewing, and minting dramas.",
+  "creatorV2Subtitle": "Post and manage dramas and videos.",
+  "creatorV2DramaTabCount": "Dramas ({count})",
+  "creatorV2VideoTabCount": "Videos ({count})",
+  "creatorV2NoVideos": "No videos yet",
+  "creatorLoginPrompt": "Log in to view your creations",
+  "creatorNoCreatedActors": "No created characters",
+  "creatorNoPublishedDramas": "No posted dramas",
+  "creatorOwnedNftCount": "Owned NFTs",
+  "creatorCreateDrama": "Create Drama",
+  "creatorPublishNewDrama": "Post New Drama",
+  "creatorPublishedDramas": "Posted Dramas",
+  "creatorReviewFilterAll": "All",
+  "creatorReviewFilterApproved": "Approved",
+  "creatorReviewFilterPending": "Pending",
+  "creatorReviewFilterRejected": "Rejected",
+  "creatorReviewFilterOffline": "Delisted",
+  "creatorDramaOtherReason": "Other reason",
+  "creatorDramaStatusOnline": "Approved",
+  "creatorDramaStatusPendingReview": "Pending Review",
+  "creatorDramaStatusReviewRejected": "Not Passed",
+  "creatorDramaStatusPendingOnline": "Pending Online",
+  "creatorDramaAuditReason": "Rejection reason: {reason}",
+  "@creatorDramaAuditReason": {
+    "placeholders": {
+      "reason": {}
+    }
+  },
+  "creatorDramaNftMinted": "Minted",
+  "creatorDramaEpisodeCount": "{count} episodes",
+  "@creatorDramaEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorDramaEdit": "Edit",
+  "creatorDramaDelete": "Delete",
+  "creatorActorDelete": "Delete Character",
+  "creatorDeleteDramaConfirm": "Are you sure you want to delete this drama?",
+  "creatorDeleteVideoConfirmTitle": "Confirm Video Deletion",
+  "creatorDeleteVideoConfirmMessage": "Are you sure you want to delete “{name}”?\nThis action cannot be undone.",
+  "@creatorDeleteVideoConfirmMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorDeleteActorConfirm": "Are you sure you want to delete this character?",
+  "creatorDeleting": "Deleting...",
+  "creatorNoDramas": "No dramas",
+  "creatorNoNfts": "No drama NFTs yet",
+  "creatorsComingSoon": "Coming Soon",
+  "creatorsHeroSubtitle": "Discover outstanding creators",
+  "creatorsHeroTitle": "Creators",
+  "dramaBatchUnlockAll": "Unlock All",
+  "dramaBatchUnlockDiscount": "Batch unlock discount {discount}%",
+  "@dramaBatchUnlockDiscount": {
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaBatchUnlockSubtitle": "Unlock all episodes at once for a better deal",
+  "dramaBatchUnlockSuccess": "Unlock successful, please start watching",
+  "dramaDetailAllFree": "All Free",
+  "dramaDetailBoundActors": "{count} characters bound",
+  "@dramaDetailBoundActors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodeCount": "{count} episodes",
+  "@dramaDetailEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodePrice": "Episode Price",
+  "dramaDetailFree": "Free",
+  "dramaDetailFreeEpisodes": "First {count} free",
+  "@dramaDetailFreeEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailMainCharacters": "Main Roles",
+  "dramaDetailNftMinted": "NFT Minted",
+  "dramaDetailNoEpisodes": "No episodes",
+  "dramaDetailPaid": "Paid",
+  "dramaDetailPendingActor": "Pending character",
+  "dramaDetailRoleCount": "Roles",
+  "dramaUnlockFailedRetry": "Unlock failed, please retry",
+  "dramaUnlockFetchTimeout": "Playback address fetch timeout, please retry",
+  "dramaUnlockLoginRequired": "Please log in to unlock episodes",
+  "dramaUnlockMessage": "Episode {epNo} requires payment to unlock\nPrice: {price} {currency}\nBatch unlock discount: {discount}",
+  "@dramaUnlockMessage": {
+    "placeholders": {
+      "epNo": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "discount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockSuccessFetching": "Unlock successful, fetching playback address...",
+  "dramaUnlockTitle": "Unlock Episode",
+  "editActorTitle": "Edit Character",
+  "editDramaTitle": "Edit Drama",
+  "editVideoTitle": "Edit Video",
+  "editSaveChanges": "Save Changes",
+  "editProfileTitle": "Edit Profile",
+  "editNicknameLabel": "Nickname",
+  "editRoleNameLabel": "Username",
+  "editNicknameHint": "Enter your nickname",
+  "editNicknameRequired": "Please enter a nickname",
+  "editProfileBioLabel": "Bio",
+  "editProfileBioHint": "Please enter bio",
+  "editProfileEmailLabel": "Email address",
+  "editAvatarCropTitle": "Crop Avatar",
+  "profileUpdateSuccess": "Profile updated",
+  "incomeClaimAmount": "Claim {amount} {currency}",
+  "@incomeClaimAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimFailed": "Claim failed",
+  "incomeClaimMessage": "Claimable amount: {amount} {currency}\nEarnings will be transferred to your wallet balance",
+  "@incomeClaimMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimSuccess": "Claim successful",
+  "incomeClaimTitle": "Claim Earnings",
+  "incomeConfirmClaim": "Confirm Claim",
+  "incomeHistoryTab": "History",
+  "incomeInviteHeroSubtitle": "Invite friends to consume and interact, the more active the invitee the higher the reward",
+  "incomeInviteHeroTitle": "Invite Friends for Rebates",
+  "incomeInviteNoRecords": "No rebate records",
+  "incomeInvitePaidUnlockDesc": "Friends pay to unlock episodes",
+  "incomeInvitePaidUnlockTitle": "Paid Unlock",
+  "incomeInviteRecords": "Rebate Records",
+  "incomeInviteRegisterDesc": "Friends register via your referral link",
+  "incomeInviteRegisterTitle": "Invite Registration",
+  "incomeInviteRules": "Rebate Rules",
+  "incomeInviteShareLink": "Share Invite Link",
+  "incomeInviteStakeDesc": "Friends stake NFTs or STORY",
+  "incomeInviteStakeTitle": "Staking Investment",
+  "incomeInviteTab": "Invite Rebates",
+  "incomeInviteWatchDesc": "Friends watch dramas to earn points",
+  "incomeInviteWatchTitle": "Watch Dramas",
+  "incomeNoHistory": "No history records",
+  "incomeNoRecords": "No earnings records",
+  "incomeNothingToClaim": "Nothing to claim",
+  "incomeOverviewTab": "Overview",
+  "incomePendingClaim": "Pending Claim",
+  "incomeRecords": "Earnings Records",
+  "incomeThisMonth": "This Month",
+  "incomeToday": "Today",
+  "incomeTotalEarnings": "Total Earnings",
+  "incomeCumulativeStory": "Cumulative STORY",
+  "incomeCumulativeUsdc": "Cumulative {currency}",
+  "@incomeCumulativeUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimableStory": "Claimable STORY",
+  "incomeClaimableUsdc": "Claimable {currency}",
+  "@incomeClaimableUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeSettlingStory": "My Salary",
+  "incomeSettlingHint": "Settling; claimable after arrival",
+  "incomeHelpTotalStoryDesc": "The total amount of STORY accumulated across all historical cycles (including both claimed and unclaimed amounts).",
+  "incomeHelpTotalUsdcDesc": "Cumulative {currency} revenue from signing fees and secondary royalties for all historical characters.",
+  "@incomeHelpTotalUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeHelpSettlingStoryDesc": "Automatically converted to STORY after system settlement",
+  "incomeHelpClaimableStoryDesc": "Settled STORY can be withdrawn to your personal wallet.",
+  "incomeHelpClaimableUsdcDesc": "Settled {currency} can be withdrawn to your personal wallet.",
+  "@incomeHelpClaimableUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeFilterAll": "All",
+  "incomeFilterMining": "Mining",
+  "incomeFilterInvite": "Invite",
+  "incomeMiningReward": "Mining Reward",
+  "incomeInviteReward": "Invite Reward",
+  "incomeUsdcActorSignShare": "Character signing share",
+  "incomeClaimNoWallet": "Please bind your wallet first",
+  "incomeClaimCurrencyTitle": "Claim {currency}",
+  "@incomeClaimCurrencyTitle": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawMessage": "Confirm withdrawing {amount} {currency} to your Solana wallet?\nRecipient: {address}",
+  "@incomeClaimWithdrawMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawConfirm": "Confirm Withdraw",
+  "incomeClaimWithdrawSubmitted": "Withdrawal successful",
+  "incomeClaimWithdrawFailed": "Withdrawal failed, please retry",
+  "incomeClaimAction": "Claim",
+  "nftCreateActorIp": "Create Character IP",
+  "nftHeaderSubtitle": "Explore and collect exclusive Character NFTs",
+  "nftHeaderTitle": "Character NFT Square",
+  "nftSearchHint": "Search dramas, works, characters, users...",
+  "actorHowToPlayTitle": "How to Leverage Character IPs",
+  "actorHowToPlayHelpTooltip": "Game Instructions",
+  "actorHowToPlaySignTab": "Signed IPs",
+  "actorHowToPlaySignSubtitle": "Earn salary passively",
+  "actorHowToPlayIssueTab": "Launch IP",
+  "actorHowToPlayIssueSubtitle": "Monetizing Your Creative Work",
+  "actorHowToPlaySignPositioning": "Positioning: Zero creative barriers, easy and steady returns",
+  "actorHowToPlaySignAudience": "Ordinary users who don’t want to create content but want to earn STORY rewards with minimal effort",
+  "actorHowToPlaySignGuide": "Sign high-heat, high-salary character IPs, then schedule performances on the Agent page to earn.",
+  "actorHowToPlaySignRightsTitle": "Dual Benefits",
+  "actorHowToPlaySignRightPerform": "Schedule performances to earn STORY tokens on an ongoing basis",
+  "actorHowToPlaySignRightTrade": "Character IPs are tradable, allowing you to earn premium returns",
+  "actorHowToPlayIssuePositioning": "Positioning: create and launch, multiple revenue streams, long-term IP appreciation",
+  "actorHowToPlayIssueAudience": "Creators with creative talent who want to monetize through character IPs and short videos",
+  "actorHowToPlayIssueGuide": "Launch character IPs, pair them with AI short dramas, boost their heat, and raise IP salary and revenue",
+  "actorHowToPlayIssueRightsTitle": "Triple Benefits",
+  "actorHowToPlayIssueRightSignLabel": "Signing share:",
+  "actorHowToPlayIssueRightSign": "When your own IP is signed, you receive a 40% share",
+  "actorHowToPlayIssueRightPerformLabel": "Proceeds from the performance:",
+  "actorHowToPlayIssueRightPerform": "Sign your own IP and earn STORY through performances",
+  "actorHowToPlayIssueRightValueLabel": "Added Value:",
+  "actorHowToPlayIssueRightValue": "IPs are tradable; the higher the heat, the higher the premium.",
+  "actorHowToPlayAudienceTitle": "Target Audience",
+  "actorHowToPlayGuideTitle": "Game Guide",
+  "actorHowToPlayCreateHint": "Use DreamOS to generate character IPs and AI short dramas with a single click, efficiently producing high-quality content",
+  "actorHowToPlayCreateCta": "Let's Get Creative",
+  "nftSignInDevelopment": "Function not yet available",
+  "nftSortCompleted": "Completed Views",
+  "nftSortHeat": "Heat",
+  "nftSortIpPower": "IP Salary",
+  "nftSortLowestPrice": "Price",
+  "nftSortLv1Pay": "Salary",
+  "nftSortMaxPay": "Max salary",
+  "nftTradeUnavailable": "Trading not yet available",
+  "playerEpisodeBarCompleted": "All {count} episodes · Completed",
+  "@playerEpisodeBarCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeSynopsis": "Ep {episodeNo} | {synopsis}",
+  "@playerEpisodeSynopsis": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      },
+      "synopsis": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPlayFailedRetry": "Playback failed, please retry later",
+  "publicProfileDramas": "Dramas",
+  "publicProfileEmpty": "No public content",
+  "publicProfileBlock": "Block",
+  "publicProfileUnblock": "Unblock",
+  "publicProfileBlockedByMeContent": "You blocked this user, so you can't view their content",
+  "publicProfileBlockedContent": "This user blocked you, so you can't view their content",
+  "publicProfileBlockConfirmTitle": "Block this user?",
+  "publicProfileBlockConfirmMessage": "After blocking, you won't be able to view this user's works.",
+  "publicProfileBlockSuccess": "User blocked",
+  "publicProfileUnblockSuccess": "User unblocked",
+  "publicProfileFollowers": "Followers",
+  "publicProfileFollowing": "Following",
+  "followTabMutual": "Mutual",
+  "profileLikesReceived": "Likes",
+  "profileLikesReceivedDialogMessage": "You've received {count} likes — thanks for sharing your work!",
+  "profileTabLikes": "Liked",
+  "profileTabFavorites": "Favorites",
+  "profileWalletTitle": "Wallet",
+  "profileAddressCopied": "Address copied",
+  "followActionFollow": "Follow",
+  "followActionFollowBack": "Follow back",
+  "followActionFollowing": "Following",
+  "followBlockedByMe": "This user is on your blocklist, you cannot follow",
+  "followBlockedByTarget": "You cannot follow this user due to their settings",
+  "likeBlockedByMe": "This user is on your blocklist, you cannot like",
+  "likeBlockedByTarget": "You cannot like this work due to the creator's settings",
+  "favoriteBlockedByMe": "This user is on your blocklist, you cannot favorite",
+  "favoriteBlockedByTarget": "You cannot favorite this work due to the creator's settings",
+  "ratingBlockedByMe": "This user is on your blocklist, you cannot rate",
+  "ratingBlockedByTarget": "You cannot rate this drama due to the creator's settings",
+  "followActionMutual": "Mutual",
+  "followUnfollowTitle": "Unfollow",
+  "followUnfollowMessage": "Stop following {handle}?",
+  "@followUnfollowMessage": {
+    "placeholders": {
+      "handle": {
+        "type": "String"
+      }
+    }
+  },
+  "followUnfollowNo": "No",
+  "followUnfollowYes": "Yes",
+  "followListEmpty": "No users yet",
+  "followFollowingEmpty": "Not following anyone yet. Discover interesting creators~",
+  "followFollowingEmptyCta": "Explore",
+  "followFollowingEmptyGuest": "Not following anyone",
+  "followFollowersEmpty": "No followers yet. Post a work to get more exposure~",
+  "followFollowersEmptyCta": "Post",
+  "followFollowersEmptyGuest": "No followers yet",
+  "followMutualsEmpty": "No mutual follows yet",
+  "followMutualsSelfOnly": "Mutual follows are only visible to you",
+  "followRelationsSelfOnly": "Follow lists are only visible to you",
+  "followMoreTitle": "More",
+  "followRemoveFollower": "Remove follower",
+  "followRemoveFollowerSuccess": "Removed. They won’t be notified",
+  "followUserHandleFallback": "@user",
+  "publicProfileTitle": "User Profile",
+  "publicProfileUserFallback": "User #{id}",
+  "@publicProfileUserFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "watchHistoryEmpty": "No watch history",
+  "watchHistoryClearTitle": "Clear watch history",
+  "watchHistoryClearMessage": "Are you sure you want to clear all watch history? This action cannot be undone.",
+  "watchHistoryClearConfirm": "Confirm",
+  "gamePageTitle": "Agent",
+  "gamePageSubtitle": "Manage your characters, deploy them for earnings.",
+  "gameRiskAccount": "Risk Account",
+  "gameRiskAccountDescription": "This account has an abnormal trust coefficient; mining weight will be affected.",
+  "gameWeeklyStats": "Weekly Stats",
+  "gameDeployedActors": "Deployed Characters",
+  "gameMyActors": "My Characters",
+  "gameComingSoon": "Coming Soon",
+  "gameSignActor": "Sign characters",
+  "gameGoProduce": "Go Produce",
+  "gameWorkingActors": "Characters on Deployment",
+  "gameWeekPool": "Weekly Reward Pool (STORY)",
+  "gameWeekNominalOutput": "Weekly Nominal Output (STORY)",
+  "gameWeekEstimatedOutput": "Weekly Estimated Output (STORY)",
+  "gameMiningRules": "Mining Rules",
+  "agentV2RulesTitle": "Operations",
+  "agentV2RulesSummary": "Sign characters and schedule performances to earn STORY every hour.\nUpgrade characters to multiply their hourly salary.\nRefill stamina promptly so production never stops.\nSettlement begins every Monday at 00:00 (UTC); claim it on the Earnings page.",
+  "agentV2RulesHowToPlay": "How It Works",
+  "agentV2RulesStartTitle": "How do characters start earning?",
+  "agentV2RulesStartDescription": "Schedule an available character to perform. Each hour consumes 1 stamina and produces STORY based on their salary.\nProduced STORY is settled at the end of each cycle and can then be claimed on the Earnings page.",
+  "agentV2RulesStaminaTitle": "How is stamina managed?",
+  "agentV2RulesStaminaDescription": "Performing: consumes 1 stamina per hour and produces the normal salary\nDepleted: production pauses at 0 and requires attention\nResting: restores 1 stamina per hour but pauses salary\nRefill (paid): instantly restores {staminaLimit} and resumes production",
+  "@agentV2RulesStaminaDescription": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RulesBatchTitle": "Can I perform actions in bulk?",
+  "agentV2RulesBatchDescription": "Yes. Use Perform All, Refill All, or Rest All at the bottom of the page to apply an action to every character in a performance slot.",
+  "agentV2RulesEarnings": "Earnings",
+  "agentV2RulesSalaryTitle": "How is salary calculated?",
+  "agentV2RulesSalaryDescription": "The higher the tier, the pricier the character, and the more popular the drama, the higher the hourly salary.",
+  "agentV2RulesSalaryFormula": "Hourly salary per card = Character Salary × 1 STORY",
+  "agentV2RulesRolePowerFormula": "Character salary = Lv.1 character salary × Salary coefficient",
+  "agentV2RulesIpSalaryFormula": "Lv.1 character salary = Price coefficient × Heat coefficient",
+  "agentV2RulesCoefficientTitle": "Coefficient Details",
+  "agentV2RulesSalaryExample": "Lin Mengyao · Lv3 Lead · P0=120{currency} (price coefficient ≈1.5046) · heat 3.5\n→ Hourly salary = 5.0 × 1.5046 × 3.5 × 1 = 26.3 STORY\nAs an Lv1 Extra, she would earn only ≈5.3 STORY per hour — upgrading to Lv3 multiplies it fivefold.",
+  "@agentV2RulesSalaryExample": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesSettlementTitle": "When is settlement?",
+  "agentV2RulesSettlementDescription": "Each performance cycle lasts 7 days and closes every Monday at 00:00 (UTC). After system settlement, this period's salary is automatically converted to STORY and can be claimed on the Earnings page.",
+  "agentV2RulesSettlementExample": "Assume this week's reward pool is 100,000 STORY:\nCase A: Only you produce 134 across the platform → you receive 134; the remainder is not distributed\nCase B: Network output is 250,000 → 100,000 ÷ 250,000 = 40%, so your nominal output is scaled to 40%\nCase C: Someone would receive 6,000 after scaling, but the cap is 5,000 → only 5,000 is distributed",
+  "agentV2RulesStronger": "Getting Stronger",
+  "agentV2RulesUpgradeTitle": "How do I upgrade a character?",
+  "agentV2RulesUpgradeDescription": "Requirements: consume 2 duplicates of the same IP and level + meet the IP drama's cumulative completed-view target\nLv1→Lv2: ≥10,000 completed views · Salary: 1→3\nLv2→Lv3: ≥50,000 completed views · Salary: 3→9\nLv3→Lv4: ≥200,000 completed views · Salary: 9→27\nLv4→Lv5: ≥1M completed views · Salary: 27→81",
+  "agentV2RulesPerforming": "Performing",
+  "agentV2RulesNormalSalary": "Normal salary",
+  "agentV2RulesSalaryCoefficient": "Salary coefficient: Lv1=1 · Lv2=3 · Lv3=9 · Lv4=27 · Lv5=81",
+  "agentV2RulesPriceCoefficientDescription": "Price coefficient (launch price P0):\n  • P0 ≤ 100{currency1} → Coefficient = P0 ÷ 100 (linear increase)\n  • P0 > 100{currency2} → Coefficient = 1.6 × (P0/100)¹.³ / [(P0/100)¹.³ + 0.6] (asymptotic upper bound 1.6)",
+  "@agentV2RulesPriceCoefficientDescription": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesTrust2": "Trust2",
+  "agentV2RulesTrust2Factor": "Platform Trust2",
+  "agentV2RulesSettlementCase1": "Actual payout = nominal output; unused capacity expires",
+  "agentV2RulesSettlementCase2": "Proportional scaling: your actual payout = your nominal output × (reward pool ÷ network output)",
+  "gameSettlementRecords": "Weekly Settlement",
+  "gameFilterComputingPower": "Salary",
+  "gameFilterLevel": "Level",
+  "gameFilterHeat": "Heat",
+  "gameFilterStamina": "Stamina",
+  "gameHeatCoef": "Heat coefficient",
+  "gameMiningCoef": "Mining Coef.",
+  "gameActorPower": "Character Salary",
+  "gameActorPowerDetailTitle": "Character Salary Details",
+  "gameActorPowerFormula": "Character Salary = IP Salary × Mining Coefficient × CP Coefficient × Trust2",
+  "gameActorPowerIpFormula": "IP Salary = Price coefficient × Heat coefficient × Trust1",
+  "gameActorPowerHourlyOutput": "Hourly output",
+  "gameCpCoefficient": "CP Coefficient",
+  "gameTrust2": "Trust2",
+  "gameWeeklyNominalOutputLabel": "Weekly Nominal Output",
+  "gameRoundNominalOutputLabel": "Round Nominal Output",
+  "gameSupplement": "Supplement",
+  "gameRest": "Rest",
+  "gameDeploy": "Deploy",
+  "gameDeployActor": "Deploy character",
+  "gameStatusIdle": "Idle",
+  "gameStatusMining": "Mining",
+  "gameActorIpLabel": "Character IP {id}",
+  "@gameActorIpLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaProgress": "{current}/{max}",
+  "@gameStaminaProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismTitle": "Stamina mechanics",
+  "gameStaminaMechanismDesc": "Deployed characters consume 1 stamina point per hour. They stop generating earnings when their stamina is depleted, and recover stamina automatically while resting. You can use {currency} to refill stamina instantly.",
+  "@gameStaminaMechanismDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismAction": "Got it",
+  "gameLevelBadge": "Lv{level}",
+  "@gameLevelBadge": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "gameEmptyDeployed": "No characters currently deployed",
+  "gameEmptyMyActors": "No characters yet. Sign one to get started.",
+  "gameDeployConfirmTitle": "Deploy this character?",
+  "gameRestConfirmTitle": "Rest this character?",
+  "gameRestConfirmDesc": "Mining output pauses while the character rests; stamina recovers over time.",
+  "gameRestConfirmAction": "Confirm Rest",
+  "gameRestSuccessToast": "Rest started",
+  "gameDeploySlotFull": "Deploy slots are full (max 5)",
+  "gameRefillTitle": "Refill stamina",
+  "gameRefillCurrentStamina": "Current stamina",
+  "gameRefillCost": "Refill cost",
+  "gameRefillConfirm": "Refill all stamina",
+  "gameRefillSuccess": "Stamina refilled",
+  "gameRefillFailed": "Failed to refill stamina, please try again",
+  "gameInsufficientUsdc": "Insufficient {currency} balance",
+  "@gameInsufficientUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameBatchRefillTransactionTooLarge": "Batch refill transaction is too large. Reduce the number of actors and try again.",
+  "agentV2RefillTitle": "Refill stamina",
+  "agentV2RefillCost": "Cost",
+  "agentV2RefillActorButton": "This character",
+  "agentV2RefillAllActors": "Refill all performing characters",
+  "agentV2RefillActorCount": "{count} characters",
+  "agentV2RefillAllButton": "Refill all",
+  "agentV2RefillOr": "or",
+  "agentV2RestAll": "Rest all",
+  "agentV2RestActorCount": "{count} characters",
+  "walletInsufficientStory": "Insufficient STORY balance",
+  "gameSupplementComingSoon": "Stamina refill coming soon",
+  "gameStatHelpWeekPoolTitle": "Weekly Reward Pool",
+  "gameStatHelpWeekPoolSubtitle": "The weekly hard distribution cap for STORY mining",
+  "gameStatHelpWeekTotalPool": "Total weekly reward pool",
+  "gameStatHelpWeekTotalPoolValue": "2,115,385 STORY",
+  "gameStatHelpWeekStakePool": "Staking reward pool this week (75%)",
+  "gameStatHelpWeekStakePoolValue": "1,586,538 STORY",
+  "gameStatHelpWeekInvitePool": "Invite reward pool this week (25%)",
+  "gameStatHelpWeekInvitePoolValue": "528,846 STORY",
+  "gameStatHelpInitialHardCap": "Initial weekly hard cap",
+  "gameStatHelpInitialHardCapValue": "2,115,385 STORY",
+  "gameStatHelpWeeklyDecay": "Weekly decay factor",
+  "gameStatHelpWeeklyDecayValue": "× 0.99572",
+  "gameStatHelpWeeklyDistributionFormula": "Weekly actual distribution = min(total network nominal output, weekly hard cap)",
+  "gameStatHelpUnusedQuotaNote": "Unused quota is not launched, returned, or compensated",
+  "gameStatHelpNominalTitle": "Weekly Nominal Output",
+  "gameStatHelpNominalSummary": "Sum of weekly nominal output across all my characters",
+  "gameStatHelpNominalSummaryHint": "See below for the per-card formula",
+  "gameStatHelpNominalFormula": "Per-card nominal output = Per-card hourly weight × R_base × Effective mining duration",
+  "gameStatHelpHourlyWeight": "Per-card hourly weight",
+  "gameStatHelpHourlyWeightValue": "= Character Salary",
+  "gameStatHelpActorPower": "Character Salary",
+  "gameStatHelpActorPowerValue": "= IP Salary × Mining Coefficient × CP Coefficient × Trust2",
+  "gameStatHelpCpCoef": "CP coefficient",
+  "gameStatHelpRBase": "R_base",
+  "gameStatHelpRBaseValue": "1 STORY / unit weight / hour",
+  "gameStatHelpEffectiveDuration": "Effective mining duration",
+  "gameStatHelpEffectiveDurationValue": "Accumulated duration while deployed with stamina > 0",
+  "gameStatHelpActualTitle": "Estimated Output for This Week",
+  "gameStatHelpActualSubtitle": "Estimated output is constrained by the weekly hard cap and per-address cap; actual rewards settle at week end",
+  "gameStatHelpIfNominalLte": "If total network nominal output ≤ weekly hard cap:",
+  "gameStatHelpUserActualEqNominal": "User actual = user nominal output",
+  "gameStatHelpIfNominalGt": "If total network nominal output > weekly hard cap:",
+  "gameStatHelpUserActualFormula": "User actual = user nominal output × weekly hard cap / total network nominal output",
+  "gameStatHelpAddressCap": "Per-address weekly cap",
+  "gameStatHelpAddressCapValue": "Each address can claim at most 5% of the weekly hard cap",
+  "theaterCategoryAll": "All",
+  "theaterCategoryAncient": "Ancient",
+  "theaterCategoryFinance": "Finance",
+  "theaterCategorySuspense": "Suspense",
+  "theaterCategorySciFi": "Sci-Fi",
+  "theaterCategoryRealStory": "Real Story",
+  "theaterCategoryUrban": "Urban",
+  "theaterSortHottest": "Hottest",
+  "theaterSortNewest": "Newest",
+  "theaterSortTopRated": "Top Rated",
+  "theaterSortCompletedView": "Most Completed",
+  "theaterPlayCount": "{count} plays",
+  "@theaterPlayCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBasicInfo": "Basic Info",
+  "createDramaEpisodes": "Episode Management",
+  "createDramaRoles": "Bind IP",
+  "createDramaCover": "Cover",
+  "createDramaCoverUpload": "Upload",
+  "createDramaCoverPlaceholder": "Supports JPG/PNG, up to 5MB",
+  "createDramaCoverCropTitle": "Crop Cover",
+  "createDramaName": "Drama Title",
+  "createDramaNameHint": "Please enter drama title",
+  "createDramaSynopsis": "Synopsis",
+  "createDramaTags": "Tags",
+  "createDramaTagsHint": "Type tag and press enter to add (e.g. Love, Comedy)",
+  "createDramaTagsLoading": "Loading tags…",
+  "createDramaTagsEmpty": "No tags available",
+  "createDramaTagsRetry": "Retry",
+  "createDramaUploadDesc": "Click to upload; episodes will be auto-sorted by video name after submission.",
+  "@createDramaUploadDesc": {},
+  "createDramaEpisodesDesc": "Batch upload video files; the system auto-generates the episode list sorted by filename. Supports drag-to-reorder, deletion, and title editing.",
+  "@createDramaEpisodesDesc": {},
+  "createDramaVideoFileTypeHint": "Supported formats: mp4, flv, wmv, asf, mkv, avi, rm, rmvb, mpg, mpeg, mov, webm. Max file size 2GB.",
+  "@createDramaVideoFileTypeHint": {},
+  "createDramaUploadVideo": "Upload Video",
+  "createDramaVideoEmpty": "No videos added yet",
+  "createDramaVideoPickFailed": "Failed to pick video",
+  "createDramaVideoAnyTooLarge": "One or more videos exceed 2GB, please adjust and retry",
+  "createDramaVideoStatusUploading": "Uploading",
+  "createDramaVideoStatusPaused": "Upload paused",
+  "createDramaVideoStatusDone": "Upload complete",
+  "createDramaEpisodeDescriptionHint": "Episode description",
+  "createDramaVideoStatusFailed": "Upload failed",
+  "createDramaVideoTooLarge": "Video size cannot exceed 2GB and cannot be uploaded.",
+  "createDramaVideoUploadComplete": "All videos uploaded",
+  "createDramaVideoUploadFailed": "{name} upload failed",
+  "@createDramaVideoUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoPickOverflow": "You can add up to {count} more episodes. {overflow} extra were skipped.",
+  "@createDramaVideoPickOverflow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "overflow": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaAddedVideos": "Added videos ({count} files)",
+  "@createDramaAddedVideos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosCount": "({count} files)",
+  "@createDramaAddedVideosCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosLabel": "Added videos",
+  "createDramaRolesDesc": "Create roles for the drama, set role name, avatar, and brief bio.",
+  "createDramaRolesRule1": "Each drama can bind up to 5 Character IPs. New IPs can be added within 7 days of going live; bindings cannot be removed or replaced after publishing.",
+  "@createDramaRolesRule2": {
+    "description": "Explains how completion and popularity data accrue after binding a Character IP."
+  },
+  "createDramaRolesRule2": "Once bound, the Character IP is linked to the drama's completion and popularity data for upgrades and STORY rewards.",
+  "createDramaRolesExpireTime": "Deadline",
+  "createDramaRolesRule3": "Binding an IP is optional; you can publish without one.",
+  "createDramaAddRole": "Add Role",
+  "createDramaBindActor": "Cast Character",
+  "createDramaRoleActing": "Cast Character",
+  "createDramaSelectActor": "Select Character",
+  "createDramaBindActorTitle": "Select Character IP",
+  "createDramaBindIpSelectedCount": "{count} selected",
+  "createDramaBindIpEmpty": "No data",
+  "createDramaBindIpMarketplace": "Go to Character IP Market",
+  "createDramaBindIpConfirm": "Confirm binding",
+  "createDramaBindActorSubtitle": "Select a character IP to play “{roleName}”",
+  "@createDramaBindActorSubtitle": {
+    "placeholders": {
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorOwnedCount": "You own {count} Character IPs",
+  "@createDramaBindActorOwnedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindActorIpLabel": "Character IP {code}",
+  "@createDramaBindActorIpLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorBoundTag": "Bound",
+  "createDramaBindIpRemove": "Remove",
+  "createDramaBindActorBoundToast": "Bound {name}",
+  "@createDramaBindActorBoundToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorUnbind": "Unbind",
+  "createDramaBindActorExpired": "The 7-day binding window has expired. New Character IP bindings cannot be added.",
+  "createDramaBindActorEmptyTitle": "No Character IP to bind",
+  "createDramaBindActorEmptyDesc": "You need to own a Character IP before binding it to a character",
+  "createDramaBindActorGotoCreate": "Create Character",
+  "createDramaPrevStep": "Back",
+  "createDramaNextStep": "Next",
+  "createDramaSubmit": "Post",
+  "createDramaRoleNameLabel": "Role Name",
+  "createDramaRoleNameHint": "Enter role name",
+  "createDramaRoleNameRequired": "Please enter the role name",
+  "createDramaRoleBioLabel": "Role Bio",
+  "createDramaRoleBioHint": "Enter role bio",
+  "createDramaRoleBioRequired": "Role bio is required",
+  "createDramaRoleAddTitle": "Add Role",
+  "createDramaRoleEditTitle": "Edit Role",
+  "createDramaRoleUploadAvatar": "Upload Avatar",
+  "createDramaRoleSave": "Save",
+  "createDramaRoleDeleteConfirm": "Delete this character?",
+  "createDramaVideoDeleteConfirm": "Delete \"{name}\"?",
+  "@createDramaVideoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoDeleteTitle": "Delete Video",
+  "createDramaVideoPreviewUnavailable": "Previously uploaded videos cannot be previewed at this time",
+  "createDramaRoleEmpty": "No roles added yet",
+  "createDramaRoleBindComingSoon": "Role binding is coming soon",
+  "createDramaRoleAvatarCropTitle": "Crop Role Avatar",
+  "createDramaRoleAvatarUploadFailed": "Role Avatar upload failed",
+  "createDramaPublishedSuccess": "Posted successfully",
+  "createDramaDraftRestored": "Restored your unfinished draft",
+  "createDramaDraftClear": "Clear data",
+  "createDramaDraftDiscard": "Discard and return",
+  "createDramaDraftSave": "Save draft",
+  "createDramaEditLoading": "Loading...",
+  "createDramaEditLoadError": "Failed to load drama info, please retry",
+  "createDramaSubmitValidationTitle": "Please enter the drama title",
+  "createDramaSubmitValidationCover": "Please upload a cover image",
+  "createDramaSubmitValidationVideos": "Please upload at least one video",
+  "createDramaSubmitValidationSession": "Upload session invalid, please re-upload videos",
+  "createDramaUploadSessionFailed": "Failed to create upload session",
+  "createDramaSubmitValidationRoles": "Please add at least one role",
+  "createDramaStep1TitleRequired": "Please enter the drama title",
+  "createDramaStep1SynopsisRequired": "Please enter the synopsis",
+  "createDramaStep1CoverRequired": "Please add a cover",
+  "createDramaStep1TagsRequired": "Please select tags",
+  "createDramaEpisodeDescriptionRequired": "Please enter the episode description",
+  "settingsLanguage": "Language",
+  "settingsTheme": "Theme",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsThemeSystem": "System",
+  "settingsUI": "Interface",
+  "settingsAppVersion": "Version",
+  "settingsVersionLatestToast": "You are on the latest version",
+  "settingsVersionCheckFailed": "Couldn't check for updates. Please try again later.",
+  "appVersionUpdateTitle": "New Version Available",
+  "appVersionUpdateContentsLabel": "What's new:",
+  "appVersionUpdateConfirm": "Update Now",
+  "appVersionUpdateLater": "Maybe Later",
+  "settingsTermsOfService": "Terms of Service",
+  "settingsPrivacyPolicy": "Privacy Policy",
+  "settingsDeleteAccount": "Delete Account",
+  "settingsDeleteAccountConfirm": "Your account will be deleted at {deadline}. During this period, you can log in again to cancel the account deletion.",
+  "settingsDeleteAccountSuccess": "Account deletion request submitted",
+  "settingsClearCache": "Clear Cache",
+  "settingsNetworkInspector": "Network Inspector",
+  "settingsClearCacheConfirm": "Are you sure to clear cache?",
+  "miningRulesHowToPlay": "How Dispatch Mining Works",
+  "miningRulesFlowSubtitle": "Understand the process from dispatching to earning rewards at a glance",
+  "miningRulesSection1Title": "Dispatch",
+  "miningRulesSection1Desc": "Dispatch idle characters into the 5 slots below to start automatic mining and produce STORY.",
+  "miningRulesSection1Bullet1": "Up to 5 characters can be dispatched at the same time",
+  "miningRulesSection1Bullet2": "Multiple cards of the same Character IP can be dispatched together",
+  "miningRulesSection1Bullet3": "Consumes 1 stamina per hour after dispatch. Keeps producing while stamina > 0, stops when stamina = 0",
+  "miningRulesSection2Title": "Output Formula",
+  "miningRulesSection2Desc": "Hourly output for each card is calculated as follows:",
+  "miningRulesSection2Formula": "Per-card hourly output = Character Salary × 1 STORY",
+  "miningRulesSection2FactorsTitle": "Where:",
+  "miningRulesSection2Factor1": "Character Salary = IP Salary × Mining Coefficient × CP Coefficient × Trust2",
+  "miningRulesSection2Factor2": "IP Salary = Price coefficient × Heat coefficient × Trust1",
+  "miningRulesCoefTableTitle": "Coefficient details",
+  "miningRulesCoefColCoef": "Coefficient",
+  "miningRulesCoefColFactor": "Determined by",
+  "miningRulesCoefColDesc": "Details",
+  "miningRulesCoefMining": "Mining Coefficient",
+  "miningRulesCoefPrice": "Price Coefficient",
+  "miningRulesCoefHeat": "Heat coefficient",
+  "miningRulesCoefCp": "CP Coefficient",
+  "miningRulesCoefTrust": "Trust",
+  "miningRulesCoefMiningFactor": "Tier",
+  "miningRulesCoefPriceFactor": "Launch price P0",
+  "miningRulesCoefHeatFactor": "Recent drama performance",
+  "miningRulesCoefCpFactor": "-",
+  "miningRulesCoefTrustFactor": "Platform risk control",
+  "miningRulesCoefMiningDesc": "Lv1=1.0 · Lv2=2.2 · Lv3=5.0 · Lv4=11 · Lv5=24",
+  "miningRulesCoefPriceDesc": "Linear when P0≤10{currency1} · asymptotic cap 1.6 when P0>10{currency2}",
+  "@miningRulesCoefPriceDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefHeatDesc": "Heat coefficient: the more completed views, likes, saves, and ratings for dramas featuring the character IP, the higher the heat",
+  "miningRulesCoefCpDesc": "Not open yet",
+  "miningRulesCoefTrustDesc": "Defaults to 1.0",
+  "miningRulesSettleColCondition": "Condition",
+  "miningRulesSettleColRule": "Distribution rule",
+  "miningRulesUpgradePathSubtitle": "Upgrade path",
+  "miningRulesUpgradeColPath": "Upgrade path",
+  "miningRulesUpgradeColHeat": "Cumulative Completed Views Threshold",
+  "miningRulesUpgradeColFee": "Synthesis fee",
+  "miningRulesUpgradePath12": "Lv1 → Lv2",
+  "miningRulesUpgradePath23": "Lv2 → Lv3",
+  "miningRulesUpgradePath34": "Lv3 → Lv4",
+  "miningRulesUpgradePath45": "Lv4 → Lv5",
+  "miningRulesUpgradeHeat12": "≥ 10,000",
+  "miningRulesUpgradeHeat23": "≥ 50,000",
+  "miningRulesUpgradeHeat34": "≥ 200,000",
+  "miningRulesUpgradeHeat45": "≥ 1,000,000",
+  "miningRulesUpgradeFee12": "10 {currency}",
+  "@miningRulesUpgradeFee12": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee23": "20 {currency}",
+  "@miningRulesUpgradeFee23": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee34": "40 {currency}",
+  "@miningRulesUpgradeFee34": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee45": "80 {currency}",
+  "@miningRulesUpgradeFee45": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor3": "Mining Coefficient — Higher tier, larger coefficient. Lv1=1.0 → Lv2=2.2 → Lv3=5.0 → Lv4=11 → Lv5=24",
+  "miningRulesSection2Factor4": "Price coefficient — launch price P0: P0≤10{currency1} linear growth · P0>10{currency2} approaching a cap of 1.6",
+  "@miningRulesSection2Factor4": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor5": "Heat coefficient — the better the recent drama performance, the higher the heat (completed views, likes, saves, comments)",
+  "miningRulesSection2Factor6": "CP Coefficient — Not open yet; Trust defaults to 1.0",
+  "miningRulesSection2StaminaText": "Stamina only matters as on/off: {staminaLimit} and 1 stamina yield the same hourly output.",
+  "@miningRulesSection2StaminaText": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesSection2ExampleTitle": "Example",
+  "miningRulesSection2ExampleDesc": "Lin Mengyao · Lv3 Lead · P0=12{currency} (price coefficient ≈1.0859) · heat 3.5\n→ Hourly output = 5.0 × 1.0859 × 3.5 × 1 = 19.00325 STORY",
+  "@miningRulesSection2ExampleDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection3Title": "Settlement Distribution",
+  "miningRulesSection3Desc": "Every week the platform has a total reward pool (weekly hard cap), starting at about 2,115,385 STORY, then decreasing each week (weekly × 0.99572).",
+  "miningRulesSection3Case1Title": "Network nominal output ≤ weekly hard cap",
+  "miningRulesSection3Case1Desc": "Everyone receives the full amount; leftovers are not launched or topped up",
+  "miningRulesSection3Case2Title": "Network nominal output > weekly hard cap",
+  "miningRulesSection3Case2Desc": "Proportional scaling: your actual = your nominal × reward pool ÷ network output",
+  "miningRulesSection3Case3Title": "Single address exceeds 5% of the reward pool",
+  "miningRulesSection3Case3Desc": "The excess is not launched, returned, or compensated",
+  "miningRulesSection3ExampleDesc": "Assume the weekly reward pool is 100,000 STORY:\nCase A: Only you produce 134 → you get 134; the rest is not issued\nCase B: Network output 250,000 → scaled to 40%\nCase C: After scaling someone should get 6,000, but the cap is 5,000 → only 5,000 is issued",
+  "miningRulesSection4Title": "Stamina Management",
+  "miningRulesTableStatus": "Status",
+  "miningRulesTableStaminaChange": "Stamina Change",
+  "miningRulesTableOutput": "Output",
+  "miningRulesStatusMining": "Dispatched (Mining)",
+  "miningRulesStaminaMining": "-1 per hour",
+  "miningRulesOutputNormal": "Normal Output",
+  "miningRulesStatusZeroStamina": "Stamina Depleted",
+  "miningRulesStaminaZeroStamina": "No change",
+  "miningRulesOutputZero": "Zero Output",
+  "miningRulesStatusResting": "Recalled & Resting",
+  "miningRulesStaminaResting": "+1 per hour (auto-restore)",
+  "miningRulesOutputPaused": "Paused Output",
+  "miningRulesStatusPaidRefill": "Refill Stamina (Paid)",
+  "miningRulesStaminaPaidRefill": "Instantly refill to {staminaLimit}",
+  "@miningRulesStaminaPaidRefill": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesOutputRestored": "Restored Output",
+  "miningRulesSection4TipsTitle": "Stamina refill notes",
+  "miningRulesSection4Tip1": "Can only refill fully at once; cannot buy 10 points only",
+  "miningRulesSection4Tip2": "Price depends only on tier, not remaining stamina",
+  "miningRulesSection4Tip3": "The closer to 0, the better the value — same price buys the most mining time",
+  "miningRulesSection4PriceTitle": "Refill prices",
+  "miningRulesPriceTableTier": "Tier",
+  "miningRulesPriceTableFullRefill": "Full Refill",
+  "miningRulesLv1": "Lv1 Extra",
+  "miningRulesLv2": "Lv2 Supporting",
+  "miningRulesLv3": "Lv3 Protagonist",
+  "miningRulesLv4": "Lv4 Superstar",
+  "miningRulesLv5": "Lv5 Top Tier",
+  "gameActorLevelName1": "Extra",
+  "gameActorLevelName2": "Supporting",
+  "gameActorLevelName3": "Protagonist",
+  "gameActorLevelName4": "Superstar",
+  "gameActorLevelName5": "Top Tier",
+  "miningRulesLv1Price": "10 {currency}",
+  "@miningRulesLv1Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv2Price": "20 {currency}",
+  "@miningRulesLv2Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv3Price": "50 {currency}",
+  "@miningRulesLv3Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv4Price": "130 {currency}",
+  "@miningRulesLv4Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv5Price": "320 {currency}",
+  "@miningRulesLv5Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection5Title": "Upgrade Tier",
+  "miningRulesSection5Desc": "3 cards of the same character and tier + synthesis fee + cumulative completed views target for that character = upgrade 1 level. After upgrading, the mining coefficient surges and hourly output multiplies.",
+  "miningRulesSummaryTitle": "Summary in One Sentence",
+  "miningRulesSummaryDesc": "Dispatch → Produce → Watch stamina → Collect. Refill or rest when stamina runs low; heat grows with the character's drama performance, and upgrading boosts output.",
+  "playerNotInterested": "Not interested",
+  "playerNotInterestedDone": "Feedback received. We'll show fewer videos like this",
+  "playerClearScreen": "Clear screen",
+  "playerAutoPlay": "Auto play",
+  "playerReport": "Report",
+  "playerReportSuccess": "Reported successfully",
+  "commentReportSuccess": "Submitted successfully, we'll process it shortly",
+  "reportSuccessTitle": "Submitted successfully. We'll review it soon",
+  "reportSuccessThanks": "Thanks for helping keep the community safe!",
+  "reportSuccessAlsoYouCan": "You can also",
+  "reportSuccessDone": "Done",
+  "reportReduceRecommend": "See less",
+  "reportReduceRecommendDone": "We'll show less",
+  "reportSuccessContentFallback": "This content",
+  "reportDescription": "Report Description",
+  "reportDescriptionPlaceholder": "Describe the details (Optional)",
+  "reportReasonPorn": "Pornography & Vulgarity",
+  "reportReasonIllegal": "Illegal or Criminal",
+  "reportReasonSensitive": "Sensitive Content",
+  "reportReasonGambling": "Gambling or Violence",
+  "reportReasonMinors": "Harm to Minors",
+  "reportReasonCopyright": "Copyright Infringement",
+  "reportReasonQuality": "Quality Issue",
+  "reportReasonNotLike": "I don't like it",
+  "reportReasonOther": "Other",
+  "gameUpgrade": "Upgrade",
+  "gameUpgradeTitle": "Level Upgrade",
+  "gameUpgradeCurrentLevel": "Current Level",
+  "gameUpgradeTargetLevel": "Target Level",
+  "gameUpgradeHeatThreshold": "Drama Completed Views",
+  "gameUpgradeRequiredCount": "Consume Same-IP Characters",
+  "gameUpgradeFee": "Upgrade Fee",
+  "gameUpgradeNextLevelReq": "Next Level Requirements",
+  "gameUpgradeBeforeAfter": "Before and After Upgrade",
+  "gameUpgradeSelectMaterialDesc": "Select same IP same level characters to consume",
+  "gameUpgradeMaterialCount": "{current}/{required}",
+  "@gameUpgradeMaterialCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeToLevel": "Upgrade to Lv{level} {levelName}",
+  "@gameUpgradeToLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterialLabel": "Select Materials ({current}/{required})",
+  "@gameUpgradeSelectMaterialLabel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterials": "Please select {count} materials",
+  "@gameUpgradeSelectMaterials": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeConfirm": "Confirm Upgrade",
+  "gameUpgradeSuccess": "Upgrade successful",
+  "gameUpgradeFailed": "Upgrade failed, please try again",
+  "gameUpgradeInsufficientMaterials": "Insufficient materials",
+  "gameUpgradeNoMaterials": "No available materials of the same IP and level",
+  "creatorDramaStatusMinted": "Minted",
+  "creatorDramaStatusOffline": "Delisted",
+  "creatorDramaStatusUnavailable": "Temporarily Unavailable",
+  "creatorMintDramaNft": "Mint Drama NFT",
+  "creatorMintConfirmDesc": "Confirm minting this drama as an on-chain NFT. After minting, this drama will generate STORY mining rewards.",
+  "creatorMintFee": "Minting Fee",
+  "creatorMintInsufficientUsdc": "Insufficient {currency1} balance. On-chain launch requires at least 1 {currency2}",
+  "@creatorMintInsufficientUsdc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintInvalidDramaId": "Invalid drama ID",
+  "creatorMintInProgress": "Minting in progress, please wait",
+  "creatorMintWalletNotReady": "Solana wallet address is not ready. Please log in again",
+  "creatorMintDigestEmpty": "Launch signature data is empty. Please try again later.",
+  "creatorMintWalletMismatch": "Mint wallet does not match the current wallet. Please log in again",
+  "creatorMintSuccess": "Minting Successful!",
+  "@creatorMintDramaOnChain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintDramaOnChain": "Drama NFT for \"{name}\" has been minted on-chain",
+  "@creatorMintNftNumber": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintNftNumber": "NFT Number: {id}",
+  "creatorMintTxHash": "Transaction Hash: ",
+  "gameSelectActor": "Select Character to Deploy",
+  "gameSelectActorDesc": "Select an idle character to dispatch",
+  "agentV2SchedulePerformance": "Perform",
+  "agentV2PerformAllTitle": "Perform All",
+  "agentV2PerformAllDescription": "Characters with higher salary will fill available performance slots first",
+  "agentV2PerformAllFailed": "One-tap performance failed. Please try again",
+  "agentV2PerformAllSuccess": "One-tap performance successful",
+  "agentV2PerformAllDepletedResult": "{successCount} successfully scheduled, {depletedCount} unable to perform due to depleted stamina",
+  "agentV2RestAllSuccess": "One-tap rest successful",
+  "agentV2PerformAllCount": "{count} characters",
+  "@agentV2PerformAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2TodoTitle": "To-do",
+  "agentV2TodoVacancies": "{count} performance slot(s) available",
+  "@agentV2TodoVacancies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2TodoStaminaDepleted": "{name} has 0 stamina and stopped working",
+  "@agentV2TodoStaminaDepleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2TodoPerform": "Perform",
+  "agentV2TodoRefill": "Refill",
+  "agentV2TodoHealthy": "Performances normal · Stamina sufficient",
+  "agentV2CandidateActorsTitle": "Candidate Characters",
+  "agentV2CandidateActorsDescription": "Resting characters recover 1 stamina per hour",
+  "agentV2UpgradeableActorsTitle": "Upgrade Characters",
+  "agentV2UpgradeableActorsEmpty": "No characters available to upgrade",
+  "agentV2NoActors": "No characters",
+  "agentV2UpgradeNow": "Upgrade Now",
+  "agentV2UpgradeCompletion": "Completed Views",
+  "agentV2UpgradeMaterials": "Characters",
+  "agentV2UpgradeRequirementsTitle": "Upgrade {name}",
+  "@agentV2UpgradeRequirementsTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionRemaining": "{count} more completed views needed",
+  "@agentV2UpgradeCompletionRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionHint": "Watch dramas featuring this character, or create a new drama for them, to increase completed views",
+  "agentV2UpgradeWatchDramas": "Watch Their Dramas",
+  "agentV2UpgradeCreateDrama": "Create a Drama",
+  "agentV2UpgradeMaterialsRemaining": "{count} more same-IP, same-level characters needed",
+  "@agentV2UpgradeMaterialsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeMaterialsHint": "Sign more “{name}” characters from the character profile",
+  "@agentV2UpgradeMaterialsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeGetActors": "Get Characters",
+  "agentV2UpgradeActorsSyncing": "{count} new character(s) syncing; upgrade requirements updated",
+  "@agentV2UpgradeActorsSyncing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeConfirmSelectMaterials": "Select same-IP, same-level characters to consume",
+  "agentV2UpgradeConfirmSalaryLabel": "Salary",
+  "agentV2SalaryDetailTitle": "Character salary",
+  "agentV2SalaryHourly": "Hourly salary",
+  "agentV2SalaryUnit": "STORY / hour",
+  "agentV2SalaryFormula": "Character salary = IP salary × Salary coefficient × CP coefficient × Trust2",
+  "agentV2SalaryFormulaLv1": "Lv.1 character salary = Price coefficient × Heat coefficient",
+  "agentV2SalaryFormulaLevel": "Lv.{level} salary = Lv.1 salary × Salary coefficient",
+  "@agentV2SalaryFormulaLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryLv1Pay": "Lv.1 salary",
+  "agentV2SalaryCoefficient": "Salary coefficient",
+  "agentV2SalaryCoefficientWithLevel": "Salary coefficient (Lv.{level} {roleName})",
+  "@agentV2SalaryCoefficientWithLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2SalaryCpCoefficient": "CP Coefficient",
+  "agentV2PerformanceConfirmDescription": "This character automatically earns salary while performing. Each hour of performing consumes 1 stamina point; when stamina runs out, it stops earning.",
+  "agentV2PerformanceConfirmTitle": "Schedule performance",
+  "agentV2PerformanceZeroFeePrefix": "This character's IP currently has ",
+  "agentV2PerformanceZeroFeeHighlight": "zero salary",
+  "agentV2PerformanceZeroFeeSuffix": ", so performing will not generate earnings. Performing also consumes 1 stamina per hour. Continue anyway?",
+  "agentV2PerformanceScheduledSuccess": "Performance scheduled",
+  "agentV2PerformanceSlotsFull": "Performance slots are full (max 5)",
+  "gameDeployStaminaDepleted": "Stamina depleted. Refill stamina before performing",
+  "agentMoreRules": "Rules",
+  "agentMoreSalaryAndPool": "Salary & reward pool",
+  "agentV2WeeklySalaryTitle": "Level Up · Perform · Earn Salary",
+  "agentV2WeeklySalaryLabel": "This week's salary",
+  "gameDeployConfirmDesc": "This character will automatically participate in staking mining and continuously generate STORY earnings for you. Note: 1 stamina point is consumed at the start of every hour. Earnings stop when stamina is depleted.",
+  "gameRecallConfirm": "Confirm Recall",
+  "gameRecallDesc": "Recalling this character will pause drama production rewards, but current stamina is unaffected.",
+  "actorStatCompletionTitle": "Completed Views",
+  "actorStatCompletionDesc": "Total completed views across all dramas this character has appeared in",
+  "actorStatHeatTitle": "Heat",
+  "actorStatHeatDesc": "Total heat of all short dramas featuring this character IP over the past 30 days",
+  "actorStatIpPowerTitle": "IP Salary",
+  "actorStatIpPowerDesc": "IP Salary = Price coefficient × Heat coefficient × Trust1",
+  "dramaFavoriteLabel": "Favorite",
+  "dramaRatingLabel": "Rating",
+  "dramaUnnamed": "Untitled",
+  "videoNotReady": "Video not ready, please try again later",
+  "inviteDirectSubordinates": "Invited Users",
+  "@inviteTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteTotalCount": "Total: {count} users",
+  "inviteTotalLabel": "Total Users",
+  "inviteActiveLabel": "Active Users",
+  "invitePendingLabel": "Pending Activation",
+  "inviteEmpty": "No subordinate users yet",
+  "@inviteRegisteredAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRegisteredAt": "Registered on {date}",
+  "gameUpgradeMaxLevel": "Maximum tier reached",
+  "listNoMoreData": "No more data",
+  "iapSheetTitle": "Buy Points",
+  "iapSheetSubtitle": "Points are used for in-app services such as signing roles",
+  "iapBalance": "Balance",
+  "iapConfirmPurchase": "Confirm Purchase",
+  "iapPurchaseSuccess": "Purchase successful",
+  "iapPurchaseFailed": "Purchase failed, please try again",
+  "iapPurchaseFailedTitle": "Purchase failed",
+  "iapCrediting": "Crediting in progress, please wait",
+  "iapNoProducts": "No products available",
+  "iapSuccessConfirm": "OK",
+  "iapGainedPoints": "+{value}",
+  "@iapGainedPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "iapPointsCount": "{count} points",
+  "@iapPointsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2RefillActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@agentV2RestActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "salaryPoolRateUnit": "STORY / hr",
+  "salaryPoolDecayInfo": "Weekly decay factor ×0.99572",
+  "salaryPoolStakeLabel": "Performance Reward Pool (75%)",
+  "salaryPoolInviteLabel": "Invite Reward Pool (25%)",
+  "salaryPoolRule1Title": "Total nominal output ≤ weekly hard cap:",
+  "salaryPoolRule2Title": "Total nominal output > weekly hard cap:",
+  "salaryPoolRule2Body": "Actual payout = user nominal output × (weekly hard cap ÷ total nominal output)",
+  "agentV3WeeklySalary": "Weekly salary",
+  "agentV3PerformAll": "Perform all",
+  "agentV3RestAll": "Rest all",
+  "agentV3RestAllDescription": "Recall all performing characters to stop stamina consumption and earnings",
+  "agentV3RefillAll": "Refill all",
+  "agentV3RefillAllDescription": "Fully refill performing characters' stamina",
+  "agentV3RefillCost": "Uses",
+  "agentV3RefillNoActors": "No characters need a stamina refill",
+  "agentV3SignActor": "Sign characters",
+  "agentV3Todo": "Tasks",
+  "agentV3Upgrade": "Upgrade",
+  "agentV3UpgradeMaterialHint": "Upgrading requires consuming {count} characters with the same IP and level",
+  "@agentV3UpgradeMaterialHint": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "agentV3Waiting": "Waiting",
+  "agentV3WaitingActorsTitle": "Waiting Characters",
+  "agentV3WaitingActorsDescription": "Resting characters recover 1 stamina per hour",
+  "agentV3Recycle": "Recycle",
+  "agentV3RecycleActorsTitle": "Recycle Characters",
+  "agentV3RecyclePerforming": "Performing",
+  "agentV3RecycleReceive": "You will receive",
+  "agentV3RecyclePermanentWarning": "This character will be permanently destroyed and cannot be recovered",
+  "agentV3RecycleConfirm": "Confirm destruction",
+  "agentV3RecycleConfirmAgain": "Tap again to destroy",
+  "agentV3RecycleSubmitted": "Character recycled successfully",
+  "agentV3RecycleEstimateUnavailable": "Recycle estimate is unavailable. Please try again",
+  "agentV3EnergyPack": "Energy Pack",
+  "agentV3EnergyPackDescription": "Fully restores character stamina, consumed according to character level.",
+  "agentV3TrainingManual": "Training Manual",
+  "agentV3TrainingManualDescription": "Character upgrade material, consumed according to the character's level when upgrading.",
+  "agentV3PurchaseButton": "Buy",
+  "agentV3PurchaseWalletBalance": "Balance {balance} {currency}",
+  "@agentV3PurchaseWalletBalance": {
+    "placeholders": {"balance": {"type": "String"}, "currency": {"type": "String"}}
+  },
+  "agentV3PurchaseTitle": "Buy {item}",
+  "@agentV3PurchaseTitle": {
+    "placeholders": {"item": {"type": "String"}}
+  },
+  "agentV3PurchaseUnitPrice": "Unit price",
+  "agentV3PurchaseQuantity": "Quantity",
+  "agentV3PurchaseTotal": "Total",
+  "agentV3PurchaseConfirm": "Confirm payment",
+  "agentV3PurchaseUnavailable": "Item purchases are not available in this environment",
+  "agentV3PurchaseConfigUnavailable": "Item pricing is unavailable. Please try again later",
+  "agentV3PurchaseSubmitted": "Purchase successful. Added to your Item Backpack (Agent page)",
+  "agentV3PurchaseCreditPending": "Energy packs are still being credited. Please try again shortly",
+  "agentV3PurchaseCrediting": "Crediting",
+  "agentV3PurchaseBalance": "Owned: {count}",
+  "@agentV3PurchaseBalance": {
+    "placeholders": {"count": {"type": "String"}}
+  },
+  "agentV3RefillTitle": "Refill stamina",
+  "agentV3RefillLevelCost": "Lv.{level} uses",
+  "agentV3RefillAvailable": "Available",
+  "agentV3RefillUse": "Use",
+  "agentV3RefillSuccess": "Stamina refilled",
+  "agentV3RefillAllSuccess": "Refilled stamina for {actorCount} characters (used {packCount} stamina packs)",
+  "@agentV3RefillAllSuccess": {
+    "placeholders": {
+      "actorCount": {"type": "int"},
+      "packCount": {"type": "String"}
+    }
+  },
+  "agentV3RefillConfigUnavailable": "Stamina pack usage is unavailable",
+  "agentV3RefillInsufficient": "Not enough stamina packs"
+}

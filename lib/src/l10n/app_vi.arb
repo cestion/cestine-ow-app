@@ -1,0 +1,2657 @@
+{
+  "appName": "StoryFun",
+  "commonCancel": "Hủy",
+  "commonNoData": "Chưa có dữ liệu",
+  "commonNo": "Không",
+  "commonYes": "Có",
+  "publishDrama": "Đăng phim ngắn",
+  "publishVideo": "Đăng video",
+  "publishVideoUploadTitle": "Tải tệp video lên",
+  "publishVideoFileHint": "Hỗ trợ mp4, flv, wmv, mkv, avi, mov và webm. Tối đa 2GB",
+  "publishVideoChooseFile": "Chọn tệp",
+  "publishVideoChangeFile": "Đổi tệp",
+  "publishVideoChooseSource": "Chọn nguồn video",
+  "publishVideoChooseFromGallery": "Chọn từ thư viện",
+  "publishVideoChooseFromFiles": "Chọn từ tệp",
+  "publishVideoPreparing": "Đang chuẩn bị video…",
+  "publishVideoCoverTitle": "Ảnh bìa video",
+  "publishVideoChangeCover": "Đổi ảnh bìa",
+  "publishVideoCoverHint": "JPG/PNG, tối đa 5MB",
+  "publishVideoDescriptionLabel": "Mô tả",
+  "publishVideoRequired": "(Bắt buộc)",
+  "publishVideoDescriptionHint": "Thêm mô tả (tối đa 200 ký tự)",
+  "publishVideoSaveDraft": "Lưu bản nháp",
+  "publishVideoDraftEditModeNotSupported": "Không thể lưu bản nháp ở chế độ chỉnh sửa",
+  "publishVideoDraftNothingToSave": "Không có nội dung để lưu",
+  "publishVideoNext": "Tiếp theo",
+  "publishVideoCoverCropTitle": "Cắt ảnh bìa video",
+  "publishVideoVideoTooLarge": "Tệp video không được vượt quá 2GB",
+  "publishVideoVideoPickFailed": "Không thể chọn video. Vui lòng thử lại",
+  "publishVideoInsufficientStorage": "Thiết bị không đủ dung lượng để chuẩn bị video này",
+  "publishVideoPermissionDenied": "Không thể truy cập video. Hãy kiểm tra quyền ảnh hoặc tệp",
+  "publishVideoSourceUnavailable": "Video này tạm thời không khả dụng. Hãy tải tệp đám mây xuống rồi thử lại",
+  "publishVideoPrepareFailed": "Không thể chuẩn bị video. Hãy thử lại hoặc chọn từ Tệp",
+  "publishVideoMetadataUnavailable": "Không thể đọc thông tin video. Hãy chọn tệp khác",
+  "publishVideoCoverTooLarge": "Ảnh bìa không được vượt quá 5MB",
+  "publishVideoCoverUnsupportedFormat": "Chỉ hỗ trợ ảnh JPG/PNG",
+  "publishVideoCoverPickFailed": "Không thể chọn ảnh bìa. Vui lòng thử lại",
+  "publishVideoUploadSessionFailed": "Không thể tạo phiên tải lên",
+  "publishVideoPublishedSuccess": "Đã đăng video",
+  "publishVideoUpdatedSuccess": "Đã cập nhật video",
+  "publishActorIp": "Phát hành IP",
+  "commonConfirm": "Xác nhận",
+  "commonOk": "OK",
+  "commonNotice": "Thông báo",
+  "commonRetry": "Thử lại",
+  "publicProfileLikedEmpty": "Chưa có phim đã thích",
+  "profileTabDramas": "Phim ngắn",
+  "profileTabWorks": "Tác phẩm",
+  "profileTabActorIp": "IP nhân vật",
+  "@dramaUnlockConfirmLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockConfirmLabel": "Mở khóa với {price} {currency}",
+  "dramaAllEpisodes": "{count} tập",
+  "dramaAllEpisodesFull": "Tất cả {count} tập",
+  "dramaLoading": "Đang tải phim nổi bật...",
+  "dramaEmpty": "Hiện chưa có phim ngắn",
+  "dramaRefresh": "Làm mới",
+  "@dramaAllEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navTheater": "Nhà hát",
+  "navHome": "Trang chủ",
+  "theaterTabShortDrama": "Phim ngắn",
+  "theaterTabRecommend": "Đề xuất",
+  "playerWatchFullDrama": "Xem trọn bộ",
+  "playerStoryPerHourUnit": "STORY/h",
+  "navNft": "Thị trường IP",
+  "navNftIp": "Nhân vật IP",
+  "watchFullDramaEpisodes": "Xem phim · Tổng {count} tập",
+  "@watchFullDramaEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "navCreate": "Sáng tác",
+  "navProfile": "Cá nhân",
+  "navMy": "Quản lý",
+  "aboutTitle": "Về chúng tôi",
+  "aboutVision": "Trí tuệ nhân tạo · Web3 · Giao thức",
+  "aboutVisionDesc": "Ba động lực thúc đẩy, biến trải nghiệm kể chuyện từ thụ động thành chủ động",
+  "aboutAiDesc": "Những ý tưởng của bạn sẽ tự động biến thành câu chuyện",
+  "aboutWeb3Desc": "Tác phẩm của bạn sẽ mãi mãi thuộc về bạn",
+  "aboutProtocolDesc": "Câu chuyện của bạn có thể tiếp diễn mãi mãi",
+  "aboutIdentityTitle": "Bản sắc kể chuyện của bạn",
+  "aboutIdentityDesc": "Bản thân bạn chính là một vũ trụ câu chuyện đang dần mở ra",
+  "aboutIdentityCreator": "Người sáng tạo",
+  "aboutIdentityCreatorDesc": "Tự chủ trong việc viết nên câu chuyện của chính mình",
+  "aboutIdentityWitness": "Người chứng kiến",
+  "aboutIdentityWitnessDesc": "Tham gia và xác thực câu chuyện của người khác",
+  "aboutIdentityCoCreator": "Người đồng sáng lập",
+  "aboutIdentityCoCreatorDesc": "Xây dựng cấu trúc câu chuyện và tiến hành viết lại",
+  "aboutIdentitySpreader": "Người truyền bá",
+  "aboutIdentitySpreaderDesc": "Hãy lan tỏa câu chuyện xứng đáng với bạn",
+  "aboutTokenomicsTitle": "STORY: Token Quyền Kể Chuyện",
+  "aboutTokenomicsDesc": "Trở thành đồng sản xuất phim ngắn AI, tái cấu trúc phân phối lợi nhuận trong ngành điện ảnh.",
+  "aboutTokenomicsGov": "Quyền quản lý",
+  "aboutTokenomicsGovDesc": "Hãy bỏ phiếu để quyết định chủ đề và hướng đi cho bộ phim ngắn về AI tiếp theo",
+  "aboutTokenomicsRevenue": "Quyền hưởng lợi",
+  "aboutTokenomicsRevenueDesc": "Lợi nhuận từ đăng ký nền tảng chia sẻ, cấp phép bản quyền và bán các sản phẩm liên quan",
+  "aboutTokenomicsAccess": "Quyền truy cập",
+  "aboutTokenomicsAccessDesc": "Xem trước các tập mới nhất, mở khóa nội dung độc quyền",
+  "aboutStakingTitle": "Chia sẻ lợi nhuận từ thế chấp",
+  "aboutStakingDesc": "Phim NFT · Nhân vật NFT · STORY → Cược để nhận cổ tức",
+  "aboutStakingDrama": "Cược phim NFT",
+  "aboutStakingDramaDesc": "Người sáng tạo phim ngắn · Nhận chia sẻ doanh thu",
+  "aboutStakingActor": "Cược nhân vật NFT",
+  "aboutStakingActorDesc": "Role tham gia các vở kịch ngắn · Nhận hoa hồng",
+  "aboutStakingStory": "Cược STORY",
+  "aboutStakingStoryDesc": "Đăng tải lên các video ngắn · Chia sẻ doanh thu",
+  "aboutHeroTitle": "Tạo Câu Chuyện Của Riêng Bạn",
+  "aboutHeroDesc": "Cuộc đời bạn không phải là kịch bản để trải nghiệm, mà là câu chuyện bạn đang viết",
+  "loginTitle": "Đăng nhập bằng email",
+  "loginSubtitle": "Đăng nhập qua OTP email Privy, tự động tạo ví nhúng Solana.",
+  "loginPlaceholder": "Nhập địa chỉ email của bạn",
+  "loginEmailHintFormat": "ban@email.com",
+  "loginVerificationFailed": "Xác minh thất bại",
+  "loginNeedCodeFirst": "Vui lòng yêu cầu mã xác minh trước",
+  "loginCreateWalletFailed": "Không tạo được ví",
+  "loginGetTokenFailed": "Không lấy được access token",
+  "loginPrivyUnavailable": "Dịch vụ đăng nhập tạm thời không khả dụng. Vui lòng khởi động lại ứng dụng và thử lại",
+  "loginSendCodeFailed": "Gửi mã xác minh thất bại. Vui lòng thử lại sau",
+  "loginTooManyRequests": "Quá nhiều yêu cầu. Vui lòng đợi rồi thử lại",
+  "loginVerificationSuccessful": "Xác minh thành công",
+  "loginSendCode": "Nhận mã",
+  "loginSendingCode": "Đang gửi...",
+  "loginCodePlaceholder": "Nhập mã xác minh 6 chữ số",
+  "loginSubmit": "Đăng nhập",
+  "loginSubmitting": "Đang đăng nhập...",
+  "loginEmailRequired": "Vui lòng nhập email",
+  "loginCodeRequired": "Vui lòng nhập mã xác minh",
+  "loginSuccess": "Đăng nhập thành công",
+  "loginErrorPrefix": "Đăng nhập thất bại: ",
+  "loginCodeSent": "Mã xác minh đã được gửi đến {email}",
+  "loginEmailLabel": "Email",
+  "loginCodeLabel": "Mã xác minh",
+  "loginVerifying": "Đang xác minh, vui lòng chờ...",
+  "loginVerifyAndSubmit": "Xác minh và Đăng nhập",
+  "loginChangeEmail": "Đổi Email",
+  "loginNotNow": "Không phải bây giờ",
+  "loginInvalidEmail": "Vui lòng nhập địa chỉ email hợp lệ",
+  "@loginCodeSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "profileTitle": "Đại diện",
+  "profileNotLoggedIn": "Chưa đăng nhập",
+  "profileClickLogin": "Đăng nhập / Đăng ký",
+  "profileMyWallet": "Ví của tôi",
+  "profileWallet": "Ví",
+  "profileTradeStory": "Giao dịch STORY",
+  "profileWalletCreating": "Đang tạo...",
+  "walletNetworkSolana": "Solana",
+  "walletNetworkEvm": "EVM",
+  "profileEarnings": "Lợi nhuận",
+  "profileMyNft": "NFT của tôi",
+  "profileMyFavorites": "Yêu thích",
+  "profileWatchHistory": "Lịch sử xem",
+  "profileCreatorCatalog": "Nhà sáng tạo",
+  "profileIdentityAuth": "Xác minh danh tính",
+  "profileAccountSecurity": "Bảo mật tài khoản",
+  "profileLanguage": "Ngôn ngữ",
+  "profileAboutUs": "Về chúng tôi",
+  "profileHelpFeedback": "Trợ giúp & Phản hồi",
+  "profileLogout": "Đăng xuất",
+  "profileLogoutConfirm": "Bạn có chắc chắn muốn đăng xuất?",
+  "profileLogoutSuccess": "Đăng xuất thành công",
+  "mainPressBackAgainToExit": "Nhấn quay lại lần nữa để thoát",
+  "languageSelectTitle": "Chọn ngôn ngữ",
+  "languageChinese": "Tiếng Trung giản thể",
+  "languageEnglish": "Tiếng Anh",
+  "searchTitle": "Tìm kiếm",
+  "searchHint": "Tìm phim ngắn, tác phẩm, vai, người dùng...",
+  "searchEmpty": "Không có nội dung liên quan",
+  "searchPlaceholder": "Tìm phim ngắn, tác phẩm, vai, người dùng...",
+  "theaterSearchPlaceholder": "Tìm phim ngắn, tác phẩm, vai, người dùng...",
+  "searchHistory": "Tìm kiếm gần đây",
+  "searchClear": "Xóa lịch sử",
+  "searchAction": "Tìm",
+  "searchHistoryCleared": "Đã xóa lịch sử tìm kiếm",
+  "searchKeywordTooShort": "Nhập ít nhất 2 ký tự",
+  "searchTabDramas": "Phim ngắn",
+  "searchTabWorks": "Tác phẩm",
+  "searchTabActors": "Nhân vật IP",
+  "searchTabUsers": "Người dùng",
+  "searchEpisodeNo": "Tập {episodeNo}",
+  "@searchEpisodeNo": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "searchMinutesAgo": "{count} phút trước",
+  "@searchMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchHoursAgo": "{count} giờ trước",
+  "@searchHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDaysAgo": "{count} ngày trước",
+  "@searchDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramasCount": "Phim ({count})",
+  "@searchDramasCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchActorsCount": "Role ({count})",
+  "@searchActorsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDramaEpisodesWithCast": "{count} tập | Cast: {actors}",
+  "@searchDramaEpisodesWithCast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "actors": {
+        "type": "String"
+      }
+    }
+  },
+  "nftTitle": "Quảng trường Role NFT",
+  "nftLoading": "Đang tải IP nhân vật...",
+  "nftEmpty": "Không có IP nhân vật",
+  "nftRefresh": "Làm mới",
+  "nftIdPrefix": "ID: #{id}",
+  "@nftIdPrefix": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "nftRarity": "Hiếm",
+  "nftStatusStaked": "Đã được thế chấp",
+  "nftStatusIdle": "Nhàn rỗi",
+  "nftPrice": "Giá",
+  "dramaDetailTitle": "Chi tiết phim",
+  "dramaDetailLoading": "Đang tải…",
+  "dramaDetailRetry": "Thử lại",
+  "dramaDetailEpisodeList": "Danh sách các tập phim",
+  "dramaDetailSynopsis": "Tóm tắt",
+  "dramaDetailExpand": "Mở rộng",
+  "dramaDetailCollapse": "Thu gọn",
+  "dramaDetailTabIntro": "Giới thiệu",
+  "dramaDetailTabEpisodes": "Tuyển tập",
+  "dramaDetailTabComments": "Bình luận",
+  "dramaDetailTabRoles": "IP nhân vật",
+  "dramaDetailSignMoreCharacterIps": "Ký thêm IP nhân vật",
+  "dramaDetailCharactersEmpty": "Chưa liên kết IP nhân vật",
+  "dramaDetailRoleSalary": "Cát-xê {amount}",
+  "@dramaDetailRoleSalary": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleSalaryPerHour": "Cát-xê {amount} STORY/h",
+  "@dramaDetailRoleSalaryPerHour": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailRoleUnbound": "Chưa liên kết",
+  "dramaCastActorsTitle": "IP nhân vật trong phim",
+  "dramaDetailCompletion": "{count} lượt xem hết",
+  "@dramaDetailCompletion": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailHeat": "{count} độ hot",
+  "@dramaDetailHeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaDetailTotalEpisodes": "{count} tập",
+  "@dramaDetailTotalEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingTitle": "Đánh giá tác phẩm",
+  "dramaDetailWantToRate": "Tôi muốn đánh giá",
+  "dramaDetailNotRated": "Chưa đánh giá",
+  "dramaDetailCompletionLabel": "Xem hết",
+  "dramaDetailHeatLabel": "Độ hot",
+  "dramaDetailSynopsisLead": "Tóm tắt: ",
+  "dramaDetailRatingEmpty": "Đánh giá của bạn: --",
+  "dramaDetailRatingValue": "Đánh giá của bạn: {rating}",
+  "@dramaDetailRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailRatingConfirm": "Xác nhận đánh giá",
+  "dramaDetailRatingSuccess": "Đánh giá thành công: {rating} sao!",
+  "@dramaDetailRatingSuccess": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailSelectEpisodeHint": "Chọn tập để bắt đầu phát",
+  "dramaFavorited": "Đã thêm vào yêu thích",
+  "dramaUnfavorited": "Đã xóa khỏi yêu thích",
+  "dramaLiked": "Đã thích",
+  "dramaUnliked": "Bỏ thích",
+  "playerFollowed": "Đã theo dõi",
+  "playerUnfollowed": "Đã bỏ theo dõi",
+  "errorNetwork": "Lỗi mạng, vui lòng thử lại sau",
+  "errorTimeout": "Yêu cầu đã hết thời gian, vui lòng thử lại",
+  "errorParse": "Không thể phân tích dữ liệu phản hồi",
+  "errorUnauthorized": "Vui lòng đăng nhập trước",
+  "authSessionExpired": "Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+  "errorNotFound": "Không tìm thấy tài nguyên",
+  "errorOperationFailed": "Thao tác thất bại",
+  "uploadErrorNetwork": "The network is unstable. Check your connection and try again",
+  "uploadErrorTimeout": "Upload timed out. Keep the app open and try again",
+  "uploadErrorSessionExpired": "The upload credentials expired. Upload the file again",
+  "uploadErrorSessionUnavailable": "An upload task could not be created. Try again",
+  "uploadErrorFileMissing": "The local video was moved or removed. Select it again",
+  "uploadErrorUnauthorized": "Your login or upload permission expired. Sign in and try again",
+  "uploadErrorRateLimited": "Too many upload requests. Try again shortly",
+  "uploadErrorRejected": "The upload service rejected this file. Check it and try again",
+  "uploadErrorServer": "The upload service is temporarily unavailable. Try again later",
+  "uploadErrorInvalidResponse": "The upload service returned an invalid response. Try again later",
+  "uploadErrorAccountChanged": "The signed-in account changed. Upload again with the current account",
+  "uploadErrorUnknown": "The video could not be uploaded. Try again",
+  "errorInvalidRoleId": "ID nhân vật không hợp lệ. Vui lòng làm mới trang và thử lại.",
+  "errorInvalidRoleNftAssetId": "assetId NFT nhân vật không hợp lệ. Vui lòng làm mới trang và thử lại.",
+  "errorInvalidRoleCollectionAssetId": "assetId bộ sưu tập nhân vật không hợp lệ. Vui lòng làm mới trang và thử lại.",
+  "roleNftLabelUnknown": "RoleNFT#Unknown",
+  "roleNftLabel": "RoleNFT#{prefix}",
+  "@roleNftLabel": {
+    "placeholders": {
+      "prefix": {
+        "type": "String"
+      }
+    }
+  },
+  "errorBusiness": "Thao tác thất bại: {message}",
+  "@errorBusiness": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorUnknown": "Đã xảy ra lỗi không xác định: {message}",
+  "@errorUnknown": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorNotSupported": "Thao tác không được hỗ trợ: {message}",
+  "@errorNotSupported": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "Tuyển tập",
+  "playerPlayFailed": "Phát không thành công",
+  "playerDramaUnavailable": "Không thể phát bộ phim này",
+  "playerContentUnavailable": "Nội dung này chưa được phát hành hoặc không còn khả dụng",
+  "creatorWorkNotFound": "Tác phẩm không tồn tại nên không thể xem",
+  "creatorWorkNotPublished": "Tác phẩm chưa được phát hành nên hiện chưa thể xem",
+  "creatorOfflineReasonUnavailable": "Không có lý do gỡ xuống",
+  "playerTapRetry": "Nhấn để thử lại",
+  "playerEpisodeTotal": "Tổng {count} tập",
+  "@playerEpisodeTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeLabel": "Tập {episodeNo}",
+  "@playerEpisodeLabel": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      }
+    }
+  },
+  "playerLike": "Thích",
+  "playerComment": "Bình luận",
+  "playerFavorite": "Thêm vào danh sách yêu thích",
+  "playerShare": "Chia sẻ",
+  "playerShareDramaEpisode": "{title} | Tập {episodeNo}: {description} {url} . Xem phim ngắn AI đẹp trên StoryFun.",
+  "playerShareDramaEpisodeNoDesc": "{title} | Tập {episodeNo} {url} . Xem phim ngắn AI đẹp trên StoryFun.",
+  "playerShareShortVideo": "{description} {url}. Xem video ngắn đẹp trên StoryFun.",
+  "playerShareShortVideoNoDesc": "{url}. Xem video ngắn đẹp trên StoryFun.",
+  "playerShareDrama": "{title} {url} . Xem phim ngắn AI đẹp trên StoryFun.",
+  "playerShareDramaNoTitle": "{url} . Xem phim ngắn AI đẹp trên StoryFun.",
+  "playerRatingLabel": "{rating} điểm",
+  "@playerRatingLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOrSignUp": "Đăng nhập hoặc Đăng ký",
+  "loginEnterCode": "Nhập mã xác nhận",
+  "loginCheckEmailDesc": "Vui lòng kiểm tra {email} để tìm email từ privy.io và nhập mã bên dưới.",
+  "@loginCheckEmailDesc": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "loginResendCountdown": "Gửi lại mã sau {seconds}s",
+  "@loginResendCountdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResendBtn": "Gửi lại",
+  "loginProtectedByPrivy": "Được bảo vệ bởi Privy",
+  "loginAgreeLead": "Tôi đã đồng ý với",
+  "loginAgreeAnd": "và",
+  "loginAgreeConfirmLead": "Nhấn Xác nhận nghĩa là bạn đồng ý với",
+  "loginAgreeRequired": "Vui lòng đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư trước",
+  "deletingAccountPending": "Tài khoản đang chờ xóa",
+  "deletingAccountCancelDeletion": "Hủy xóa tài khoản",
+  "deletingAccountGoBack": "Quay lại",
+  "drawerEmailAccount": "Tài khoản email",
+  "drawerClickToLogin": "Nhấn để đăng nhập",
+  "drawerBuyStory": "Giao dịch STORY",
+  "drawerDeposit": "Nạp tiền",
+  "drawerWithdraw": "Rút tiền",
+  "drawerNotifications": "Thông báo",
+  "drawerNoNotifications": "Không có thông báo",
+  "notificationTabSystem": "Hệ thống",
+  "notificationTabInteraction": "Tương tác",
+  "notificationTagIpSign": "Ký IP nhân vật",
+  "notificationTagRoleManagement": "Quản lý nhân vật",
+  "notificationTagShowRevenue": "Thu nhập biểu diễn",
+  "notificationTagLike": "Thích",
+  "notificationTagFavorite": "Yêu thích",
+  "notificationSignedActor": "@{user} đã ký IP nhân vật {actor}",
+  "notificationShareEarned": "Bạn nhận được phần chia {amount}",
+  "notificationStaminaLow": "{actor} đã hết thể lực. Hãy bổ sung hoặc cho nghỉ",
+  "notificationCurrentStamina": "Thể lực hiện tại {value}",
+  "notificationShowEnded": "Buổi diễn {range} đã kết thúc",
+  "notificationIncomeEarned": "Bạn nhận được {amount}",
+  "notificationActionClaim": "Nhận",
+  "notificationActionRefill": "Bổ sung",
+  "notificationInteractionLikedVideo": "Đã thích video của bạn",
+  "notificationInteractionLikedDrama": "Đã thích phim ngắn “{title}” của bạn",
+  "notificationInteractionFavoritedVideo": "Đã lưu video của bạn",
+  "notificationInteractionFavoritedDrama": "Đã lưu phim ngắn “{title}” của bạn",
+  "notificationInteractionCommented": "Đã bình luận: {content}",
+  "notificationInteractionFollowedYou": "Đã theo dõi bạn",
+  "notificationActionMutualFollow": "Theo dõi nhau",
+  "notificationActionFollow": "Theo dõi",
+  "notificationRealtimeReceived": "Bạn có một thông báo mới",
+  "drawerEpisodeProgress": "{current}/{total} tập",
+  "drawerNotificationSignedActor": "{actor} đã ký IP nhân vật {target}",
+  "drawerNotificationLikedVideo": "{actor} đã thích video của bạn",
+  "drawerNotificationFavoritedDrama": "{actor} đã lưu phim ngắn {target} của bạn",
+  "depositTitle": "Nạp tiền",
+  "insufficientBalanceTitle": "Số dư không đủ",
+  "insufficientBalanceDetail": "Số dư {currency} không đủ, bạn còn thiếu {amount} {currency}",
+  "@insufficientBalanceDetail": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "insufficientBalancePrompt": "Chuyển đến nạp tiền?",
+  "insufficientBalanceRecharge": "Nạp tiền",
+  "depositDesc": "Vui lòng chuyển token từ sàn giao dịch hoặc ví khác đến địa chỉ bên dưới. Số dư sẽ tự động cập nhật sau khi ghi nhận vào tài khoản.",
+  "depositToken": "Token",
+  "depositNetwork": "Mạng",
+  "depositNetworkNote": "Vui lòng xác nhận mạng chuyển khoản. Sai mạng có thể dẫn đến mất tài sản.",
+  "depositAddress": "Địa chỉ nạp tiền",
+  "depositAddressCopied": "Đã sao chép địa chỉ vào bộ nhớ tạm",
+  "depositSend": "Gửi",
+  "depositReceive": "Nhận",
+  "depositConvertNote": "Gửi token đến địa chỉ này, chúng sẽ được tự động quy đổi thành USDC trong tài khoản Story.fun của bạn.",
+  "depositMinNote": "Số tiền nạp tối thiểu: {minAmount} {token}",
+  "@depositMinNote": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "depositExchangeRateNote": "Tỷ giá hiện tại là {rate}. Số tiền thực nhận = số tiền nạp × {rate}",
+  "@depositExchangeRateNote": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "depositWarning": "Chỉ nạp token đã chọn trên mạng đã chọn. Tài sản khác không thể khôi phục.\nVui lòng xác nhận mạng chuyển; lỗi mạng có thể dẫn đến mất tài sản.",
+  "withdrawTitle": "Rút tiền",
+  "withdrawBalance": "Số dư có thể rút",
+  "withdrawToken": "Token",
+  "withdrawAddress": "Địa chỉ rút tiền",
+  "withdrawAddressHint": "Vui lòng nhập hoặc dán địa chỉ người nhận Solana",
+  "withdrawAddressHintEvm": "Vui lòng nhập hoặc dán địa chỉ nhận EVM",
+  "withdrawInvalidEvmAddress": "Vui lòng nhập địa chỉ EVM hợp lệ",
+  "withdrawInvalidSolanaAddress": "Vui lòng nhập địa chỉ Solana hợp lệ",
+  "withdrawEvmGasNote": "Rút EVM cần đủ token gốc để trả gas. Giao dịch được gửi trực tiếp trên chuỗi.",
+  "withdrawEvmFailed": "Rút EVM thất bại. Vui lòng thử lại sau.",
+  "withdrawAddressNote": "Vui lòng kiểm tra lại địa chỉ đã chính xác chưa, vì sau khi chuyển khoản sẽ không thể hủy lại được",
+  "withdrawNetwork": "Mạng",
+  "withdrawAmount": "Số tiền",
+  "withdrawAmountHint": "Nhập số tiền rút",
+  "withdrawMax": "Tối đa",
+  "withdrawAvailableBalance": "Số dư {balance} {token}",
+  "@withdrawAvailableBalance": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinWarning": "Rút tối thiểu: {minAmount} {token}\nVui lòng kiểm tra kỹ địa chỉ và mạng; giao dịch không thể hoàn tác.",
+  "@withdrawMinWarning": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawConfirm": "Xác nhận rút tiền",
+  "withdrawAll": "Tất cả",
+  "withdrawMinAmountError": "Số tiền rút tối thiểu là {minAmt} {token}",
+  "@withdrawMinAmountError": {
+    "placeholders": {
+      "minAmt": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawExceedBalanceError": "Số tiền rút không được vượt quá số dư khả dụng",
+  "withdrawSameAsWalletError": "Địa chỉ rút tiền không được trùng với địa chỉ ví hiện tại",
+  "withdrawConfirmTitle": "Xác nhận rút tiền",
+  "withdrawConfirmMessage": "Bạn có chắc muốn rút {amount} {token} đến địa chỉ Solana sau không?\n\n{address}",
+  "@withdrawConfirmMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSuccessToast": "Yêu cầu rút tiền đã được gửi thành công!",
+  "withdrawFailedToast": "Rút tiền thất bại. Vui lòng thử lại.",
+  "withdrawErrorToast": "Đã xảy ra lỗi khi rút tiền: {error}",
+  "@withdrawErrorToast": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawAddressHintWithToken": "Nhập địa chỉ ví nhận {token}",
+  "@withdrawAddressHintWithToken": {
+    "placeholders": {
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawFee": "Phí dịch vụ",
+  "withdrawFeeValue": "{fee} {token}",
+  "@withdrawFeeValue": {
+    "placeholders": {
+      "fee": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMinAmount": "Rút tối thiểu: {minAmount} {token}",
+  "@withdrawMinAmount": {
+    "placeholders": {
+      "minAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawMaxAmount": "Số tiền rút tối đa: {maxAmount} {token}",
+  "@withdrawMaxAmount": {
+    "placeholders": {
+      "maxAmount": {
+        "type": "String"
+      },
+      "token": {
+        "type": "String"
+      }
+    }
+  },
+  "withdrawSponsorSigning": "Đang ký giao dịch...",
+  "withdrawSponsorSubmitting": "Đang gửi giao dịch trên chuỗi...",
+  "withdrawSponsorSuccess": "Rút tiền đã được gửi thành công!",
+  "withdrawSponsorFailed": "Gửi giao dịch thất bại. Vui lòng thử lại.",
+  "withdrawOrderProcessing": "Đang xử lý đơn hàng",
+  "withdrawOrderSuccess": "Đơn hàng hoàn thành",
+  "withdrawOrderFailed": "Đơn hàng thất bại",
+  "withdrawOrderStatus": "Trạng thái đơn hàng: {status}",
+  "@withdrawOrderStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "qrScannerTitle": "Quét mã QR",
+  "qrScannerHint": "Canh chỉnh mã QR trong khung để quét",
+  "drawerProfile": "Trang cá nhân",
+  "drawerCreatorManagement": "Quản lý sáng tạo",
+  "drawerInvite": "Lời mời",
+  "inviteTitle": "Mời bạn bè",
+  "inviteTotalPeople": "Tổng số người được mời",
+  "inviteTotalRewards": "Tổng phần thưởng mời",
+  "inviteWeeklyPool": "Quỹ thưởng mời tham gia tuần này",
+  "inviteShareSection": "Chia sẻ liên kết mời hoặc mã mời của bạn",
+  "inviteCodeLabel": "Mã mời",
+  "inviteCodeCopiedSuccess": "Đã sao chép mã mời vào bộ nhớ tạm!",
+  "inviteInvitedLabel": "Đã mời",
+  "inviteRewardLabel": "Phần thưởng",
+  "inviteBindCodePlaceholder": "Nhập mã mời",
+  "inviteBindConfirm": "Xác nhận",
+  "inviteBindSuccess": "Liên kết mã mời thành công",
+  "inviteBindCodeInvalid": "Mã mời không hợp lệ",
+  "inviteBindCodeAlreadyBound": "Tài khoản này đã liên kết mã mời",
+  "inviteBindCode": "Liên kết mã mời",
+  "inviteBindCodePromptHint": "Bạn có thể liên kết sau trong trang Mời",
+  "inviteFaqPoolTitle": "Quỹ thưởng mời hàng tuần là gì?",
+  "inviteFaqPoolBody": "Quỹ thưởng mời hàng tuần là quỹ thưởng độc lập dành cho hoạt động mời. Nó thưởng cho hành vi mời trong tuần hiện tại và không bị trừ từ thu nhập của người được mời. Quỹ có hạn mức chi trả hàng tuần; khi đạt hạn mức, phần thưởng sẽ được giảm theo tỷ lệ sở hữu. Thống kê được thiết lập lại vào thứ Hai hàng tuần.",
+  "inviteFaqSettlementTitle": "Phần thưởng mời được quyết toán khi nào?",
+  "inviteFaqSettlementBody": "Phần thưởng mời được quyết toán cùng chu kỳ với thù lao trên trang môi giới: thống kê chốt vào 00:00 (UTC) mỗi thứ Hai. Sau khi quyết toán, bạn có thể nhận trên trang Thu nhập.",
+  "inviteViewHistory": "Xem lịch sử thu nhập",
+  "inviteLinkSection": "Liên kết mời",
+  "inviteLinkSubtitle": "Khi bạn bè đăng ký qua liên kết của bạn, ký và điều động nhân vật, bạn sẽ nhận được phần thưởng STORY bổ sung.",
+  "inviteCopyButton": "Sao chép liên kết",
+  "inviteCopiedSuccess": "Đã sao chép liên kết mời vào bộ nhớ tạm!",
+  "inviteRulesSection": "Quy định về việc mời",
+  "inviteRuleSourceTitle": "Nguồn thưởng",
+  "inviteRuleSourceSubtitle": "Hồ con được mời độc lập",
+  "inviteRuleSourceBody": "Phần thưởng giới thiệu đến từ một nhóm con giới thiệu độc lập trong nhóm khai thác NFT (chiếm 25% tổng nhóm khai thác), và không bị khấu trừ từ thu nhập của người được giới thiệu. Nhóm con giới thiệu này có mức trần hàng tuần riêng biệt; khi đạt đến mức trần, phần thưởng sẽ được giảm theo tỷ lệ tương ứng với tỷ lệ sở hữu.",
+  "inviteRuleBaseTitle": "Cơ sở tính toán",
+  "inviteRuleBaseSubtitle": "Theo thực tế STORY",
+  "inviteRuleBaseBody": "Phần thưởng được tính dựa trên số STORY mà người được mời thực tế nhận được trong kỳ này, chứ không tính theo sản lượng danh nghĩa. Số STORY mà người được mời tự khai thác sẽ không bị ảnh hưởng; phần thưởng giới thiệu sẽ được trao thêm.",
+  "inviteRuleLevelTitle": "Phạm vi phần thưởng",
+  "inviteRuleLevelSubtitle": "Chỉ lời mời trực tiếp",
+  "inviteRuleLevelBody": "Phần thưởng mời chỉ được trả cho người dùng bạn mời trực tiếp. Không có hoa hồng nhiều cấp hoặc gián tiếp.",
+  "inviteRuleConditionTitle": "Điều kiện có hiệu lực",
+  "inviteRuleConditionSubtitle": "Chỉ khi người dùng ngừng hoạt động một cách hợp lệ thì mới nhận được phần thưởng",
+  "inviteRuleConditionBody": "Người được mời chỉ được tính là thành viên cấp dưới hợp lệ khi thực sự đã khai thác được STORY hoặc đã thực hiện giao dịch thanh toán bằng {currency}. Việc đăng ký bằng số điện thoại ảo sẽ không mang lại phần thưởng. Mối quan hệ giới thiệu một khi đã được thiết lập sẽ không thể thay đổi.",
+  "@inviteRuleConditionBody": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerTxHistory": "Lịch sử giao dịch",
+  "drawerFinanceDashboard": "Bảng Tài chính",
+  "financeDashboardComingSoon": "Bảng Tài chính sắp ra mắt. Hãy chờ đón.",
+  "financeDashboardLedgerBizSigningFee": "Phí ký",
+  "financeDashboardLedgerBizManualCredit": "Cộng tiền thủ công",
+  "financeDashboardLedgerBizManualDebit": "Trừ tiền thủ công",
+  "financeDashboardLedgerBizStaminaPurchase": "Phí mua thể lực",
+  "financeDashboardLedgerBizSynthesisUpgrade": "Phí nâng cấp hợp thành",
+  "financeDashboardLedgerBizTransactionFee": "Phí giao dịch",
+  "drawerWhitepaper": "Sách trắng",
+  "drawerSettings": "Cài đặt",
+  "commonClose": "Đóng",
+  "commonLoadFailed": "Không tải được",
+  "commonNone": "Không có",
+  "commonUntitled": "Không có tiêu đề",
+  "actorDetailTitle": "Trang diễn viên",
+  "actorDetailCastDramas": "Tham gia diễn xuất trong vở kịch ngắn",
+  "actorDetailTabCast": "Tham gia",
+  "actorDetailTabInfo": "Thông tin",
+  "actorDetailNoCastRecords": "Chưa có lịch sử đóng phim",
+  "actorBondingCurve": "Đường cong giá tổng hợp",
+  "actorContractAddress": "Địa chỉ hợp đồng",
+  "actorCurrentPosition": "Vị trí hiện tại",
+  "actorCurrentPrice": "Giá hiện tại {price} {currency}",
+  "@actorCurrentPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorFloorPrice": "Giá sàn",
+  "actorGoTrade": "Giao dịch",
+  "profileWalletTrade": "Giao dịch",
+  "actorHeatCoefficient": "Hệ số độ hot",
+  "actorIpPower": "Cát-xê IP",
+  "actorPayMax": "Tối đa",
+  "actorPayUpgradeTitle": "Quy tắc nâng cát-xê",
+  "actorPayUpgradeReachHint": "Số lượt xem hết hiện tại của phim ngắn IP này tham gia có thể hỗ trợ nâng cấp vai lên",
+  "actorPayUpgradeCompletions": "{count} lượt xem hết",
+  "@actorPayUpgradeCompletions": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayUpgradeMultiplier": "Cát-xê ×{value}",
+  "@actorPayUpgradeMultiplier": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPayTitle": "{name} · Cát-xê",
+  "@actorPayTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorLv1PayHint": "Ký để nhận nhân vật Lv.1",
+  "actorLv1PayFormula": "Cát-xê Lv.1 = Hệ số giá × Hệ số độ hot",
+  "actorLv1PayEquals": "={value}",
+  "@actorLv1PayEquals": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerTitle": "{name} · Cát-xê IP",
+  "@actorIpPowerTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpPowerFormula": "Cát-xê IP = Hệ số giá × Hệ số độ hot × Trust1",
+  "actorPriceCoefficient": "Hệ số giá",
+  "actorPriceCoefficientValue": "Hệ số giá {value}",
+  "@actorPriceCoefficientValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientHelpA11y": "Xem giải thích hệ số giá",
+  "actorPriceCoefficientDialogFormulaLe100": "Hệ số = P0 ÷ 10",
+  "actorPriceCoefficientDialogDescLe100": "Tăng tuyến tính",
+  "actorPriceCoefficientDialogTitleGt100": "P0 > 10 {currency}",
+  "@actorPriceCoefficientDialogTitleGt100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientDialogFormulaGt100": "Hệ số = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6]",
+  "actorPriceCoefficientDialogDescGt100": "Tăng chậm dần, giới hạn trên 1.6",
+  "actorPriceCoefficientDialogTitleLe100": "P0 ≤ 10 {currency}",
+  "@actorPriceCoefficientDialogTitleLe100": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceCoefficientFactorDesc": "P0 ≤ 10 {currency1} hệ số = P0/10 (tăng tuyến tính)\nP0 > 10 {currency2} → hệ số = 1.6 × (P0/10)^1.3 / [(P0/10)^1.3 + 0.6] (giới hạn tiệm cận 1.6)",
+  "@actorPriceCoefficientFactorDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "actorHeatCoefficientFactorDesc": "Hệ số nhân độ hot 30 ngày gần nhất của IP nhân vật, dựa trên các tương tác như xem hết phim ngắn, lượt thích, lượt lưu",
+  "actorTrustFactorDesc": "Hệ số kiểm soát rủi ro của nền tảng, mặc định là 1.0",
+  "actorStatCompletion": "Xem hết",
+  "actorIdCopied": "Mã số đã được sao chép",
+  "actorInitialPrice": "Giá ban đầu: {price} {currency}",
+  "@actorInitialPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIpLabel": "Nhân vật IP {label}",
+  "@actorIpLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "actorIssueInfo": "Thông tin ra mắt",
+  "actorIssuer": "Người ra mắt {name}",
+  "@actorIssuer": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorMintedCount": "Đã đúc {minted}/{maxSupply}",
+  "@actorMintedCount": {
+    "placeholders": {
+      "minted": {
+        "type": "int"
+      },
+      "maxSupply": {
+        "type": "int"
+      }
+    }
+  },
+  "actorPriceCurve": "Đường cong giá",
+  "actorPriceAxisLabel": "Giá ({currency})",
+  "@actorPriceAxisLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSign": "Ký",
+  "actorConfirmSign": "Xác nhận ký",
+  "actorSignPriceLabel": "Giá ký",
+  "actorSignPriceDescription": "Giá ký tự động tăng theo số lượng đã ký; ký sớm sẽ được giá ưu đãi hơn.",
+  "actorSignPriceFormula": "Công thức: Giá = Giá ban đầu × 5^(Số lượng đã ký ÷ Tổng lượng phát hành)",
+  "actorSignedCountAxisLabel": "Số lượng đã ký",
+  "actorSignRemainingCount": "Còn lại {count} cái",
+  "actorSignSoldOut": "Đã bán hết",
+  "@actorSignRemainingCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignSupplySummary": "Tổng phát hành {total} · Còn lại {remaining}",
+  "@actorSignSupplySummary": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPricingFixed": "Giá cố định",
+  "actorPricingCurve": "Giá đường cong",
+  "actorPriceCurveDisclaimer": "Giá ban đầu không phản ánh mức định giá của nền tảng; sự tăng trưởng trên biểu đồ không đồng nghĩa với việc giá trên thị trường thứ cấp tăng; nền tảng không cam kết mang lại lợi nhuận.",
+  "actorPriceStatInitialPrice": "Giá ban đầu",
+  "actorPriceStatCurrentPrice": "Giá hiện tại",
+  "actorPriceStatTailPrice": "Giá chốt",
+  "actorPriceStatTotalSupply": "Tổng phát hành",
+  "actorPriceStatSigned": "Đã ký",
+  "actorPriceStatRemaining": "Còn lại",
+  "actorPricingType": "Loại định giá",
+  "contentBadgeOfficialIssue": "Ra mắt chính thức",
+  "contentBadgeCommunityIssue": "Ra mắt cộng đồng",
+  "contentBadgePartnerIssue": "Ra mắt bởi đối tác",
+  "contentBadgeVerifiedIssue": "Ra mắt bởi tác giả đã xác thực",
+  "contentBadgeOfficialDrama": "Phim ngắn chính thức",
+  "contentBadgeCommunityDrama": "Phim ngắn cộng đồng",
+  "contentBadgePartnerDrama": "Phim ngắn hợp tác",
+  "contentBadgeVerifiedDrama": "Các video ngắn của các nhà sáng tạo đã được xác thực",
+  "actorIpCopied": "Sao chép thành công",
+  "actorRiskIp": "IP rủi ro",
+  "actorRiskIpDescription": "Nhân vật IP này có hệ số trust bất thường; trọng số khai thác sẽ bị ảnh hưởng.",
+  "actorIpVault": "Kho IP nhân vật",
+  "actorIpVaultDescription": "30% doanh thu ký được tự động chuyển vào Kho IP của nhân vật, nhằm hỗ trợ sự phát triển lâu dài của hệ sinh thái IP. 30% doanh thu từ tiền bản quyền trên thị trường thứ cấp cũng được chuyển vào Kho này, tạo thành nguồn vốn dự trữ bền vững. Kho trong phiên bản V1 hiện chỉ cung cấp chức năng hiển thị dữ liệu và chưa mở chức năng phân phối.",
+  "actorIpVaultSignIncomePrefix": "Doanh thu ký · Tích lũy ",
+  "actorIpVaultSecondaryRoyaltyPrefix": "Tiền bản quyền cấp hai · Tích lũy ",
+  "actorFixedPriceDialogDesc": "Mô hình IP nhân vật này áp dụng cơ chế giá cố định, mỗi nhân vật đều ký với mức giá thống nhất, và biến động doanh số không ảnh hưởng đến giá",
+  "actorCurvePriceDialogDesc": "Giá tự động tăng theo công thức đường cong kết hợp dựa trên số lượng đã ký; ký sớm sẽ được giá ưu đãi hơn",
+  "actorFixedPriceNote1": "Sau khi người ra mắt đặt giá cố định, mọi giao dịch ký đều được thanh toán theo mức giá này.",
+  "actorFixedPriceNote2": "Giá sẽ không tăng dù số lượng đã ký có tăng lên",
+  "actorFixedPriceNote3": "Phù hợp với những người mua muốn kiểm soát chi phí",
+  "actorIssueFixedPriceDesc": "IP của nhân vật này áp dụng mô hình giá cố định; tất cả các giao dịch ký đều được thanh toán theo mức giá cố định, không thay đổi theo doanh số bán hàng.",
+  "actorSignSlippageNote": "Chức năng bảo vệ chênh lệch giá 1% đã được kích hoạt; giao dịch sẽ bị hủy nếu giá vượt quá mức này",
+  "actorSignSuccessTitle": "Đã ký thành công!",
+  "actorSignSuccessMessage": "Đã ký thành công nhân vật 「{name}」",
+  "@actorSignSuccessMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignSuccessNftId": "Mã NFT: {nftId}",
+  "@actorSignSuccessNftId": {
+    "placeholders": {
+      "nftId": {
+        "type": "String"
+      }
+    }
+  },
+  "actorSignChainConfigMissing": "Cấu trúc trên chuỗi chưa hoàn chỉnh. Vui lòng thử lại sau.",
+  "actorSignPriceSoldOut": "Giá ký · Đã bán hết",
+  "actorSignPriceRemaining": "Giá ký · Còn lại {count}",
+  "@actorSignPriceRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorSignedCount": "Đã ký hợp đồng {count}",
+  "@actorSignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actorStatusLabelOffline": "Ngoại tuyến",
+  "actorStatusLabelOnline": "Trực tuyến",
+  "actorStatusLabelPending": "Đang được xem xét",
+  "actorStatusLabelRejected": "Bị từ chối",
+  "actorTotalSupply": "Tổng phát hành",
+  "commentTagAuthor": "Tác giả",
+  "commentTagMe": "Tôi",
+  "commentTagFriend": "Bạn của bạn",
+  "commentTagFan": "Người theo dõi của bạn",
+  "commentTagFirst": "Bình luận đầu tiên",
+  "commentTagAuthorLiked": "Tác giả đã thích",
+  "commentsAnonymous": "Người dùng ẩn danh",
+  "commentsEmpty": "Chưa có bình luận",
+  "commentsHint": "Đăng bình luận hay...",
+  "commentsInvalidContent": "Vui lòng nhập nội dung hợp lệ",
+  "commentsReply": "Trả lời",
+  "commentsViewReplies": "Xem {count} trả lời",
+  "@commentsViewReplies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentsCollapseReplies": "Thu gọn",
+  "commentsViewMoreReplies": "Xem thêm",
+  "commentsReplyHint": "Trả lời {nickname}",
+  "@commentsReplyHint": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commentsDeleteCommentTitle": "Xóa bình luận này?",
+  "commentsDeleteReplyTitle": "Xóa trả lời này?",
+  "commentsReplyCommentNotExists": "Bình luận không tồn tại",
+  "commentsBlockedByMe": "Người dùng nằm trong danh sách đen, bạn không thể bình luận",
+  "commentsBlockedByTarget": "Do cài đặt của người đó, bạn không thể bình luận",
+  "commentsTabComments": "Bình luận",
+  "commentsTabAllComments": "Tất cả bình luận",
+  "commentsTabDramas": "Phim ngắn",
+  "commentsTabActors": "Nhân vật",
+  "timeJustNow": "vừa xong",
+  "timeYesterday": "hôm qua",
+  "timeDayBeforeYesterday": "hôm kia",
+  "timeMinutesAgo": "{count} phút trước",
+  "timeHoursAgo": "{count} giờ trước",
+  "timeDaysAgo": "{count} ngày trước",
+  "commentsTitle": "Bình luận ({count})",
+  "@commentsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createActorTitle": "Tạo role",
+  "createActorHeroTitle": "Đúc NFT nhân vật",
+  "createActorHeroSubtitle": "Tạo role AI độc quyền, liên kết chia sẻ lợi nhuận để tham gia phim",
+  "createActorNameLabel": "Tên role",
+  "createActorNameHint": "Nhập tên role",
+  "createActorBioLabel": "Tiểu sử role",
+  "createActorBioHint": "Mô tả nền tảng nhân vật",
+  "createActorGenderLabel": "Giới tính",
+  "createActorGenderMale": "Nam",
+  "createActorGenderFemale": "Nữ",
+  "createActorMintParams": "Tham số đúc NFT",
+  "createActorTokenStandard": "Tiêu chuẩn Token",
+  "createActorChain": "Chuỗi",
+  "createActorMinHolding": "Sở hữu tối thiểu",
+  "createActorMintNft": "Đúc NFT",
+  "createActorIpTitle": "Ra mắt IP nhân vật",
+  "createActorIpSubtitle": "Sau khi ra mắt một IP nhân vật, bạn có thể ký các nhân vật thuộc IP đó, và các nhân vật này có thể được điều động để tạo doanh thu.",
+  "createActorSelectMaterial": "Chọn tài liệu về role",
+  "createActorDreamOsBadge": "Đến DreamOS",
+  "createActorSelectMaterialDesc": "Vào dự án DreamOS → Tạo nhân vật → Vào Story.fun để phát hành IP",
+  "createActorSelectButton": "Chọn role",
+  "createActorNameLabelNew": "Tên role",
+  "createActorNamePlaceholder": "Nhập tên role",
+  "createActorBioLabelNew": "Giới thiệu",
+  "createActorBioPlaceholder": "Vui lòng nhập phần giới thiệu về Nhân vật IP",
+  "createActorParamsTitle": "Thông số ra mắt IP nhân vật",
+  "createActorParamsSubtitle": "Đặt thông số ra mắt IP nhân vật. Không thể thay đổi sau khi ra mắt.",
+  "createActorTotalSupplyLabel": "Tổng phát hành nhân vật",
+  "createActorTotalSupplyDesc": "Phạm vi tổng phát hành: 100 - 5.000.",
+  "createActorTotalSupplyPlaceholder": "100 - 5,000",
+  "createActorPricingFixed": "Giá cố định",
+  "createActorPricingCurve": "Giá đường cong",
+  "createActorFixedPriceLabel": "Giá cố định ({currency})",
+  "@createActorFixedPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorInitialPriceLabel": "Giá ban đầu ({currency})",
+  "@createActorInitialPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorFixedPricePlaceholder": "10 - 1,000",
+  "createActorFixedPriceDesc": "Mỗi nhân vật đều được mua với mức giá cố định, không thay đổi theo doanh số bán hàng.",
+  "createActorInitialPricePlaceholder": "10 - 1,000",
+  "createActorInitialPriceDesc": "Giá ban đầu là giá khởi điểm của đường cong kết hợp. Mỗi khi ký một nhân vật, giá sẽ tự động tăng theo công thức P = P₀ × 5^(số lượng đã ký ÷ tổng lượng phát hành). Ký sớm sẽ được giá ưu đãi hơn.",
+  "createActorFormIncomplete": "Vui lòng hoàn thành nguồn nhân vật, tên, giới thiệu và thông số ra mắt trước",
+  "createActorValidationNameRequired": "Vui lòng nhập tên role",
+  "createActorValidationNameTooLong": "Tên nhân vật phải từ 20 ký tự trở xuống",
+  "createActorValidationBioRequired": "Vui lòng nhập tiểu sử",
+  "createActorValidationBioTooLong": "Tiểu sử phải từ 500 ký tự trở xuống",
+  "createActorValidationTotalSupplyRequired": "Vui lòng nhập tổng số lượng NFT phát hành hợp lệ",
+  "createActorValidationTotalSupplyPositiveInteger": "Tổng số lượng NFT phát hành phải là số nguyên dương",
+  "createActorValidationTotalSupplyRange": "Tổng phát hành nhân vật phải từ 100 đến 5.000",
+  "createActorValidationPriceRequired": "Vui lòng nhập giá đúc hợp lệ",
+  "createActorValidationPriceInvalid": "Giá Mint phải lớn hơn hoặc bằng 10 và không vượt quá 1.000",
+  "createActorValidationPriceMaxDecimals": "Giá đúc tối đa 2 chữ số thập phân",
+  "createActorSelectMaterialRequired": "Vui lòng chọn tài liệu nhân vật",
+  "createActorCancelButton": "Hủy",
+  "createActorConfirmButton": "Xác nhận ra mắt",
+  "createActorIssueFee": "Phí",
+  "createActorSuccessTitle": "{name} · Ra mắt thành công!",
+  "@createActorSuccessTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessDesc": "IP nhân vật {id}",
+  "@createActorSuccessDesc": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "createActorSuccessTip": "Người phát hành cũng cần ký hợp đồng để nhận nhân vật này~",
+  "createActorCloseButton": "Để sau",
+  "createActorViewButton": "Đi ký",
+  "createActorEmptyTitle": "Bạn chưa có đợt ra mắt NFT nào đủ điều kiện do hệ thống tự động tạo trong DreamOS.",
+  "createActorGotoDreamOs": "Truy cập DreamOS để tạo",
+  "createActorSearchPlaceholder": "Tìm kiếm tài liệu nhân vật",
+  "createActorInvalidOrderId": "Mã đơn hàng IP của nhân vật không hợp lệ, vui lòng làm mới và thử lại",
+  "createDramaTitle": "Tạo phim",
+  "createDramaTitleLabel": "Tên vở kịch ngắn",
+  "createDramaTitleHint": "Nhập tên phim",
+  "createDramaSynopsisLabel": "Tóm tắt",
+  "createDramaSynopsisHint": "Hãy kể một câu chuyện như thế nào... (tối đa 1.000 từ)",
+  "createDramaAiSettings": "Cài đặt tạo AI",
+  "createDramaVisualStyle": "Phong cách hình ảnh",
+  "createDramaVisualStyleRealistic": "Thực tế",
+  "createDramaEpisodeDuration": "Thời lượng tập",
+  "createDramaEpisodeDurationValue": "3-5 phút",
+  "createDramaTotalEpisodes": "Tổng số tập",
+  "createDramaTotalEpisodesValue": "8 tập",
+  "createDramaGenreLabel": "Loại",
+  "createDramaGenreDrama": "Phim truyền hình",
+  "createDramaGenreComedy": "Phim hài",
+  "createDramaGenreAction": "Hành động",
+  "createDramaGenreRomance": "Lãng mạn",
+  "createDramaGenreSciFi": "Khoa học viễn tưởng",
+  "createDramaGenreMystery": "Kịch tính",
+  "createDramaGenreHorror": "Kinh dị",
+  "createDramaGenreAnimation": "Hoạt hình",
+  "createDramaHeroTitle": "Sản xuất phim AI",
+  "createDramaHeroSubtitle": "Tạo một cú hit tiếp theo chỉ với một cú nhấp chuột",
+  "createDramaStartGeneration": "Bắt đầu tạo",
+  "creatorDramaManagementTab": "Quản lý các vở kịch ngắn",
+  "creatorDramaNftTab": "NFT phim ngắn",
+  "creatorHeaderSubtitle": "Việc đăng, kiểm duyệt và tạo ra các tiểu phẩm.",
+  "creatorV2Subtitle": "Đăng và quản lý phim ngắn/video.",
+  "creatorV2DramaTabCount": "Phim ngắn ({count})",
+  "creatorV2VideoTabCount": "Video ({count})",
+  "creatorV2NoVideos": "Chưa có video",
+  "creatorLoginPrompt": "Đăng nhập để xem sáng tạo của bạn",
+  "creatorNoCreatedActors": "Chưa có role đã tạo",
+  "creatorNoPublishedDramas": "Chưa có phim đã xuất bản",
+  "creatorOwnedNftCount": "Số lượng NFT đang sở hữu",
+  "creatorCreateDrama": "Tạo phim",
+  "creatorPublishNewDrama": "Đăng phim ngắn mới",
+  "creatorPublishedDramas": "Đăng phim ngắn",
+  "creatorReviewFilterAll": "Tất cả",
+  "creatorReviewFilterApproved": "Đã được thông qua",
+  "creatorReviewFilterPending": "Đang được xem xét",
+  "creatorReviewFilterRejected": "Không đạt",
+  "creatorReviewFilterOffline": "Đã gỡ xuống",
+  "creatorDramaOtherReason": "Lý do khác",
+  "creatorDramaStatusOnline": "Đã được thông qua",
+  "creatorDramaStatusPendingReview": "Đang chờ duyệt",
+  "creatorDramaStatusReviewRejected": "Không đạt",
+  "creatorDramaStatusPendingOnline": "Chờ xuất bản",
+  "creatorDramaAuditReason": "Lý do không duyệt: {reason}",
+  "@creatorDramaAuditReason": {
+    "placeholders": {
+      "reason": {}
+    }
+  },
+  "creatorDramaNftMinted": "Đã đúc",
+  "creatorDramaEpisodeCount": "{count} tập",
+  "@creatorDramaEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "creatorDramaEdit": "Chỉnh sửa",
+  "creatorDramaDelete": "Xóa",
+  "creatorActorDelete": "Xóa role",
+  "creatorDeleteDramaConfirm": "Bạn có chắc chắn muốn xóa đoạn phim ngắn này không?",
+  "creatorDeleteVideoConfirmTitle": "Xác nhận xóa video",
+  "creatorDeleteVideoConfirmMessage": "Bạn có chắc muốn xóa “{name}” không?\nKhông thể hoàn tác thao tác này.",
+  "@creatorDeleteVideoConfirmMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorDeleteActorConfirm": "Bạn có chắc chắn muốn xóa nhân vật này không?",
+  "creatorDeleting": "Đang xóa...",
+  "creatorNoDramas": "Hiện chưa có phim ngắn",
+  "creatorNoNfts": "Hiện chưa có NFT cho các vở kịch ngắn",
+  "creatorsComingSoon": "Sắp ra mắt",
+  "creatorsHeroSubtitle": "Khám phá các nhà sáng tạo nổi bật",
+  "creatorsHeroTitle": "Nhà sáng tạo",
+  "dramaBatchUnlockAll": "Mở khóa tất cả",
+  "dramaBatchUnlockDiscount": "Giảm giá mở khóa hàng loạt {discount}%",
+  "@dramaBatchUnlockDiscount": {
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaBatchUnlockSubtitle": "Mở khóa tất cả tập cùng lúc để có ưu đãi tốt hơn",
+  "dramaBatchUnlockSuccess": "Mở khóa thành công, vui lòng bắt đầu xem",
+  "dramaDetailAllFree": "Tất cả miễn phí",
+  "dramaDetailBoundActors": "{count} role đã liên kết",
+  "@dramaDetailBoundActors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodeCount": "{count} tập",
+  "@dramaDetailEpisodeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailEpisodePrice": "Giá mỗi tập",
+  "dramaDetailFree": "Miễn phí",
+  "dramaDetailFreeEpisodes": "{count} tập đầu miễn phí",
+  "@dramaDetailFreeEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dramaDetailMainCharacters": "Vai chính",
+  "dramaDetailNftMinted": "NFT đã đúc",
+  "dramaDetailNoEpisodes": "Chưa có tập",
+  "dramaDetailPaid": "Trả phí",
+  "dramaDetailPendingActor": "Nhân vật chờ xác định",
+  "dramaDetailRoleCount": "Vai diễn",
+  "dramaUnlockFailedRetry": "Mở khóa thất bại, vui lòng thử lại",
+  "dramaUnlockFetchTimeout": "Hết thời gian lấy địa chỉ phát, vui lòng thử lại",
+  "dramaUnlockLoginRequired": "Vui lòng đăng nhập để mở khóa tập",
+  "dramaUnlockMessage": "Tập {epNo} yêu cầu thanh toán để mở khóa\nGiá: {price} {currency}\nGiảm giá mở khóa hàng loạt: {discount}",
+  "@dramaUnlockMessage": {
+    "placeholders": {
+      "epNo": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      },
+      "discount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "dramaUnlockSuccessFetching": "Mở khóa thành công, đang lấy địa chỉ phát...",
+  "dramaUnlockTitle": "Mở khóa tập phim",
+  "editActorTitle": "Chỉnh sửa role",
+  "editDramaTitle": "Chỉnh sửa tiểu phẩm",
+  "editVideoTitle": "Chỉnh sửa video",
+  "editSaveChanges": "Lưu thay đổi",
+  "editProfileTitle": "Chỉnh sửa hồ sơ",
+  "editNicknameLabel": "Tên hiển thị",
+  "editRoleNameLabel": "Tên người dùng",
+  "editNicknameHint": "Nhập tên hiển thị",
+  "editNicknameRequired": "Vui lòng nhập tên hiển thị",
+  "editProfileBioLabel": "Tiểu sử",
+  "editProfileBioHint": "Vui lòng nhập tiểu sử",
+  "editProfileEmailLabel": "Địa chỉ email",
+  "editAvatarCropTitle": "Cắt ảnh đại diện",
+  "profileUpdateSuccess": "Hồ sơ đã cập nhật",
+  "incomeClaimAmount": "Nhận {amount} {currency}",
+  "@incomeClaimAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimFailed": "Nhận thất bại",
+  "incomeClaimMessage": "Số tiền có thể nhận: {amount} {currency}\nThu nhập sẽ được chuyển vào số dư ví",
+  "@incomeClaimMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimSuccess": "Nhận thành công",
+  "incomeClaimTitle": "Nhận lợi nhuận",
+  "incomeConfirmClaim": "Xác nhận đã nhận",
+  "incomeHistoryTab": "Lịch sử",
+  "incomeInviteHeroSubtitle": "Mời bạn bè tiêu dùng và tương tác, càng hoạt động tích cực phần thưởng càng cao",
+  "incomeInviteHeroTitle": "Mời bạn bè để nhận hoàn tiền",
+  "incomeInviteNoRecords": "Chưa có bản ghi hoàn tiền",
+  "incomeInvitePaidUnlockDesc": "Bạn bè thanh toán để mở khóa tập",
+  "incomeInvitePaidUnlockTitle": "Mở khóa có phí",
+  "incomeInviteRecords": "Bản ghi hoàn tiền",
+  "incomeInviteRegisterDesc": "Bạn bè đăng ký qua liên kết giới thiệu của bạn",
+  "incomeInviteRegisterTitle": "Đăng ký qua mời",
+  "incomeInviteRules": "Quy tắc hoàn tiền",
+  "incomeInviteShareLink": "Chia sẻ liên kết mời",
+  "incomeInviteStakeDesc": "Bạn bè stake NFT hoặc STORY",
+  "incomeInviteStakeTitle": "Đầu tư stake",
+  "incomeInviteTab": "Hoàn tiền mời",
+  "incomeInviteWatchDesc": "Bạn bè xem phim để kiếm điểm",
+  "incomeInviteWatchTitle": "Xem phim",
+  "incomeNoHistory": "Chưa có lịch sử",
+  "incomeNoRecords": "Chưa có bản ghi thu nhập",
+  "incomeNothingToClaim": "Không có gì để nhận",
+  "incomeOverviewTab": "Tổng quan",
+  "incomePendingClaim": "Đang chờ nhận",
+  "incomeRecords": "Bản ghi thu nhập",
+  "incomeThisMonth": "Tháng này",
+  "incomeToday": "Hôm nay",
+  "incomeTotalEarnings": "Tổng lợi nhuận",
+  "incomeCumulativeStory": "Tổng hợp STORY",
+  "incomeCumulativeUsdc": "Tổng số {currency}",
+  "@incomeCumulativeUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimableStory": "Có thể nhận STORY",
+  "incomeClaimableUsdc": "Có thể nhận {currency}",
+  "@incomeClaimableUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeSettlingStory": "Cát-xê của tôi",
+  "incomeSettlingHint": "Đang quyết toán; có thể nhận sau khi nhận",
+  "incomeHelpTotalStoryDesc": "Tổng số STORY tích lũy được trong tất cả các chu kỳ lịch sử (bao gồm cả số đã nhận và chưa nhận).",
+  "incomeHelpTotalUsdcDesc": "Tổng doanh thu tích lũy bằng {currency} từ tiền hoa hồng ký kết hợp đồng và tiền bản quyền cấp hai của tất cả các nhân vật trong lịch sử.",
+  "@incomeHelpTotalUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeHelpSettlingStoryDesc": "Tự động đổi thành STORY sau khi hệ thống quyết toán",
+  "incomeHelpClaimableStoryDesc": "Các STORY đã được thanh toán có thể được rút về ví cá nhân.",
+  "incomeHelpClaimableUsdcDesc": "{currency} đã được thanh toán có thể được rút về ví cá nhân.",
+  "@incomeHelpClaimableUsdcDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeFilterAll": "Tất cả",
+  "incomeFilterMining": "Doanh thu từ việc phái cử nhân sự",
+  "incomeFilterInvite": "Thu nhập từ việc mời người tham gia",
+  "incomeMiningReward": "Doanh thu từ việc phái cử nhân sự",
+  "incomeInviteReward": "Thu nhập từ việc mời người tham gia",
+  "incomeUsdcActorSignShare": "Chia sẻ doanh thu ký nhân vật",
+  "incomeClaimNoWallet": "Vui lòng liên kết ví trước",
+  "incomeClaimCurrencyTitle": "Nhận {currency}",
+  "@incomeClaimCurrencyTitle": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawMessage": "Xác nhận rút {amount} {currency} vào ví Solana?\nNgười nhận: {address}",
+  "@incomeClaimWithdrawMessage": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      },
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeClaimWithdrawConfirm": "Xác nhận rút",
+  "incomeClaimWithdrawSubmitted": "Rút tiền thành công!",
+  "incomeClaimWithdrawFailed": "Rút thất bại, vui lòng thử lại",
+  "incomeClaimAction": "Nhận",
+  "nftCreateActorIp": "Tạo thương hiệu cá nhân cho nhân vật",
+  "nftHeaderSubtitle": "Khám phá và sưu tầm nhân vật NFT độc quyền",
+  "nftHeaderTitle": "Quảng trường Nhân vật NFT",
+  "nftSearchHint": "Tìm phim ngắn, tác phẩm, vai, người dùng...",
+  "actorHowToPlayTitle": "Cách chơi IP nhân vật",
+  "actorHowToPlayHelpTooltip": "Hướng dẫn cách chơi",
+  "actorHowToPlaySignTab": "IP đã ký",
+  "actorHowToPlaySignSubtitle": "Nhận cát-xê thụ động",
+  "actorHowToPlayIssueTab": "Ra mắt IP",
+  "actorHowToPlayIssueSubtitle": "Biến sáng tạo thành thu nhập",
+  "actorHowToPlaySignPositioning": "Định vị: Không có rào cản sáng tạo, dễ dàng kiếm lợi nhuận ổn định",
+  "actorHowToPlaySignAudience": "Những người dùng thông thường không muốn sáng tạo, mà chỉ muốn kiếm thu nhập từ STORY một cách dễ dàng",
+  "actorHowToPlaySignGuide": "Ký các IP nhân vật có độ hot cao và cát-xê cao, chỉ cần xếp lịch biểu diễn trên trang Đại lý là có thể thu lợi",
+  "actorHowToPlaySignRightsTitle": "Lợi ích kép",
+  "actorHowToPlaySignRightPerform": "Tổ chức các buổi biểu diễn để liên tục kiếm được token STORY",
+  "actorHowToPlaySignRightTrade": "IP nhân vật có thể giao dịch, mang lại lợi nhuận chênh lệch giá",
+  "actorHowToPlayIssuePositioning": "Định vị: sáng tạo và ra mắt, đa nguồn thu nhập, IP tăng giá dài hạn",
+  "actorHowToPlayIssueAudience": "Các nhà sáng tạo có khả năng sáng tạo và mong muốn kiếm tiền từ các nhân vật IP và các video ngắn",
+  "actorHowToPlayIssueGuide": "Ra mắt IP nhân vật, kết hợp với tiểu phẩm AI, nâng độ hot của tác phẩm, từ đó tăng cát-xê và doanh thu từ IP",
+  "actorHowToPlayIssueRightsTitle": "Lợi ích ba mặt",
+  "actorHowToPlayIssueRightSignLabel": "Chia sẻ doanh thu ký:",
+  "actorHowToPlayIssueRightSign": "Khi IP của bạn được ký, bạn nhận 40% hoa hồng",
+  "actorHowToPlayIssueRightPerformLabel": "Doanh thu từ buổi biểu diễn:",
+  "actorHowToPlayIssueRightPerform": "Ký IP của chính mình, kiếm STORY từ biểu diễn",
+  "actorHowToPlayIssueRightValueLabel": "Tăng giá trị:",
+  "actorHowToPlayIssueRightValue": "IP có thể giao dịch; độ hot càng cao thì mức chênh lệch giá càng lớn",
+  "actorHowToPlayAudienceTitle": "Đối tượng phù hợp",
+  "actorHowToPlayGuideTitle": "Hướng dẫn cách chơi",
+  "actorHowToPlayCreateHint": "Bạn có thể sử dụng DreamOS để tạo IP nhân vật và các tiểu phẩm AI chỉ bằng một cú nhấp chuột, từ đó sản xuất nội dung chất lượng cao một cách hiệu quả",
+  "actorHowToPlayCreateCta": "Hãy sáng tạo",
+  "nftSignInDevelopment": "Tính năng này hiện chưa được kích hoạt",
+  "nftSortCompleted": "Xem hết",
+  "nftSortHeat": "Độ hot",
+  "nftSortLowestPrice": "Giá",
+  "nftSortLv1Pay": "Cát-xê",
+  "nftSortMaxPay": "Cát-xê tối đa",
+  "nftTradeUnavailable": "Giao dịch chưa khả dụng",
+  "playerEpisodeBarCompleted": "Tất cả {count} tập · Hoàn thành",
+  "@playerEpisodeBarCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerEpisodeSynopsis": "Tập {episodeNo} | {synopsis}",
+  "@playerEpisodeSynopsis": {
+    "placeholders": {
+      "episodeNo": {
+        "type": "int"
+      },
+      "synopsis": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPlayFailedRetry": "Phát thất bại, vui lòng thử lại sau",
+  "publicProfileDramas": "Phim ngắn",
+  "publicProfileEmpty": "Chưa có nội dung công khai",
+  "publicProfileBlock": "Chặn",
+  "publicProfileUnblock": "Bỏ chặn",
+  "publicProfileBlockedByMeContent": "Bạn đã chặn người dùng này nên không thể xem nội dung của họ",
+  "publicProfileBlockedContent": "Người dùng này đã chặn bạn nên bạn không thể xem nội dung của họ",
+  "publicProfileBlockConfirmTitle": "Chặn người dùng này?",
+  "publicProfileBlockConfirmMessage": "Sau khi chặn, bạn sẽ không thể xem tác phẩm của người dùng này.",
+  "publicProfileBlockSuccess": "Đã chặn người dùng",
+  "publicProfileUnblockSuccess": "Đã bỏ chặn người dùng",
+  "publicProfileFollowers": "Người theo dõi",
+  "publicProfileFollowing": "Theo dõi",
+  "followTabMutual": "Bạn bè",
+  "profileLikesReceived": "Lượt thích",
+  "profileLikesReceivedDialogMessage": "Bạn đã nhận được {count} lượt thích. Cảm ơn những tác phẩm tuyệt vời của bạn!",
+  "profileTabLikes": "Đã thích",
+  "profileTabFavorites": "Yêu thích",
+  "profileWalletTitle": "Ví",
+  "profileAddressCopied": "Đã sao chép địa chỉ",
+  "followActionFollow": "Theo dõi",
+  "followActionFollowBack": "Theo dõi lại",
+  "followActionFollowing": "Đang theo dõi",
+  "followBlockedByMe": "Người dùng nằm trong danh sách đen, bạn không thể theo dõi",
+  "followBlockedByTarget": "Do cài đặt của người đó, bạn không thể theo dõi",
+  "likeBlockedByMe": "Người dùng nằm trong danh sách đen, bạn không thể thích",
+  "likeBlockedByTarget": "Do cài đặt của người đó, bạn không thể thích",
+  "favoriteBlockedByMe": "Người dùng nằm trong danh sách đen, bạn không thể lưu",
+  "favoriteBlockedByTarget": "Do cài đặt của người đó, bạn không thể lưu",
+  "ratingBlockedByMe": "Người dùng nằm trong danh sách đen, bạn không thể đánh giá",
+  "ratingBlockedByTarget": "Do cài đặt của người đó, bạn không thể đánh giá",
+  "followActionMutual": "Bạn bè",
+  "followUnfollowTitle": "Bỏ theo dõi",
+  "followUnfollowMessage": "Ngừng theo dõi {handle}?",
+  "@followUnfollowMessage": {
+    "placeholders": {
+      "handle": {
+        "type": "String"
+      }
+    }
+  },
+  "followUnfollowNo": "Không",
+  "followUnfollowYes": "Có",
+  "followListEmpty": "Chưa có người dùng",
+  "followFollowingEmpty": "Chưa theo dõi ai. Khám phá những nhà sáng tạo thú vị nhé~",
+  "followFollowingEmptyCta": "Đi xem",
+  "followFollowingEmptyGuest": "Chưa theo dõi ai",
+  "followFollowersEmpty": "Chưa có người theo dõi. Đăng tác phẩm để tăng độ phủ sóng nhé~",
+  "followFollowersEmptyCta": "Đăng ngay",
+  "followFollowersEmptyGuest": "Chưa có người theo dõi",
+  "followMutualsEmpty": "Chưa có bạn bè theo dõi lẫn nhau",
+  "followMutualsSelfOnly": "Danh sách bạn bè chỉ bạn mới xem được",
+  "followRelationsSelfOnly": "Danh sách quan hệ chỉ bạn mới xem được",
+  "followMoreTitle": "Thêm",
+  "followRemoveFollower": "Gỡ người theo dõi",
+  "followRemoveFollowerSuccess": "Đã gỡ. Đối phương sẽ không nhận thông báo",
+  "followUserHandleFallback": "@người dùng",
+  "publicProfileTitle": "Hồ sơ người dùng",
+  "publicProfileUserFallback": "Người dùng #{id}",
+  "@publicProfileUserFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "watchHistoryEmpty": "Chưa có lịch sử xem",
+  "watchHistoryClearTitle": "Xóa lịch sử xem",
+  "watchHistoryClearMessage": "Bạn có chắc muốn xóa toàn bộ lịch sử xem không? Không thể hoàn tác thao tác này.",
+  "watchHistoryClearConfirm": "Xác nhận",
+  "gamePageTitle": "Đại diện",
+  "gamePageSubtitle": "Quản lý dàn role của bạn, phân công nhiệm vụ để tạo ra doanh thu.",
+  "gameRiskAccount": "Tài khoản rủi ro",
+  "gameRiskAccountDescription": "Tài khoản này có hệ số tin cậy bất thường; trọng số khai thác sẽ bị ảnh hưởng.",
+  "gameWeeklyStats": "Thống kê tuần",
+  "gameDeployedActors": "Role đã triển khai",
+  "gameMyActors": "Role của tôi",
+  "gameComingSoon": "Sắp ra mắt",
+  "gameSignActor": "Ký nhân vật",
+  "gameGoProduce": "Đi quay phim",
+  "gameWorkingActors": "Các role đang được điều động",
+  "gameWeekPool": "Quỹ thưởng tuần này (STORY)",
+  "gameWeekNominalOutput": "Sản lượng danh nghĩa trong tuần này (STORY)",
+  "gameWeekEstimatedOutput": "Dự báo sản lượng tuần này (STORY)",
+  "gameMiningRules": "Quy tắc khai thác",
+  "agentV2RulesTitle": "Cách vận hành",
+  "agentV2RulesSummary": "Ký nhân vật và sắp xếp biểu diễn để nhận STORY mỗi giờ.\nNâng cấp nhân vật để tăng nhiều lần cát-xê theo giờ.\nHồi thể lực kịp thời để sản lượng không bị gián đoạn.\nQuyết toán thu nhập của kỳ bắt đầu lúc 00:00 thứ Hai hằng tuần (UTC); nhận tại trang Thu nhập.",
+  "agentV2RulesHowToPlay": "Cách hoạt động",
+  "agentV2RulesStartTitle": "Làm sao để nhân vật bắt đầu kiếm thu nhập?",
+  "agentV2RulesStartDescription": "Sắp xếp nhân vật đang chờ biểu diễn. Mỗi giờ tiêu hao 1 thể lực và tạo STORY theo mức cát-xê.\nSTORY đã tạo được quyết toán chung khi kết thúc mỗi kỳ và có thể nhận tại trang Thu nhập sau khi quyết toán.",
+  "agentV2RulesStaminaTitle": "Quản lý thể lực thế nào?",
+  "agentV2RulesStaminaDescription": "Đang biểu diễn: tiêu hao 1 thể lực mỗi giờ và tạo cát-xê bình thường\nHết thể lực: sản lượng dừng ở 0 và cần xử lý kịp thời\nNghỉ: tự động hồi 1 thể lực mỗi giờ nhưng tạm dừng cát-xê\nHồi thể lực (trả phí): lập tức hồi đầy {staminaLimit} và tiếp tục sản xuất",
+  "@agentV2RulesStaminaDescription": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2RulesBatchTitle": "Có thể thao tác hàng loạt không?",
+  "agentV2RulesBatchDescription": "Có. Dùng Biểu diễn tất cả, Hồi tất cả hoặc Nghỉ tất cả ở cuối trang để áp dụng thao tác cho mọi nhân vật trong các vị trí biểu diễn.",
+  "agentV2RulesEarnings": "Thu nhập",
+  "agentV2RulesSalaryTitle": "Cát-xê được tính như thế nào?",
+  "agentV2RulesSalaryDescription": "Càng nổi tiếng, vai diễn càng đắt giá, phim ngắn càng hot thì cát-xê mỗi giờ càng cao.",
+  "agentV2RulesSalaryFormula": "Cát-xê mỗi giờ của một thẻ = Cát-xê nhân vật × 1 STORY",
+  "agentV2RulesRolePowerFormula": "Cát-xê nhân vật = Cát-xê nhân vật Lv.1 × Hệ số cát-xê",
+  "agentV2RulesIpSalaryFormula": "Cát-xê nhân vật Lv.1 = Hệ số giá × Hệ số độ hot",
+  "agentV2RulesCoefficientTitle": "Chi tiết hệ số",
+  "agentV2RulesSalaryExample": "Lin Mengyao · Vai chính Lv3 · P0=120{currency} (hệ số giá ≈1.5046) · độ hot 3.5\n→ Cát-xê mỗi giờ = 5.0 × 1.5046 × 3.5 × 1 = 26.3 STORY\nNếu chỉ là vai quần chúng Lv1, cát-xê mỗi giờ chỉ ≈5.3 STORY — lên Lv3 giúp tăng gấp 5 lần.",
+  "@agentV2RulesSalaryExample": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesSettlementTitle": "Khi nào quyết toán?",
+  "agentV2RulesSettlementDescription": "Mỗi chu kỳ diễn xuất dài 7 ngày, chốt vào 00:00 thứ Hai hằng tuần (UTC). Sau khi hệ thống quyết toán xong, cát-xê kỳ này được tự động đổi thành STORY và có thể nhận tại trang Thu nhập.",
+  "agentV2RulesSettlementExample": "Giả sử quỹ thưởng tuần này là 100,000 STORY:\nTrường hợp A: Chỉ bạn tạo ra 134 trên toàn nền tảng → bạn nhận 134, phần còn lại không được phân phối\nTrường hợp B: Tổng sản lượng mạng là 250,000 → 100,000 ÷ 250,000 = 40%, sản lượng danh nghĩa của bạn được điều chỉnh còn 40%\nTrường hợp C: Sau điều chỉnh, một người đáng lẽ nhận 6,000 nhưng giới hạn là 5,000 → chỉ phân phối 5,000",
+  "agentV2RulesStronger": "Cách mạnh hơn",
+  "agentV2RulesUpgradeTitle": "Làm sao nâng cấp nhân vật?",
+  "agentV2RulesUpgradeDescription": "Điều kiện: tiêu hao 2 bản sao cùng IP và cùng cấp + đạt mục tiêu lượt xem hết tích lũy của phim có IP tham gia\nCấp 1 → Cấp 2: ≥ 10.000 lượt xem hết · Cát-xê 1 → 3\nCấp 2 → Cấp 3: ≥ 50.000 lượt xem hết · Cát-xê 3 → 9\nCấp 3 → Cấp 4: ≥ 200.000 lượt xem hết · Cát-xê 9 → 27\nCấp 4 → Cấp 5: ≥ 1 triệu lượt xem hết · Cát-xê 27 → 81",
+  "agentV2RulesPerforming": "Đang biểu diễn",
+  "agentV2RulesNormalSalary": "Cát-xê bình thường",
+  "agentV2RulesSalaryCoefficient": "Hệ số cát-xê: Lv1=1 · Lv2=3 · Lv3=9 · Lv4=27 · Lv5=81",
+  "agentV2RulesPriceCoefficientDescription": "Hệ số giá (giá phát hành P0):\n  • P0 ≤ 100{currency1} → Hệ số = P0 ÷ 100 (tăng tuyến tính)\n  • P0 > 100{currency2} → Hệ số = 1,6 × (P0/100)¹.³ / [(P0/100)¹.³ + 0,6] (giới hạn trên tiệm cận là 1,6)",
+  "@agentV2RulesPriceCoefficientDescription": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2RulesTrust2": "Trust2",
+  "agentV2RulesTrust2Factor": "Trust2 của nền tảng",
+  "agentV2RulesSettlementCase1": "Chi trả thực tế = sản lượng danh nghĩa; hạn mức chưa dùng sẽ hết hiệu lực",
+  "agentV2RulesSettlementCase2": "Điều chỉnh theo tỷ lệ: số thực nhận = sản lượng danh nghĩa × (quỹ thưởng ÷ tổng sản lượng mạng)",
+  "gameSettlementRecords": "Bản ghi chép thanh toán hàng tuần",
+  "gameFilterComputingPower": "Cát-xê",
+  "gameFilterLevel": "Cấp độ",
+  "gameFilterHeat": "Độ hot",
+  "gameFilterStamina": "Thể lực",
+  "gameHeatCoef": "Hệ số độ hot",
+  "gameMiningCoef": "Hệ số khai thác",
+  "gameActorPower": "Cát-xê nhân vật",
+  "gameActorPowerDetailTitle": "Chi tiết cát-xê nhân vật",
+  "gameActorPowerFormula": "Cát-xê nhân vật = Cát-xê IP × Hệ số khai thác × Hệ số CP × Trust2",
+  "gameActorPowerIpFormula": "Cát-xê IP = Hệ số giá × Hệ số độ hot × Trust1",
+  "gameActorPowerHourlyOutput": "Sản lượng mỗi giờ",
+  "gameCpCoefficient": "Hệ số CP",
+  "gameTrust2": "Trust2",
+  "gameWeeklyNominalOutputLabel": "Sản lượng danh nghĩa trong tuần này",
+  "gameRoundNominalOutputLabel": "Đầu ra nominal kỳ",
+  "gameSupplement": "Bổ sung",
+  "gameRest": "Nghỉ ngơi",
+  "gameDeploy": "Phái cử",
+  "gameDeployActor": "Tuyển chọn nhân vật",
+  "gameStatusIdle": "Không sử dụng",
+  "gameStatusMining": "Đang khai thác",
+  "gameActorIpLabel": "Nhân vật IP {id}",
+  "@gameActorIpLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaProgress": "{current}/{max}",
+  "@gameStaminaProgress": {
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismTitle": "Cơ chế thể lực",
+  "gameStaminaMechanismDesc": "Role đang được triển khai sẽ tiêu hao 1 điểm thể lực mỗi giờ. Khi hết thể lực, việc tạo lợi nhuận sẽ dừng lại và thể lực tự động hồi phục trong lúc nghỉ ngơi. Bạn có thể dùng {currency} để bổ sung thể lực ngay lập tức.",
+  "@gameStaminaMechanismDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameStaminaMechanismAction": "Đã hiểu",
+  "gameLevelBadge": "Lv{level}",
+  "@gameLevelBadge": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "gameEmptyDeployed": "Chưa có role nào được triển khai",
+  "gameEmptyMyActors": "Chưa có nhân vật. Hãy ký một nhân vật để bắt đầu.",
+  "gameDeployConfirmTitle": "Triển khai nhân vật này?",
+  "gameRestConfirmTitle": "Cho nhân vật này nghỉ ngơi?",
+  "gameRestConfirmDesc": "Khai thác tạm dừng khi nhân vật nghỉ; thể lực hồi phục theo thời gian.",
+  "gameRestConfirmAction": "Xác nhận nghỉ",
+  "gameRestSuccessToast": "Đã bắt đầu nghỉ",
+  "gameDeploySlotFull": "Slot triển khai đã đầy (tối đa 5)",
+  "gameRefillTitle": "Phục hồi thể lực",
+  "gameRefillCurrentStamina": "Thể lực hiện tại",
+  "gameRefillCost": "Chi phí khôi phục",
+  "gameRefillConfirm": "Phục hồi toàn bộ thể lực",
+  "gameRefillSuccess": "Đã phục hồi thể lực thành công",
+  "gameRefillFailed": "Không thể phục hồi thể lực, vui lòng thử lại",
+  "gameInsufficientUsdc": "Số dư {currency} không đủ",
+  "@gameInsufficientUsdc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "gameBatchRefillTransactionTooLarge": "Giao dịch phục hồi thể lực hàng loạt quá lớn. Hãy giảm số diễn viên và thử lại.",
+  "agentV2RefillTitle": "Bổ sung thể lực",
+  "agentV2RefillCost": "Chi phí",
+  "agentV2RefillActorButton": "Nhân vật này",
+  "agentV2RefillAllActors": "Bổ sung cho tất cả nhân vật đang diễn",
+  "agentV2RefillActorCount": "{count} nhân vật",
+  "agentV2RefillAllButton": "Bổ sung tất cả",
+  "agentV2RefillOr": "hoặc",
+  "agentV2RestAll": "Nghỉ tất cả",
+  "agentV2RestActorCount": "{count} nhân vật",
+  "walletInsufficientStory": "Số dư STORY không đủ",
+  "gameSupplementComingSoon": "Nạp thể lực sắp ra mắt",
+  "gameStatHelpWeekPoolTitle": "Quỹ thưởng tuần này",
+  "gameStatHelpWeekPoolSubtitle": "Tức là mức trần phân phối bắt buộc hàng tuần của hoạt động khai thác STORY (mức trần hàng tuần)",
+  "gameStatHelpWeekTotalPool": "Tổng quỹ thưởng tuần này",
+  "gameStatHelpWeekTotalPoolValue": "2,115,385 STORY",
+  "gameStatHelpWeekStakePool": "Quỹ thưởng stake tuần này (75%)",
+  "gameStatHelpWeekStakePoolValue": "1,586,538 STORY",
+  "gameStatHelpWeekInvitePool": "Quỹ thưởng mời tuần này (25%)",
+  "gameStatHelpWeekInvitePoolValue": "528,846 STORY",
+  "gameStatHelpInitialHardCap": "Mui cứng phiên bản ban đầu",
+  "gameStatHelpInitialHardCapValue": "2,115,385 STORY",
+  "gameStatHelpWeeklyDecay": "Hệ số suy giảm theo tuần",
+  "gameStatHelpWeeklyDecayValue": "× 0.99572",
+  "gameStatHelpWeeklyDistributionFormula": "Số lượng thực tế được phân phối hàng tuần = min(sản lượng danh nghĩa toàn mạng, mức trần cố định của tuần đó)",
+  "gameStatHelpUnusedQuotaNote": "Phần hạn mức còn lại chưa được phân bổ sẽ không được cấp, không được thu hồi và không được bù đắp",
+  "gameStatHelpNominalTitle": "Sản lượng danh nghĩa tuần này",
+  "gameStatHelpNominalSummary": "Tổng sản lượng danh nghĩa lũy kế theo tuần của tất cả vai diễn của tôi",
+  "gameStatHelpNominalSummaryHint": "Công thức cho thẻ đơn được nêu trong phần giải thích bên dưới",
+  "gameStatHelpNominalFormula": "Sản lượng danh nghĩa mỗi thẻ = Trọng số giờ mỗi thẻ × R_base × Thời gian khai thác hiệu quả",
+  "gameStatHelpHourlyWeight": "Hệ số trọng số theo giờ cho mỗi thẻ",
+  "gameStatHelpHourlyWeightValue": "= Cát-xê nhân vật",
+  "gameStatHelpActorPower": "Cát-xê nhân vật",
+  "gameStatHelpActorPowerValue": "= Cát-xê IP × Hệ số khai thác × Hệ số CP × Trust2",
+  "gameStatHelpCpCoef": "Hệ số CP",
+  "gameStatHelpRBase": "R_base",
+  "gameStatHelpRBaseValue": "1 STORY / Hệ số trọng số đơn vị / Giờ",
+  "gameStatHelpEffectiveDuration": "Thời gian khai thác hiệu quả",
+  "gameStatHelpEffectiveDurationValue": "Tổng thời gian đang thế chấp và có chỉ số Thể lực &gt; 0",
+  "gameStatHelpActualTitle": "Dự báo sản lượng trong tuần này",
+  "gameStatHelpActualSubtitle": "Sản lượng ước tính bị giới hạn bởi mức trần tuần và mức trần mỗi địa chỉ; lợi nhuận thực tế được chốt khi kết thúc tuần",
+  "gameStatHelpIfNominalLte": "Nếu sản lượng danh nghĩa trên toàn mạng ≤ mức trần cố định của tuần đó:",
+  "gameStatHelpUserActualEqNominal": "Thu nhập thực tế của người dùng = Sản lượng danh nghĩa của người dùng",
+  "gameStatHelpIfNominalGt": "Nếu sản lượng danh nghĩa trên toàn mạng &gt; mức trần của tuần đó:",
+  "gameStatHelpUserActualFormula": "Số lượng thực tế người dùng nhận được = Sản lượng danh nghĩa của người dùng × Giới hạn tối đa của tuần đó / Sản lượng danh nghĩa toàn mạng",
+  "gameStatHelpAddressCap": "Giới hạn hàng tuần cho mỗi địa chỉ",
+  "gameStatHelpAddressCapValue": "Mỗi địa chỉ chỉ được nhận tối đa 5% mức trần của tuần đó mỗi tuần",
+  "theaterCategoryAll": "Tất cả",
+  "theaterCategoryAncient": "Cổ trang",
+  "theaterCategoryFinance": "Tài chính",
+  "theaterCategorySuspense": "Ly kỳ",
+  "theaterCategorySciFi": "Khoa học viễn tưởng",
+  "theaterCategoryRealStory": "Dựa trên câu chuyện có thật",
+  "theaterCategoryUrban": "Thành phố",
+  "theaterSortHottest": "Nổi bật nhất",
+  "theaterSortNewest": "Mới nhất",
+  "theaterSortTopRated": "Được yêu thích nhất",
+  "theaterSortCompletedView": "Hoàn thành nhiều nhất",
+  "theaterPlayCount": "{count} lượt phát",
+  "@theaterPlayCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBasicInfo": "Thông tin cơ bản",
+  "createDramaEpisodes": "Quản lý bộ phim",
+  "createDramaRoles": "Liên kết IP",
+  "createDramaCover": "Bìa",
+  "createDramaCoverUpload": "Tải lên",
+  "createDramaCoverPlaceholder": "Hỗ trợ JPG/PNG, tối đa 5MB",
+  "createDramaCoverCropTitle": "Cắt ảnh bìa",
+  "createDramaName": "Tên vở kịch ngắn",
+  "createDramaNameHint": "Vui lòng nhập tiêu đề vở kịch ngắn",
+  "createDramaSynopsis": "Giới thiệu",
+  "createDramaTags": "Thẻ",
+  "createDramaTagsHint": "Nhập tag và nhấn Enter để thêm (VD: Tình yêu, Hài hước)",
+  "createDramaTagsLoading": "Đang tải tag…",
+  "createDramaTagsEmpty": "Không có tag khả dụng",
+  "createDramaTagsRetry": "Thử lại",
+  "createDramaUploadDesc": "Nhấp vào \"Tải lên\"; sau khi gửi, các video sẽ được sắp xếp tự động theo tên",
+  "@createDramaUploadDesc": {},
+  "createDramaEpisodesDesc": "Khi tải lên hàng loạt các tệp video, hệ thống sẽ tự động sắp xếp theo tên tệp để tạo danh sách các tập phim. Hỗ trợ các thao tác như kéo thả để sắp xếp, xóa và chỉnh sửa tiêu đề.",
+  "@createDramaEpisodesDesc": {},
+  "createDramaVideoFileTypeHint": "Định dạng hỗ trợ: mp4, flv, wmv, asf, mkv, avi, rm, rmvb, mpg, mpeg, mov, webm. Kích thước tối đa 2GB.",
+  "@createDramaVideoFileTypeHint": {},
+  "createDramaUploadVideo": "Tải lên video",
+  "createDramaVideoEmpty": "Chưa thêm video nào",
+  "createDramaVideoPickFailed": "Lỗi chọn video",
+  "createDramaVideoAnyTooLarge": "Có video vượt quá 2GB, vui lòng điều chỉnh và thử lại",
+  "createDramaVideoStatusUploading": "Đang tải lên",
+  "createDramaVideoStatusPaused": "Đã tạm dừng tải lên",
+  "createDramaVideoStatusDone": "Đã tải lên thành công",
+  "createDramaEpisodeDescriptionHint": "Mô tả tập phim",
+  "createDramaVideoStatusFailed": "Tải lên không thành công",
+  "createDramaVideoTooLarge": "Kích thước video không được vượt quá 2GB và không thể tải lên",
+  "createDramaVideoUploadComplete": "Tất cả video đã tải lên",
+  "createDramaVideoUploadFailed": "Tải lên {name} thất bại",
+  "@createDramaVideoUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoPickOverflow": "Bạn có thể thêm tối đa {count} tập nữa. {overflow} tập thừa đã bị bỏ qua.",
+  "@createDramaVideoPickOverflow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "overflow": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaAddedVideos": "Video đã thêm ({count} tệp)",
+  "@createDramaAddedVideos": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosCount": "({count} tệp)",
+  "@createDramaAddedVideosCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaAddedVideosLabel": "Video đã được thêm vào",
+  "createDramaRolesDesc": "Tạo vai diễn cho phim ngắn, đặt tên vai, ảnh đại diện và mô tả tính cách.",
+  "createDramaRolesRule1": "Mỗi phim ngắn có thể liên kết tối đa 5 IP nhân vật. Có thể thêm trong vòng 7 ngày sau khi phát hành; sau đó không thể gỡ hoặc thay thế.",
+  "createDramaRolesRule2": "Sau khi liên kết, IP nhân vật sẽ gắn với dữ liệu xem hết và độ phổ biến của phim để nâng cấp và nhận thưởng STORY.",
+  "@createDramaRolesRule2": {
+    "description": "Trong vòng 7 ngày sau khi phim được duyệt, có thể liên kết IP nhân vật; dữ liệu phát trong giai đoạn này sẽ được cộng dồn vào các IP đã liên kết."
+  },
+  "createDramaRolesExpireTime": "Thời hạn cuối",
+  "createDramaRolesRule3": "Liên kết IP là tùy chọn; bạn có thể phát hành mà không cần liên kết.",
+  "createDramaAddRole": "Thêm vai diễn",
+  "createDramaBindActor": "Vai diễn tham gia",
+  "createDramaRoleActing": "Vai diễn tham gia",
+  "createDramaSelectActor": "Chọn role",
+  "createDramaBindActorTitle": "Chọn Nhân vật IP",
+  "createDramaBindIpSelectedCount": "Đã chọn {count}",
+  "createDramaBindIpEmpty": "Chưa có dữ liệu",
+  "createDramaBindIpMarketplace": "Đến chợ IP nhân vật",
+  "createDramaBindIpConfirm": "Xác nhận liên kết",
+  "createDramaBindActorSubtitle": "Chọn một Nhân vật IP để đóng vai “{roleName}”",
+  "@createDramaBindActorSubtitle": {
+    "placeholders": {
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorOwnedCount": "Sở hữu {count} địa chỉ IP của nhân vật",
+  "@createDramaBindActorOwnedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createDramaBindActorIpLabel": "Nhân vật IP {code}",
+  "@createDramaBindActorIpLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorBoundTag": "Đã được liên kết",
+  "createDramaBindIpRemove": "Gỡ bỏ",
+  "createDramaBindActorBoundToast": "Đã liên kết {name}",
+  "@createDramaBindActorBoundToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaBindActorUnbind": "Hủy liên kết",
+  "createDramaBindActorExpired": "Đã quá thời hạn liên kết 7 ngày, không thể liên kết thêm IP nhân vật mới",
+  "createDramaBindActorEmptyTitle": "Không có Nhân vật IP để liên kết",
+  "createDramaBindActorEmptyDesc": "Bạn cần sở hữu Nhân vật IP trước khi liên kết với vai diễn",
+  "createDramaBindActorGotoCreate": "Tạo role",
+  "createDramaPrevStep": "Bước trước",
+  "createDramaNextStep": "Bước tiếp theo",
+  "createDramaSubmit": "Đăng",
+  "createDramaRoleNameLabel": "Tên vai diễn",
+  "createDramaRoleNameHint": "Vui lòng nhập tên vai diễn",
+  "createDramaRoleNameRequired": "Vui lòng nhập tên vai diễn",
+  "createDramaRoleBioLabel": "Giới thiệu vai",
+  "createDramaRoleBioHint": "Vui lòng nhập phần giới thiệu vai diễn",
+  "createDramaRoleBioRequired": "Giới thiệu vai diễn là bắt buộc",
+  "createDramaRoleAddTitle": "Thêm vai diễn",
+  "createDramaRoleEditTitle": "Chỉnh sửa vai diễn",
+  "createDramaRoleUploadAvatar": "Tải ảnh đại diện lên",
+  "createDramaRoleSave": "Lưu",
+  "createDramaRoleDeleteConfirm": "Xóa nhân vật này?",
+  "createDramaVideoDeleteConfirm": "Xóa \"{name}\"?",
+  "@createDramaVideoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "createDramaVideoDeleteTitle": "Xóa video",
+  "createDramaVideoPreviewUnavailable": "Hiện chưa thể xem trước các video đã tải lên trước đó",
+  "createDramaRoleEmpty": "Chưa thêm vai diễn nào",
+  "createDramaRoleBindComingSoon": "Liên kết role sắp ra mắt",
+  "createDramaRoleAvatarCropTitle": "Cắt ảnh đại diện vai diễn",
+  "createDramaRoleAvatarUploadFailed": "Tải lên ảnh đại diện vai diễn thất bại",
+  "createDramaPublishedSuccess": "Đăng thành công",
+  "createDramaDraftRestored": "Đã khôi phục bản nháp chưa hoàn thành",
+  "createDramaDraftClear": "Xóa dữ liệu",
+  "createDramaDraftDiscard": "Quay lại không lưu",
+  "createDramaDraftSave": "Lưu bản nháp",
+  "createDramaEditLoading": "Đang tải...",
+  "createDramaEditLoadError": "Không thể tải thông tin phim, vui lòng thử lại",
+  "createDramaSubmitValidationTitle": "Vui lòng nhập tiêu đề phim",
+  "createDramaSubmitValidationCover": "Vui lòng tải lên ảnh bìa",
+  "createDramaSubmitValidationVideos": "Vui lòng tải lên ít nhất một video",
+  "createDramaSubmitValidationSession": "Phiên tải lên không hợp lệ, vui lòng tải lại video",
+  "createDramaUploadSessionFailed": "Không thể tạo phiên tải lên",
+  "createDramaSubmitValidationRoles": "Vui lòng thêm ít nhất một vai diễn",
+  "createDramaStep1TitleRequired": "Vui lòng nhập tiêu đề vở kịch ngắn",
+  "createDramaStep1SynopsisRequired": "Vui lòng nhập phần giới thiệu",
+  "createDramaStep1CoverRequired": "Vui lòng thêm ảnh bìa",
+  "createDramaStep1TagsRequired": "Vui lòng chọn tag",
+  "createDramaEpisodeDescriptionRequired": "Vui lòng nhập mô tả tập phim",
+  "settingsLanguage": "Ngôn ngữ",
+  "settingsTheme": "Giao diện",
+  "settingsThemeLight": "Sáng",
+  "settingsThemeDark": "Tối",
+  "settingsThemeSystem": "Hệ thống",
+  "settingsUI": "Giao diện",
+  "settingsAppVersion": "Phiên bản",
+  "settingsVersionLatestToast": "Bạn đang dùng phiên bản mới nhất",
+  "settingsVersionCheckFailed": "Không kiểm tra được phiên bản. Vui lòng thử lại sau.",
+  "appVersionUpdateTitle": "Có phiên bản mới",
+  "appVersionUpdateContentsLabel": "Nội dung cập nhật:",
+  "appVersionUpdateConfirm": "Cập nhật ngay",
+  "appVersionUpdateLater": "Để sau",
+  "settingsTermsOfService": "Điều khoản dịch vụ",
+  "settingsPrivacyPolicy": "Chính sách quyền riêng tư",
+  "settingsDeleteAccount": "Xóa tài khoản",
+  "settingsDeleteAccountConfirm": "Tài khoản của bạn sẽ bị xóa vào {deadline}. Trong thời gian này, bạn có thể đăng nhập lại để hủy xóa tài khoản.",
+  "settingsDeleteAccountSuccess": "Yêu cầu xóa tài khoản đã được gửi",
+  "settingsClearCache": "Xóa bộ nhớ đệm",
+  "settingsNetworkInspector": "Kiểm tra mạng",
+  "settingsClearCacheConfirm": "Bạn có chắc chắn muốn xóa bộ nhớ đệm?",
+  "miningRulesHowToPlay": "Cách chơi chế độ \"Phái cử khai thác\"",
+  "miningRulesFlowSubtitle": "Hiểu rõ toàn bộ quy trình từ khi cử người đi đến khi nhận tiền chỉ qua một hình ảnh",
+  "miningRulesSection1Title": "1. Cử người đi khai thác",
+  "miningRulesSection1Desc": "Hãy “phân công” các role rảnh rỗi vào 5 vị trí dưới đây, và họ sẽ tự động khai thác, tạo ra STORY.",
+  "miningRulesSection1Bullet1": "Mỗi người chỉ được cử tối đa 5 role cùng lúc",
+  "miningRulesSection1Bullet2": "Một Nhân vật IP có thể được sử dụng để phân công nhiều thẻ cùng lúc",
+  "miningRulesSection1Bullet3": "Sau khi triển khai, cứ mỗi 1 giờ sẽ tiêu hao 1 điểm ⚡thể lực; nếu thể lực &gt; 0 thì sẽ tiếp tục sản xuất, còn nếu thể lực = 0 thì sẽ ngừng hoạt động",
+  "miningRulesSection2Title": "2. Tính toán, công thức tính sản lượng",
+  "miningRulesSection2Desc": "Sản lượng mỗi giờ của mỗi thẻ được tính như sau:",
+  "miningRulesSection2Formula": "Đầu ra mỗi giờ mỗi thẻ = Cát-xê nhân vật × 1 STORY",
+  "miningRulesSection2FactorsTitle": "Ba yếu tố quyết định:",
+  "miningRulesSection2Factor1": "Hệ số khai thác — Cấp độ càng cao thì hệ số càng lớn. Cấp 1 = 1,0 → Cấp 2 = 2,2 → Cấp 3 = 5,0 → Cấp 4 = 11 → Cấp 5 = 24",
+  "miningRulesSection2Factor2": "Cát-xê IP = Hệ số giá × Hệ số độ hot × Trust1",
+  "miningRulesCoefTableTitle": "Chi tiết hệ số",
+  "miningRulesCoefColCoef": "Hệ số",
+  "miningRulesCoefColFactor": "Yếu tố quyết định",
+  "miningRulesCoefColDesc": "Chi tiết",
+  "miningRulesCoefMining": "Hệ số khai thác",
+  "miningRulesCoefPrice": "Hệ số giá",
+  "miningRulesCoefHeat": "Hệ số độ hot",
+  "miningRulesCoefCp": "Hệ số CP",
+  "miningRulesCoefTrust": "Trust",
+  "miningRulesCoefMiningFactor": "Cấp độ",
+  "miningRulesCoefPriceFactor": "Giá ra mắt P0",
+  "miningRulesCoefHeatFactor": "Thành tích phim gần đây",
+  "miningRulesCoefCpFactor": "-",
+  "miningRulesCoefTrustFactor": "Kiểm soát rủi ro nền tảng",
+  "miningRulesCoefMiningDesc": "Lv1=1.0 · Lv2=2.2 · Lv3=5.0 · Lv4=11 · Lv5=24",
+  "miningRulesCoefPriceDesc": "Tuyến tính khi P0≤10{currency1} · tiệm cận mức trần 1,6 khi P0>10{currency2}",
+  "@miningRulesCoefPriceDesc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesCoefHeatDesc": "Hệ số độ hot: phim có IP nhân vật tham gia càng nhiều lượt xem hết, thích, lưu và đánh giá thì độ hot càng cao",
+  "miningRulesCoefCpDesc": "Chưa mở",
+  "miningRulesCoefTrustDesc": "Mặc định là 1,0",
+  "miningRulesSettleColCondition": "Điều kiện",
+  "miningRulesSettleColRule": "Quy tắc phân phối",
+  "miningRulesUpgradePathSubtitle": "Lộ trình nâng cấp",
+  "miningRulesUpgradeColPath": "Lộ trình nâng cấp",
+  "miningRulesUpgradeColHeat": "Ngưỡng lượt xem hết tích lũy",
+  "miningRulesUpgradeColFee": "Phí hợp thành",
+  "miningRulesUpgradePath12": "Lv1 → Lv2",
+  "miningRulesUpgradePath23": "Lv2 → Lv3",
+  "miningRulesUpgradePath34": "Lv3 → Lv4",
+  "miningRulesUpgradePath45": "Lv4 → Lv5",
+  "miningRulesUpgradeHeat12": "≥ 10,000",
+  "miningRulesUpgradeHeat23": "≥ 50,000",
+  "miningRulesUpgradeHeat34": "≥ 200,000",
+  "miningRulesUpgradeHeat45": "≥ 1,000,000",
+  "miningRulesUpgradeFee12": "10 {currency}",
+  "@miningRulesUpgradeFee12": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee23": "20 {currency}",
+  "@miningRulesUpgradeFee23": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee34": "40 {currency}",
+  "@miningRulesUpgradeFee34": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesUpgradeFee45": "80 {currency}",
+  "@miningRulesUpgradeFee45": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor3": "R_base — Giá trị cố định, hiện tại là 1 STORY; nền tảng có thể điều chỉnh thủ công sau này",
+  "miningRulesSection2StaminaText": "Thể lực chỉ phụ thuộc vào việc “có hay không”, chứ không phụ thuộc vào mức còn lại: {staminaLimit} điểm thể lực và 1 điểm thể lực đều mang lại sản lượng như nhau mỗi giờ; điều quan trọng là bạn có đang khai thác hay không.",
+  "@miningRulesSection2StaminaText": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesSection2ExampleTitle": "Ví dụ như:",
+  "miningRulesSection2ExampleDesc": "Lin Mengyao · Vai chính Lv3 · P0=12{currency} (hệ số giá ≈1.0859) · độ hot 3.5\n→ Sản lượng mỗi giờ = 5.0 × 1.0859 × 3.5 × 1 = 19.00325 STORY",
+  "@miningRulesSection2ExampleDesc": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection3Title": "3. Phát tiền, nhưng có giới hạn tối đa",
+  "miningRulesSection3Desc": "Mỗi tuần toàn nền tảng có tổng quỹ thưởng (giới hạn cứng hàng tuần), bắt đầu khoảng 2.115.385 STORY, giảm dần mỗi tuần (hàng tuần × 0.99572). Phân bổ thưởng chia thành ba trường hợp:",
+  "miningRulesSection3Case1Title": "Sản lượng danh nghĩa trên tất cả các nền tảng ≤ Tổng giải thưởng của tuần này",
+  "miningRulesSection3Case1Desc": "Mỗi người sẽ nhận toàn bộ số tiền theo danh sách; phần giải thưởng còn lại sẽ không được trao và cũng không được bù đắp",
+  "miningRulesSection3Case2Title": "Sản lượng danh nghĩa trên tất cả các nền tảng &gt; Quỹ thưởng tuần này",
+  "miningRulesSection3Case2Desc": "Tỷ lệ thu nhỏ theo tỷ lệ: Sản lượng thực tế của bạn = Sản lượng danh nghĩa của bạn × Quỹ thưởng ÷ Tổng sản lượng toàn nền tảng",
+  "miningRulesSection3Case3Title": "Một địa chỉ duy nhất chiếm hơn 5% tổng quỹ thưởng",
+  "miningRulesSection3Case3Desc": "Phần vượt quá sẽ không được phát, không được hoàn lại và không được bù điểm",
+  "miningRulesSection3ExampleDesc": "Giả sử quỹ thưởng hàng tuần là 100.000 STORY:\nTrường hợp A: Bạn là người duy nhất trên nền tảng, sản xuất 134 trong một tuần → Nhận 134, phần còn lại 99.866 không được phân bổ\nTrường hợp B: Tổng sản lượng nền tảng là 250.000, mọi người được tỷ lệ 40% (100.000÷250.000)\nTrường hợp C: Phần thưởng tỷ lệ là 6.000, nhưng giới hạn mỗi địa chỉ là 5.000 → Chỉ phân bổ 5.000",
+  "miningRulesSection4Title": "4. Phải quản lý tốt thể lực thì mới có thể tiếp tục đào được",
+  "miningRulesTableStatus": "Trạng thái",
+  "miningRulesTableStaminaChange": "Sự thay đổi về thể lực",
+  "miningRulesTableOutput": "Sản phẩm",
+  "miningRulesStatusMining": "Đang khai thác",
+  "miningRulesStaminaMining": "-1 mỗi giờ",
+  "miningRulesOutputNormal": "Sản lượng bình thường",
+  "miningRulesStatusZeroStamina": "Thể lực = 0",
+  "miningRulesStaminaZeroStamina": "Không còn thay đổi nữa",
+  "miningRulesOutputZero": "Kết quả là 0",
+  "miningRulesStatusResting": "Ngừng hoạt động để nghỉ ngơi",
+  "miningRulesStaminaResting": "+1 mỗi giờ (tự động phục hồi)",
+  "miningRulesOutputPaused": "Tạm ngừng sản xuất",
+  "miningRulesStatusPaidRefill": "Bổ sung thể lực (trả phí)",
+  "miningRulesStaminaPaidRefill": "Nạp đầy ngay lập tức {staminaLimit}",
+  "@miningRulesStaminaPaidRefill": {
+    "placeholders": {
+      "staminaLimit": {
+        "type": "int"
+      }
+    }
+  },
+  "miningRulesOutputRestored": "Khôi phục sản lượng",
+  "miningRulesSection4TipsTitle": "3 điều cần biết về việc bổ sung thể lực:",
+  "miningRulesSection4Tip1": "Chỉ có thể nạp đầy bằng một cú nhấp chuột, không thể chỉ mua 10 điểm",
+  "miningRulesSection4Tip2": "Giá chỉ phụ thuộc vào cấp độ, không phụ thuộc vào lượng thể lực còn lại. Dù nạp đầy khi thể lực là 0 hay khi thể lực là 100, số tiền phải trả đều như nhau.",
+  "miningRulesSection4Tip3": "Càng gần 0 thì việc nạp thêm càng tiết kiệm — với cùng một khoản tiền, bạn sẽ nhận được thời gian khai thác mới nhiều nhất",
+  "miningRulesSection4PriceTitle": "Giá bổ sung cho từng hạng:",
+  "miningRulesPriceTableTier": "Vị thế",
+  "miningRulesPriceTableFullRefill": "Đổ đầy chỉ với một cú nhấp chuột",
+  "miningRulesLv1": "Cấp 1: Quần chúng",
+  "miningRulesLv2": "Cấp 2 - Nhân vật phụ",
+  "miningRulesLv3": "Cấp 3 - Nhân vật chính",
+  "miningRulesLv4": "Cấp 4: Siêu sao",
+  "miningRulesLv5": "Cấp 5 – Siêu sao hàng đầu",
+  "miningRulesLv1Price": "15 {currency}",
+  "@miningRulesLv1Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv2Price": "36 {currency}",
+  "@miningRulesLv2Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv3Price": "87 {currency}",
+  "@miningRulesLv3Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv4Price": "208 {currency}",
+  "@miningRulesLv4Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesLv5Price": "465 {currency}",
+  "@miningRulesLv5Price": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection5Title": "5. Nâng cao vị thế, kiếm được nhiều tiền hơn",
+  "miningRulesSection5Desc": "3 thẻ của nhân vật cùng đẳng cấp + phí tổng hợp + nhân vật đó đạt chỉ tiêu lượt xem hết tích lũy = thăng 1 cấp. Sau khi thăng cấp, hệ số khai thác tăng vọt, sản lượng mỗi giờ tăng gấp đôi hoặc thậm chí gấp nhiều lần.",
+  "miningRulesSummaryTitle": "Tóm tắt trong một câu",
+  "miningRulesSummaryDesc": "Điều phái → Sản xuất → Theo dõi thể lực → Nhận tiền. Khi thể lực sắp hết, hãy bổ sung hoặc gọi về nghỉ ngơi; độ hot tăng nhờ thành tích phim của nhân vật, nâng cấp giúp sản lượng bứt phá.",
+  "playerNotInterested": "Không quan tâm",
+  "playerNotInterestedDone": "Đã nhận phản hồi của bạn. Chúng tôi sẽ ít đề xuất nội dung tương tự",
+  "playerClearScreen": "Xóa màn hình",
+  "playerAutoPlay": "Phát liên tục",
+  "playerReport": "Báo cáo",
+  "playerReportSuccess": "Đã báo cáo thành công",
+  "commentReportSuccess": "Đã gửi thành công, chúng tôi sẽ xử lý sớm",
+  "reportSuccessTitle": "Gửi thành công, chúng tôi sẽ xử lý sớm",
+  "reportSuccessThanks": "Cảm ơn bạn đã góp phần giữ cộng đồng an toàn!",
+  "reportSuccessAlsoYouCan": "Bạn cũng có thể",
+  "reportSuccessDone": "Xong",
+  "reportReduceRecommend": "Giảm đề xuất",
+  "reportReduceRecommendDone": "Đã giảm đề xuất",
+  "reportSuccessContentFallback": "Nội dung này",
+  "reportDescription": "Mô tả báo cáo",
+  "reportDescriptionPlaceholder": "Mô tả chi tiết (Tùy chọn)",
+  "reportReasonPorn": "Khiêu dâm & tục tĩu",
+  "reportReasonIllegal": "Bất hợp pháp hoặc Hình sự",
+  "reportReasonSensitive": "Nội dung nhạy cảm",
+  "reportReasonGambling": "Đánh bạc hoặc Bạo lực",
+  "reportReasonMinors": "Gây hại cho Trẻ vị thành niên",
+  "reportReasonCopyright": "Vi phạm Bản quyền",
+  "reportReasonQuality": "Vấn đề Chất lượng",
+  "reportReasonNotLike": "Tôi không thích",
+  "reportReasonOther": "Khác",
+  "gameUpgrade": "Nâng cấp",
+  "gameUpgradeTitle": "Nâng cấp cấp độ",
+  "gameUpgradeCurrentLevel": "Cấp độ hiện tại",
+  "gameUpgradeTargetLevel": "Cấp độ mục tiêu",
+  "gameUpgradeHeatThreshold": "Lượt xem hết drama tích lũy",
+  "gameUpgradeRequiredCount": "Tiêu thụ role cùng IP cùng cấp",
+  "gameUpgradeFee": "Phí nâng cấp",
+  "gameUpgradeNextLevelReq": "Yêu cầu cấp độ tiếp theo",
+  "gameUpgradeBeforeAfter": "So sánh trước và sau nâng cấp",
+  "gameUpgradeSelectMaterialDesc": "Chọn role cùng IP cùng cấp để tiêu thụ",
+  "gameUpgradeMaterialCount": "{current}/{required}",
+  "@gameUpgradeMaterialCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeToLevel": "Nâng cấp lên Lv{level} {levelName}",
+  "@gameUpgradeToLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "levelName": {
+        "type": "String"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterialLabel": "Chọn vật liệu ({current}/{required})",
+  "@gameUpgradeSelectMaterialLabel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeSelectMaterials": "Vui lòng chọn {count} vật liệu",
+  "@gameUpgradeSelectMaterials": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gameUpgradeConfirm": "Xác nhận nâng cấp",
+  "gameUpgradeSuccess": "Nâng cấp thành công",
+  "gameUpgradeFailed": "Nâng cấp thất bại, vui lòng thử lại",
+  "gameUpgradeInsufficientMaterials": "Không đủ vật liệu",
+  "gameUpgradeNoMaterials": "Không có role cùng IP và cấp độ để tiêu hao",
+  "creatorDramaStatusMinted": "Đã đúc",
+  "creatorDramaStatusOffline": "Đã gỡ",
+  "creatorDramaStatusUnavailable": "Tạm thời không khả dụng",
+  "creatorMintDramaNft": "Đúc NFT phim",
+  "creatorMintConfirmDesc": "Xác nhận đúc phim này thành NFT trên chuỗi. Sau khi đúc, phim này sẽ tạo ra phần thưởng khai thác STORY.",
+  "creatorMintFee": "Phí đúc",
+  "creatorMintInsufficientUsdc": "Số dư {currency1} không đủ. Ra mắt on-chain cần ít nhất 1 {currency2}.",
+  "@creatorMintInsufficientUsdc": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintInvalidDramaId": "ID phim không hợp lệ",
+  "creatorMintInProgress": "Đang đúc, vui lòng chờ",
+  "creatorMintWalletNotReady": "Địa chỉ ví Solana chưa sẵn sàng. Vui lòng đăng nhập lại",
+  "creatorMintDigestEmpty": "Dữ liệu chữ ký ra mắt trống, vui lòng thử lại sau",
+  "creatorMintWalletMismatch": "Ví đúc không khớp với ví hiện tại. Vui lòng đăng nhập lại",
+  "creatorMintSuccess": "Đúc thành công!",
+  "@creatorMintDramaOnChain": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintDramaOnChain": "NFT phim \"{name}\" đã được đúc lên chuỗi",
+  "@creatorMintNftNumber": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "creatorMintNftNumber": "Số NFT: {id}",
+  "creatorMintTxHash": "Mã giao dịch: ",
+  "gameSelectActor": "Chọn role triển khai",
+  "gameSelectActorDesc": "Chọn một nhân vật đang rảnh để cử đi",
+  "agentV2SchedulePerformance": "Biểu diễn",
+  "agentV2PerformAllTitle": "Tự động biểu diễn",
+  "agentV2PerformAllDescription": "Nhân vật có cát-xê cao hơn sẽ được xếp vào vị trí trống trước",
+  "agentV2PerformAllFailed": "Biểu diễn một chạm thất bại. Vui lòng thử lại",
+  "agentV2PerformAllSuccess": "Biểu diễn một chạm thành công",
+  "agentV2PerformAllDepletedResult": "{successCount} diễn viên biểu diễn thành công, {depletedCount} diễn viên tạm thời không thể biểu diễn do hết thể lực",
+  "agentV2RestAllSuccess": "Nghỉ một chạm thành công",
+  "agentV2PerformAllCount": "{count} nhân vật",
+  "@agentV2PerformAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2CandidateActorsTitle": "Vai diễn ứng viên",
+  "agentV2CandidateActorsDescription": "Vai diễn đang nghỉ hồi 1 thể lực mỗi giờ",
+  "agentV2UpgradeableActorsTitle": "Nâng cấp vai diễn",
+  "agentV2UpgradeableActorsEmpty": "Không có vai diễn để nâng cấp",
+  "agentV2NoActors": "Chưa có vai diễn",
+  "agentV2UpgradeNow": "Nâng cấp ngay",
+  "agentV2UpgradeCompletion": "Lượt xem hết",
+  "agentV2UpgradeMaterials": "Vai diễn",
+  "agentV2UpgradeRequirementsTitle": "Nâng cấp {name}",
+  "@agentV2UpgradeRequirementsTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionRemaining": "Cần thêm {count} lượt xem hết",
+  "@agentV2UpgradeCompletionRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeCompletionHint": "Xem phim có nhân vật này hoặc tạo phim mới cho họ để tăng lượt xem hết",
+  "agentV2UpgradeWatchDramas": "Xem phim đã tham gia",
+  "agentV2UpgradeCreateDrama": "Tạo phim ngắn",
+  "agentV2UpgradeMaterialsRemaining": "Cần thêm {count} vai cùng IP và cùng cấp",
+  "@agentV2UpgradeMaterialsRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeMaterialsHint": "Ký thêm nhân vật “{name}” từ trang nhân vật",
+  "@agentV2UpgradeMaterialsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2UpgradeGetActors": "Nhận vai diễn",
+  "agentV2UpgradeActorsSyncing": "Đang đồng bộ {count} nhân vật mới; điều kiện nâng cấp đã được cập nhật",
+  "@agentV2UpgradeActorsSyncing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryDetailTitle": "Chi tiết cát-xê nhân vật",
+  "agentV2SalaryHourly": "Cát-xê mỗi giờ",
+  "agentV2SalaryUnit": "STORY / giờ",
+  "agentV2SalaryFormula": "Cát-xê nhân vật = Cát-xê IP × Hệ số cát-xê × Hệ số CP × Trust2",
+  "agentV2SalaryFormulaLv1": "Cát-xê nhân vật cấp 1 = Hệ số giá × Hệ số độ hot",
+  "agentV2SalaryFormulaLevel": "Cát-xê cấp {level} = Cát-xê cấp 1 × Hệ số cát-xê",
+  "@agentV2SalaryFormulaLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2SalaryLv1Pay": "Lv.1 Cát-xê",
+  "agentV2SalaryCoefficient": "Hệ số cát-xê",
+  "agentV2SalaryCoefficientWithLevel": "Hệ số cát-xê (Lv.{level} {roleName})",
+  "@agentV2SalaryCoefficientWithLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "roleName": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2SalaryCpCoefficient": "Hệ số CP",
+  "agentV2PerformanceConfirmDescription": "Nhân vật này tự động kiếm cát-xê khi biểu diễn. Mỗi giờ biểu diễn tiêu hao 1 điểm thể lực; khi hết thể lực sẽ ngừng kiếm thu nhập.",
+  "agentV2PerformanceConfirmTitle": "Sắp xếp biểu diễn",
+  "agentV2PerformanceZeroFeePrefix": "IP của nhân vật này hiện ",
+  "agentV2PerformanceZeroFeeHighlight": "cát-xê là 0",
+  "agentV2PerformanceZeroFeeSuffix": ", buổi biểu diễn sẽ không mang lại doanh thu. Ngoài ra mỗi giờ biểu diễn tiêu tốn 1 điểm thể lực. Bạn có muốn tiếp tục không?",
+  "agentV2PerformanceScheduledSuccess": "Đã sắp xếp biểu diễn",
+  "agentV2PerformanceSlotsFull": "Các vị trí biểu diễn đã đầy (tối đa 5)",
+  "gameDeployStaminaDepleted": "Thể lực đã cạn. Hãy bổ sung thể lực trước khi biểu diễn",
+  "agentMoreRules": "Quy tắc",
+  "agentMoreSalaryAndPool": "Cát-xê và quỹ thưởng",
+  "agentV2WeeklySalaryTitle": "Lên cấp · Biểu diễn · Kiếm cát-xê",
+  "agentV2WeeklySalaryLabel": "Cát-xê tuần này",
+  "gameDeployConfirmDesc": "Nhân vật này sẽ tự động tham gia khai thác staking và liên tục tạo lợi nhuận STORY cho bạn. Lưu ý: Mỗi đầu giờ sẽ tiêu hao 1 điểm thể lực. Khi hết thể lực, việc tạo lợi nhuận sẽ dừng lại.",
+  "gameRecallConfirm": "Xác nhận triệu hồi",
+  "gameRecallDesc": "Triệu hồi nhân vật này sẽ tạm dừng phần thưởng sản xuất phim, nhưng thể lực hiện tại không bị ảnh hưởng.",
+  "actorStatCompletionTitle": "Lượt xem hết",
+  "actorStatCompletionDesc": "Tổng số lượt xem hết trên tất cả các phim mà nhân vật này tham gia",
+  "actorStatHeatTitle": "Độ hot",
+  "actorStatHeatDesc": "Tổng độ hot trong 30 ngày gần nhất của tất cả phim ngắn mà IP nhân vật này tham gia",
+  "dramaFavoriteLabel": "Yêu thích",
+  "dramaRatingLabel": "Đánh giá",
+  "dramaUnnamed": "Chưa đặt tên",
+  "videoNotReady": "Video chưa sẵn sàng, vui lòng thử lại sau",
+  "inviteDirectSubordinates": "Người dùng đã mời",
+  "@inviteTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "inviteTotalCount": "Tổng cộng: {count} người dùng",
+  "inviteTotalLabel": "Tổng số người dùng",
+  "inviteActiveLabel": "Người dùng hoạt động",
+  "invitePendingLabel": "Chờ kích hoạt",
+  "inviteEmpty": "Chưa có người dùng cấp dưới",
+  "@inviteRegisteredAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteRegisteredAt": "Đăng ký vào {date}",
+  "searchNoData": "Không có nội dung liên quan",
+  "gameActorLevelName1": "Phụ",
+  "gameActorLevelName2": "Vai phụ",
+  "gameActorLevelName3": "Vai chính",
+  "gameActorLevelName4": "Siêu sao",
+  "gameActorLevelName5": "Hạng nhất",
+  "gameUpgradeMaxLevel": "Đã đạt cấp độ cao nhất",
+  "listNoMoreData": "Không còn dữ liệu",
+  "@agentV2RefillActorCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@agentV2RestActorCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "salaryPoolRateUnit": "STORY / giờ",
+  "salaryPoolDecayInfo": "Hệ số suy giảm theo tuần ×0.99572",
+  "salaryPoolStakeLabel": "Quỹ thưởng biểu diễn (75%)",
+  "salaryPoolInviteLabel": "Quỹ thưởng mời tham gia (25%)",
+  "salaryPoolRule1Title": "Tổng sản lượng danh nghĩa ≤ trần cứng theo tuần:",
+  "salaryPoolRule2Title": "Tổng sản lượng danh nghĩa > trần cứng theo tuần:",
+  "salaryPoolRule2Body": "Thực nhận của người dùng = sản lượng danh nghĩa người dùng × (trần cứng theo tuần ÷ tổng sản lượng danh nghĩa toàn mạng)",
+  "actorStatIpPowerTitle": "Cát-xê IP",
+  "actorStatIpPowerDesc": "Cát-xê IP = Hệ số giá × Hệ số độ nổi tiếng × Trust1",
+  "agentV2TodoHealthy": "Biểu diễn bình thường · Đủ thể lực",
+  "agentV2TodoPerform": "Biểu diễn",
+  "agentV2TodoRefill": "Bổ sung",
+  "agentV2TodoVacancies": "Còn {count} vị trí biểu diễn trống",
+  "@agentV2TodoVacancies": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "agentV2UpgradeConfirmSalaryLabel": "Cát-xê",
+  "agentV2UpgradeConfirmSelectMaterials": "Chọn nhân vật cùng IP và cấp độ để tiêu hao",
+  "commentsReplyTo": "Trả lời @{nickname}: ",
+  "@commentsReplyTo": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDelete": "Xóa",
+  "financeDashboardActorVaultRanking": "Xếp hạng kho IP nhân vật",
+  "financeDashboardCoveredActorIp": "IP nhân vật được hỗ trợ",
+  "financeDashboardFeeMint": "Phí ký hợp đồng",
+  "financeDashboardFeeRoyalty": "Tiền bản quyền thứ cấp",
+  "financeDashboardFeeItemPurchase": "Mua vật phẩm",
+  "financeDashboardFeeTx": "Phí giao dịch",
+  "financeDashboardPageTitle": "Bảng tài chính nền tảng",
+  "financeDashboardRecentUsdcLedger": "Thu nhập USDC gần đây",
+  "financeDashboardTabStoryRelease": "Tổng quan phân phối STORY",
+  "financeDashboardTabUsdcIncome": "Chi tiết thu nhập USDC",
+  "financeDashboardTabVaultFunds": "Tích lũy quỹ kho",
+  "financeDashboardTotalStoryReleased": "Tổng STORY đã phân phối",
+  "financeDashboardTotalUsdcIncome": "Tổng thu nhập USDC",
+  "financeDashboardTotalVaultFunds": "Tổng quỹ kho",
+  "financeDashboardViewMore": "Xem thêm",
+  "miningRulesSection2Factor4": "Hệ số giá — giá phát hành P0: P0≤10{currency1} tăng tuyến tính · P0>10{currency2} tiến dần đến mức trần 1,6",
+  "@miningRulesSection2Factor4": {
+    "placeholders": {
+      "currency1": {
+        "type": "String"
+      },
+      "currency2": {
+        "type": "String"
+      }
+    }
+  },
+  "miningRulesSection2Factor5": "Hệ số độ nổi tiếng — thành tích phim gần đây càng tốt thì độ nổi tiếng càng cao (lượt xem hết, lượt thích, lưu và bình luận)",
+  "miningRulesSection2Factor6": "Hệ số CP — chưa mở; Trust mặc định là 1,0",
+  "nftSortIpPower": "Cát-xê IP",
+  "notificationDelete": "Xóa",
+  "notificationDeleteFailed": "Xóa không thành công. Vui lòng thử lại sau",
+  "storyReleaseCategoryInvestors": "Nhà đầu tư",
+  "storyReleaseCategoryLiquidity": "Launchpad + Thanh khoản",
+  "storyReleaseCategoryMarketOps": "Vận hành thị trường",
+  "storyReleaseCategoryNftMiningPool": "Quỹ khai thác NFT",
+  "storyReleaseCategoryTeam": "Đội ngũ",
+  "storyReleaseCategoryTreasury": "Kho bạc",
+  "storyReleaseFieldAmount": "Số lượng",
+  "storyReleaseFieldHardLimit": "Trần cứng theo tuần",
+  "storyReleaseFieldInviteRewards": "Khai thác qua lời mời",
+  "storyReleaseFieldMiningRewards": "Khai thác staking",
+  "storyReleaseFieldPeriod": "Chu kỳ",
+  "storyReleaseFieldProgress": "Tiến độ phân phối",
+  "storyReleaseFieldRatio": "Tỷ lệ",
+  "storyReleaseFieldReleased": "Đã phân phối",
+  "storyReleaseFieldTarget": "Đối tượng phân bổ",
+  "storyReleaseFieldUsageRate": "Tỷ lệ sử dụng",
+  "storyReleaseTabAllocation": "Phân bổ tổng STORY",
+  "storyReleaseTabMiningRelease": "Phân phối khai thác gần đây",
+  "storyReleaseTotalSupplyBadge": "Tổng {total} STORY",
+  "@storyReleaseTotalSupplyBadge": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "actorPriceUnitName": "Điểm",
+  "agentV2TodoStaminaDepleted": "{name} đã hết năng lượng (0) và ngừng làm việc",
+  "@agentV2TodoStaminaDepleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "agentV2TodoTitle": "Việc cần làm",
+  "iapBalance": "Số dư",
+  "iapConfirmPurchase": "Xác nhận mua",
+  "iapCrediting": "Đang xử lý ghi có, vui lòng chờ",
+  "iapGainedPoints": "+{value}",
+  "@iapGainedPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "iapNoProducts": "Không có sản phẩm nào khả dụng",
+  "iapOrderInFlight": "Bạn có đơn hàng chưa hoàn thành cho mục này, vui lòng thử lại sau",
+  "iapPointsCount": "{count} điểm",
+  "@iapPointsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "iapPurchaseFailed": "Mua thất bại, vui lòng thử lại",
+  "iapPurchaseFailedTitle": "Mua thất bại",
+  "iapPurchaseSuccess": "Mua thành công",
+  "iapSheetSubtitle": "Điểm được dùng cho các dịch vụ trong ứng dụng như ký hợp đồng nhân vật",
+  "iapSheetTitle": "Mua điểm",
+  "iapSuccessConfirm": "OK",
+  "agentV3WeeklySalary": "Cát-xê tuần",
+  "agentV3PerformAll": "Diễn tất cả",
+  "agentV3RestAll": "Nghỉ tất cả",
+  "agentV3RestAllDescription": "Thu hồi tất cả nhân vật đang biểu diễn để dừng tiêu hao thể lực và sản lượng",
+  "agentV3RefillAll": "Bổ sung tất cả",
+  "agentV3RefillAllDescription": "Nạp đầy thể lực cho các nhân vật đang diễn",
+  "agentV3RefillCost": "Tiêu hao",
+  "agentV3RefillNoActors": "Không có nhân vật nào cần bổ sung thể lực",
+  "agentV3SignActor": "Ký nhân vật",
+  "agentV3Todo": "Việc cần làm",
+  "agentV3Upgrade": "Nâng cấp",
+  "agentV3UpgradeMaterialHint": "Nâng cấp cần tiêu hao {count} nhân vật cùng IP và cấp độ",
+  "@agentV3UpgradeMaterialHint": {
+    "placeholders": {"count": {"type": "int"}}
+  },
+  "agentV3Waiting": "Chờ diễn",
+  "agentV3WaitingActorsTitle": "Nhân vật chờ",
+  "agentV3WaitingActorsDescription": "Nhân vật đang nghỉ hồi 1 thể lực mỗi giờ",
+  "agentV3Recycle": "Thu hồi",
+  "agentV3RecycleActorsTitle": "Thu hồi nhân vật",
+  "agentV3RecyclePerforming": "Đang diễn",
+  "agentV3RecycleReceive": "Bạn sẽ nhận được",
+  "agentV3RecyclePermanentWarning": "Nhân vật sẽ bị tiêu hủy vĩnh viễn và không thể khôi phục",
+  "agentV3RecycleConfirm": "Xác nhận tiêu hủy",
+  "agentV3RecycleConfirmAgain": "Nhấn lần nữa để tiêu hủy",
+  "agentV3RecycleSubmitted": "Thu hồi nhân vật thành công",
+  "agentV3RecycleEstimateUnavailable": "Không thể lấy ước tính thu hồi. Vui lòng thử lại",
+  "agentV3EnergyPack": "Gói hồi thể lực",
+  "agentV3EnergyPackDescription": "Hồi đầy thể lực nhân vật, được tiêu hao theo cấp nhân vật.",
+  "agentV3TrainingManual": "Sổ tay huấn luyện",
+  "agentV3TrainingManualDescription": "Nguyên liệu nâng cấp nhân vật, được tiêu hao theo cấp nhân vật khi nâng cấp.",
+  "agentV3PurchaseButton": "Mua",
+  "agentV3PurchaseWalletBalance": "Số dư {balance} {currency}",
+  "@agentV3PurchaseWalletBalance": {
+    "placeholders": {"balance": {"type": "String"}, "currency": {"type": "String"}}
+  },
+  "agentV3PurchaseTitle": "Mua {item}",
+  "@agentV3PurchaseTitle": {
+    "placeholders": {"item": {"type": "String"}}
+  },
+  "agentV3PurchaseUnitPrice": "Đơn giá",
+  "agentV3PurchaseQuantity": "Số lượng",
+  "agentV3PurchaseTotal": "Tổng cộng",
+  "agentV3PurchaseConfirm": "Xác nhận thanh toán",
+  "agentV3PurchaseUnavailable": "Môi trường hiện tại chưa hỗ trợ mua vật phẩm",
+  "agentV3PurchaseConfigUnavailable": "Giá vật phẩm hiện không khả dụng. Vui lòng thử lại sau",
+  "agentV3PurchaseSubmitted": "Mua thành công. Đã thêm vào túi vật phẩm (trang Đại diện)",
+  "agentV3PurchaseCreditPending": "Gói thể lực vẫn đang được ghi có. Vui lòng thử lại sau",
+  "agentV3PurchaseCrediting": "Đang quét chuỗi và ghi có",
+  "agentV3PurchaseBalance": "Đang có: {count}",
+  "@agentV3PurchaseBalance": {
+    "placeholders": {"count": {"type": "String"}}
+  },
+  "agentV3RefillTitle": "Hồi đầy thể lực",
+  "agentV3RefillLevelCost": "Lv.{level} tiêu hao",
+  "agentV3RefillAvailable": "Khả dụng",
+  "agentV3RefillUse": "Sử dụng",
+  "agentV3RefillSuccess": "Đã hồi đầy thể lực",
+  "agentV3RefillAllSuccess": "Đã bổ sung thể lực cho {actorCount} nhân vật (đã dùng {packCount} gói thể lực)",
+  "@agentV3RefillAllSuccess": {
+    "placeholders": {
+      "actorCount": {"type": "int"},
+      "packCount": {"type": "String"}
+    }
+  },
+  "agentV3RefillConfigUnavailable": "Cấu hình tiêu hao gói thể lực không khả dụng",
+  "agentV3RefillInsufficient": "Không đủ gói thể lực"
+}

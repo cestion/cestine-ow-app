@@ -1,0 +1,510 @@
+name: Build Story APK + IPA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: '目标环境（dev/test=debug/模拟器, production=release/签名）'
+        required: true
+        default: test
+        type: choice
+        options:
+          - development
+          - test
+          - production
+      build_target:
+        description: '构建目标（both=APK+IPA, apk=仅APK, ipa=仅IPA）'
+        required: true
+        default: both
+        type: choice
+        options:
+          - both
+          - apk
+          - ipa
+
+permissions:
+  contents: write # 允许创建 GitHub Release
+  actions: write  # 允许上传 artifact
+
+concurrency:
+  group: build-story-apk-ipa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 150
+    env:
+      ENVIRONMENT: ${{ github.event.inputs.environment || 'test' }}
+      BUILD_TARGET: ${{ github.event.inputs.build_target || 'both' }}
+      BUILD_START_TIME: ${{ github.event.repository.updated_at }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Record build start time
+        run: echo "BUILD_START_TIME=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_ENV
+
+      - name: Resolve build mode from environment
+        run: |
+          case "$ENVIRONMENT" in
+            production)
+              echo "ANDROID_BUILD_MODE=release" >> $GITHUB_ENV
+              echo "IOS_BUILD_MODE=release" >> $GITHUB_ENV
+              echo "IOS_SIGNED=true" >> $GITHUB_ENV
+              ;;
+            test)
+              # Android debug，iOS release 签名（可上 TestFlight）。
+              # ENV=test 由 --dart-define 注入，使 TestFlight 包连测试后端。
+              echo "ANDROID_BUILD_MODE=debug" >> $GITHUB_ENV
+              echo "IOS_BUILD_MODE=release" >> $GITHUB_ENV
+              echo "IOS_SIGNED=true" >> $GITHUB_ENV
+              ;;
+            *)
+              echo "ANDROID_BUILD_MODE=debug" >> $GITHUB_ENV
+              echo "IOS_BUILD_MODE=simulator" >> $GITHUB_ENV
+              echo "IOS_SIGNED=false" >> $GITHUB_ENV
+              ;;
+          esac
+
+          # build_target: both / apk / ipa
+          case "$BUILD_TARGET" in
+            apk) echo "BUILD_APK=true" >> $GITHUB_ENV; echo "BUILD_IPA=false" >> $GITHUB_ENV ;;
+            ipa) echo "BUILD_APK=false" >> $GITHUB_ENV; echo "BUILD_IPA=true"  >> $GITHUB_ENV ;;
+            *)   echo "BUILD_APK=true"  >> $GITHUB_ENV; echo "BUILD_IPA=true"  >> $GITHUB_ENV ;;
+          esac
+
+      - name: Resolve next build number (auto-increment via App Store Connect API)
+        run: |
+          # Read the current build number from pubspec (fallback if API is unavailable).
+          CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
+          echo "pubspec build number: ${CURRENT}"
+          NEXT=""
+          if [ "$BUILD_IPA" == "true" ]; then
+            APIKEY_CONTENT="${{ secrets.IOS_APP_STORE_CONNECT_API_KEY_CONTENT }}"
+            KEY_ID="${{ secrets.IOS_APP_STORE_CONNECT_KEY_ID }}"
+            ISSUER_ID="${{ secrets.IOS_APP_STORE_CONNECT_ISSUER_ID }}"
+            BUNDLE_ID="com.cestine.officeapp"
+            if [ -n "$APIKEY_CONTENT" ] && [ -n "$KEY_ID" ] && [ -n "$ISSUER_ID" ]; then
+              # The script needs the cryptography package to sign the ASC JWT.
+              python3 -m pip install --quiet cryptography 2>/dev/null \
+                || python3 -m pip install --quiet --break-system-packages cryptography \
+                || true
+              # Query App Store Connect for the highest existing build number.
+              NEXT=$(python3 .github/scripts/resolve_build_number.py \
+                "$APIKEY_CONTENT" "$KEY_ID" "$ISSUER_ID" "$BUNDLE_ID" 2>/tmp/resolve_err.log) || true
+              if [ -z "$NEXT" ]; then
+                NEXT="$CURRENT"
+                echo "::warning::Could not query App Store Connect API; falling back to pubspec build number ${CURRENT}"
+                echo "--- resolve_build_number.py stderr ---"
+                cat /tmp/resolve_err.log || true
+              else
+                echo "App Store Connect max build number found; next = ${NEXT}"
+              fi
+            else
+              echo "::warning::App Store Connect API secrets not set; using pubspec build number ${CURRENT}"
+              NEXT="$CURRENT"
+            fi
+          else
+            NEXT="$CURRENT"
+          fi
+          if [ -z "$NEXT" ]; then
+            echo "::error::Could not determine a build number (pubspec read failed and API unavailable)"
+            exit 1
+          fi
+          echo "BUILD_NUMBER=$NEXT" >> $GITHUB_ENV
+          echo "Using build number: ${NEXT}"
+
+      - name: Setup Java (for Android)
+        if: env.BUILD_APK == 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44'
+          channel: 'stable'
+          cache: true
+
+      - name: Select Xcode 26 (required by App Store Connect)
+        run: |
+          # App Store Connect requires iOS 26 SDK (Xcode 26+) since 2026.
+          # Prefer any Xcode_26* app; fall back to newest installed Xcode; fail loudly if none is 26+.
+          set -e
+          XCODE=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1 || true)
+          if [ -z "$XCODE" ]; then
+            XCODE=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1 || true)
+          fi
+          if [ -z "$XCODE" ]; then
+            echo "::error::No Xcode found under /Applications"
+            exit 1
+          fi
+          sudo xcode-select -s "$XCODE"
+          # Verify the iOS SDK version is >= 26.
+          SDKVER=$(xcrun --sdk iphoneos --show-sdk-version)
+          echo "Selected ${XCODE} (iOS SDK ${SDKVER})"
+          VERSION_MAJOR=${SDKVER%%.*}
+          if [ "${VERSION_MAJOR}" -lt 26 ]; then
+            echo "::error::iOS SDK ${SDKVER} is < 26. App Store Connect requires iOS 26 SDK. Xcode 26 must be installed on this runner."
+            exit 1
+          fi
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      # Patch: connectivity_plus 7.2.x/7.3.x references path.isUltraConstrained,
+      # which doesn't exist in the GitHub Actions Xcode SDK. Replacing the whole
+      # line with `if false {` keeps the Swift brace structure intact.
+      - name: Patch connectivity_plus isUltraConstrained
+        run: |
+          while IFS= read -r f; do
+            if grep -q 'isUltraConstrained' "$f"; then
+              perl -0pi -e 's/if #available\((?:iOS|macOS) 26\.0, \*\), path\.isUltraConstrained \{/if false {/' "$f"
+              echo "✓ Patched: $f"
+            else
+              echo "✓ Already clean: $f"
+            fi
+          done < <(find "${HOME}/.pub-cache/hosted/pub.dev" \
+            -path '*/connectivity_plus-*/ios/connectivity_plus/Sources/connectivity_plus/PathMonitorConnectivityProvider.swift' \
+            -o \
+            -path '*/connectivity_plus-*/macos/connectivity_plus/Sources/connectivity_plus/PathMonitorConnectivityProvider.swift' \
+          )
+
+      # ==================== Android 构建 ====================
+      - name: Tune Gradle memory for CI
+        if: env.BUILD_APK == 'true'
+        run: |
+          {
+            echo 'org.gradle.jvmargs=-Xmx3G -XX:MaxMetaspaceSize=768m -XX:ReservedCodeCacheSize=256m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8'
+            echo 'org.gradle.daemon=false'
+            echo 'org.gradle.workers.max=2'
+            echo 'org.gradle.vfs.watch=false'
+            echo 'kotlin.compiler.execution.strategy=in-process'
+          } >> android/gradle.properties
+
+      - name: Setup Android release signing
+        if: env.BUILD_APK == 'true' && env.ANDROID_BUILD_MODE == 'release'
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ] || [ -z "$ANDROID_KEY_PROPERTIES" ]; then
+            echo "::error::Missing ANDROID_KEYSTORE_BASE64 or ANDROID_KEY_PROPERTIES secrets"
+            exit 1
+          fi
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | tr -d '[:space:]' | base64 --decode > android/story-release.jks
+          if [ ! -s android/story-release.jks ]; then
+            echo "::error::Decoded keystore is empty. Re-create ANDROID_KEYSTORE_BASE64 with: base64 -i android/story-release.jks | tr -d '\\n'"
+            exit 1
+          fi
+          printf '%s\n' "$ANDROID_KEY_PROPERTIES" > android/key.properties
+          if ! grep -q '^storeFile=' android/key.properties; then
+            echo 'storeFile=story-release.jks' >> android/key.properties
+          fi
+
+      - name: Build APK
+        if: env.BUILD_APK == 'true'
+        run: |
+          flutter build apk --${ANDROID_BUILD_MODE} \
+            --dart-define=ENV=${ENVIRONMENT} \
+            --dart-define=DISTRIBUTION_CHANNEL=apk \
+            --target-platform android-arm64
+
+      - name: Rename APK with Timestamp
+        if: env.BUILD_APK == 'true'
+        run: |
+          cd build/app/outputs/flutter-apk/
+          TIMESTAMP=$(date +'%Y%m%d_%H%M')
+          APK_NAME="story_${ENVIRONMENT}_${TIMESTAMP}.apk"
+          mv "app-${ANDROID_BUILD_MODE}.apk" "$APK_NAME"
+          echo "APK_NAME=$APK_NAME" >> $GITHUB_ENV
+          echo "APK_PATH=build/app/outputs/flutter-apk/$APK_NAME" >> $GITHUB_ENV
+          echo "APK_RELEASE_TAG=build-${ENVIRONMENT}-$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
+
+      # ==================== iOS 构建 ====================
+      - name: Install Apple signing certificates
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        env:
+          CERTIFICATE_P12_BASE64: ${{ secrets.IOS_CERTIFICATE_P12_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+        run: |
+          if [ -z "$CERTIFICATE_P12_BASE64" ] || [ -z "$CERTIFICATE_PASSWORD" ]; then
+            echo "::error::Missing IOS_CERTIFICATE_P12_BASE64 or IOS_CERTIFICATE_PASSWORD secrets"
+            exit 1
+          fi
+          printf '%s' "$CERTIFICATE_P12_BASE64" | tr -d '[:space:]' | base64 --decode > /tmp/cert.p12
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security set-keychain-settings -lut 21600 build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security import /tmp/cert.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" \
+            -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
+          security list-keychains -s build.keychain
+
+      - name: Install provisioning profiles
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        env:
+          PROVISIONING_PROFILE_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_BASE64 }}
+        run: |
+          if [ -z "$PROVISIONING_PROFILE_BASE64" ]; then
+            echo "::error::Missing IOS_PROVISIONING_PROFILE_BASE64 secret"
+            exit 1
+          fi
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          printf '%s' "$PROVISIONING_PROFILE_BASE64" | tr -d '[:space:]' | base64 --decode \
+            > ~/Library/MobileDevice/Provisioning\ Profiles/story.mobileprovision
+
+      - name: Build IPA (signed)
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        run: |
+          cat > /tmp/ExportOptions.plist <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+            <key>teamID</key>
+            <string>7T6LG3LXBN</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>com.cestine.officeapp</key>
+              <string>cestine</string>
+            </dict>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>compileBitcode</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+          flutter build ipa \
+            --release \
+            --build-number="$BUILD_NUMBER" \
+            --export-options-plist=/tmp/ExportOptions.plist \
+            --dart-define=ENV=${ENVIRONMENT} \
+            --dart-define=DISTRIBUTION_CHANNEL=ios
+
+      - name: Build iOS app (simulator)
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED != 'true'
+        run: |
+          flutter build ios \
+            --simulator \
+            --dart-define=ENV=${ENVIRONMENT} \
+            --dart-define=DISTRIBUTION_CHANNEL=ios
+
+      - name: Rename IPA with Timestamp
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        run: |
+          TIMESTAMP=$(date +'%Y%m%d_%H%M')
+          IPA_NAME="story_${ENVIRONMENT}_${TIMESTAMP}.ipa"
+          mv build/ios/ipa/*.ipa "build/ios/ipa/$IPA_NAME"
+          echo "IPA_NAME=$IPA_NAME" >> $GITHUB_ENV
+          echo "IPA_PATH=build/ios/ipa/$IPA_NAME" >> $GITHUB_ENV
+          echo "IPA_RELEASE_TAG=ipa-${ENVIRONMENT}-$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
+
+      # ==================== TestFlight ====================
+      - name: Upload to TestFlight
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        env:
+          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.IOS_APP_STORE_CONNECT_API_KEY_CONTENT }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.IOS_APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.IOS_APP_STORE_CONNECT_ISSUER_ID }}
+        run: |
+          if [ -z "$APP_STORE_CONNECT_API_KEY_CONTENT" ]; then
+            echo "::warning::IOS_APP_STORE_CONNECT_API_KEY_CONTENT secret not set; skipping TestFlight upload"
+            exit 0
+          fi
+          mkdir -p ~/private_keys
+          echo "$APP_STORE_CONNECT_API_KEY_CONTENT" > ~/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8
+          perl -0pi -e 's/\n+\z/\n/' ~/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8
+          # altool sometimes exits 0 even when the upload fails, so capture the
+          # output and check it for errors instead of trusting the exit code.
+          set +e
+          UPLOAD_LOG=$(xcrun altool --upload-app \
+            -f "${{ env.IPA_PATH }}" \
+            -t ios \
+            --apiKey "$APP_STORE_CONNECT_KEY_ID" \
+            --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID" \
+            --apiKeyFile ~/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8 2>&1)
+          ALTOOL_EXIT=$?
+          set -e
+          echo "$UPLOAD_LOG"
+          if [ $ALTOOL_EXIT -ne 0 ] || echo "$UPLOAD_LOG" | grep -qE 'ERROR:|Failed to upload'; then
+            echo "::error::altool upload failed. Check the logs above for the reason."
+            exit 1
+          fi
+          echo "::notice::IPA uploaded to TestFlight successfully"
+
+      # ==================== 上传产物 ====================
+      - name: Upload APK Artifact
+        if: env.BUILD_APK == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APK_NAME }}
+          path: ${{ env.APK_PATH }}
+          retention-days: 30
+
+      - name: Upload IPA/App Artifact
+        if: env.BUILD_IPA == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-${{ env.ENVIRONMENT }}
+          path: |
+            build/ios/ipa/*.ipa
+            build/ios/iphonesimulator/Runner.app
+          retention-days: 30
+          if-no-files-found: warn
+
+      # ==================== GitHub Release (仅 main) ====================
+      - name: Create GitHub Release and Upload APK
+        if: env.BUILD_APK == 'true' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.APK_RELEASE_TAG }}
+          name: 🤖 Story APK ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
+          body: |
+            ## 📦 Story App Android 自动构建
+
+            - **环境**: `${{ env.ENVIRONMENT }}`
+            - **构建时间**: ${{ env.APK_RELEASE_TAG }}
+
+            ### 下载
+            点击下方 APK 文件直接下载安装。
+          files: ${{ env.APK_PATH }}
+          prerelease: true
+
+      - name: Create GitHub Release and Upload IPA
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.IPA_RELEASE_TAG }}
+          name: 🍎 Story IPA ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
+          body: |
+            ## 📦 Story App iOS 自动构建
+
+            - **环境**: `${{ env.ENVIRONMENT }}`
+            - **构建时间**: ${{ env.IPA_RELEASE_TAG }}
+
+            ### 下载
+            点击下方 IPA 文件直接下载安装。
+          files: ${{ env.IPA_PATH }}
+          prerelease: true
+
+      # ==================== 飞书通知 ====================
+      - name: Send APK to Feishu
+        if: env.BUILD_APK == 'true'
+        env:
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_CHAT_ID: ${{ secrets.FEISHU_CHAT_ID }}
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
+        run: |
+          chmod +x .github/scripts/send_to_feishu.sh
+          BUILD_END_TIME=$(date +'%Y-%m-%d %H:%M:%S UTC')
+
+          if [ -n "$FEISHU_APP_ID" ] && [ -n "$FEISHU_APP_SECRET" ] && [ -n "$FEISHU_CHAT_ID" ]; then
+            echo "📤 Using Feishu OpenAPI mode (with file upload)"
+            .github/scripts/send_to_feishu.sh openapi \
+              "$FEISHU_APP_ID" \
+              "$FEISHU_APP_SECRET" \
+              "$FEISHU_CHAT_ID" \
+              "${{ env.APK_PATH }}" \
+              "${{ env.ENVIRONMENT }}" \
+              "APK" \
+              "${{ github.actor }}" \
+              "${{ env.BUILD_START_TIME }}" \
+              "$BUILD_END_TIME"
+          elif [ -n "$FEISHU_WEBHOOK" ]; then
+            echo "📤 Using Feishu Webhook mode (notification only)"
+            .github/scripts/send_to_feishu.sh webhook \
+              "$FEISHU_WEBHOOK" \
+              "${{ env.APK_PATH }}" \
+              "${{ env.ENVIRONMENT }}" \
+              "APK" \
+              "${{ github.actor }}" \
+              "${{ env.BUILD_START_TIME }}" \
+              "$BUILD_END_TIME"
+          else
+            echo "⚠️ Feishu secrets not configured, skipping notification"
+          fi
+
+      - name: Send IPA to Feishu
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        env:
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_CHAT_ID: ${{ secrets.FEISHU_CHAT_ID }}
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
+        run: |
+          chmod +x .github/scripts/send_to_feishu.sh
+          BUILD_END_TIME=$(date +'%Y-%m-%d %H:%M:%S UTC')
+
+          if [ -n "$FEISHU_APP_ID" ] && [ -n "$FEISHU_APP_SECRET" ] && [ -n "$FEISHU_CHAT_ID" ]; then
+            echo "📤 Using Feishu OpenAPI mode (with file upload)"
+            .github/scripts/send_to_feishu.sh openapi \
+              "$FEISHU_APP_ID" \
+              "$FEISHU_APP_SECRET" \
+              "$FEISHU_CHAT_ID" \
+              "${{ env.IPA_PATH }}" \
+              "${{ env.ENVIRONMENT }}" \
+              "IPA" \
+              "${{ github.actor }}" \
+              "${{ env.BUILD_START_TIME }}" \
+              "$BUILD_END_TIME"
+          elif [ -n "$FEISHU_WEBHOOK" ]; then
+            echo "📤 Using Feishu Webhook mode (notification only)"
+            .github/scripts/send_to_feishu.sh webhook \
+              "$FEISHU_WEBHOOK" \
+              "${{ env.IPA_PATH }}" \
+              "${{ env.ENVIRONMENT }}" \
+              "IPA" \
+              "${{ github.actor }}" \
+              "${{ env.BUILD_START_TIME }}" \
+              "$BUILD_END_TIME"
+          else
+            echo "⚠️ Feishu secrets not configured, skipping notification"
+          fi
+
+      # ==================== 构建摘要 ====================
+      - name: Build summary
+        if: always()
+        run: |
+          echo "## 🎉 构建完成" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **环境**: \`${ENVIRONMENT}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **分支**: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **构建时间**: $(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 构建产物" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "$BUILD_APK" == "true" ]; then
+            echo "- **Android APK**: \`${{ env.APK_NAME }}\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "$BUILD_IPA" == "true" ]; then
+            if [ "$IOS_SIGNED" == "true" ]; then
+              echo "- **iOS IPA**: \`${{ env.IPA_NAME }}\`" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- **iOS 模拟器**: \`Runner.app\`" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📥 下载" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "前往 Actions 页面的 **Artifacts** 区域下载：" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "$BUILD_APK" == "true" ]; then
+            echo "- \`${{ env.APK_NAME }}\` - Android APK" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "$BUILD_IPA" == "true" ]; then
+            echo "- \`story-${ENVIRONMENT}\` - iOS IPA/App" >> $GITHUB_STEP_SUMMARY
+          fi
