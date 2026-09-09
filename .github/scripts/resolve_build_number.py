@@ -46,9 +46,11 @@ def _run() -> int:
     key = serialization.load_pem_private_key(p8.encode(), password=None)
     der_sig = key.sign(signing_input, ec.ECDSA(hashes.SHA256()))
     r, s = ec_utils.decode_dss_signature(der_sig)
+    # ES256 signatures must be exactly 64 bytes (32 per integer). r/s are
+    # zero-padded on the left; the original code used the integer's bit length,
+    # which produced short signatures and got 401s from App Store Connect.
     sig_b64 = b64url(
-        r.to_bytes((r.bit_length() + 7) // 8 or 1, "big")
-        + s.to_bytes((s.bit_length() + 7) // 8 or 1, "big")
+        r.to_bytes(32, "big") + s.to_bytes(32, "big")
     )
     jwt = f"{signing_input.decode()}.{sig_b64}"
 
