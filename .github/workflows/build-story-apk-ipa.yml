@@ -34,6 +34,9 @@ concurrency:
 
 jobs:
   build:
+    # Skip the auto-push run that only bumps the pubspec build number, so the
+    # build-number bump does not restart the workflow in an infinite loop.
+    if: contains(github.event.head_commit.message, '[ci skip]') == false
     runs-on: macos-15
     timeout-minutes: 150
     env:
@@ -88,24 +91,33 @@ jobs:
             ISSUER_ID="${{ secrets.IOS_APP_STORE_CONNECT_ISSUER_ID }}"
             BUNDLE_ID="com.cestine.officeapp"
             if [ -n "$APIKEY_CONTENT" ] && [ -n "$KEY_ID" ] && [ -n "$ISSUER_ID" ]; then
-              # The script needs the cryptography package to sign the ASC JWT.
-              python3 -m pip install --quiet cryptography 2>/dev/null \
-                || python3 -m pip install --quiet --break-system-packages cryptography \
-                || true
-              # Query App Store Connect for the highest existing build number.
-              NEXT=$(python3 .github/scripts/resolve_build_number.py \
-                "$APIKEY_CONTENT" "$KEY_ID" "$ISSUER_ID" "$BUNDLE_ID" 2>/tmp/resolve_err.log) || true
-              if [ -z "$NEXT" ]; then
-                NEXT="$CURRENT"
-                echo "::warning::Could not query App Store Connect API; falling back to pubspec build number ${CURRENT}"
+              if [ "$IOS_SIGNED" == "true" ]; then
+                # Signed builds MUST get a unique, increasing build number from
+                # App Store Connect. A failed query cannot safely fall back to
+                # the (stale) pubspec number -- that number likely already
+                # exists on ASC and the upload is rejected. Fail loudly instead.
+                # The script needs the cryptography package to sign the ASC JWT.
+                python3 -m pip install --quiet cryptography 2>/dev/null \
+                  || python3 -m pip install --quiet --break-system-packages cryptography \
+                  || true
+                NEXT=$(python3 .github/scripts/resolve_build_number.py \
+                  "$APIKEY_CONTENT" "$KEY_ID" "$ISSUER_ID" "$BUNDLE_ID" 2>/tmp/resolve_err.log)
+                RESOLVE_RC=$?
                 echo "--- resolve_build_number.py stderr ---"
                 cat /tmp/resolve_err.log || true
-              else
+                if [ $RESOLVE_RC -ne 0 ] || [ -z "$NEXT" ]; then
+                  echo "::error::Could not determine the next build number from App Store Connect (see stderr above). Not falling back to pubspec ${CURRENT}, which is likely already used. Fix the ASC query before retrying."
+                  exit 1
+                fi
                 echo "App Store Connect max build number found; next = ${NEXT}"
+              else
+                # Simulator build: not uploaded, build number is informational.
+                NEXT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
+                echo "Simulator build; using pubspec build number ${NEXT}"
               fi
             else
-              echo "::warning::App Store Connect API secrets not set; using pubspec build number ${CURRENT}"
-              NEXT="$CURRENT"
+              echo "::error::App Store Connect API secrets not set (IOS_APP_STORE_CONNECT_API_KEY_CONTENT / _KEY_ID / _ISSUER_ID). A signed build requires them to resolve a unique build number."
+              exit 1
             fi
           else
             NEXT="$CURRENT"
@@ -344,6 +356,23 @@ jobs:
             exit 1
           fi
           echo "::notice::IPA uploaded to TestFlight successfully"
+
+      # 上传成功后，把新构建号回写 pubspec 并提交，避免下次查询失败时
+      # 回退到已使用过的旧号撞号。[ci skip] 防止这次推送再次触发构建。
+      - name: Bump pubspec build number
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[ci skip]') == false
+        run: |
+          CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
+          if [ "$CURRENT" = "$BUILD_NUMBER" ]; then
+            echo "pubspec build number ${CURRENT} already equals ${BUILD_NUMBER}; nothing to bump."
+            exit 0
+          fi
+          sed -i '' -E "s/(^version:.*\+)[0-9]+$/\1${BUILD_NUMBER}/" pubspec.yaml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pubspec.yaml
+          git commit -m "chore: bump build number to ${BUILD_NUMBER} [ci skip]"
+          git push
 
       # ==================== 上传产物 ====================
       - name: Upload APK Artifact

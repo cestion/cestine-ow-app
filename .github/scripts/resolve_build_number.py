@@ -26,9 +26,12 @@ def b64url(b: bytes) -> str:
 def main() -> int:
     try:
         return _run()
-    except Exception:
+    except Exception as exc:
         # Any failure (bad key, network, API error, parsing) must let the
-        # caller fall back to the pubspec build number.
+        # caller fall back to the pubspec build number. Log the real reason
+        # to stderr so the workflow output shows why the query failed;
+        # the caller currently discards it (2>/tmp/...), see workflow.
+        print(f"resolve_build_number.py failed: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 3
 
 
