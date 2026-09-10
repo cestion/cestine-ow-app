@@ -100,9 +100,13 @@ jobs:
                 python3 -m pip install --quiet cryptography 2>/dev/null \
                   || python3 -m pip install --quiet --break-system-packages cryptography \
                   || true
+                # set -e must not kill the shell here, or the stderr log below
+                # never gets printed and the real error stays invisible.
+                set +e
                 NEXT=$(python3 .github/scripts/resolve_build_number.py \
                   "$APIKEY_CONTENT" "$KEY_ID" "$ISSUER_ID" "$BUNDLE_ID" 2>/tmp/resolve_err.log)
                 RESOLVE_RC=$?
+                set -e
                 echo "--- resolve_build_number.py stderr ---"
                 cat /tmp/resolve_err.log || true
                 if [ $RESOLVE_RC -ne 0 ] || [ -z "$NEXT" ]; then

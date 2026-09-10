@@ -39,9 +39,16 @@ def _run() -> int:
     p8, key_id, issuer, bundle_id = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
     # Build an ES256 JWT signed with the App Store Connect API key.
+    # Apple requires the payload to carry aud="appstoreconnect-v1"; without it
+    # every request is rejected with 401. exp must be within 20 minutes of iat.
     now = int(time.time())
     header = {"alg": "ES256", "kid": key_id, "typ": "JWT"}
-    payload = {"iss": issuer, "iat": now, "exp": now + 1200}
+    payload = {
+        "iss": issuer,
+        "iat": now,
+        "exp": now + 900,
+        "aud": "appstoreconnect-v1",
+    }
     header_b64 = b64url(json.dumps(header, separators=(",", ":")).encode())
     payload_b64 = b64url(json.dumps(payload, separators=(",", ":")).encode())
     signing_input = f"{header_b64}.{payload_b64}".encode()
@@ -56,20 +63,40 @@ def _run() -> int:
         r.to_bytes(32, "big") + s.to_bytes(32, "big")
     )
     jwt = f"{signing_input.decode()}.{sig_b64}"
+    auth = {"Authorization": f"Bearer {jwt}"}
 
-    req = urllib.request.Request(
-        "https://api.appstoreconnect.apple.com/v1/builds"
-        f"?filter[bundleId]={bundle_id}&limit=200&sort=-version",
-        headers={"Authorization": f"Bearer {jwt}"},
+    # Step 1: resolve the bundle ID to the numeric Apple app ID. /v1/builds
+    # has no filter[bundleId] -- using it there returns 200 with an empty
+    # data array (silent), which is why the build number query always failed.
+    apps_req = urllib.request.Request(
+        "https://api.appstoreconnect.apple.com/v1/apps"
+        f"?filter[bundleId]={bundle_id}&limit=1",
+        headers=auth,
     )
-    with urllib.request.urlopen(req) as r:
+    with urllib.request.urlopen(apps_req) as r:
+        apps_data = json.loads(r.read().decode())
+    if not apps_data.get("data"):
+        print(f"no app found for bundle id {bundle_id}", file=sys.stderr)
+        return 3
+    app_id = apps_data["data"][0]["id"]
+
+    # Step 2: list builds for that app ID, newest build number first.
+    builds_req = urllib.request.Request(
+        "https://api.appstoreconnect.apple.com/v1/builds"
+        f"?filter[app]={app_id}&sort=-version&limit=200",
+        headers=auth,
+    )
+    with urllib.request.urlopen(builds_req) as r:
         data = json.loads(r.read().decode())
 
     versions = []
     if data and data.get("data"):
         for b in data["data"]:
             v = b.get("attributes", {}).get("version")
-            if isinstance(v, int):
+            # The ASC API returns version as a string ("114"); accept both.
+            if isinstance(v, str) and v.strip().isdigit():
+                versions.append(int(v))
+            elif isinstance(v, int):
                 versions.append(v)
 
     if not versions:
