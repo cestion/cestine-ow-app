@@ -31,17 +31,15 @@ on:
 #   ENABLE_ANALYZER_DIFF : "false" → 关闭 analyzer 错误 diff (default: enabled)
 #
 # 模型:
-#   ANTHROPIC_MODEL      : 默认 "claude-fable-5"           (推送/PR AI 分析)
-#   MINIMAX_MODEL        : MiniMax 模型 ID                 (备用,仅在不走 Anthropic 时)
+#   MINIMAX_MODEL        : MiniMax 模型 ID                 (default: "MiniMax-M3")
 #   MINIMAX_BASE_URL     : MiniMax API base                (default: https://api.minimaxi.com/anthropic)
-#   PUSH_REVIEW_MODEL    : 代码级评审模型                  (default: ANTHROPIC_MODEL)
-#   PR_AGENT_MODEL       : PR-Agent 使用的模型             (default: anthropic/claude-opus-5)
+#   PUSH_REVIEW_MODEL    : 代码级评审模型                  (default: MINIMAX_MODEL)
+#   PR_AGENT_MODEL       : PR-Agent 使用的模型             (default: minimax/MiniMax-M3)
 #
 # 需要的 Secrets:
 #   FEISHU_APP_WEBHOOK_URL  — 飞书群机器人 webhook (与构建通知复用)
 #   LARK_WEBHOOK            — PR 通知 webhook (可与上面同一个)
-#   ANTHROPIC_API_KEY       — AI 评审 key
-#   MINIMAX_KEY_BLOB        — (可选) 混淆后的 MiniMax key,替代 ANTHROPIC_API_KEY
+#   MINIMAX_KEY_BLOB        — 混淆后的 MiniMax key,AI 分析唯一入口
 #                             用 .github/scripts/keyring.sh encode <key> 生成
 #   OPENAI_KEY              — (仅 ENABLE_PR_AGENT=true 时需要)
 #   SONAR_TOKEN/SONAR_HOST_URL — (仅 ENABLE_SONAR=true 时需要)
@@ -274,33 +272,26 @@ jobs:
         if: steps.count.outputs.count != '0'
         id: ai
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
-          ANTHROPIC_MODEL:  ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
           MINIMAX_MODEL:    ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
           MINIMAX_BASE:     ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
           COMMIT_MSG:       ${{ github.event.head_commit.message }}
           BRANCH:           ${{ github.ref_name }}
         run: |
-          # 优先 Anthropic;没有 key 时回退到 MiniMax(需 MINIMAX_KEY_BLOB)
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            API_KEY="$ANTHROPIC_API_KEY"
-            API_BASE="https://api.anthropic.com/v1/messages"
-            MODEL_ID="$ANTHROPIC_MODEL"
-          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
-            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
-            if [ -z "$API_KEY" ]; then
-              echo "assessment=_密钥解码失败_" >> "$GITHUB_OUTPUT"
-              echo "ok=0" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            API_BASE="$MINIMAX_BASE/v1/messages"
-            MODEL_ID="$MINIMAX_MODEL"
-          else
-            echo "assessment=_未配置 AI key,跳过风险评估_" >> "$GITHUB_OUTPUT"
+          if [ -z "$MINIMAX_KEY_BLOB" ]; then
+            echo "assessment=_MINIMAX_KEY_BLOB secret 未设置,跳过 AI 评估_" >> "$GITHUB_OUTPUT"
             echo "ok=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          if [ -z "$API_KEY" ]; then
+            echo "assessment=_密钥解码失败_" >> "$GITHUB_OUTPUT"
+            echo "ok=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          API_BASE="$MINIMAX_BASE/v1/messages"
+          MODEL_ID="$MINIMAX_MODEL"
 
           IMPACT=$(cat impact-report.md)
           STAT=$(cat diff-stat.txt)
@@ -410,7 +401,7 @@ jobs:
           COMPARE:    ${{ github.event.compare }}
           CHANGED:    ${{ steps.count.outputs.count }}
           ASSESSMENT: ${{ steps.ai.outputs.assessment }}
-          MODEL:      ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+          MODEL:      ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
         run: |
           if [ -z "$FEISHU_WEBHOOK_URL" ]; then
             echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
@@ -544,9 +535,8 @@ jobs:
         if: steps.count.outputs.count != '0'
         id: review
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
-          REVIEW_MODEL: ${{ vars.PUSH_REVIEW_MODEL || vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+          REVIEW_MODEL: ${{ vars.PUSH_REVIEW_MODEL || vars.MINIMAX_MODEL || 'MiniMax-M3' }}
           MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
           MINIMAX_BASE: ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
@@ -577,22 +567,18 @@ jobs:
             --arg diff "$DIFF" \
             '"# 分支\n\($branch)\n\n# 提交信息\n\($msg)\n\n# Diff\n```diff\n\($diff)\n```"')
 
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            API_KEY="$ANTHROPIC_API_KEY"
-            API_BASE="https://api.anthropic.com/v1/messages"
-            MODEL_ID="$REVIEW_MODEL"
-          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
-            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB" 2>/dev/null || echo "")
-            if [ -z "$API_KEY" ]; then
-              echo "review=_MiniMax 密钥解码失败_" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            API_BASE="$MINIMAX_BASE/v1/messages"
-            MODEL_ID="$MINIMAX_MODEL"
-          else
-            echo "review=_未配置 LLM key_" >> "$GITHUB_OUTPUT"
+          if [ -z "$MINIMAX_KEY_BLOB" ]; then
+            echo "review=_MINIMAX_KEY_BLOB secret 未设置,跳过代码评审_" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB" 2>/dev/null || echo "")
+          if [ -z "$API_KEY" ]; then
+            echo "review=_MiniMax 密钥解码失败_" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          API_BASE="$MINIMAX_BASE/v1/messages"
+          MODEL_ID="$REVIEW_MODEL"
 
           PAYLOAD=$(jq -n \
             --arg model "$MODEL_ID" \
@@ -767,16 +753,34 @@ jobs:
       contents: read
       issues: write
     steps:
+      # PR-Agent 只认明文 key,读不了我们的 blob 格式,所以先解出来。
+      # 用 --env 之外的方式传递,避免 key 出现在 action 的 env 快照里。
+      - name: Decode MiniMax key
+        id: key
+        env:
+          MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
+        run: |
+          if [ -z "$MINIMAX_KEY_BLOB" ]; then
+            echo "::error::pr-agent 需要 MINIMAX_KEY_BLOB,但它未设置"
+            exit 1
+          fi
+          KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          if [ -z "$KEY" ]; then
+            echo "::error::MINIMAX_KEY_BLOB 解码失败"
+            exit 1
+          fi
+          echo "::add-mask::$KEY"
+          echo "key=$KEY" >> "$GITHUB_OUTPUT"
+
       - name: PR-Agent action
         uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_KEY:        ${{ secrets.OPENAI_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI_API_BASE:   ${{ secrets.LITELLM_BASE_URL }}
+          # litellm 通过 OPENAI_KEY 读取所选 provider 的 key。
+          OPENAI_KEY: ${{ steps.key.outputs.key }}
+          OPENAI_API_BASE: ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
 
-          CONFIG__MODEL: ${{ vars.PR_AGENT_MODEL || 'anthropic/claude-opus-5' }}
-          CONFIG__FALLBACK_MODELS: '["anthropic/claude-haiku-4-5-20251001"]'
+          CONFIG__MODEL: ${{ vars.PR_AGENT_MODEL || 'minimax/MiniMax-M3' }}
           CONFIG__PUBLISH_OUTPUT: 'true'
           CONFIG__VERBOSITY_LEVEL: '1'
 
@@ -876,34 +880,28 @@ jobs:
 
       - name: Call LLM
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
-          ANTHROPIC_MODEL:  ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
           MINIMAX_MODEL:    ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
           MINIMAX_BASE:     ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
           PR_TITLE:         ${{ github.event.pull_request.title }}
           PR_BODY:          ${{ github.event.pull_request.body }}
         run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            API_KEY="$ANTHROPIC_API_KEY"
-            API_BASE="https://api.anthropic.com/v1/messages"
-            MODEL_ID="$ANTHROPIC_MODEL"
-          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
-            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
-            if [ -z "$API_KEY" ]; then
-              echo "## 🤖 Impact Risk" > ai-report.md
-              echo "" >> ai-report.md
-              echo "_Failed to decode MINIMAX_KEY_BLOB — check the encoded value._" >> ai-report.md
-              exit 0
-            fi
-            API_BASE="$MINIMAX_BASE/v1/messages"
-            MODEL_ID="$MINIMAX_MODEL"
-          else
+          if [ -z "$MINIMAX_KEY_BLOB" ]; then
             echo "## 🤖 Impact Risk" > ai-report.md
             echo "" >> ai-report.md
-            echo "_No AI key configured (ANTHROPIC_API_KEY / MINIMAX_KEY_BLOB) — skipping AI assessment._" >> ai-report.md
+            echo "_MINIMAX_KEY_BLOB secret 未设置 — 跳过 AI 评估。_" >> ai-report.md
             exit 0
           fi
+
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          if [ -z "$API_KEY" ]; then
+            echo "## 🤖 Impact Risk" > ai-report.md
+            echo "" >> ai-report.md
+            echo "_Failed to decode MINIMAX_KEY_BLOB — check the encoded value._" >> ai-report.md
+            exit 0
+          fi
+          API_BASE="$MINIMAX_BASE/v1/messages"
+          MODEL_ID="$MINIMAX_MODEL"
 
           IMPACT=$(cat impact-report.md)
           STAT=$(cat diff-stat.txt)

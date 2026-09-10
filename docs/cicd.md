@@ -39,30 +39,40 @@
 | `ENABLE_BUNDLE_DIFF` | **关闭** | APK 体积 diff（要跑两次 release 构建，约 20+ 分钟） |
 | `ENABLE_SONAR` | **关闭** | SonarQube 扫描 |
 | `ENABLE_PR_AGENT` | **关闭** | 第三方 PR-Agent |
-| `ANTHROPIC_MODEL` | `claude-fable-5` | AI 分析使用的模型 |
-| `MINIMAX_MODEL` | `MiniMax-M3` | 无 Anthropic key 时的回退模型 |
-| `PUSH_REVIEW_MODEL` | 同 `ANTHROPIC_MODEL` | 代码级评审模型 |
-| `PR_AGENT_MODEL` | `anthropic/claude-opus-5` | PR-Agent 模型 |
+| `MINIMAX_MODEL` | `MiniMax-M3` | AI 分析使用的模型 |
+| `MINIMAX_BASE_URL` | `https://api.minimaxi.com/anthropic` | MiniMax API 基址 |
+| `PUSH_REVIEW_MODEL` | 同 `MINIMAX_MODEL` | 代码级评审模型 |
+| `PR_AGENT_MODEL` | `minimax/MiniMax-M3` | PR-Agent 模型 |
 
 ### AI 评审用的 Secrets
 
+所有 AI 分析都走 MiniMax，唯一入口是 `MINIMAX_KEY_BLOB`。
+
 | Secret | 说明 |
 |---|---|
-| `ANTHROPIC_API_KEY` | AI 分析首选 key；设置了就走 Anthropic API |
-| `MINIMAX_KEY_BLOB` | 可选。未设置 `ANTHROPIC_API_KEY` 时的回退。用 `.github/scripts/keyring.sh encode <key>` 生成 blob（不是明文） |
-| `OPENAI_KEY` | 仅 `ENABLE_PR_AGENT=true` 时需要 |
-| `LITELLM_BASE_URL` | 可选，PR-Agent 自定义路由 |
+| `MINIMAX_KEY_BLOB` | **AI 分析唯一入口**。用 `.github/scripts/keyring.sh encode <key>` 生成 blob（不是明文） |
 | `FEISHU_APP_WEBHOOK_URL` | 飞书群机器人 webhook（与构建通知复用同一个 Secret 名） |
 | `LARK_WEBHOOK` | 可选，PR 文字通知；未设置时回退到 `FEISHU_APP_WEBHOOK_URL` |
+| `OPENAI_KEY` | 已不使用（pr-agent 改为从 `MINIMAX_KEY_BLOB` 解码） |
+| `LITELLM_BASE_URL` | 已不使用（pr-agent 直接指向 `MINIMAX_BASE_URL`） |
+| `SONAR_TOKEN` / `SONAR_HOST_URL` | 仅 `ENABLE_SONAR=true` 时需要 |
 
-未配置任何 AI key 时，AI job 会打印提示并优雅跳过（不会失败）。
+未设置 `MINIMAX_KEY_BLOB` 时，AI job 会打印提示并优雅跳过（不会失败）；`pr-agent` 例外——它是显式开启的，缺 key 会直接报错。
 
-#### 生成 `MINIMAX_KEY_BLOB`
+> 之前版本支持 `ANTHROPIC_API_KEY` 优先、MiniMax 兜底。现已按要求移除 Anthropic：三条 AI 链路（分支风险评估、代码级评审、PR 风险评估）和 `pr-agent` 全部走 MiniMax。
+
+#### 生成 `MINIMAX_KEY_BLOB` 并写入 Secret
 
 ```bash
-.github/scripts/keyring.sh encode 'sk-你的-minimax-key'
-# → 把输出整串填进 Secret MINIMAX_KEY_BLOB
+# 1. 生成 blob（注意别把明文 key 留在 shell 历史里）
+read -rs KEY && .github/scripts/keyring.sh encode "$KEY"
+# → 复制输出的整串
+
+# 2. 写进 Secret（避免明文进历史）
+read -rs BLOB && printf '%s' "$BLOB" | gh secret set MINIMAX_KEY_BLOB -R cestinevv/cestine-ow-app
 ```
+
+混淆用的是「固定盐异或 + base64」，盐明文写在 `keyring.sh` 里。它防的是**顺手看到**（翻 Secrets 列表、日志误打印），防不住有意图的人——拿到仓库代码即可还原。真正的边界是仓库和 Secret 的访问权限。**如果 key 曾经以明文出现在聊天、日志或提交里，请先轮换再混淆。**
 
 ### 为什么有自建的 `tool/pr_impact_analysis.dart`
 
