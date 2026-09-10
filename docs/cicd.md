@@ -6,8 +6,75 @@
 
 | Workflow | 触发器 | 作用 |
 |---|---|---|
-| `flutter-ci.yml` | push main / PR → main | 代码生成校验 + 格式 + 静态分析 + 单测 + 覆盖率上传（守门，不构建） |
+| `ci.yml` | push 全部分支 / PR | 静态检查门禁 + 飞书通知 + AI 风险评估 + 影响分析 + 错误/体积 diff（见下） |
 | `build-story-apk-ipa.yml` | push main / 手动 | 构建双平台（Android APK + iOS IPA/模拟器），production=签名+TestFlight，上传 GitHub Release + artifact + 飞书通知 |
+
+## ci.yml 的 Job 一览
+
+| Job | 事件 | 门禁? | 说明 |
+|---|---|---|---|
+| `ci-checks` | push + PR | ✅ | 代码生成校验 + `dart format` + `flutter analyze` + `flutter test --coverage` + codecov（唯一会 fail 的 job） |
+| `feishu-push-notify` | push | — | 提交卡片 |
+| `branch-ai-review` | push | — | 影响分析 + diff → AI 五段风险评估 → 飞书卡片 |
+| `push-code-review` | push | — | 代码级 AI 评审 → job summary + 飞书卡片 |
+| `pr-notify-lark` | PR | — | PR 打开/更新通知 |
+| `pr-impact` | PR | — | `tool/pr_impact_analysis.dart` → sticky PR 评论 |
+| `pr-impact-ai` | PR | — | 影响报告 + diff → AI 风险评估 → PR 评论 |
+| `pr-sonar` | PR | — | SonarQube（默认关闭） |
+| `pr-agent` | PR | — | 第三方 PR-Agent（默认关闭） |
+| `apk-size-diff` | push + PR | — | arm64 release APK 体积 base/head 对比（默认关闭） |
+| `analyzer-diff` | push + PR | — | `flutter analyze` base/head 新增/修复问题数 |
+
+### 开关（Settings → Variables）
+
+按需在仓库 Variables 里设置，未设置时走默认值。约定：`ENABLE_*` 用 `!= 'false'` 判断的，默认**开启**；用 `== 'true'` 判断的，默认**关闭**。
+
+| Variable | 默认 | 作用 |
+|---|---|---|
+| `ENABLE_BRANCH_AI` | 开启 | push 分支 AI 风险评估 |
+| `ENABLE_PUSH_CODE_REVIEW` | 开启 | push 代码级 AI 评审 |
+| `ENABLE_IMPACT` | 开启 | PR 静态影响分析 |
+| `ENABLE_IMPACT_AI` | 开启 | PR AI 风险评估 |
+| `ENABLE_ANALYZER_DIFF` | 开启 | analyzer 错误 diff |
+| `ENABLE_BUNDLE_DIFF` | **关闭** | APK 体积 diff（要跑两次 release 构建，约 20+ 分钟） |
+| `ENABLE_SONAR` | **关闭** | SonarQube 扫描 |
+| `ENABLE_PR_AGENT` | **关闭** | 第三方 PR-Agent |
+| `ANTHROPIC_MODEL` | `claude-fable-5` | AI 分析使用的模型 |
+| `MINIMAX_MODEL` | `MiniMax-M3` | 无 Anthropic key 时的回退模型 |
+| `PUSH_REVIEW_MODEL` | 同 `ANTHROPIC_MODEL` | 代码级评审模型 |
+| `PR_AGENT_MODEL` | `anthropic/claude-opus-5` | PR-Agent 模型 |
+
+### AI 评审用的 Secrets
+
+| Secret | 说明 |
+|---|---|
+| `ANTHROPIC_API_KEY` | AI 分析首选 key；设置了就走 Anthropic API |
+| `MINIMAX_KEY_BLOB` | 可选。未设置 `ANTHROPIC_API_KEY` 时的回退。用 `.github/scripts/keyring.sh encode <key>` 生成 blob（不是明文） |
+| `OPENAI_KEY` | 仅 `ENABLE_PR_AGENT=true` 时需要 |
+| `LITELLM_BASE_URL` | 可选，PR-Agent 自定义路由 |
+| `FEISHU_APP_WEBHOOK_URL` | 飞书群机器人 webhook（与构建通知复用同一个 Secret 名） |
+| `LARK_WEBHOOK` | 可选，PR 文字通知；未设置时回退到 `FEISHU_APP_WEBHOOK_URL` |
+
+未配置任何 AI key 时，AI job 会打印提示并优雅跳过（不会失败）。
+
+#### 生成 `MINIMAX_KEY_BLOB`
+
+```bash
+.github/scripts/keyring.sh encode 'sk-你的-minimax-key'
+# → 把输出整串填进 Secret MINIMAX_KEY_BLOB
+```
+
+### 为什么有自建的 `tool/pr_impact_analysis.dart`
+
+Web 端用 `madge` 生成 JS 模块依赖图，Dart 没有等价工具能理解本项目的分层规则，所以自建了一个：它扫描 `lib/` 的 `import`/`export`，建反向依赖图，输出「改动文件 → 传递依赖者 → 受影响的层与业务模块」。生成代码（`*.g.dart`、`lib/src/l10n/app_localizations_*.dart`）不计入。
+
+本地复现：
+
+```bash
+BASE_SHA=$(git rev-parse HEAD~1) HEAD_SHA=$(git rev-parse HEAD) \
+  dart run tool/pr_impact_analysis.dart > impact-report.md
+```
+
 
 ## 构建参数
 

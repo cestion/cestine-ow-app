@@ -1,0 +1,1207 @@
+name: Unified CI Pipeline
+
+# 代码质量门禁 + 通知 + AI 评审。
+#
+# Push 事件: 飞书通知、分支风险评估、代码级 AI 评审
+# PR 事件: Lark 通知、PR-Agent、影响分析、AI 风险评估
+# 两者都跑: 静态检查、analyzer 错误 diff、APK 体积 diff
+#
+# 注: 影响分析用的是 tool/pr_impact_analysis.dart(自建 Dart 导入图),
+# 因为 madge 一类的 JS 工具无法理解本项目的 Dart 分层依赖。
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# =============================================================================
+# Config Variables (Settings → Secrets and variables → Actions → Variables)
+#
+# 推送侧:
+#   ENABLE_BRANCH_AI        : "false" → 跳过分支 AI 风险评估        (default: enabled)
+#   ENABLE_PUSH_CODE_REVIEW : "false" → 跳过 push 代码级 AI 评审    (default: enabled)
+#
+# PR 侧:
+#   ENABLE_SONAR       : "true"  → 运行 SonarQube             (default: false)
+#   ENABLE_PR_AGENT    : "true"  → 启用 PR-Agent             (default: false)
+#   ENABLE_IMPACT      : "false" → 关闭影响分析              (default: enabled)
+#   ENABLE_IMPACT_AI   : "false" → 关闭 AI 风险评估          (default: enabled)
+#   ENABLE_BUNDLE_DIFF : "true"  → 启用 APK 体积 diff        (default: false)
+#   ENABLE_ANALYZER_DIFF : "false" → 关闭 analyzer 错误 diff (default: enabled)
+#
+# 模型:
+#   ANTHROPIC_MODEL      : 默认 "claude-fable-5"           (推送/PR AI 分析)
+#   MINIMAX_MODEL        : MiniMax 模型 ID                 (备用,仅在不走 Anthropic 时)
+#   MINIMAX_BASE_URL     : MiniMax API base                (default: https://api.minimaxi.com/anthropic)
+#   PUSH_REVIEW_MODEL    : 代码级评审模型                  (default: ANTHROPIC_MODEL)
+#   PR_AGENT_MODEL       : PR-Agent 使用的模型             (default: anthropic/claude-opus-5)
+#
+# 需要的 Secrets:
+#   FEISHU_APP_WEBHOOK_URL  — 飞书群机器人 webhook (与构建通知复用)
+#   LARK_WEBHOOK            — PR 通知 webhook (可与上面同一个)
+#   ANTHROPIC_API_KEY       — AI 评审 key
+#   MINIMAX_KEY_BLOB        — (可选) 混淆后的 MiniMax key,替代 ANTHROPIC_API_KEY
+#                             用 .github/scripts/keyring.sh encode <key> 生成
+#   OPENAI_KEY              — (仅 ENABLE_PR_AGENT=true 时需要)
+#   SONAR_TOKEN/SONAR_HOST_URL — (仅 ENABLE_SONAR=true 时需要)
+# =============================================================================
+
+concurrency:
+  # Push: 按 ref 分组(分支通知 + 两个 AI job 共享)
+  # PR:   按 PR 号分组(所有 PR job 共享)
+  group: ${{ github.event_name == 'pull_request' && format('pr-ci-{0}', github.event.pull_request.number) || format('push-ci-{0}', github.ref) }}
+  cancel-in-progress: true
+
+jobs:
+  # ===========================================================================
+  # 静态检查门禁(原 flutter-ci.yml)
+  # push 与 PR 都跑,是唯一会 fail 的 job
+  # ===========================================================================
+  ci-checks:
+    name: Analyze · Test · Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.44'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Verify codegen is up-to-date
+        run: |
+          dart run build_runner build
+          flutter gen-l10n
+          if ! git diff --exit-code --quiet lib/; then
+            echo "::error::Codegen output is not committed. Run 'dart run build_runner build' and 'flutter gen-l10n', then commit."
+            git diff --stat lib/
+            exit 1
+          fi
+
+      - name: Check formatting
+        run: dart format --set-exit-if-changed lib test
+
+      - name: Static analysis
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test --coverage
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  # ===========================================================================
+  # Push 事件 Job 1: 飞书基础通知
+  # ===========================================================================
+  feishu-push-notify:
+    name: Feishu Push Notify
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Message to Feishu
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          BRANCH: ${{ github.ref_name }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_ID: ${{ github.event.head_commit.id }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          TIMESTAMP: ${{ github.event.head_commit.timestamp }}
+          COMPARE: ${{ github.event.compare }}
+        run: |
+          if [ -z "$FEISHU_WEBHOOK_URL" ]; then
+            echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
+            exit 0
+          fi
+
+          SHORT_SHA="${COMMIT_ID:0:7}"
+          PAYLOAD=$(jq -n \
+            --arg repo    "$REPO" \
+            --arg actor   "$ACTOR" \
+            --arg branch  "$BRANCH" \
+            --arg msg     "$COMMIT_MSG" \
+            --arg sha     "$SHORT_SHA" \
+            --arg time    "$TIMESTAMP" \
+            --arg compare "$COMPARE" \
+            --arg commit  "$COMMIT_URL" \
+            '{
+              msg_type: "interactive",
+              card: {
+                config: { wide_screen_mode: true, enable_forward: true },
+                header: {
+                  template: "green",
+                  title: { tag: "plain_text", content: "🚀 新的代码提交" }
+                },
+                elements: [
+                  {
+                    tag: "div",
+                    fields: [
+                      { is_short: true, text: { tag: "lark_md", content: ("**📦 仓库**\n" + $repo) } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**🌿 分支**\n`" + $branch + "`") } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**🔖 版本**\n`" + $sha + "`") } }
+                    ]
+                  },
+                  { tag: "hr" },
+                  {
+                    tag: "div",
+                    text: { tag: "lark_md", content: ("**📝 提交信息**\n" + $msg) }
+                  },
+                  { tag: "hr" },
+                  {
+                    tag: "note",
+                    elements: [ { tag: "plain_text", content: ("⏰ " + $time) } ]
+                  },
+                  {
+                    tag: "action",
+                    actions: [
+                      {
+                        tag: "button",
+                        text: { tag: "plain_text", content: "🔍 查看提交" },
+                        type: "primary",
+                        url: $commit
+                      },
+                      {
+                        tag: "button",
+                        text: { tag: "plain_text", content: "📊 对比变更" },
+                        type: "default",
+                        url: $compare
+                      }
+                    ]
+                  }
+                ]
+              }
+            }')
+
+          curl -s -X POST "$FEISHU_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD"
+
+  # ===========================================================================
+  # Push 事件 Job 2: 分支 AI 风险评估
+  # ===========================================================================
+  branch-ai-review:
+    name: Branch AI Review
+    if: github.event_name == 'push' && vars.ENABLE_BRANCH_AI != 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.44'
+          cache: true
+
+      - name: Resolve BASE / HEAD
+        id: refs
+        run: |
+          HEAD_SHA="${{ github.event.after }}"
+          BEFORE="${{ github.event.before }}"
+
+          # 新建分支时 before 全 0,回退到与默认分支的 merge-base
+          if [[ "$BEFORE" =~ ^0+$ ]]; then
+            DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+            git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
+            BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+          else
+            BASE_SHA="$BEFORE"
+          fi
+
+          echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "head=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+          echo "Analyzing $BASE_SHA..$HEAD_SHA"
+
+      - name: Count changed files
+        id: count
+        env:
+          BASE_SHA: ${{ steps.refs.outputs.base }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
+        run: |
+          # 第一方 Dart 源码 + 根配置 + CI/基础设施;仅排除生成代码与锁文件
+          COUNT=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
+            | grep -vE '^(build|\.dart_tool|coverage)/' \
+            | grep -vE '\.(g|freezed)\.dart$|^lib/src/l10n/app_localizations_|^packages/' \
+            | grep -E '\.dart$|^(\.github/|tool/)|^[^/]*\.(yaml|yml|json|properties)$|^[^/]*Dockerfile$' \
+            | wc -l | tr -d ' ')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Changed files: $COUNT"
+
+      - name: Install deps (only if we have work to do)
+        if: steps.count.outputs.count != '0'
+        run: flutter pub get
+
+      - name: Run static impact analysis
+        if: steps.count.outputs.count != '0'
+        env:
+          BASE_SHA: ${{ steps.refs.outputs.base }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
+        run: dart run tool/pr_impact_analysis.dart > impact-report.md
+
+      - name: Build diff summary
+        if: steps.count.outputs.count != '0'
+        env:
+          BASE_SHA: ${{ steps.refs.outputs.base }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
+        run: |
+          git diff --stat "$BASE_SHA" "$HEAD_SHA" > diff-stat.txt
+          # 第一方代码;排除生成代码与锁文件
+          git diff --unified=3 "$BASE_SHA" "$HEAD_SHA" \
+            -- ':/' \
+            ':(exclude)**/*.g.dart' \
+            ':(exclude)**/*.freezed.dart' \
+            ':(exclude)lib/src/l10n/app_localizations_*.dart' \
+            ':(exclude)pubspec.lock' \
+            ':(exclude)packages/**' \
+            ':(exclude).dart_tool/**' \
+            ':(exclude)build/**' \
+            | head -c 120000 > diff-truncated.patch
+
+      - name: Call LLM
+        if: steps.count.outputs.count != '0'
+        id: ai
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
+          ANTHROPIC_MODEL:  ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+          MINIMAX_MODEL:    ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          MINIMAX_BASE:     ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
+          COMMIT_MSG:       ${{ github.event.head_commit.message }}
+          BRANCH:           ${{ github.ref_name }}
+        run: |
+          # 优先 Anthropic;没有 key 时回退到 MiniMax(需 MINIMAX_KEY_BLOB)
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            API_KEY="$ANTHROPIC_API_KEY"
+            API_BASE="https://api.anthropic.com/v1/messages"
+            MODEL_ID="$ANTHROPIC_MODEL"
+          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
+            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+            if [ -z "$API_KEY" ]; then
+              echo "assessment=_密钥解码失败_" >> "$GITHUB_OUTPUT"
+              echo "ok=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            API_BASE="$MINIMAX_BASE/v1/messages"
+            MODEL_ID="$MINIMAX_MODEL"
+          else
+            echo "assessment=_未配置 AI key,跳过风险评估_" >> "$GITHUB_OUTPUT"
+            echo "ok=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          IMPACT=$(cat impact-report.md)
+          STAT=$(cat diff-stat.txt)
+          DIFF=$(cat diff-truncated.patch)
+
+          cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
+          你是一名资深工程师 + 产品经理,正在评审一次分支 push。基于给定的分支信息、静态影响分析报告和 diff,用中文输出精简 Markdown 风险评估,包含 5 段:
+
+          **💼 业务影响** — 从终端用户视角说明:改动波及了哪些业务模块?对应的用户流程可能出现什么变化(如无法进入某页面、操作行为不同、数据展示错误、支付/发放异常)?按业务优先级排序,最多 4 条,每条格式 `- **[模块名]** — 具体影响`。若只改基础设施/工具代码,直接说 "无直接业务影响"。
+
+          **🔥 技术影响范围** — 波及的技术表面(页面、共享 controller/provider、repositories、services、构建配置、CI 等)。
+
+          **⚠️ 回归风险** — 可能坏的具体场景,按严重度排序,最多 4 条。注意构建配置(pubspec.yaml、analysis_options.yaml、l10n.yaml)与 CI workflow 的改动能影响整个构建/发布,不要因为是"非业务代码"就低估。
+
+          **🧪 测试盲区** — 引用具体文件。
+
+          **✅ 自查清单** — 3-5 条 push 前该验证的项目。
+
+          要求:控制在 800 字以内,飞书卡片渲染友好,引用文件路径和类/函数名。改动可能涉及 lib/ 之外的代码(tool/、根配置文件、.github/workflows 等),请一并评估。
+
+          # 业务模块清单(供业务影响判断参考)
+          - **创作(create)** — lib/src/view/create_*, lib/src/components/content
+          - **剧集/短剧(drama)** — lib/src/view/drama_detail_page.dart, playlist_feed_page.dart
+          - **演员(actor)** — lib/src/view/actor_*, lib/src/components/actor_detail
+          - **观看/视频流(play)** — lib/src/view/video_feed_page.dart
+          - **首页/剧场(theater)** — lib/src/view/main_shell_page.dart, theater_page.dart
+          - **收益/财务(income)** — income_page.dart, finance_dashboard_page.dart, salary_pool_page.dart
+          - **提现/钱包(withdraw)** — withdraw_page.dart, usdc_ledger_history_page.dart
+          - **邀请(invite)** — lib/src/view/invite_page.dart
+          - **挖矿(mining)** — lib/src/view/mining_rules_page.dart
+          - **游戏(game)** — game_page.dart, agent_v2_page.dart, agent_v3_page.dart
+          - **通知(notification)** — lib/src/view/notification_page.dart
+          - **个人资料(profile)** — profile_page.dart, public_profile_page.dart
+          - **社交/关注(follow)** — follow_relations_page.dart
+          - **搜索(search)** — search_page.dart
+          - **勋章(badge)** — lib/src/components/badge
+          - **NFT** — lib/src/view/nft_page.dart
+          - **内购(IAP)** — lib/src/components/iap, lib/src/services/iap_store_service.dart
+          - **鉴权(Privy)** — lib/src/services/privy_service.dart, login_page.dart
+          - **发布/上传(publish)** — publish_video_page.dart
+          - **API/仓储层** — lib/src/api, lib/src/repositories
+          - **Solana 链上** — lib/src/services/solana, lib/src/services/sponsor_service.dart
+          # 非业务代码(同样纳入评估)
+          - **构建配置** — pubspec.yaml, analysis_options.yaml, l10n.yaml, android/, ios/
+          - **工具脚本** — tool/
+          - **CI/CD** — .github/workflows/
+          PROMPT_EOF
+          SYSTEM=$(sed 's/^          //' /tmp/system-prompt.txt)
+
+          USER=$(jq -n \
+            --arg branch "$BRANCH" \
+            --arg msg    "$COMMIT_MSG" \
+            --arg impact "$IMPACT" \
+            --arg stat   "$STAT" \
+            --arg diff   "$DIFF" \
+            '"# 分支\n\($branch)\n\n# 最近提交信息\n\($msg)\n\n# 静态影响报告\n\($impact)\n\n# Diff Stat\n```\n\($stat)\n```\n\n# 截断 Diff\n```diff\n\($diff)\n```"')
+
+          PAYLOAD=$(jq -n \
+            --arg model "$MODEL_ID" \
+            --arg system "$SYSTEM" \
+            --arg user "$USER" \
+            '{
+              model: $model,
+              system: $system,
+              max_tokens: 2000,
+              messages: [ { role: "user", content: $user } ]
+            }')
+
+          RESPONSE=$(curl -sS --fail-with-body \
+            -X POST "$API_BASE" \
+            -H "x-api-key: $API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD") || {
+              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
+              {
+                echo "assessment<<EOF_ASSESSMENT"
+                echo "_AI 调用失败:_"
+                echo "\`\`\`"
+                echo "$CLEANED"
+                echo "\`\`\`"
+                echo "EOF_ASSESSMENT"
+                echo "ok=0"
+              } >> "$GITHUB_OUTPUT"
+              exit 0
+            }
+
+          CONTENT=$(echo "$RESPONSE" | jq -r '(.content // []) | map(select(.type=="text") | .text) | join("\n")')
+          if [ -z "$CONTENT" ]; then CONTENT="_无法解析 AI 响应_"; fi
+
+          {
+            echo "assessment<<EOF_ASSESSMENT"
+            echo "$CONTENT"
+            echo "EOF_ASSESSMENT"
+            echo "ok=1"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Notify Feishu
+        if: always()
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
+          REPO:       ${{ github.repository }}
+          BRANCH:     ${{ github.ref_name }}
+          ACTOR:      ${{ github.actor }}
+          COMMIT_ID:  ${{ github.event.head_commit.id }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          COMPARE:    ${{ github.event.compare }}
+          CHANGED:    ${{ steps.count.outputs.count }}
+          ASSESSMENT: ${{ steps.ai.outputs.assessment }}
+          MODEL:      ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+        run: |
+          if [ -z "$FEISHU_WEBHOOK_URL" ]; then
+            echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
+            exit 0
+          fi
+
+          SHORT_SHA="${COMMIT_ID:0:7}"
+
+          if [ "${CHANGED:-0}" = "0" ]; then
+            BODY="_本次推送未修改代码或配置文件,已跳过 AI 分析。_"
+            TEMPLATE="grey"
+            TITLE="🤖 分支变更 AI 分析(跳过)"
+          elif [ -z "$ASSESSMENT" ]; then
+            BODY="_AI 分析未生成结果,请查看 Actions 日志。_"
+            TEMPLATE="orange"
+            TITLE="🤖 分支变更 AI 分析(失败)"
+          else
+            BODY="$ASSESSMENT"
+            TEMPLATE="blue"
+            TITLE="🤖 分支变更 AI 分析"
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg repo    "$REPO" \
+            --arg branch  "$BRANCH" \
+            --arg actor   "$ACTOR" \
+            --arg sha     "$SHORT_SHA" \
+            --arg changed "$CHANGED" \
+            --arg body    "$BODY" \
+            --arg model   "$MODEL" \
+            --arg commit  "$COMMIT_URL" \
+            --arg compare "$COMPARE" \
+            --arg tmpl    "$TEMPLATE" \
+            --arg title   "$TITLE" \
+            '{
+              msg_type: "interactive",
+              card: {
+                config: { wide_screen_mode: true, enable_forward: true },
+                header: {
+                  template: $tmpl,
+                  title: { tag: "plain_text", content: $title }
+                },
+                elements: [
+                  {
+                    tag: "div",
+                    fields: [
+                      { is_short: true, text: { tag: "lark_md", content: ("**🌿 分支**\n`" + $branch + "`") } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**🔖 版本**\n`" + $sha + "`") } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**📊 源码改动**\n" + $changed + " 文件") } }
+                    ]
+                  },
+                  { tag: "hr" },
+                  { tag: "div", text: { tag: "lark_md", content: $body } },
+                  { tag: "hr" },
+                  { tag: "note", elements: [ { tag: "plain_text", content: ("🧠 " + $model + " · " + $repo) } ] },
+                  {
+                    tag: "action",
+                    actions: [
+                      { tag: "button", text: { tag: "plain_text", content: "🔍 查看提交" }, type: "primary",  url: $commit  },
+                      { tag: "button", text: { tag: "plain_text", content: "📊 对比变更" }, type: "default", url: $compare }
+                    ]
+                  }
+                ]
+              }
+            }')
+
+          curl -s -X POST "$FEISHU_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD"
+
+  # ===========================================================================
+  # Push 事件 Job 3: 代码级 AI 评审
+  # ===========================================================================
+  push-code-review:
+    name: Push Code Review (AI)
+    if: github.event_name == 'push' && vars.ENABLE_PUSH_CODE_REVIEW != 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve BASE / HEAD
+        id: refs
+        run: |
+          HEAD_SHA="${{ github.event.after }}"
+          BEFORE="${{ github.event.before }}"
+          if [[ "$BEFORE" =~ ^0+$ ]]; then
+            DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+            git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
+            BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+          else
+            BASE_SHA="$BEFORE"
+          fi
+          echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "head=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Count changed source files
+        id: count
+        env:
+          BASE_SHA: ${{ steps.refs.outputs.base }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
+        run: |
+          COUNT=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
+            | grep -vE '\.(g|freezed)\.dart$|^lib/src/l10n/app_localizations_|^packages/|^pubspec\.lock$' \
+            | grep -E '\.dart$' \
+            | wc -l | tr -d ' ')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Changed source files: $COUNT"
+
+      - name: Build diff for review
+        if: steps.count.outputs.count != '0'
+        env:
+          BASE_SHA: ${{ steps.refs.outputs.base }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
+        run: |
+          git diff --unified=5 "$BASE_SHA" "$HEAD_SHA" \
+            -- ':/' \
+            ':(exclude)**/*.g.dart' \
+            ':(exclude)**/*.freezed.dart' \
+            ':(exclude)lib/src/l10n/app_localizations_*.dart' \
+            ':(exclude)pubspec.lock' \
+            ':(exclude)packages/**' \
+            ':(exclude).dart_tool/**' \
+            ':(exclude)build/**' \
+            | head -c 150000 > /tmp/review-diff.patch
+
+      - name: Call LLM for code review
+        if: steps.count.outputs.count != '0'
+        id: review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
+          REVIEW_MODEL: ${{ vars.PUSH_REVIEW_MODEL || vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          MINIMAX_BASE: ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          DIFF=$(cat /tmp/review-diff.patch)
+
+          cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
+          你是 Flutter/Dart 代码评审专家,对一次 push 做代码质量评审。输出精简的中文 Markdown,包含:
+
+          **🔍 关键发现** — 按严重度排序,最多 5 条:
+          - 逻辑错误、潜在崩溃、资源泄漏(未 dispose 的 controller / stream 订阅 / Timer)
+          - 安全风险(XSS、敏感数据泄露、鉴权绕过、明文存储密钥)
+          - 性能问题(不必要的 Widget 重渲染、build 中的重活、同步阻塞主 isolate)
+          - 类型不安全、边界条件未处理、未捕获的 Result.failure
+
+          **✅ 做得好的地方** — 最多 3 条值得称赞的实践。
+
+          **💡 建议** — 可选优化,非阻断性,最多 3 条。
+
+          要求:引用具体文件与行号,用反引号包文件名;若代码质量良好无重大问题,直言 "未发现严重问题";控制在 600 字内。
+          PROMPT_EOF
+          SYSTEM=$(sed 's/^          //' /tmp/system-prompt.txt)
+
+          USER=$(jq -n \
+            --arg branch "$BRANCH" \
+            --arg msg "$COMMIT_MSG" \
+            --arg diff "$DIFF" \
+            '"# 分支\n\($branch)\n\n# 提交信息\n\($msg)\n\n# Diff\n```diff\n\($diff)\n```"')
+
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            API_KEY="$ANTHROPIC_API_KEY"
+            API_BASE="https://api.anthropic.com/v1/messages"
+            MODEL_ID="$REVIEW_MODEL"
+          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
+            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB" 2>/dev/null || echo "")
+            if [ -z "$API_KEY" ]; then
+              echo "review=_MiniMax 密钥解码失败_" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            API_BASE="$MINIMAX_BASE/v1/messages"
+            MODEL_ID="$MINIMAX_MODEL"
+          else
+            echo "review=_未配置 LLM key_" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg model "$MODEL_ID" \
+            --arg system "$SYSTEM" \
+            --arg user "$USER" \
+            '{
+              model: $model,
+              system: $system,
+              max_tokens: 2000,
+              messages: [ { role: "user", content: $user } ]
+            }')
+
+          RESPONSE=$(curl -sS --fail-with-body \
+            -X POST "$API_BASE" \
+            -H "x-api-key: $API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD") || {
+              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
+              echo "review=_LLM 调用失败: $CLEANED_" >> "$GITHUB_OUTPUT"
+              exit 0
+            }
+
+          CONTENT=$(echo "$RESPONSE" | jq -r '(.content // []) | map(select(.type=="text") | .text) | join("\n")')
+          if [ -z "$CONTENT" ]; then CONTENT="_无法解析 LLM 响应_"; fi
+
+          {
+            echo "review<<EOF_REVIEW"
+            echo "$CONTENT"
+            echo "EOF_REVIEW"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publish to job summary
+        if: always()
+        env:
+          CHANGED: ${{ steps.count.outputs.count }}
+          REVIEW: ${{ steps.review.outputs.review }}
+        run: |
+          {
+            echo "## 🔍 代码评审 (AI)"
+            echo ""
+            if [ "${CHANGED:-0}" = "0" ]; then
+              echo "_本次推送未修改源码,已跳过代码评审。_"
+            elif [ -z "$REVIEW" ]; then
+              echo "_代码评审未生成结果,请查看 Actions 日志。_"
+            else
+              echo "$REVIEW"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notify Feishu (optional)
+        if: steps.count.outputs.count != '0'
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          COMMIT_ID: ${{ github.event.head_commit.id }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          REVIEW: ${{ steps.review.outputs.review }}
+        run: |
+          if [ -z "$FEISHU_WEBHOOK_URL" ]; then
+            echo "FEISHU_APP_WEBHOOK_URL not set; skipping Feishu notification"
+            exit 0
+          fi
+
+          SHORT_SHA="${COMMIT_ID:0:7}"
+          PAYLOAD=$(jq -n \
+            --arg repo "$REPO" \
+            --arg branch "$BRANCH" \
+            --arg actor "$ACTOR" \
+            --arg sha "$SHORT_SHA" \
+            --arg review "${REVIEW:-_评审未生成_}" \
+            --arg commit "$COMMIT_URL" \
+            '{
+              msg_type: "interactive",
+              card: {
+                config: { wide_screen_mode: true, enable_forward: true },
+                header: {
+                  template: "blue",
+                  title: { tag: "plain_text", content: "🔍 代码评审 (AI)" }
+                },
+                elements: [
+                  {
+                    tag: "div",
+                    fields: [
+                      { is_short: true, text: { tag: "lark_md", content: ("**🌿 分支**\n`" + $branch + "`") } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**🔖 版本**\n`" + $sha + "`") } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } }
+                    ]
+                  },
+                  { tag: "hr" },
+                  { tag: "div", text: { tag: "lark_md", content: $review } },
+                  { tag: "hr" },
+                  { tag: "note", elements: [ { tag: "plain_text", content: ("📦 " + $repo) } ] },
+                  {
+                    tag: "action",
+                    actions: [
+                      { tag: "button", text: { tag: "plain_text", content: "🔍 查看提交" }, type: "primary", url: $commit }
+                    ]
+                  }
+                ]
+              }
+            }')
+
+          curl -s -X POST "$FEISHU_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD"
+
+  # ===========================================================================
+  # PR 事件 Job 1: Lark 通知
+  # ===========================================================================
+  pr-notify-lark:
+    name: Notify Lark on PR
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Lark message
+        env:
+          LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK || secrets.FEISHU_APP_WEBHOOK_URL }}
+        run: |
+          if [ -z "$LARK_WEBHOOK" ]; then
+            echo "LARK_WEBHOOK not set; skipping"
+            exit 0
+          fi
+
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_USER="${{ github.event.pull_request.user.login }}"
+          ACTION="${{ github.event.action }}"
+          REPO="${{ github.repository }}"
+
+          MSG="仓库: ${REPO}\nPR ${ACTION}: ${PR_TITLE}\n作者: ${PR_USER}\n链接: ${PR_URL}"
+
+          curl -s -X POST "$LARK_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"${MSG}\"}}"
+
+  # ===========================================================================
+  # PR 事件 Job 2: SonarQube (默认关闭)
+  # ===========================================================================
+  pr-sonar:
+    name: SonarQube
+    if: github.event_name == 'pull_request' && vars.ENABLE_SONAR == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY || 'story_app' }}
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.pullrequest.branch=${{ github.head_ref }}
+            -Dsonar.pullrequest.base=${{ github.base_ref }}
+
+  # ===========================================================================
+  # PR 事件 Job 3: PR-Agent AI Review (默认关闭,需 ENABLE_PR_AGENT=true)
+  # ===========================================================================
+  pr-agent:
+    name: PR-Agent (AI Review)
+    if: github.event_name == 'pull_request' && vars.ENABLE_PR_AGENT == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+      issues: write
+    steps:
+      - name: PR-Agent action
+        uses: qodo-ai/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_KEY:        ${{ secrets.OPENAI_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_BASE:   ${{ secrets.LITELLM_BASE_URL }}
+
+          CONFIG__MODEL: ${{ vars.PR_AGENT_MODEL || 'anthropic/claude-opus-5' }}
+          CONFIG__FALLBACK_MODELS: '["anthropic/claude-haiku-4-5-20251001"]'
+          CONFIG__PUBLISH_OUTPUT: 'true'
+          CONFIG__VERBOSITY_LEVEL: '1'
+
+          GITHUB_ACTION_CONFIG__AUTO_DESCRIBE: 'true'
+          GITHUB_ACTION_CONFIG__AUTO_REVIEW: 'true'
+          GITHUB_ACTION_CONFIG__AUTO_IMPROVE: 'false'
+
+          PR_REVIEWER__EXTRA_INSTRUCTIONS: |
+            重点关注:
+            1. 影响范围 — 改动的模块被谁引用,是否有跨页面/跨路由的副作用
+            2. 回归风险 — 是否可能破坏其他功能,尤其是共享 controller / provider / repository
+            3. 安全 — 敏感数据处理、鉴权、明文密钥、XSS
+            4. 性能 — 不必要的 Widget 重渲染、build 中的重活、主 isolate 阻塞
+            忽略纯样式和格式化建议(dart format 已经在处理)。
+
+  # ===========================================================================
+  # PR 事件 Job 4: Impact Analysis
+  # (push 侧的同一套分析由上面的 branch-ai-review 承担,避免重复)
+  # ===========================================================================
+  pr-impact:
+    name: Impact Analysis
+    if: github.event_name == 'pull_request' && vars.ENABLE_IMPACT != 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.44'
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Run impact analysis
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch origin "$HEAD_SHA" --depth=1 || true
+          dart run tool/pr_impact_analysis.dart > impact-report.md
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-impact
+          path: impact-report.md
+
+      - name: Upload impact report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: impact-report
+          path: impact-report.md
+          retention-days: 7
+
+  # ===========================================================================
+  # PR 事件 Job 5: AI 风险评估
+  # ===========================================================================
+  pr-impact-ai:
+    name: Impact Risk (AI)
+    if: github.event_name == 'pull_request' && vars.ENABLE_IMPACT_AI != 'false'
+    needs: pr-impact
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download impact report
+        uses: actions/download-artifact@v4
+        with:
+          name: impact-report
+
+      - name: Build diff summary
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git diff --numstat "$BASE_SHA" "$HEAD_SHA" > diff-numstat.txt
+          git diff --unified=3 --stat "$BASE_SHA" "$HEAD_SHA" > diff-stat.txt
+          git diff --unified=3 "$BASE_SHA" "$HEAD_SHA" \
+            -- 'lib/**' \
+            ':(exclude)**/*.g.dart' \
+            ':(exclude)**/*.freezed.dart' \
+            ':(exclude)lib/src/l10n/app_localizations_*.dart' \
+            | head -c 120000 > diff-truncated.patch
+
+      - name: Call LLM
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
+          ANTHROPIC_MODEL:  ${{ vars.ANTHROPIC_MODEL || 'claude-fable-5' }}
+          MINIMAX_MODEL:    ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          MINIMAX_BASE:     ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
+          PR_TITLE:         ${{ github.event.pull_request.title }}
+          PR_BODY:          ${{ github.event.pull_request.body }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            API_KEY="$ANTHROPIC_API_KEY"
+            API_BASE="https://api.anthropic.com/v1/messages"
+            MODEL_ID="$ANTHROPIC_MODEL"
+          elif [ -n "$MINIMAX_KEY_BLOB" ]; then
+            API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+            if [ -z "$API_KEY" ]; then
+              echo "## 🤖 Impact Risk" > ai-report.md
+              echo "" >> ai-report.md
+              echo "_Failed to decode MINIMAX_KEY_BLOB — check the encoded value._" >> ai-report.md
+              exit 0
+            fi
+            API_BASE="$MINIMAX_BASE/v1/messages"
+            MODEL_ID="$MINIMAX_MODEL"
+          else
+            echo "## 🤖 Impact Risk" > ai-report.md
+            echo "" >> ai-report.md
+            echo "_No AI key configured (ANTHROPIC_API_KEY / MINIMAX_KEY_BLOB) — skipping AI assessment._" >> ai-report.md
+            exit 0
+          fi
+
+          IMPACT=$(cat impact-report.md)
+          STAT=$(cat diff-stat.txt)
+          DIFF=$(cat diff-truncated.patch)
+
+          cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
+          你是一名资深工程师 + 产品经理,正在评审一个 pull request。你会收到:(1) 静态影响分析报告,(2) diff stat,(3) 截断的 unified diff,(4) 项目业务模块清单。用中文输出精简的 Markdown 风险评估,包含以下 5 段:
+
+          **💼 业务影响** — 从终端用户视角说明:改动波及了哪些业务模块?对应的用户流程可能出现什么变化(如无法进入某个页面、某个操作行为不同、数据展示错误、支付/发放异常)?按业务优先级排序,最多 5 条,每条格式为 `- **[模块名]** — 具体影响`。如果只改基础设施/工具代码没有直接业务影响,明确说 "无直接业务影响"。
+
+          **🔥 技术影响范围** — 波及的技术表面(页面、共享 controller/provider、repositories、services、构建配置、CI 等)。
+
+          **⚠️ 回归风险** — 具体可能坏的场景,按严重度排序,最多 5 条。注意构建配置(pubspec.yaml、analysis_options.yaml、l10n.yaml)与 CI 改动能影响整个构建与发布。
+
+          **🧪 测试盲区** — 未覆盖的路径,引用具体文件。
+
+          **✅ Reviewer checklist** — 合并前必须验证的 3-6 项。
+
+          要求:引用具体文件路径和类/函数名;若 diff 看起来安全,直言无风险;不要重复静态报告的内容,要在其上增加信号。改动可能涉及 lib/ 之外的代码(tool/、根配置文件、.github/workflows 等),请一并评估。
+
+          # 业务模块清单(供业务影响判断参考)
+          - **创作(create)** — lib/src/view/create_*, lib/src/components/content
+          - **剧集/短剧(drama)** — lib/src/view/drama_detail_page.dart, playlist_feed_page.dart
+          - **演员(actor)** — lib/src/view/actor_*, lib/src/components/actor_detail
+          - **观看/视频流(play)** — lib/src/view/video_feed_page.dart
+          - **首页/剧场(theater)** — lib/src/view/main_shell_page.dart, theater_page.dart
+          - **收益/财务(income)** — income_page.dart, finance_dashboard_page.dart, salary_pool_page.dart
+          - **提现/钱包(withdraw)** — withdraw_page.dart, usdc_ledger_history_page.dart
+          - **邀请(invite)** — lib/src/view/invite_page.dart
+          - **挖矿(mining)** — lib/src/view/mining_rules_page.dart
+          - **游戏(game)** — game_page.dart, agent_v2_page.dart, agent_v3_page.dart
+          - **通知(notification)** — lib/src/view/notification_page.dart
+          - **个人资料(profile)** — profile_page.dart, public_profile_page.dart
+          - **社交/关注(follow)** — follow_relations_page.dart
+          - **搜索(search)** — search_page.dart
+          - **勋章(badge)** — lib/src/components/badge
+          - **NFT** — lib/src/view/nft_page.dart
+          - **内购(IAP)** — lib/src/components/iap, lib/src/services/iap_store_service.dart
+          - **鉴权(Privy)** — lib/src/services/privy_service.dart, login_page.dart
+          - **发布/上传(publish)** — publish_video_page.dart
+          - **API/仓储层** — lib/src/api, lib/src/repositories
+          - **Solana 链上** — lib/src/services/solana, lib/src/services/sponsor_service.dart
+          # 非业务代码(同样纳入评估)
+          - **构建配置** — pubspec.yaml, analysis_options.yaml, l10n.yaml, android/, ios/
+          - **工具脚本** — tool/
+          - **CI/CD** — .github/workflows/
+          PROMPT_EOF
+          SYSTEM=$(sed 's/^          //' /tmp/system-prompt.txt)
+
+          USER=$(jq -n \
+            --arg title "$PR_TITLE" \
+            --arg body  "$PR_BODY" \
+            --arg impact "$IMPACT" \
+            --arg stat   "$STAT" \
+            --arg diff   "$DIFF" \
+            '"# PR Title\n\($title)\n\n# PR Description\n\($body)\n\n# Impact Report (from static analysis)\n\($impact)\n\n# Diff Stat\n```\n\($stat)\n```\n\n# Truncated Diff\n```diff\n\($diff)\n```"')
+
+          PAYLOAD=$(jq -n \
+            --arg model "$MODEL_ID" \
+            --arg system "$SYSTEM" \
+            --arg user "$USER" \
+            '{
+              model: $model,
+              system: $system,
+              max_tokens: 2500,
+              messages: [ { role: "user", content: $user } ]
+            }')
+
+          RESPONSE=$(curl -sS --fail-with-body \
+            -X POST "$API_BASE" \
+            -H "x-api-key: $API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD") || {
+              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
+              {
+                echo "## 🤖 Impact Risk"
+                echo ""
+                echo "_AI call failed:_"
+                echo '```'
+                echo "$CLEANED"
+                echo '```'
+              } > ai-report.md
+              exit 0
+            }
+
+          CONTENT=$(echo "$RESPONSE" | jq -r '(.content // []) | map(select(.type=="text") | .text) | join("\n")')
+          if [ -z "$CONTENT" ]; then CONTENT="_Failed to parse AI response._"; fi
+
+          {
+            echo "## 🤖 Impact Risk"
+            echo ""
+            echo "$CONTENT"
+          } > ai-report.md
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-impact-ai
+          path: ai-report.md
+
+  # ===========================================================================
+  # Job 6: APK 体积 Diff(push 与 PR 都跑,默认关闭)
+  # ===========================================================================
+  apk-size-diff:
+    name: APK Size Diff
+    if: vars.ENABLE_BUNDLE_DIFF == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.44'
+          cache: true
+
+      - name: Resolve BASE / HEAD
+        id: refs
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "base=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            HEAD_SHA="${{ github.event.after }}"
+            BEFORE="${{ github.event.before }}"
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+              git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
+              BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+            else
+              BASE_SHA="$BEFORE"
+            fi
+            echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
+            echo "head=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+          fi
+
+      # arm64-only keeps this to one ABI instead of three (~3x faster). The
+      # delta between base and head is what matters, not absolute size.
+      - name: Build BASE
+        run: |
+          git checkout ${{ steps.refs.outputs.base }}
+          flutter pub get
+          flutter build apk --release --target-platform android-arm64 \
+            --dart-define=ENV=production \
+            --dart-define=DISTRIBUTION_CHANNEL=apk
+          du -sk build/app/outputs/flutter-apk/app-release.apk > /tmp/base-size.txt
+
+      - name: Build HEAD
+        run: |
+          git checkout ${{ steps.refs.outputs.head }}
+          flutter pub get
+          flutter build apk --release --target-platform android-arm64 \
+            --dart-define=ENV=production \
+            --dart-define=DISTRIBUTION_CHANNEL=apk
+          du -sk build/app/outputs/flutter-apk/app-release.apk > /tmp/head-size.txt
+
+      - name: Compare
+        run: |
+          BASE_KB=$(awk '{print $1}' /tmp/base-size.txt)
+          HEAD_KB=$(awk '{print $1}' /tmp/head-size.txt)
+          DELTA_KB=$((HEAD_KB - BASE_KB))
+          PCT=$(awk "BEGIN { printf \"%.2f\", ($DELTA_KB / $BASE_KB) * 100 }")
+
+          {
+            echo "## 📦 APK Size Diff"
+            echo ""
+            echo "| Ref | Size (arm64 release) |"
+            echo "|-----|------|"
+            echo "| Base | $(numfmt --to=iec --suffix=B $((BASE_KB * 1024))) |"
+            echo "| Head | $(numfmt --to=iec --suffix=B $((HEAD_KB * 1024))) |"
+            echo "| **Δ** | **${DELTA_KB} KB (${PCT}%)** |"
+            echo ""
+            if [ "$DELTA_KB" -gt 500 ]; then
+              echo "> ⚠️ APK 增长超过 500 KB,请确认没有意外引入大体积依赖或资源。"
+            fi
+          } > apk-size-report.md
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: apk-size
+          path: apk-size-report.md
+
+      - name: Publish to job summary
+        if: github.event_name == 'push'
+        run: cat apk-size-report.md >> "$GITHUB_STEP_SUMMARY"
+
+  # ===========================================================================
+  # Job 7: Analyzer 错误 Diff(push 与 PR 都跑)
+  # ===========================================================================
+  analyzer-diff:
+    name: Analyzer Error Diff
+    if: vars.ENABLE_ANALYZER_DIFF != 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.44'
+          cache: true
+
+      - name: Resolve BASE / HEAD
+        id: refs
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "base=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "head=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            HEAD_SHA="${{ github.event.after }}"
+            BEFORE="${{ github.event.before }}"
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+              git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
+              BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+            else
+              BASE_SHA="$BEFORE"
+            fi
+            echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
+            echo "head=$HEAD_SHA" >> "$GITHUB_OUTPUT"
+          fi
+
+      - run: flutter pub get
+
+      # Line:col positions are blanked so a finding that merely shifted line
+      # numbers is not reported as both new and fixed.
+      - name: Analyze HEAD
+        run: |
+          flutter analyze --no-pub 2>&1 \
+            | python3 .github/scripts/analyzer_diff_normalize.py \
+            | sort -u > /tmp/head-errors.txt || true
+          echo "HEAD findings: $(wc -l < /tmp/head-errors.txt)"
+
+      - name: Analyze BASE
+        run: |
+          git checkout ${{ steps.refs.outputs.base }}
+          flutter pub get
+          flutter analyze --no-pub 2>&1 \
+            | python3 .github/scripts/analyzer_diff_normalize.py \
+            | sort -u > /tmp/base-errors.txt || true
+          echo "BASE findings: $(wc -l < /tmp/base-errors.txt)"
+
+      - name: Return to HEAD
+        run: git checkout ${{ steps.refs.outputs.head }}
+
+      - name: Diff
+        run: |
+          NEW=$(comm -23 /tmp/head-errors.txt /tmp/base-errors.txt)
+          FIXED=$(comm -13 /tmp/head-errors.txt /tmp/base-errors.txt)
+          NEW_COUNT=$(echo "$NEW" | grep -c . || true)
+          FIXED_COUNT=$(echo "$FIXED" | grep -c . || true)
+
+          {
+            echo "## 🔍 Analyzer Error Diff"
+            echo ""
+            echo "- ✅ Fixed: **${FIXED_COUNT}**"
+            echo "- ❌ New:   **${NEW_COUNT}**"
+            echo ""
+            if [ "$NEW_COUNT" -gt 0 ]; then
+              echo "<details open><summary>New findings</summary>"
+              echo ""
+              echo '```'
+              echo "$NEW"
+              echo '```'
+              echo "</details>"
+            fi
+            if [ "$FIXED_COUNT" -gt 0 ]; then
+              echo "<details><summary>Fixed findings</summary>"
+              echo ""
+              echo '```'
+              echo "$FIXED"
+              echo '```'
+              echo "</details>"
+            fi
+          } > analyzer-report.md
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: analyzer-diff
+          path: analyzer-report.md
+
+      - name: Publish to job summary
+        if: github.event_name == 'push'
+        run: cat analyzer-report.md >> "$GITHUB_STEP_SUMMARY"
