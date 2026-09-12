@@ -14,6 +14,18 @@ on:
     branches: ["**"]
   pull_request:
     types: [opened, synchronize, reopened]
+  # 手动对任意区间补做影响/回归分析。只有 branch-ai-review 会跑 —— 其余 job 的 if
+  # 都限定了 push / pull_request,手动触发时自动跳过。
+  workflow_dispatch:
+    inputs:
+      base:
+        description: '起始 commit（留空 = 当前 HEAD 的上一个提交）'
+        required: false
+        type: string
+      head:
+        description: '结束 commit（留空 = 当前 HEAD）'
+        required: false
+        type: string
 
 # =============================================================================
 # Config Variables (Settings → Secrets and variables → Actions → Variables)
@@ -48,7 +60,11 @@ on:
 concurrency:
   # Push: 按 ref 分组(分支通知 + 两个 AI job 共享)
   # PR:   按 PR 号分组(所有 PR job 共享)
-  group: ${{ github.event_name == 'pull_request' && format('pr-ci-{0}', github.event.pull_request.number) || format('push-ci-{0}', github.ref) }}
+  # 手动: 按 run_id 单独分组 —— 否则会落进 push-ci-<ref>,把正在跑的 push CI 取消掉
+  group: >-
+    ${{ github.event_name == 'pull_request' && format('pr-ci-{0}', github.event.pull_request.number)
+     || github.event_name == 'workflow_dispatch' && format('manual-ci-{0}', github.run_id)
+     || format('push-ci-{0}', github.ref) }}
   cancel-in-progress: true
 
 jobs:
@@ -186,11 +202,14 @@ jobs:
             -d "$PAYLOAD"
 
   # ===========================================================================
-  # Push 事件 Job 2: 分支 AI 风险评估
+  # Push 事件 Job 2: 影响范围 / 影响点 / 回归范围 分析
+  # 也承接 workflow_dispatch,用于对任意历史区间补做同一份分析
   # ===========================================================================
   branch-ai-review:
     name: Branch AI Review
-    if: github.event_name == 'push' && vars.ENABLE_BRANCH_AI != 'false'
+    if: >-
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      && vars.ENABLE_BRANCH_AI != 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -206,17 +225,32 @@ jobs:
 
       - name: Resolve BASE / HEAD
         id: refs
+        env:
+          INPUT_BASE: ${{ inputs.base }}
+          INPUT_HEAD: ${{ inputs.head }}
         run: |
-          HEAD_SHA="${{ github.event.after }}"
-          BEFORE="${{ github.event.before }}"
-
-          # 新建分支时 before 全 0,回退到与默认分支的 merge-base
-          if [[ "$BEFORE" =~ ^0+$ ]]; then
-            DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
-            git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
-            BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # 手动触发:没有 push 事件上下文,用输入值,留空则退回 HEAD~1..HEAD
+            HEAD_SHA="${INPUT_HEAD:-${{ github.sha }}}"
+            BASE_SHA="${INPUT_BASE:-$(git rev-parse "$HEAD_SHA"^ 2>/dev/null || echo "$HEAD_SHA")}"
+            if ! git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
+              echo "::error::base 不是有效的 commit: $BASE_SHA"; exit 1
+            fi
+            if ! git cat-file -e "$HEAD_SHA^{commit}" 2>/dev/null; then
+              echo "::error::head 不是有效的 commit: $HEAD_SHA"; exit 1
+            fi
           else
-            BASE_SHA="$BEFORE"
+            HEAD_SHA="${{ github.event.after }}"
+            BEFORE="${{ github.event.before }}"
+
+            # 新建分支时 before 全 0,回退到与默认分支的 merge-base
+            if [[ "$BEFORE" =~ ^0+$ ]]; then
+              DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+              git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
+              BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
+            else
+              BASE_SHA="$BEFORE"
+            fi
           fi
 
           echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
@@ -229,11 +263,13 @@ jobs:
           BASE_SHA: ${{ steps.refs.outputs.base }}
           HEAD_SHA: ${{ steps.refs.outputs.head }}
         run: |
-          # 第一方 Dart 源码 + 根配置 + CI/基础设施;仅排除生成代码与锁文件
+          # 第一方 Dart 源码 + 根配置 + CI/基础设施;仅排除生成代码与锁文件。
+          # ios/ android/ 必须在白名单里:只改签名配置或 Gradle 的提交同样能搞坏发版,
+          # 漏掉它们会让 count=0,整个分析被跳过。
           COUNT=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" \
             | grep -vE '^(build|\.dart_tool|coverage)/' \
             | grep -vE '\.(g|freezed)\.dart$|^lib/src/l10n/app_localizations_|^packages/' \
-            | grep -E '\.dart$|^(\.github/|tool/)|^[^/]*\.(yaml|yml|json|properties)$|^[^/]*Dockerfile$' \
+            | grep -E '\.dart$|^(\.github/|tool/|ios/|android/)|^[^/]*\.(yaml|yml|json|properties)$|^[^/]*Dockerfile$' \
             | wc -l | tr -d ' ')
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "Changed files: $COUNT"
@@ -277,11 +313,19 @@ jobs:
           MINIMAX_BASE:     ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
           COMMIT_MSG:       ${{ github.event.head_commit.message }}
           BRANCH:           ${{ github.ref_name }}
+          BASE_SHA:         ${{ steps.refs.outputs.base }}
+          HEAD_SHA:         ${{ steps.refs.outputs.head }}
         run: |
           if [ -z "$MINIMAX_KEY_BLOB" ]; then
             echo "assessment=_MINIMAX_KEY_BLOB secret 未设置,跳过 AI 评估_" >> "$GITHUB_OUTPUT"
             echo "ok=0" >> "$GITHUB_OUTPUT"
             exit 0
+          fi
+
+          # workflow_dispatch 没有 head_commit 上下文,从 git 里取
+          if [ -z "$COMMIT_MSG" ]; then
+            COMMIT_MSG=$(git log -1 --pretty=%B "$HEAD_SHA" 2>/dev/null \
+              || echo '(手动触发,无提交信息)')
           fi
 
           API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
@@ -297,49 +341,15 @@ jobs:
           STAT=$(cat diff-stat.txt)
           DIFF=$(cat diff-truncated.patch)
 
-          cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
-          你是一名资深工程师 + 产品经理,正在评审一次分支 push。基于给定的分支信息、静态影响分析报告和 diff,用中文输出精简 Markdown 风险评估,包含 5 段:
+          # 输出规格与模块清单在共享 prompt 文件里,pr-impact-ai 用同一份。
+          # 以前两个 job 各抄一份 42 行的 prompt,已经开始漂移。
+          # 业务模块清单不再写死在这里 —— 它由 tool/pr_impact_analysis.dart 生成并
+          # 附在 impact-report.md 末尾,是唯一来源。
+          SYSTEM="$(cat .github/prompts/impact-regression.md)
 
-          **💼 业务影响** — 从终端用户视角说明:改动波及了哪些业务模块?对应的用户流程可能出现什么变化(如无法进入某页面、操作行为不同、数据展示错误、支付/发放异常)?按业务优先级排序,最多 4 条,每条格式 `- **[模块名]** — 具体影响`。若只改基础设施/工具代码,直接说 "无直接业务影响"。
-
-          **🔥 技术影响范围** — 波及的技术表面(页面、共享 controller/provider、repositories、services、构建配置、CI 等)。
-
-          **⚠️ 回归风险** — 可能坏的具体场景,按严重度排序,最多 4 条。注意构建配置(pubspec.yaml、analysis_options.yaml、l10n.yaml)与 CI workflow 的改动能影响整个构建/发布,不要因为是"非业务代码"就低估。
-
-          **🧪 测试盲区** — 引用具体文件。
-
-          **✅ 自查清单** — 3-5 条 push 前该验证的项目。
-
-          要求:控制在 800 字以内,飞书卡片渲染友好,引用文件路径和类/函数名。改动可能涉及 lib/ 之外的代码(tool/、根配置文件、.github/workflows 等),请一并评估。
-
-          # 业务模块清单(供业务影响判断参考)
-          - **创作(create)** — lib/src/view/create_*, lib/src/components/content
-          - **剧集/短剧(drama)** — lib/src/view/drama_detail_page.dart, playlist_feed_page.dart
-          - **演员(actor)** — lib/src/view/actor_*, lib/src/components/actor_detail
-          - **观看/视频流(play)** — lib/src/view/video_feed_page.dart
-          - **首页/剧场(theater)** — lib/src/view/main_shell_page.dart, theater_page.dart
-          - **收益/财务(income)** — income_page.dart, finance_dashboard_page.dart, salary_pool_page.dart
-          - **提现/钱包(withdraw)** — withdraw_page.dart, usdc_ledger_history_page.dart
-          - **邀请(invite)** — lib/src/view/invite_page.dart
-          - **挖矿(mining)** — lib/src/view/mining_rules_page.dart
-          - **游戏(game)** — game_page.dart, agent_v2_page.dart, agent_v3_page.dart
-          - **通知(notification)** — lib/src/view/notification_page.dart
-          - **个人资料(profile)** — profile_page.dart, public_profile_page.dart
-          - **社交/关注(follow)** — follow_relations_page.dart
-          - **搜索(search)** — search_page.dart
-          - **勋章(badge)** — lib/src/components/badge
-          - **NFT** — lib/src/view/nft_page.dart
-          - **内购(IAP)** — lib/src/components/iap, lib/src/services/iap_store_service.dart
-          - **鉴权(Privy)** — lib/src/services/privy_service.dart, login_page.dart
-          - **发布/上传(publish)** — publish_video_page.dart
-          - **API/仓储层** — lib/src/api, lib/src/repositories
-          - **Solana 链上** — lib/src/services/solana, lib/src/services/sponsor_service.dart
-          # 非业务代码(同样纳入评估)
-          - **构建配置** — pubspec.yaml, analysis_options.yaml, l10n.yaml, android/, ios/
-          - **工具脚本** — tool/
-          - **CI/CD** — .github/workflows/
-          PROMPT_EOF
-          SYSTEM=$(sed 's/^          //' /tmp/system-prompt.txt)
+          ## 本次场景
+          你正在评审一次分支 push(或手动指定的 commit 区间)。控制在 800 字以内,
+          输出会直接渲染进飞书卡片。"
 
           USER=$(jq -n \
             --arg branch "$BRANCH" \
@@ -389,6 +399,37 @@ jobs:
             echo "ok=1"
           } >> "$GITHUB_OUTPUT"
 
+      # 手动触发时用户就停在 run 页面上,结果不该只发去飞书。
+      - name: Job summary
+        if: always()
+        env:
+          ASSESSMENT: ${{ steps.ai.outputs.assessment }}
+          CHANGED:    ${{ steps.count.outputs.count }}
+          BASE_SHA:   ${{ steps.refs.outputs.base }}
+          HEAD_SHA:   ${{ steps.refs.outputs.head }}
+        run: |
+          {
+            echo "## 🧪 影响范围 / 影响点 / 回归范围"
+            echo ""
+            echo "区间 \`${BASE_SHA:-?}\`..\`${HEAD_SHA:-?}\` · 源码改动 ${CHANGED:-0} 个文件"
+            echo ""
+            if [ "${CHANGED:-0}" = "0" ]; then
+              echo "_本次区间未修改代码或配置文件,已跳过 AI 分析。_"
+            elif [ -z "$ASSESSMENT" ]; then
+              echo "_AI 分析未生成结果,见 Call LLM 步骤日志。_"
+            else
+              echo "$ASSESSMENT"
+            fi
+            if [ -s impact-report.md ]; then
+              echo ""
+              echo "<details><summary>静态影响分析原文</summary>"
+              echo ""
+              head -c 60000 impact-report.md
+              echo ""
+              echo "</details>"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Notify Feishu
         if: always()
         env:
@@ -402,26 +443,44 @@ jobs:
           CHANGED:    ${{ steps.count.outputs.count }}
           ASSESSMENT: ${{ steps.ai.outputs.assessment }}
           MODEL:      ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          EVENT:      ${{ github.event_name }}
+          SERVER_URL: ${{ github.server_url }}
+          BASE_SHA:   ${{ steps.refs.outputs.base }}
+          HEAD_SHA:   ${{ steps.refs.outputs.head }}
         run: |
           if [ -z "$FEISHU_WEBHOOK_URL" ]; then
             echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
             exit 0
           fi
 
+          # workflow_dispatch 没有 head_commit / compare 上下文,自己拼。
+          # refs 步骤若因 commit 无效而失败,outputs 为空 —— 退回 GITHUB_SHA,
+          # 否则卡片里会出现 .../commit/ 这样的断链。
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            HEAD_SHA="${HEAD_SHA:-$GITHUB_SHA}"
+            BASE_SHA="${BASE_SHA:-$HEAD_SHA}"
+            COMMIT_URL="$SERVER_URL/$REPO/commit/$HEAD_SHA"
+            COMPARE="$SERVER_URL/$REPO/compare/$BASE_SHA...$HEAD_SHA"
+          fi
+          COMMIT_ID="${COMMIT_ID:-${HEAD_SHA:-$GITHUB_SHA}}"
+
           SHORT_SHA="${COMMIT_ID:0:7}"
 
           if [ "${CHANGED:-0}" = "0" ]; then
-            BODY="_本次推送未修改代码或配置文件,已跳过 AI 分析。_"
+            BODY="_本次区间未修改代码或配置文件,已跳过 AI 分析。_"
             TEMPLATE="grey"
-            TITLE="🤖 分支变更 AI 分析(跳过)"
+            TITLE="🧪 影响范围 / 回归范围 分析(跳过)"
           elif [ -z "$ASSESSMENT" ]; then
             BODY="_AI 分析未生成结果,请查看 Actions 日志。_"
             TEMPLATE="orange"
-            TITLE="🤖 分支变更 AI 分析(失败)"
+            TITLE="🧪 影响范围 / 回归范围 分析(失败)"
           else
             BODY="$ASSESSMENT"
             TEMPLATE="blue"
-            TITLE="🤖 分支变更 AI 分析"
+            TITLE="🧪 影响范围 / 影响点 / 回归范围"
+          fi
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            TITLE="$TITLE · 手动"
           fi
 
           PAYLOAD=$(jq -n \
@@ -871,11 +930,18 @@ jobs:
         run: |
           git diff --numstat "$BASE_SHA" "$HEAD_SHA" > diff-numstat.txt
           git diff --unified=3 --stat "$BASE_SHA" "$HEAD_SHA" > diff-stat.txt
+          # 整库 (':/') 而不是 'lib/**':prompt 要求评估 ios/ android/ .github/ pubspec.yaml
+          # 的影响,过去这些 diff 根本没发给模型。与 branch-ai-review 的排除列表保持一致。
           git diff --unified=3 "$BASE_SHA" "$HEAD_SHA" \
-            -- 'lib/**' \
+            -- ':/' \
             ':(exclude)**/*.g.dart' \
             ':(exclude)**/*.freezed.dart' \
             ':(exclude)lib/src/l10n/app_localizations_*.dart' \
+            ':(exclude)pubspec.lock' \
+            ':(exclude)packages/**' \
+            ':(exclude)build/**' \
+            ':(exclude).dart_tool/**' \
+            ':(exclude)coverage/**' \
             | head -c 120000 > diff-truncated.patch
 
       - name: Call LLM
@@ -887,7 +953,7 @@ jobs:
           PR_BODY:          ${{ github.event.pull_request.body }}
         run: |
           if [ -z "$MINIMAX_KEY_BLOB" ]; then
-            echo "## 🤖 Impact Risk" > ai-report.md
+            echo "## 🧪 影响范围 / 影响点 / 回归范围" > ai-report.md
             echo "" >> ai-report.md
             echo "_MINIMAX_KEY_BLOB secret 未设置 — 跳过 AI 评估。_" >> ai-report.md
             exit 0
@@ -895,7 +961,7 @@ jobs:
 
           API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
           if [ -z "$API_KEY" ]; then
-            echo "## 🤖 Impact Risk" > ai-report.md
+            echo "## 🧪 影响范围 / 影响点 / 回归范围" > ai-report.md
             echo "" >> ai-report.md
             echo "_Failed to decode MINIMAX_KEY_BLOB — check the encoded value._" >> ai-report.md
             exit 0
@@ -907,49 +973,13 @@ jobs:
           STAT=$(cat diff-stat.txt)
           DIFF=$(cat diff-truncated.patch)
 
-          cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
-          你是一名资深工程师 + 产品经理,正在评审一个 pull request。你会收到:(1) 静态影响分析报告,(2) diff stat,(3) 截断的 unified diff,(4) 项目业务模块清单。用中文输出精简的 Markdown 风险评估,包含以下 5 段:
+          # 与 branch-ai-review 共用同一份输出规格;业务模块清单由
+          # tool/pr_impact_analysis.dart 生成并附在 impact-report.md 末尾,是唯一来源。
+          SYSTEM="$(cat .github/prompts/impact-regression.md)
 
-          **💼 业务影响** — 从终端用户视角说明:改动波及了哪些业务模块?对应的用户流程可能出现什么变化(如无法进入某个页面、某个操作行为不同、数据展示错误、支付/发放异常)?按业务优先级排序,最多 5 条,每条格式为 `- **[模块名]** — 具体影响`。如果只改基础设施/工具代码没有直接业务影响,明确说 "无直接业务影响"。
-
-          **🔥 技术影响范围** — 波及的技术表面(页面、共享 controller/provider、repositories、services、构建配置、CI 等)。
-
-          **⚠️ 回归风险** — 具体可能坏的场景,按严重度排序,最多 5 条。注意构建配置(pubspec.yaml、analysis_options.yaml、l10n.yaml)与 CI 改动能影响整个构建与发布。
-
-          **🧪 测试盲区** — 未覆盖的路径,引用具体文件。
-
-          **✅ Reviewer checklist** — 合并前必须验证的 3-6 项。
-
-          要求:引用具体文件路径和类/函数名;若 diff 看起来安全,直言无风险;不要重复静态报告的内容,要在其上增加信号。改动可能涉及 lib/ 之外的代码(tool/、根配置文件、.github/workflows 等),请一并评估。
-
-          # 业务模块清单(供业务影响判断参考)
-          - **创作(create)** — lib/src/view/create_*, lib/src/components/content
-          - **剧集/短剧(drama)** — lib/src/view/drama_detail_page.dart, playlist_feed_page.dart
-          - **演员(actor)** — lib/src/view/actor_*, lib/src/components/actor_detail
-          - **观看/视频流(play)** — lib/src/view/video_feed_page.dart
-          - **首页/剧场(theater)** — lib/src/view/main_shell_page.dart, theater_page.dart
-          - **收益/财务(income)** — income_page.dart, finance_dashboard_page.dart, salary_pool_page.dart
-          - **提现/钱包(withdraw)** — withdraw_page.dart, usdc_ledger_history_page.dart
-          - **邀请(invite)** — lib/src/view/invite_page.dart
-          - **挖矿(mining)** — lib/src/view/mining_rules_page.dart
-          - **游戏(game)** — game_page.dart, agent_v2_page.dart, agent_v3_page.dart
-          - **通知(notification)** — lib/src/view/notification_page.dart
-          - **个人资料(profile)** — profile_page.dart, public_profile_page.dart
-          - **社交/关注(follow)** — follow_relations_page.dart
-          - **搜索(search)** — search_page.dart
-          - **勋章(badge)** — lib/src/components/badge
-          - **NFT** — lib/src/view/nft_page.dart
-          - **内购(IAP)** — lib/src/components/iap, lib/src/services/iap_store_service.dart
-          - **鉴权(Privy)** — lib/src/services/privy_service.dart, login_page.dart
-          - **发布/上传(publish)** — publish_video_page.dart
-          - **API/仓储层** — lib/src/api, lib/src/repositories
-          - **Solana 链上** — lib/src/services/solana, lib/src/services/sponsor_service.dart
-          # 非业务代码(同样纳入评估)
-          - **构建配置** — pubspec.yaml, analysis_options.yaml, l10n.yaml, android/, ios/
-          - **工具脚本** — tool/
-          - **CI/CD** — .github/workflows/
-          PROMPT_EOF
-          SYSTEM=$(sed 's/^          //' /tmp/system-prompt.txt)
+          ## 本次场景
+          你正在评审一个 pull request。PR 评论可以比飞书卡片长一些,但仍要精简,
+          不要复述静态报告里已有的内容,要在它之上增加信号。"
 
           USER=$(jq -n \
             --arg title "$PR_TITLE" \
@@ -978,7 +1008,7 @@ jobs:
             -d "$PAYLOAD") || {
               CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
               {
-                echo "## 🤖 Impact Risk"
+                echo "## 🧪 影响范围 / 影响点 / 回归范围"
                 echo ""
                 echo "_AI call failed:_"
                 echo '```'
@@ -992,7 +1022,7 @@ jobs:
           if [ -z "$CONTENT" ]; then CONTENT="_Failed to parse AI response._"; fi
 
           {
-            echo "## 🤖 Impact Risk"
+            echo "## 🧪 影响范围 / 影响点 / 回归范围"
             echo ""
             echo "$CONTENT"
           } > ai-report.md

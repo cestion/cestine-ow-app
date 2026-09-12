@@ -6,8 +6,8 @@
 
 | Workflow | 触发器 | 作用 |
 |---|---|---|
-| `ci.yml` | push 全部分支 / PR | 静态检查门禁 + 飞书通知 + AI 风险评估 + 影响分析 + 错误/体积 diff（见下） |
-| `build-story-apk-ipa.yml` | push main / 手动 | 构建双平台（Android APK + iOS IPA/模拟器），production=签名+TestFlight，上传 GitHub Release + artifact + 飞书通知 |
+| `ci.yml` | push 全部分支 / PR / 手动 | 静态检查门禁 + 飞书通知 + 影响范围·影响点·回归范围分析 + 代码评审 + 错误/体积 diff（见下） |
+| `build-story-apk-ipa.yml` | push main / 手动 | 构建双平台（Android APK + iOS IPA/模拟器），`test`（默认）与 `production` 都是 iOS 签名构建 + TestFlight，上传 GitHub Release + artifact + 飞书通知 |
 
 ## ci.yml 的 Job 一览
 
@@ -15,11 +15,11 @@
 |---|---|---|---|
 | `ci-checks` | push + PR | ✅ | 代码生成校验 + `dart format` + `flutter analyze` + `flutter test --coverage` + codecov（唯一会 fail 的 job） |
 | `feishu-push-notify` | push | — | 提交卡片 |
-| `branch-ai-review` | push | — | 影响分析 + diff → AI 五段风险评估 → 飞书卡片 |
+| `branch-ai-review` | push + **手动** | — | 静态影响分析 + diff → AI 影响范围/影响点/回归范围 → 飞书卡片 |
 | `push-code-review` | push | — | 代码级 AI 评审 → job summary + 飞书卡片 |
 | `pr-notify-lark` | PR | — | PR 打开/更新通知 |
 | `pr-impact` | PR | — | `tool/pr_impact_analysis.dart` → sticky PR 评论 |
-| `pr-impact-ai` | PR | — | 影响报告 + diff → AI 风险评估 → PR 评论 |
+| `pr-impact-ai` | PR | — | 影响报告 + diff → AI 影响范围/影响点/回归范围 → PR 评论 |
 | `pr-sonar` | PR | — | SonarQube（默认关闭） |
 | `pr-agent` | PR | — | 第三方 PR-Agent（默认关闭） |
 | `apk-size-diff` | push + PR | — | arm64 release APK 体积 base/head 对比（默认关闭） |
@@ -74,9 +74,37 @@ read -rs BLOB && printf '%s' "$BLOB" | gh secret set MINIMAX_KEY_BLOB -R cestine
 
 混淆用的是「固定盐异或 + base64」，盐明文写在 `keyring.sh` 里。它防的是**顺手看到**（翻 Secrets 列表、日志误打印），防不住有意图的人——拿到仓库代码即可还原。真正的边界是仓库和 Secret 的访问权限。**如果 key 曾经以明文出现在聊天、日志或提交里，请先轮换再混淆。**
 
+### 影响范围 / 影响点 / 回归范围
+
+`branch-ai-review`（push）和 `pr-impact-ai`（PR）产出同一份四段报告，给的是业务视角而不是 reviewer 视角：
+
+| 段 | 内容 | 条数上限 |
+|---|---|---|
+| 📍 影响范围 | 波及哪些业务模块，以及触达方式（直接改动 / 传递依赖 / 构建发布） | 5 |
+| 🎯 影响点 | 具体到入口 + 可验证的变化 + 文件:符号 | 6 |
+| 🧪 回归范围 | P0/P1/P2 回归项（操作步骤 → 预期结果），**必须**附一行「免回归」 | 6 |
+| ⚠️ 风险提示 | 回归清单覆盖不到的（构建发布链路、证书有效期、不可逆操作等） | 3 |
+
+输出规格写在 `.github/prompts/impact-regression.md`，两个 job 共用同一份；业务模块清单由 `tool/pr_impact_analysis.dart` 的 `_modules` / `_infraModules` 生成并附在静态报告末尾，是唯一来源——改模块归属只改 Dart 文件，不要再往 prompt 里抄。
+
+全部用列表而非 Markdown 表格：飞书 `lark_md` 不渲染表格，竖线会原样显示成乱码。
+
+#### 手动对任意区间补做分析
+
+```bash
+# 不传参数 = 分析 HEAD~1..HEAD
+gh workflow run "Unified CI Pipeline" -f base=15722e4 -f head=HEAD
+```
+
+手动触发只会跑 `branch-ai-review`，其余 job 的 `if` 都限定了 push / pull_request，会自动跳过。并发组单独按 `run_id` 分，不会取消正在跑的 push CI。
+
 ### 为什么有自建的 `tool/pr_impact_analysis.dart`
 
 Web 端用 `madge` 生成 JS 模块依赖图，Dart 没有等价工具能理解本项目的分层规则，所以自建了一个：它扫描 `lib/` 的 `import`/`export`，建反向依赖图，输出「改动文件 → 传递依赖者 → 受影响的层与业务模块」。生成代码（`*.g.dart`、`lib/src/l10n/app_localizations_*.dart`）不计入。
+
+非 Dart 改动（`ios/`、`android/`、`.github/`、根配置）不在 import 图里，但会按 `_infraModules` 单独归类输出——它们不影响某个页面，而是影响全部模块的构建与发版，漏掉会让「影响范围」失真。
+
+改动落在共享层（`api`/`repositories`/`data`）时，传递范围会覆盖 19/21 个业务模块。报告此时会加一条「⚠️ 高扇出」提示，告诉 AI **不要**据此要求全量回归，而要按改动的具体函数/字段判断。
 
 本地复现：
 
@@ -93,7 +121,15 @@ BASE_SHA=$(git rev-parse HEAD~1) HEAD_SHA=$(git rev-parse HEAD) \
 - `ENV` = `development` / `test` / `production`
 - `DISTRIBUTION_CHANNEL` = `apk` / `ios`
 
-`production` 环境 → release 签名构建；其余环境 → debug / 模拟器构建。
+iOS 的构建方式由 `ENVIRONMENT` 决定（`build-story-apk-ipa.yml:55-73`）：
+
+| `ENVIRONMENT` | Android | iOS | 需要签名材料? |
+|---|---|---|---|
+| `production` | release | **release + 签名 → TestFlight** | ✅ |
+| `test`（**push main 的默认值**） | debug | **release + 签名 → TestFlight** | ✅ |
+| `development` | debug | 模拟器（不签名） | — |
+
+注意 `test` 同样是签名的 release 构建并会上传 TestFlight，只是 `--dart-define=ENV=test` 让包连测试后端。**push 到 main 不带参数时走的就是 `test`**，所以签名材料缺失/过期会直接让 main 的构建失败，而不是只影响手动触发的 production。
 
 ## 需要的 GitHub Secrets
 
@@ -113,7 +149,7 @@ BASE_SHA=$(git rev-parse HEAD~1) HEAD_SHA=$(git rev-parse HEAD) \
 | `IOS_CERTIFICATE_P12_BASE64` | 分发证书 `.p12` 的 base64（含公钥+私钥） |
 | `IOS_CERTIFICATE_PASSWORD` | `.p12` 导出密码 |
 | `IOS_KEYCHAIN_PASSWORD` | CI 临时 keychain 密码（任意随机串，如 `openssl rand -base64 32`） |
-| `IOS_PROVISIONING_PROFILE_BASE64` | `.mobileprovision` 的 base64，导入到 `~/Library/MobileDevice/Provisioning Profiles/` |
+| `IOS_PROVISIONING_PROFILE_BASE64` | `.mobileprovision` 的 base64。workflow 会按 UUID 命名同时装进旧目录 `~/Library/MobileDevice/Provisioning Profiles/` 和 Xcode 16 的新目录 `~/Library/Developer/Xcode/UserData/Provisioning Profiles/` |
 
 #### TestFlight 自动上传（可选）
 
@@ -130,7 +166,9 @@ BASE_SHA=$(git rev-parse HEAD~1) HEAD_SHA=$(git rev-parse HEAD) \
 
 缺少这三个 secrets 时，workflow 会跳过 TestFlight 上传（warning），但 IPA 仍会上传到 GitHub Release。
 
-iOS 项目已配置 `DEVELOPMENT_TEAM = 7T6LG3LXBN`、`CODE_SIGN_STYLE = Automatic`、Bundle ID `com.cestine.officeapp`（`ios/Runner.xcodeproj/project.pbxproj`）。
+iOS 项目的 Runner Release 配置（`ios/Runner.xcodeproj/project.pbxproj:709-729`）：`DEVELOPMENT_TEAM = 7T6LG3LXBN`、`CODE_SIGN_IDENTITY = "iPhone Distribution"`、`CODE_SIGN_STYLE = Manual`、`PROVISIONING_PROFILE_SPECIFIER = "cestine-test"`、Bundle ID `com.cestine.officeapp`。
+
+手动签名意味着**本机用 Xcode 打 Release 包也需要装上名为 `cestine-test` 的描述文件**，不能靠 Xcode 自动管理兜底。（文件里另有几处 `CODE_SIGN_STYLE = Automatic`，属于测试 target，不影响 app 的签名。）
 
 > IPA 构建和 TestFlight 都要求：**Apple Developer Program 会员（$99/年）**。
 > 免费 Apple ID 无法在 CI 上产出可安装 IPA，也无法使用 TestFlight。
