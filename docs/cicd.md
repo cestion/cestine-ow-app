@@ -72,6 +72,20 @@ read -rs KEY && .github/scripts/keyring.sh encode "$KEY"
 read -rs BLOB && printf '%s' "$BLOB" | gh secret set MINIMAX_KEY_BLOB -R cestinevv/cestine-ow-app
 ```
 
+#### AI job 失败时怎么看
+
+三条 AI 链路都不会让构建变红（`pr-agent` 除外），失败信息落在**飞书卡片 / PR 评论 / job summary** 里，完整原因在对应步骤的日志中。常见几种：
+
+| 现象 | 含义 | 处理 |
+|---|---|---|
+| `MINIMAX_KEY_BLOB 解码失败` + 日志里 `blob 含 base64 以外的字符` | Secret 里存的是**明文 key**，不是 blob | 用下面的命令重新 encode 再写入 Secret |
+| 日志里 `blob 长度 N 不是 4 的倍数` | 复制 blob 时被截断 | 重新完整复制一遍 |
+| `AI 调用失败` + `HTTP/2 401` | blob 正确但 key 本身无效/过期 | 去 MiniMax 控制台换 key，重新 encode |
+| `AI 调用失败` + `HTTP/2 404` | `MINIMAX_BASE_URL` 或模型名不对 | 检查 Variables |
+| `AI 调用失败` + `curl: (6) Could not resolve host` | 网络/DNS，通常是临时故障 | 重跑 |
+
+> 曾经这些都表现为一个**没有任何输出的红叉**：`keyring.sh` 解码失败时 stderr 被 `2>/dev/null` 吞掉，而 `API_KEY=$(...)` 没有兜底，在 `bash -e` 下直接把整步打成 `exit 1`。现在解码失败会打印具体原因并优雅跳过，curl 失败会把**状态行 + 响应体 + stderr** 一起写进卡片（密钥已脱敏）。
+
 混淆用的是「固定盐异或 + base64」，盐明文写在 `keyring.sh` 里。它防的是**顺手看到**（翻 Secrets 列表、日志误打印），防不住有意图的人——拿到仓库代码即可还原。真正的边界是仓库和 Secret 的访问权限。**如果 key 曾经以明文出现在聊天、日志或提交里，请先轮换再混淆。**
 
 ### 影响范围 / 影响点 / 回归范围

@@ -328,10 +328,18 @@ jobs:
               || echo '(手动触发,无提交信息)')
           fi
 
-          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          # `|| API_KEY=""` 不能省:这一步跑在 `bash -e` 下,keyring.sh 解码失败时
+          # 未兜底的命令替换会让整步以 exit 1 静默死掉 —— 没有任何 stderr、没有飞书
+          # 卡片、没有 job summary,只在 Actions 上看到一个红叉。
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || API_KEY=""
           if [ -z "$API_KEY" ]; then
-            echo "assessment=_密钥解码失败_" >> "$GITHUB_OUTPUT"
-            echo "ok=0" >> "$GITHUB_OUTPUT"
+            echo "::warning::MINIMAX_KEY_BLOB 解码失败,已跳过 AI 评估(原因见上一行 keyring 输出)"
+            {
+              echo "assessment<<EOF_ASSESSMENT"
+              echo "_MINIMAX_KEY_BLOB 解码失败 —— Secret 里应存 keyring.sh encode 的输出,而不是明文 key。详见 Call LLM 步骤日志。_"
+              echo "EOF_ASSESSMENT"
+              echo "ok=0"
+            } >> "$GITHUB_OUTPUT"
             exit 0
           fi
           API_BASE="$MINIMAX_BASE/v1/messages"
@@ -370,13 +378,23 @@ jobs:
               messages: [ { role: "user", content: $user } ]
             }')
 
-          RESPONSE=$(curl -sS --fail-with-body \
+          RESPONSE=$(curl -sS --fail-with-body -D /tmp/ai-headers.txt \
             -X POST "$API_BASE" \
             -H "x-api-key: $API_KEY" \
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
-            -d "$PAYLOAD") || {
-              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
+            -d "$PAYLOAD" 2>/tmp/ai-curl-err.txt) || {
+              # --fail-with-body 只把 HTTP 错误体写到 stdout;DNS/TLS/超时这类连接级
+              # 失败 body 是空的、原因全在 stderr。三样都收进来,否则卡片上就是一条
+              # 什么都没说的“调用失败”。状态行用来区分 401(key 错)/404(base url 错)/429。
+              {
+                grep -m1 '^HTTP/' /tmp/ai-headers.txt 2>/dev/null | tr -d '\r' || true
+                printf '%s\n' "$RESPONSE"
+                cat /tmp/ai-curl-err.txt 2>/dev/null || true
+              } | sed "s|$API_KEY|***|g" > /tmp/ai-error.txt   # 先脱敏再落盘
+              CLEANED=$(head -c 500 /tmp/ai-error.txt)
+              [ -n "${CLEANED//[[:space:]]/}" ] || CLEANED="curl 失败且无任何输出,见 Actions 步骤日志"
+              echo "::warning::MiniMax 调用失败,详见本步骤日志"
               {
                 echo "assessment<<EOF_ASSESSMENT"
                 echo "_AI 调用失败:_"
@@ -631,9 +649,12 @@ jobs:
             exit 0
           fi
 
-          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB" 2>/dev/null || echo "")
+          # 不要加 2>/dev/null:keyring.sh 现在会在 stderr 上说清楚 blob 哪里不对,
+          # 把它吞掉就又回到“只知道失败、不知道为什么”的状态。
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || API_KEY=""
           if [ -z "$API_KEY" ]; then
-            echo "review=_MiniMax 密钥解码失败_" >> "$GITHUB_OUTPUT"
+            echo "::warning::MINIMAX_KEY_BLOB 解码失败,已跳过代码评审(原因见上一行 keyring 输出)"
+            echo "review=_MiniMax 密钥解码失败 —— Secret 里应存 keyring.sh encode 的输出,详见本步骤日志_" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           API_BASE="$MINIMAX_BASE/v1/messages"
@@ -650,14 +671,32 @@ jobs:
               messages: [ { role: "user", content: $user } ]
             }')
 
-          RESPONSE=$(curl -sS --fail-with-body \
+          RESPONSE=$(curl -sS --fail-with-body -D /tmp/review-headers.txt \
             -X POST "$API_BASE" \
             -H "x-api-key: $API_KEY" \
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
-            -d "$PAYLOAD") || {
-              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
-              echo "review=_LLM 调用失败: $CLEANED_" >> "$GITHUB_OUTPUT"
+            -d "$PAYLOAD" 2>/tmp/review-curl-err.txt) || {
+              # 这里原本是 `echo "review=_LLM 调用失败: $CLEANED_"`,bash 把 `$CLEANED_`
+              # 当成变量名 CLEANED_(下划线是合法标识符字符)解析,于是永远是空 ——
+              # 卡片上只剩 "_LLM 调用失败: "。另外 $GITHUB_OUTPUT 的单行 key=value 装不下
+              # 多行 JSON 错误体,必须用 heredoc 形式,与另外两个 AI job 保持一致。
+              {
+                grep -m1 '^HTTP/' /tmp/review-headers.txt 2>/dev/null | tr -d '\r' || true
+                printf '%s\n' "$RESPONSE"
+                cat /tmp/review-curl-err.txt 2>/dev/null || true
+              } | sed "s|$API_KEY|***|g" > /tmp/review-error.txt   # 先脱敏再落盘
+              CLEANED=$(head -c 500 /tmp/review-error.txt)
+              [ -n "${CLEANED//[[:space:]]/}" ] || CLEANED="curl 失败且无任何输出,见 Actions 步骤日志"
+              echo "::warning::MiniMax 调用失败,详见本步骤日志"
+              {
+                echo "review<<EOF_REVIEW"
+                echo "_LLM 调用失败:_"
+                echo "\`\`\`"
+                echo "$CLEANED"
+                echo "\`\`\`"
+                echo "EOF_REVIEW"
+              } >> "$GITHUB_OUTPUT"
               exit 0
             }
 
@@ -823,9 +862,10 @@ jobs:
             echo "::error::pr-agent 需要 MINIMAX_KEY_BLOB,但它未设置"
             exit 1
           fi
-          KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          # 不兜底的话解码失败会直接 exit 1,下面这条 ::error:: 根本轮不到执行。
+          KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || KEY=""
           if [ -z "$KEY" ]; then
-            echo "::error::MINIMAX_KEY_BLOB 解码失败"
+            echo "::error::MINIMAX_KEY_BLOB 解码失败(原因见上一行 keyring 输出)"
             exit 1
           fi
           echo "::add-mask::$KEY"
@@ -959,11 +999,13 @@ jobs:
             exit 0
           fi
 
-          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB")
+          # 同 branch-ai-review:`bash -e` 下不兜底就是静默 exit 1,PR 上连评论都没有。
+          API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || API_KEY=""
           if [ -z "$API_KEY" ]; then
+            echo "::warning::MINIMAX_KEY_BLOB 解码失败,已跳过 AI 评估(原因见上一行 keyring 输出)"
             echo "## 🧪 影响范围 / 影响点 / 回归范围" > ai-report.md
             echo "" >> ai-report.md
-            echo "_Failed to decode MINIMAX_KEY_BLOB — check the encoded value._" >> ai-report.md
+            echo "_MINIMAX_KEY_BLOB 解码失败 —— Secret 里应存 keyring.sh encode 的输出,而不是明文 key。详见 Actions 日志。_" >> ai-report.md
             exit 0
           fi
           API_BASE="$MINIMAX_BASE/v1/messages"
@@ -1000,17 +1042,25 @@ jobs:
               messages: [ { role: "user", content: $user } ]
             }')
 
-          RESPONSE=$(curl -sS --fail-with-body \
+          RESPONSE=$(curl -sS --fail-with-body -D /tmp/ai-headers.txt \
             -X POST "$API_BASE" \
             -H "x-api-key: $API_KEY" \
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
-            -d "$PAYLOAD") || {
-              CLEANED=$(echo "$RESPONSE" | sed "s|$API_KEY|***|g" | head -c 500)
+            -d "$PAYLOAD" 2>/tmp/ai-curl-err.txt) || {
+              # 见 branch-ai-review 的同名分支:body + stderr + 状态行三样都要收。
+              {
+                grep -m1 '^HTTP/' /tmp/ai-headers.txt 2>/dev/null | tr -d '\r' || true
+                printf '%s\n' "$RESPONSE"
+                cat /tmp/ai-curl-err.txt 2>/dev/null || true
+              } | sed "s|$API_KEY|***|g" > /tmp/ai-error.txt   # 先脱敏再落盘
+              CLEANED=$(head -c 500 /tmp/ai-error.txt)
+              [ -n "${CLEANED//[[:space:]]/}" ] || CLEANED="curl 失败且无任何输出,见 Actions 步骤日志"
+              echo "::warning::MiniMax 调用失败,详见本步骤日志"
               {
                 echo "## 🧪 影响范围 / 影响点 / 回归范围"
                 echo ""
-                echo "_AI call failed:_"
+                echo "_AI 调用失败:_"
                 echo '```'
                 echo "$CLEANED"
                 echo '```'
