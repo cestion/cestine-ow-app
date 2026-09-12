@@ -151,15 +151,19 @@ iOS 项目已配置 `DEVELOPMENT_TEAM = 7T6LG3LXBN`、`CODE_SIGN_STYLE = Automat
 在本机（已装 Xcode 26.6）：
 
 1. Xcode → Settings → Accounts → ➕ → 登录刚加入开发者计划的 Apple ID
-2. 左侧选中该账号 → **Manage Certificates** → ➕ → **Apple Distribution**
+2. 左侧选中该账号 → **Manage Certificates** → ➕ → **Apple Distribution**（没装 Xcode 时：钥匙串访问 → 证书助理 → 从证书颁发机构请求证书，生成 CSR 后到 developer.apple.com 创建 **iOS Distribution** 或 **Apple Distribution** 证书，两种都可以，项目 Release 配置的 `CODE_SIGN_IDENTITY = "iPhone Distribution"` 两种都能匹配）
 3. 打开「钥匙串访问」→ 我的证书 → 找到 `Apple Distribution: ...` → 右键导出
 4. 保存为 `story-release.p12`，**设置导出密码**（之后填 secret 用）
 
 ```bash
-# 导出密码 → IOS_CERTIFICATE_PASSWORD
-# 转 base64 → IOS_CERTIFICATE_P12_BASE64
-base64 -i story-release.p12 | tr -d '\n'
+# 先验证导出密码是否正确（输入密码后无报错即通过；报 "Mac verify error" 说明密码不对）
+openssl pkcs12 -in story-release.p12 -noout
+# 导出密码 → IOS_CERTIFICATE_PASSWORD（粘贴时不要带换行）
+# 转 base64 → IOS_CERTIFICATE_P12_BASE64（直接复制到剪贴板）
+base64 -i story-release.p12 | tr -d '\n' | pbcopy
 ```
+
+> CI 报 `MAC verification failed during PKCS12 import (wrong password?)` 时，就是上面两个 secret 不匹配：要么密码填错 / 带了换行，要么 base64 用的是另一个 .p12。
 
 ### ③ 创建 Provisioning Profile（.mobileprovision）
 
@@ -295,3 +299,29 @@ flutter build ios --dart-define=ENV=test
 **构建卡在"Processing"**：
 - 等待苹果服务器处理（最多 1 小时）
 - 超过 1 小时联系 Apple 支持
+
+**`MAC verification failed during PKCS12 import (wrong password?)`**：
+`IOS_CERTIFICATE_PASSWORD` 和 `IOS_CERTIFICATE_P12_BASE64` 不是一对。本机验证：
+
+```bash
+openssl pkcs12 -in 你的.p12 -noout        # 无输出=密码正确
+base64 -i 你的.p12 | tr -d '\n' | pbcopy   # 重新生成 base64
+```
+
+**`No profile for team 'XXX' matching 'YYY' found`**（归档成功、导出失败）：
+Xcode 16 起描述文件改从 `~/Library/Developer/Xcode/UserData/Provisioning Profiles/`
+读取，旧的 `~/Library/MobileDevice/Provisioning Profiles/` 不再被索引。
+workflow 已改为两个目录都装、按 UUID 命名，并从描述文件本身解析
+teamID / bundle id / UUID 生成 `ExportOptions.plist`，不再硬编码名字。
+
+**`描述文件内嵌的证书不在 keychain 里`**：
+证书和描述文件不是一对。描述文件在创建时就绑定了特定证书，换了新证书必须
+去开发者网站用新证书**重新生成**描述文件，然后同时更新
+`IOS_CERTIFICATE_P12_BASE64` 和 `IOS_PROVISIONING_PROFILE_BASE64` 两个 secret。
+本机查看描述文件绑定的证书：
+
+```bash
+security cms -D -i 你的.mobileprovision | \
+  plutil -extract DeveloperCertificates.0 raw -o - - | \
+  base64 -d | openssl x509 -inform DER -noout -fingerprint -sha1 -subject
+```

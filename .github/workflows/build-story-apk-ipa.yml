@@ -255,14 +255,34 @@ jobs:
             echo "::error::Missing IOS_CERTIFICATE_P12_BASE64 or IOS_CERTIFICATE_PASSWORD secrets"
             exit 1
           fi
+          # 去掉粘贴 secret 时可能带上的回车 / 换行，否则 .p12 密码校验必定失败
+          export CERTIFICATE_PASSWORD="$(printf '%s' "$CERTIFICATE_PASSWORD" | tr -d '\r\n')"
           printf '%s' "$CERTIFICATE_P12_BASE64" | tr -d '[:space:]' | base64 --decode > /tmp/cert.p12
+          echo "Decoded .p12 size: $(stat -f %z /tmp/cert.p12) bytes"
+          # 先用系统 openssl 校验 .p12 + 密码，把「base64 内容不对」和「密码不对」区分开
+          if ! /usr/bin/openssl pkcs12 -in /tmp/cert.p12 -noout -passin env:CERTIFICATE_PASSWORD 2>/tmp/p12-check.log; then
+            if grep -qi 'mac verify' /tmp/p12-check.log; then
+              echo "::error::IOS_CERTIFICATE_PASSWORD 与 IOS_CERTIFICATE_P12_BASE64 里的 .p12 不匹配（MAC verify failed）。本机验证：openssl pkcs12 -in 你的.p12 -noout"
+            else
+              echo "::error::IOS_CERTIFICATE_P12_BASE64 解码后不是合法的 .p12：$(tr '\n' ' ' < /tmp/p12-check.log)"
+            fi
+            exit 1
+          fi
           security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
           security set-keychain-settings -lut 21600 build.keychain
           security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
           security import /tmp/cert.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" \
             -T /usr/bin/codesign -T /usr/bin/security
+          # 导入 Apple WWDR G3 中间证书，保证 codesign 能补全证书链（Apple 签发的分发证书由 WWDR G3 签发）
+          if curl -fsSL --retry 3 -o /tmp/AppleWWDRCAG3.cer https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer; then
+            security import /tmp/AppleWWDRCAG3.cer -k build.keychain -T /usr/bin/codesign -T /usr/bin/security
+          else
+            echo "::warning::Could not download AppleWWDRCAG3.cer; relying on the runner's preinstalled certificates"
+          fi
           security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
           security list-keychains -s build.keychain
+          echo "Imported signing identities:"
+          security find-identity -v -p codesigning build.keychain
 
       - name: Install provisioning profiles
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
@@ -273,14 +293,62 @@ jobs:
             echo "::error::Missing IOS_PROVISIONING_PROFILE_BASE64 secret"
             exit 1
           fi
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           printf '%s' "$PROVISIONING_PROFILE_BASE64" | tr -d '[:space:]' | base64 --decode \
-            > ~/Library/MobileDevice/Provisioning\ Profiles/story.mobileprovision
+            > /tmp/profile.mobileprovision
+          if ! security cms -D -i /tmp/profile.mobileprovision > /tmp/profile.plist 2>/tmp/profile-err.log; then
+            echo "::error::IOS_PROVISIONING_PROFILE_BASE64 解码后不是合法的 .mobileprovision：$(tr '\n' ' ' < /tmp/profile-err.log)"
+            exit 1
+          fi
+
+          PROFILE_UUID=$(/usr/libexec/PlistBuddy -c 'Print :UUID' /tmp/profile.plist)
+          PROFILE_NAME=$(/usr/libexec/PlistBuddy -c 'Print :Name' /tmp/profile.plist)
+          PROFILE_TEAM=$(/usr/libexec/PlistBuddy -c 'Print :TeamIdentifier:0' /tmp/profile.plist)
+          PROFILE_APPID=$(/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' /tmp/profile.plist)
+          PROFILE_BUNDLE_ID=${PROFILE_APPID#"$PROFILE_TEAM".}
+          echo "Profile name   : $PROFILE_NAME"
+          echo "Profile UUID   : $PROFILE_UUID"
+          echo "Profile team   : $PROFILE_TEAM"
+          echo "Profile bundle : $PROFILE_BUNDLE_ID"
+          echo "Profile expires: $(/usr/libexec/PlistBuddy -c 'Print :ExpirationDate' /tmp/profile.plist)"
+
+          # Xcode 16 起改从 UserData 目录读取描述文件，旧路径不再被索引；
+          # 两处都装，并按 UUID 命名，兼容新旧 Xcode。
+          OLD_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
+          NEW_DIR="$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles"
+          mkdir -p "$OLD_DIR" "$NEW_DIR"
+          cp /tmp/profile.mobileprovision "$OLD_DIR/$PROFILE_UUID.mobileprovision"
+          cp /tmp/profile.mobileprovision "$NEW_DIR/$PROFILE_UUID.mobileprovision"
+
+          # 描述文件内嵌的证书必须是 keychain 里已导入的那张，否则导出必失败。
+          python3 - <<'PY' > /tmp/profile-certs.txt
+          import hashlib, plistlib
+          p = plistlib.load(open('/tmp/profile.plist', 'rb'))
+          for c in p.get('DeveloperCertificates', []):
+              print(hashlib.sha1(c).hexdigest().upper())
+          PY
+          security find-identity -v -p codesigning build.keychain \
+            | awk '{print $2}' | grep -E '^[0-9A-F]{40}$' > /tmp/identity-hashes.txt || true
+          if ! grep -qxFf /tmp/profile-certs.txt /tmp/identity-hashes.txt; then
+            echo "::error::描述文件 '$PROFILE_NAME' 内嵌的证书不在 keychain 里。说明 IOS_CERTIFICATE_P12_BASE64 的证书和 IOS_PROVISIONING_PROFILE_BASE64 的描述文件不是一对，需要用当前证书重新生成描述文件。"
+            echo "描述文件要求的证书 SHA1："; sed 's/^/  /' /tmp/profile-certs.txt
+            echo "keychain 中实际的证书 SHA1："; sed 's/^/  /' /tmp/identity-hashes.txt
+            exit 1
+          fi
+
+          # 供导出步骤生成 ExportOptions.plist 使用
+          {
+            echo "PROFILE_UUID=$PROFILE_UUID"
+            echo "PROFILE_NAME=$PROFILE_NAME"
+            echo "PROFILE_TEAM=$PROFILE_TEAM"
+            echo "PROFILE_BUNDLE_ID=$PROFILE_BUNDLE_ID"
+          } >> $GITHUB_ENV
 
       - name: Build IPA (signed)
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
         run: |
-          cat > /tmp/ExportOptions.plist <<'EOF'
+          # teamID / bundle id / 描述文件均取自上一步解析出的真实描述文件，
+          # 避免硬编码的名字与 secret 里的文件对不上。用 UUID 匹配最不容易出歧义。
+          cat > /tmp/ExportOptions.plist <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
@@ -290,11 +358,11 @@ jobs:
             <key>signingStyle</key>
             <string>manual</string>
             <key>teamID</key>
-            <string>7T6LG3LXBN</string>
+            <string>${PROFILE_TEAM}</string>
             <key>provisioningProfiles</key>
             <dict>
-              <key>com.cestine.officeapp</key>
-              <string>cestine</string>
+              <key>${PROFILE_BUNDLE_ID}</key>
+              <string>${PROFILE_UUID}</string>
             </dict>
             <key>stripSwiftSymbols</key>
             <true/>
@@ -303,6 +371,7 @@ jobs:
           </dict>
           </plist>
           EOF
+          echo "ExportOptions.plist:"; cat /tmp/ExportOptions.plist
           flutter build ipa \
             --release \
             --build-number="$BUILD_NUMBER" \
