@@ -297,6 +297,15 @@ jobs:
             > /tmp/profile.mobileprovision
           if ! security cms -D -i /tmp/profile.mobileprovision > /tmp/profile.plist 2>/tmp/profile-err.log; then
             echo "::error::IOS_PROVISIONING_PROFILE_BASE64 解码后不是合法的 .mobileprovision：$(tr '\n' ' ' < /tmp/profile-err.log)"
+            echo "解码后大小：$(stat -f %z /tmp/profile.mobileprovision) 字节"
+            # 认一下解出来的到底是什么，最常见的是几个 base64 secret 粘串了位置
+            if /usr/bin/openssl pkcs12 -in /tmp/profile.mobileprovision -noout -passin pass: 2>&1 | grep -qi 'mac verify'; then
+              echo "提示：这串 base64 其实是一个 .p12 证书，八成和 IOS_CERTIFICATE_P12_BASE64 填反了。"
+            elif /usr/bin/openssl x509 -inform DER -in /tmp/profile.mobileprovision -noout 2>/dev/null; then
+              echo "提示：这串 base64 是一张 .cer 证书，不是 .mobileprovision 描述文件。"
+            else
+              echo "提示：本机用 base64 -i 你的.mobileprovision | tr -d '\\n' | pbcopy 重新生成后再粘贴。"
+            fi
             exit 1
           fi
 
@@ -333,6 +342,18 @@ jobs:
             echo "描述文件要求的证书 SHA1："; sed 's/^/  /' /tmp/profile-certs.txt
             echo "keychain 中实际的证书 SHA1："; sed 's/^/  /' /tmp/identity-hashes.txt
             exit 1
+          fi
+
+          # 工程里 Release 配置是手动签名，PROVISIONING_PROFILE_SPECIFIER 写死了描述文件名。
+          # 描述文件一旦改名/重建，归档阶段就会报 "No profile ... matching ... found"。
+          # 这里用 secret 里描述文件的真实名字覆盖，使构建不依赖工程里写死的值。
+          PBXPROJ=ios/Runner.xcodeproj/project.pbxproj
+          if grep -q 'PROVISIONING_PROFILE_SPECIFIER' "$PBXPROJ"; then
+            sed -i '' "s|PROVISIONING_PROFILE_SPECIFIER = .*;|PROVISIONING_PROFILE_SPECIFIER = \"$PROFILE_NAME\";|g" "$PBXPROJ"
+            echo "PROVISIONING_PROFILE_SPECIFIER 已覆盖为 \"$PROFILE_NAME\"："
+            grep -n 'PROVISIONING_PROFILE_SPECIFIER' "$PBXPROJ" | sed 's/^/  /'
+          else
+            echo "::warning::project.pbxproj 里找不到 PROVISIONING_PROFILE_SPECIFIER，跳过覆盖"
           fi
 
           # 供导出步骤生成 ExportOptions.plist 使用
