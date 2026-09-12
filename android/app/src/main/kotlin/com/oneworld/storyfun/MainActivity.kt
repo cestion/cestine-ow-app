@@ -207,12 +207,3 @@ class MainActivity : FlutterActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 }
-
-
-
-dsadsadsa
-dsadsadsadsads
-
-
-
-
