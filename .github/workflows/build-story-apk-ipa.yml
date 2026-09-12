@@ -1,8 +1,12 @@
 name: Build Story APK + IPA
 
+# 只手动触发。push main 不再自动构建 —— 一次构建占用 macOS runner 最长 150 分钟,
+# 而且会自动 bump 构建号推回 main(造成本地分叉)、往 TestFlight 传包,
+# 不该由每一次 push 顺带发生。要发版时到 Actions 页面点 Run workflow。
+#
+# ⚠️ 若要恢复 `push: branches: [main]`,必须同时把 `[ci skip]` 防护加回 build job 的
+# `if:` —— 下面的 "Bump pubspec build number" 会 push 回 main,没有防护就是无限循环。
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       environment:
@@ -34,9 +38,6 @@ concurrency:
 
 jobs:
   build:
-    # Skip the auto-push run that only bumps the pubspec build number, so the
-    # build-number bump does not restart the workflow in an infinite loop.
-    if: contains(github.event.head_commit.message, '[ci skip]') == false
     runs-on: macos-15
     timeout-minutes: 150
     env:
@@ -452,9 +453,9 @@ jobs:
           echo "::notice::IPA uploaded to TestFlight successfully"
 
       # 上传成功后，把新构建号回写 pubspec 并提交，避免下次查询失败时
-      # 回退到已使用过的旧号撞号。[ci skip] 防止这次推送再次触发构建。
+      # 回退到已使用过的旧号撞号。这一步会 push 到 main，本地记得先 pull。
       - name: Bump pubspec build number
-        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[ci skip]') == false
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
         run: |
           CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
           if [ "$CURRENT" = "$BUILD_NUMBER" ]; then

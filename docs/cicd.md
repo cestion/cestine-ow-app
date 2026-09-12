@@ -7,7 +7,7 @@
 | Workflow | 触发器 | 作用 |
 |---|---|---|
 | `ci.yml` | push 全部分支 / PR / 手动 | 静态检查门禁 + 飞书通知 + 影响范围·影响点·回归范围分析 + 代码评审 + 错误/体积 diff（见下） |
-| `build-story-apk-ipa.yml` | push main / 手动 | 构建双平台（Android APK + iOS IPA/模拟器），`test`（默认）与 `production` 都是 iOS 签名构建 + TestFlight，上传 GitHub Release + artifact + 飞书通知 |
+| `build-story-apk-ipa.yml` | **仅手动** | 构建双平台（Android APK + iOS IPA/模拟器），`test`（默认）与 `production` 都是 iOS 签名构建 + TestFlight，上传 GitHub Release + artifact + 飞书通知 |
 
 ## ci.yml 的 Job 一览
 
@@ -121,15 +121,19 @@ BASE_SHA=$(git rev-parse HEAD~1) HEAD_SHA=$(git rev-parse HEAD) \
 - `ENV` = `development` / `test` / `production`
 - `DISTRIBUTION_CHANNEL` = `apk` / `ios`
 
-iOS 的构建方式由 `ENVIRONMENT` 决定（`build-story-apk-ipa.yml:55-73`）：
+构建**只能手动触发**（Actions → Build Story APK + IPA → Run workflow，或 `gh workflow run "Build Story APK + IPA" -f environment=test -f build_target=both`）。push 到 main 不再自动构建——一次构建要占 macOS runner 最长 150 分钟，还会自动 bump 构建号推回 main、往 TestFlight 传包，不该由每次 push 顺带发生。
+
+iOS 的构建方式由 `ENVIRONMENT` 决定（`build-story-apk-ipa.yml:56-74`）：
 
 | `ENVIRONMENT` | Android | iOS | 需要签名材料? |
 |---|---|---|---|
 | `production` | release | **release + 签名 → TestFlight** | ✅ |
-| `test`（**push main 的默认值**） | debug | **release + 签名 → TestFlight** | ✅ |
+| `test`（**表单默认值**） | debug | **release + 签名 → TestFlight** | ✅ |
 | `development` | debug | 模拟器（不签名） | — |
 
-注意 `test` 同样是签名的 release 构建并会上传 TestFlight，只是 `--dart-define=ENV=test` 让包连测试后端。**push 到 main 不带参数时走的就是 `test`**，所以签名材料缺失/过期会直接让 main 的构建失败，而不是只影响手动触发的 production。
+注意 `test` 同样是签名的 release 构建并会上传 TestFlight，只是 `--dart-define=ENV=test` 让包连测试后端。表单默认就是 `test`，**点 Run workflow 不改选项就会传 TestFlight**，所以签名材料缺失/过期会让构建直接失败，不是只影响 `production`。
+
+另外：`Bump pubspec build number` 步骤会在 TestFlight 上传成功后把新构建号 push 回 main（构建号不能重复，否则 App Store Connect 拒收）。所以**手动构建之后本地记得先 `git pull` 再提交**，否则会撞上非 fast-forward。
 
 ## 需要的 GitHub Secrets
 
