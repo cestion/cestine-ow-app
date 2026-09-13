@@ -340,11 +340,35 @@ flutter build ios --dart-define=ENV=test
 
 ### 自动化流程
 
-1. Push 到 `main` 或手动触发 `build-story-ipa.yml`，选择 `production` 环境
+1. 手动触发 `build-story-apk-ipa.yml`（`test` 和 `production` 都会签名上传）
 2. CI 构建签名 IPA → `xcrun altool --upload-app`（API Key 认证）上传到 App Store Connect
 3. 苹果服务器处理（通常 5-15 分钟）：自动化审查 → 生成 TestFlight 构建
-4. App Store Connect → TestFlight → 该版本状态变为"可测试"
-5. 邀请测试用户（内部测试最多 100 人，外部测试需要 Beta 审核但无需完整审核）
+4. CI 轮询到构建变为 `VALID` 后，自动加进 `TESTFLIGHT_GROUPS` 里配置的测试组（见下）
+5. App Store Connect → TestFlight → 该版本状态变为"可测试"
+6. 测试用户收到新构建（内部组立即可用，外部组要先过 Beta 审核）
+
+### 自动加入测试组
+
+`altool` 只负责传包，传完构建就停在 TestFlight 里没有分发对象——以前每次都要去 App Store Connect 手动把群组加上。现在由 `Distribute to TestFlight groups` 步骤（`.github/scripts/testflight_distribute.py`）做掉。
+
+配置一个仓库 Variable 即可：
+
+| Variable | 默认 | 作用 |
+|---|---|---|
+| `TESTFLIGHT_GROUPS` | 空 | 要自动分发的测试组名，逗号分隔。**留空时不分发**，只在日志里列出可用群组 |
+| `TESTFLIGHT_WAIT_SECONDS` | `900` | 等构建处理完的上限。超时不会让构建变红，只打 warning |
+
+不知道群组叫什么就先不配：跑一次构建，日志里的 `::notice::可用群组: ...` 会把名字、内部/外部、是否已开自动分发都列出来，照抄进 Variable 即可。
+
+几个行为上的选择：
+
+- **这一步排在整个 job 的最后**，不是紧跟上传。构建处理完之前加不进外部组，而上传产物 / 建 Release / 发飞书本来就要跑几分钟——放后面等于白捡一段处理时间，少占 macOS runner（10 倍计费）。
+- **群组名写错会让构建变红**。打错一个字的后果是此后每次构建都静默不分发，正是这个脚本要消灭的那个手动步骤，所以宁可吵。报错里会列出实际可用的名字，并说明 IPA 已经传上去了。
+- **超时只是 warning**。包已经传成功了，把整个构建标红会误导人。
+- **重复运行安全**。已经在组里的构建会跳过，不会因为 409 把重跑打成失败。
+- **Apple 判定 `INVALID` / `FAILED` 会变红**。`altool` 对这种情况是退出 0 的，这个红叉是唯一的信号。
+
+> App Store Connect 自己也有「Enable automatic distribution」开关，零代码，但[只对内部组有效](https://www.developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers)，而且只能在**建组时**勾选——已有的组要改就得重建，重建会让测试员在 TestFlight 里看到「已被移除」。走 API 内外部组通吃，且不动现有群组。
 
 ### TestFlight 测试用户邀请
 
@@ -367,6 +391,11 @@ flutter build ios --dart-define=ENV=test
 - App Store Connect → Activities 查看处理状态
 - 检查 Bundle ID / Version / Build Number 是否与之前版本冲突（`ios/Runner/Info.plist` 的 `CFBundleShortVersionString` 和 `CFBundleVersion`）
 - 确保 `Info.plist` 里有 `ITSAppUsesNonExemptEncryption = NO`（或提交合规信息）
+
+**构建传上去了但没进测试组**：
+- 日志里有 `::notice::可用群组: ...` → `TESTFLIGHT_GROUPS` 没配，照着列出的名字填进仓库 Variable
+- 日志里有 `这些群组在 App Store Connect 上不存在` → 名字打错了，报错里有实际可用的名字
+- 日志里有 `等了 900s，构建 N 还没处理完` → 苹果处理慢，调大 `TESTFLIGHT_WAIT_SECONDS` 后重跑，或手动加一次
 
 **构建卡在"Processing"**：
 - 等待苹果服务器处理（最多 1 小时）

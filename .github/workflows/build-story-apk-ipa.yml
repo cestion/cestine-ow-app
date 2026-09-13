@@ -599,6 +599,31 @@ jobs:
             echo "⚠️ Feishu secrets not configured, skipping notification"
           fi
 
+      # ==================== TestFlight 分发 ====================
+      # 故意排在最后:altool 传完后 App Store Connect 还要处理 5-15 分钟,构建
+      # 处理完之前加不进外部组。上面的上传产物 / Release / 飞书通知本来就要跑
+      # 几分钟,放在它们后面等于白捡一段处理时间,少占 macOS runner(10 倍计费)。
+      - name: Distribute to TestFlight groups
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        env:
+          ASC_KEY_CONTENT: ${{ secrets.IOS_APP_STORE_CONNECT_API_KEY_CONTENT }}
+          ASC_KEY_ID: ${{ secrets.IOS_APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.IOS_APP_STORE_CONNECT_ISSUER_ID }}
+          ASC_BUNDLE_ID: com.cestine.officeapp
+          TESTFLIGHT_GROUPS: ${{ vars.TESTFLIGHT_GROUPS }}
+          WAIT_SECONDS: ${{ vars.TESTFLIGHT_WAIT_SECONDS || '900' }}
+        run: |
+          if [ -z "$ASC_KEY_CONTENT" ]; then
+            echo "::warning::App Store Connect secrets 未设置,跳过 TestFlight 分发"
+            exit 0
+          fi
+          # cryptography 由前面的 Resolve build number 步骤装好 —— 签名构建走不到
+          # 这里而没装过它,那一步会先失败。
+          python3 .github/scripts/testflight_distribute.py \
+            --build-version "$BUILD_NUMBER" \
+            --groups "$TESTFLIGHT_GROUPS" \
+            --timeout "$WAIT_SECONDS"
+
       # ==================== 构建摘要 ====================
       - name: Build summary
         if: always()
