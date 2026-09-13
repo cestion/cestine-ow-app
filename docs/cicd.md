@@ -427,6 +427,18 @@ flutter build ios --dart-define=ENV=test
 - 日志里有 `这些群组在 App Store Connect 上不存在` → 名字打错了，报错里有实际可用的名字
 - 日志里有 `等了 900s，构建 N 还没处理完` → 苹果处理慢，调大 `TESTFLIGHT_WAIT_SECONDS` 后重跑，或手动加一次
 
+**`GitHub release failed with status: 500`**：
+GitHub release API 的瞬时故障，不是配置问题。这一步现在是 `continue-on-error`，
+只会显示成黄色，不再影响后面的步骤。**注意 500 经常是"写成功了但响应失败"**，所以
+可能留下一个没有附件的空 release，按 tag 找到手动删掉即可——同一个包在 artifact 和
+TestFlight 里各还有一份，不影响发版。
+
+> 这个 500 曾经让整个 job 变红，并把后面的飞书通知、TestFlight 分发、回写构建号
+> **全部跳过**。原因是步骤的 `if` 默认隐含 `success()`，排在分发前面的产物上传 /
+> Release / 飞书任意一步失败都会波及它。现在分发和回写改成只看
+> `steps.testflight_upload.outputs.uploaded`——即包到底传上去没有——而不是"前面
+> 一路没出错"。
+
 **旧构建变成了"已过期"**：
 是 `TESTFLIGHT_KEEP_BUILDS`（默认 3）干的，日志里有 `::notice::已过期旧构建 ...`。
 **恢复不了**——Apple 没有"取消过期"，只能用新构建号重传一个包。想保留更多就调大这个

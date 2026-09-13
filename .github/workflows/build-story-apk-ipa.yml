@@ -421,6 +421,9 @@ jobs:
 
       # ==================== TestFlight ====================
       - name: Upload to TestFlight
+        # 下面的分发和回写构建号都以这一步的 uploaded 输出为准,而不是"前面没出错"。
+        # 缺 secret 时这一步是 warning + exit 0,所以退出码不能代表真的传上去了。
+        id: testflight_upload
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
         env:
           APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.IOS_APP_STORE_CONNECT_API_KEY_CONTENT }}
@@ -451,6 +454,7 @@ jobs:
             exit 1
           fi
           echo "::notice::IPA uploaded to TestFlight successfully"
+          echo "uploaded=true" >> "$GITHUB_OUTPUT"
 
       # ==================== 上传产物 ====================
       - name: Upload APK Artifact
@@ -473,12 +477,19 @@ jobs:
           if-no-files-found: warn
 
       # ==================== GitHub Release (仅 main) ====================
+      # 两步都是 continue-on-error:Release 只是同一个包的第三份拷贝(另两份是
+      # 上面的 artifact 和已经传好的 TestFlight)。GitHub 的 release API 偶尔
+      # 返回 500,曾经因此把后面的飞书通知、TestFlight 分发、回写构建号全部跳过
+      # —— 包传上去了却没进测试组。失败时这一步显示为黄色,job 继续。
       - name: Create GitHub Release and Upload APK
         if: env.BUILD_APK == 'true' && github.ref == 'refs/heads/main'
+        continue-on-error: true
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.APK_RELEASE_TAG }}
-          name: 🤖 Story APK ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
+          # 这里不能用 $(date):with: 是传给 JS action 的参数,没有 shell 去
+          # 展开它,以前的 release 名字里是字面的 "$(date +'%Y-%m-%d %H:%M')"。
+          name: 🤖 Story APK ${{ env.ENVIRONMENT }} · ${{ env.BUILD_START_TIME }}
           body: |
             ## 📦 Story App Android 自动构建
 
@@ -492,10 +503,11 @@ jobs:
 
       - name: Create GitHub Release and Upload IPA
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
+        continue-on-error: true
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.IPA_RELEASE_TAG }}
-          name: 🍎 Story IPA ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
+          name: 🍎 Story IPA ${{ env.ENVIRONMENT }} (${{ env.BUILD_NUMBER }}) · ${{ env.BUILD_START_TIME }}
           body: |
             ## 📦 Story App iOS 自动构建
 
@@ -587,8 +599,17 @@ jobs:
       # 处理完之前加不进外部组。上面的上传产物 / Release / 飞书通知本来就要跑几
       # 分钟,放在它们后面等于白捡一段处理时间,直接从 job 总时长里省下来
       # (timeout 是 150 分钟,这一步最多要等 TESTFLIGHT_WAIT_SECONDS 那么久)。
+      #
+      # 代价是:排得越后,前面能挂掉它的步骤就越多。默认的 if 隐含 success(),
+      # 所以产物上传 / Release / 飞书任意一步失败都会让分发被跳过 —— 包传上去了
+      # 却没进测试组,正是这个脚本要消灭的那个手动步骤。GitHub 的 release API
+      # 返回一次 500 就够了。
+      #
+      # 所以这里不看"前面有没有出错",只看它真正依赖的那一件事:包到底传上去
+      # 没有。!cancelled() 去掉隐含的 success(),同时保证手动取消时不会白等
+      # TESTFLIGHT_WAIT_SECONDS。
       - name: Distribute to TestFlight groups
-        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
+        if: ${{ !cancelled() && steps.testflight_upload.outputs.uploaded == 'true' }}
         env:
           ASC_KEY_CONTENT: ${{ secrets.IOS_APP_STORE_CONNECT_API_KEY_CONTENT }}
           ASC_KEY_ID: ${{ secrets.IOS_APP_STORE_CONNECT_KEY_ID }}
@@ -624,8 +645,10 @@ jobs:
       # 一次 push 冲突(exit 1)就把后面的产物、Release、飞书通知、TestFlight 分发
       # 全部跳过 —— 包传上去了却没进测试组。构建号的权威来源是 App Store Connect
       # (resolve_build_number.py 查 max+1),pubspec 里这个数只是兜底,不值这个代价。
+      # 同样只认"包传上去了":这个号已经被 App Store Connect 占用了,该回写。
+      # 反过来,前面哪一步失败都不该阻止回写 —— 号照样占掉了。
       - name: Bump pubspec build number
-        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
+        if: ${{ !cancelled() && steps.testflight_upload.outputs.uploaded == 'true' && github.ref == 'refs/heads/main' }}
         run: |
           CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
           if [ "$CURRENT" = "$BUILD_NUMBER" ]; then
