@@ -596,17 +596,26 @@ jobs:
           ASC_BUNDLE_ID: com.cestine.officeapp
           TESTFLIGHT_GROUPS: ${{ vars.TESTFLIGHT_GROUPS }}
           WAIT_SECONDS: ${{ vars.TESTFLIGHT_WAIT_SECONDS || '900' }}
+          KEEP_BUILDS: ${{ vars.TESTFLIGHT_KEEP_BUILDS || '3' }}
         run: |
           if [ -z "$ASC_KEY_CONTENT" ]; then
             echo "::warning::App Store Connect secrets 未设置,跳过 TestFlight 分发"
             exit 0
           fi
+          # Variable 填错(比如写成 "three")不该挡住分发:argparse 在解析参数时就
+          # 退出,IPA 已经传上去了却一个组都没进。非法值退回默认值,只报 warning。
+          if ! printf '%s' "$KEEP_BUILDS" | grep -qE '^[0-9]+$'; then
+            echo "::warning::TESTFLIGHT_KEEP_BUILDS='${KEEP_BUILDS}' 不是非负整数,按默认值 3 处理"
+            KEEP_BUILDS=3
+          fi
+
           # cryptography 由前面的 Resolve build number 步骤装好 —— 签名构建走不到
           # 这里而没装过它,那一步会先失败。
           python3 .github/scripts/testflight_distribute.py \
             --build-version "$BUILD_NUMBER" \
             --groups "$TESTFLIGHT_GROUPS" \
-            --timeout "$WAIT_SECONDS"
+            --timeout "$WAIT_SECONDS" \
+            --keep "$KEEP_BUILDS"
 
       # ==================== 回写构建号 ====================
       # 把新构建号写回 pubspec,避免下次 App Store Connect 查不到时回退到用过的旧号。

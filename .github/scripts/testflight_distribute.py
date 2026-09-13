@@ -10,9 +10,13 @@ the group was created -- changing it means recreating the group, which shows
 existing testers "Tester Removed". Doing it from CI works for internal and
 external groups alike and leaves the groups untouched.
 
+With --keep N it also expires older builds, leaving the newest N usable. Apple
+never deletes an uploaded build -- expiring is the only way to get one out of
+testers' hands, and the row stays in the list either way.
+
 Usage:
   testflight_distribute.py --list
-  testflight_distribute.py --build-version 123 --groups "内部测试,QA"
+  testflight_distribute.py --build-version 123 --groups "内部测试,QA" --keep 3
 
 Credentials come from the environment (not argv -- argv is visible in `ps`):
   ASC_KEY_CONTENT, ASC_KEY_ID, ASC_ISSUER_ID, ASC_BUNDLE_ID
@@ -128,7 +132,66 @@ def wait_for_build(api, app_id, version, timeout):
         time.sleep(POLL_INTERVAL)
 
 
-def cmd_distribute(api, app_id, version, wanted, timeout):
+def expire_old_builds(api, app_id, keep, protect_id):
+    """Expire every live build except the newest `keep`. Returns what it did.
+
+    Apple has no un-expire and no delete: PATCH expired=true is one-way, and a
+    mistake costs a re-upload under a fresh build number. So this re-reads each
+    build immediately before touching it and skips anything it cannot confirm.
+    """
+    # keep<=0 means "disabled", not "expire everything". The caller already
+    # guards this; duplicating it here so no future caller can turn the default
+    # value of an int into a wipe of every build in TestFlight.
+    if keep <= 0:
+        return [], []
+
+    data = api.request("GET", f"/v1/builds?filter[app]={app_id}&limit=200")
+
+    live = []
+    for b in (data or {}).get("data") or []:
+        attrs = b.get("attributes", {})
+        if attrs.get("expired"):
+            continue
+        v = attrs.get("version")
+        # Sorting happens here, not via sort=-version: ASC returns version as a
+        # string, so its sort puts "99" after "123". A build whose version is
+        # not a plain integer can't be ordered against the rest -- leave it be
+        # rather than guess where it belongs.
+        if isinstance(v, str) and v.strip().isdigit():
+            live.append((int(v), b["id"]))
+    live.sort(reverse=True)
+
+    expired, skipped = [], []
+    for version, bid in live[keep:]:
+        if bid == protect_id:
+            continue  # never the build this run just uploaded
+        try:
+            cur = (api.request("GET", f"/v1/builds/{bid}") or {}).get("data") or {}
+            attrs = cur.get("attributes", {})
+            if attrs.get("expired"):
+                continue
+            if attrs.get("version") != str(version):
+                # The id no longer points at the build we decided to expire.
+                skipped.append(f"{version}(版本号对不上)")
+                continue
+            rel = api.request("GET", f"/v1/builds/{bid}/relationships/appStoreVersion")
+            if (rel or {}).get("data"):
+                # Attached to an App Store version -- in review or already
+                # released. Expiring that is a different, much worse mistake.
+                skipped.append(f"{version}(已关联 App Store 版本)")
+                continue
+            api.request(
+                "PATCH",
+                f"/v1/builds/{bid}",
+                {"data": {"type": "builds", "id": bid, "attributes": {"expired": True}}},
+            )
+            expired.append(version)
+        except AscError as exc:
+            skipped.append(f"{version}({exc.detail})")
+    return expired, skipped
+
+
+def cmd_distribute(api, app_id, version, wanted, timeout, keep=0):
     groups = fetch_groups(api, app_id)
     by_name = {g["attributes"]["name"]: g for g in groups}
 
@@ -200,6 +263,19 @@ def cmd_distribute(api, app_id, version, wanted, timeout):
     if any(not by_name[n]["attributes"].get("isInternalGroup") for n in added):
         summary += "。外部组的构建会自动送 Beta 审核，通过后测试员才收到"
     gh_notice("notice", summary)
+
+    # Only after the new build is distributed: if we never got that far, the
+    # old builds are still the ones testers need.
+    if keep > 0:
+        gone, kept_back = expire_old_builds(api, app_id, keep, build_id)
+        if gone:
+            gh_notice(
+                "notice",
+                f"已过期旧构建 {', '.join(map(str, gone))}(保留最新 {keep} 个)。"
+                "Apple 不支持删除,过期后测试员装不了,记录仍留在构建列表里",
+            )
+        if kept_back:
+            gh_notice("warning", "这些旧构建没过期: " + "; ".join(kept_back))
     return 0
 
 
@@ -209,6 +285,13 @@ def main():
     ap.add_argument("--build-version", help="要分发的构建号")
     ap.add_argument("--groups", default="", help="群组名，逗号分隔")
     ap.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
+    # Defaults to off: expiring is irreversible, so it has to be asked for.
+    ap.add_argument(
+        "--keep",
+        type=int,
+        default=0,
+        help="分发成功后把更旧的构建标为过期,只保留最新 N 个(0=不动)",
+    )
     args = ap.parse_args()
 
     api, bundle_id = client_from_env()
@@ -224,7 +307,9 @@ def main():
             return cmd_list(api, app_id)
         if not args.build_version:
             raise SystemExit("--build-version is required when --groups is set")
-        return cmd_distribute(api, app_id, args.build_version, wanted, args.timeout)
+        return cmd_distribute(
+            api, app_id, args.build_version, wanted, args.timeout, args.keep
+        )
     except BuildRejected as exc:
         gh_notice("error", str(exc))
         return 1

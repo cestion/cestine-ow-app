@@ -346,8 +346,9 @@ flutter build ios --dart-define=ENV=test
 2. CI 构建签名 IPA → `xcrun altool --upload-app`（API Key 认证）上传到 App Store Connect
 3. 苹果服务器处理（通常 5-15 分钟）：自动化审查 → 生成 TestFlight 构建
 4. CI 轮询到构建变为 `VALID` 后，自动加进 `TESTFLIGHT_GROUPS` 里配置的测试组（见下）
-5. App Store Connect → TestFlight → 该版本状态变为"可测试"
-6. 测试用户收到新构建（内部组立即可用，外部组要先过 Beta 审核）
+5. 分发成功后，把更旧的构建标为过期，只保留最新 `TESTFLIGHT_KEEP_BUILDS` 个（默认 3，见下）
+6. App Store Connect → TestFlight → 该版本状态变为"可测试"
+7. 测试用户收到新构建（内部组立即可用，外部组要先过 Beta 审核）
 
 ### 自动加入测试组
 
@@ -359,6 +360,7 @@ flutter build ios --dart-define=ENV=test
 |---|---|---|
 | `TESTFLIGHT_GROUPS` | 空 | 要自动分发的测试组名，逗号分隔。**留空时不分发**，只在日志里列出可用群组 |
 | `TESTFLIGHT_WAIT_SECONDS` | `900` | 等构建处理完的上限。超时不会让构建变红，只打 warning |
+| `TESTFLIGHT_KEEP_BUILDS` | `3` | 分发成功后把更旧的构建标为**过期**，只保留最新 N 个。填 `0` 关闭（见下） |
 
 不知道群组叫什么就先不配：跑一次构建，日志里的 `::notice::可用群组: ...` 会把名字、内部/外部、是否已开自动分发都列出来，照抄进 Variable 即可。
 
@@ -371,6 +373,32 @@ flutter build ios --dart-define=ENV=test
 - **Apple 判定 `INVALID` / `FAILED` 会变红**。`altool` 对这种情况是退出 0 的，这个红叉是唯一的信号。
 
 > App Store Connect 自己也有「Enable automatic distribution」开关，零代码，但[只对内部组有效](https://www.developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers)，而且只能在**建组时**勾选——已有的组要改就得重建，重建会让测试员在 TestFlight 里看到「已被移除」。走 API 内外部组通吃，且不动现有群组。
+
+### 只保留最新 N 个构建
+
+每次构建都会在 TestFlight 里留一条记录，攒几十个之后测试员打开 app 看到一长串版本，不知道该装哪个。`TESTFLIGHT_KEEP_BUILDS`（默认 `3`）让分发成功后自动把更旧的构建标为**过期**。
+
+先说清楚这件事的边界，因为它**不可逆**：
+
+- Apple **不提供删除构建**的能力，过期是唯一能让旧包从测试员手里消失的手段。
+- 过期后**记录仍然留在**构建列表里（显示为「已过期」），只是装不了了。想让列表本身变短做不到。
+- **没有"取消过期"这个操作**。误过期的唯一补救是用新构建号重新传一个包。
+- 不配也会过期：Apple 对所有 TestFlight 构建有 **90 天**自动过期。这个开关只是把时间提前。
+
+正因为不可逆，实现上有四道保险：
+
+| 保险 | 挡住的情况 |
+|---|---|
+| 只在**分发成功之后**才执行 | 等构建超时、加组失败、Apple 判 `INVALID` 时一律不动旧构建——那时候旧包还是测试员唯一能装的 |
+| 过期前**重新 GET 校验版本号** | 列表和实际操作之间构建 id 发生漂移时跳过，不会误伤别的构建 |
+| **跳过已关联 App Store 版本的构建** | 在审 / 已上架的构建不能动，那是比留几个旧测试包严重得多的事故 |
+| **永不碰本次刚上传的那个** | 即使排序异常也不会把刚传的包过期掉 |
+
+另外：版本号排序在本地按整数做，不用 API 的 `sort=-version`——ASC 把 version 当字符串排，`"99"` 会排到 `"123"` 后面（`resolve_build_number.py` 里也是同样的处理）。非纯数字的版本号不参与排序也不会被过期。
+
+任何一个构建过期失败（比如 Apple 返回 409）只会打 warning 并列出原因，不影响其他构建，也不会让整个构建变红——包已经传好分发好了。
+
+填 `0` 完全关闭。脚本层面 `--keep` 默认就是 `0`，workflow 显式传 `3`：不可逆的行为默认不开，得有人明确要求。
 
 ### TestFlight 测试用户邀请
 
@@ -398,6 +426,16 @@ flutter build ios --dart-define=ENV=test
 - 日志里有 `::notice::可用群组: ...` → `TESTFLIGHT_GROUPS` 没配，照着列出的名字填进仓库 Variable
 - 日志里有 `这些群组在 App Store Connect 上不存在` → 名字打错了，报错里有实际可用的名字
 - 日志里有 `等了 900s，构建 N 还没处理完` → 苹果处理慢，调大 `TESTFLIGHT_WAIT_SECONDS` 后重跑，或手动加一次
+
+**旧构建变成了"已过期"**：
+是 `TESTFLIGHT_KEEP_BUILDS`（默认 3）干的，日志里有 `::notice::已过期旧构建 ...`。
+**恢复不了**——Apple 没有"取消过期"，只能用新构建号重传一个包。想保留更多就调大这个
+Variable，填 `0` 彻底关闭。注意即使关掉，Apple 自己也会在 90 天后自动过期。
+
+**`::warning::这些旧构建没过期: ...`**：
+某个旧构建没能过期，原因在括号里（`已关联 App Store 版本` = 在审/已上架，故意跳过；
+`版本号对不上` = id 漂移，保守跳过；其余是 Apple 返回的报错）。不影响本次构建，包已经
+传好也分发好了，不用处理。
 
 **`! [rejected] main -> main (fetch first)`**：
 构建期间 main 前进了，回写构建号的那次 push 被拒。现在它会自动重试 3 次并且只报
