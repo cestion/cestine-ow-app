@@ -27,7 +27,8 @@ from asc_api import AscClient, AscError
 # The build resource shows up in the API a minute or two after altool returns,
 # but stays in PROCESSING for another 5-15 while Apple scans it. External
 # groups reject a build that is not yet VALID, so we have to wait it out.
-# This runs on a macOS runner (10x billing), hence a bounded, tunable wait.
+# The wait is bounded and tunable because it burns wall-clock inside a job that
+# is already the slowest thing in the repo (150-minute timeout on a macOS runner).
 POLL_INTERVAL = 30
 DEFAULT_TIMEOUT = 900
 

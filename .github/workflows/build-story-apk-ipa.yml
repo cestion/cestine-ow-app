@@ -583,9 +583,10 @@ jobs:
           fi
 
       # ==================== TestFlight 分发 ====================
-      # 故意排在最后:altool 传完后 App Store Connect 还要处理 5-15 分钟,构建
-      # 处理完之前加不进外部组。上面的上传产物 / Release / 飞书通知本来就要跑
-      # 几分钟,放在它们后面等于白捡一段处理时间,少占 macOS runner(10 倍计费)。
+      # 故意排在很后面:altool 传完后 App Store Connect 还要处理 5-15 分钟,构建
+      # 处理完之前加不进外部组。上面的上传产物 / Release / 飞书通知本来就要跑几
+      # 分钟,放在它们后面等于白捡一段处理时间,直接从 job 总时长里省下来
+      # (timeout 是 150 分钟,这一步最多要等 TESTFLIGHT_WAIT_SECONDS 那么久)。
       - name: Distribute to TestFlight groups
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true'
         env:
