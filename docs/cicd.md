@@ -163,7 +163,9 @@ iOS 的构建方式由 `ENVIRONMENT` 决定（`build-story-apk-ipa.yml:56-74`）
 
 注意 `test` 同样是签名的 release 构建并会上传 TestFlight，只是 `--dart-define=ENV=test` 让包连测试后端。表单默认就是 `test`，**点 Run workflow 不改选项就会传 TestFlight**，所以签名材料缺失/过期会让构建直接失败，不是只影响 `production`。
 
-另外：`Bump pubspec build number` 步骤会在 TestFlight 上传成功后把新构建号 push 回 main（构建号不能重复，否则 App Store Connect 拒收）。所以**手动构建之后本地记得先 `git pull` 再提交**，否则会撞上非 fast-forward。
+另外：`Bump pubspec build number` 步骤会把新构建号 push 回 main（构建号不能重复，否则 App Store Connect 拒收）。所以**手动构建之后本地记得先 `git pull` 再提交**，否则会撞上非 fast-forward。
+
+这一步排在整个 job 的**最后**，失败只报 warning。它原本夹在 altool 上传和上传产物之间：构建要跑几十分钟，期间 main 往往已经前进，`git push` 被拒 → `exit 1` → 后面的产物、Release、飞书通知、TestFlight 分发**全部跳过**——包传上去了却没进测试组。现在每轮重试都重新 fetch，在 origin/main 最新的 pubspec 上重做那一行（用独立 worktree，不碰构建产物所在的工作区），所以不会把别人同期改的其他行一起回退。真正的构建号来源是 App Store Connect（`resolve_build_number.py` 查 max+1），pubspec 里这个数只是兜底，不值得为它红一次构建。
 
 ## 需要的 GitHub Secrets
 
@@ -396,6 +398,11 @@ flutter build ios --dart-define=ENV=test
 - 日志里有 `::notice::可用群组: ...` → `TESTFLIGHT_GROUPS` 没配，照着列出的名字填进仓库 Variable
 - 日志里有 `这些群组在 App Store Connect 上不存在` → 名字打错了，报错里有实际可用的名字
 - 日志里有 `等了 900s，构建 N 还没处理完` → 苹果处理慢，调大 `TESTFLIGHT_WAIT_SECONDS` 后重跑，或手动加一次
+
+**`! [rejected] main -> main (fetch first)`**：
+构建期间 main 前进了，回写构建号的那次 push 被拒。现在它会自动重试 3 次并且只报
+warning，不会再让构建变红、也不会再把后面的分发步骤带下水。看到 `::warning::构建号 N
+没能回写` 时无需处理——下次构建的号照样由 App Store Connect 查出，不会撞号。
 
 **构建卡在"Processing"**：
 - 等待苹果服务器处理（最多 1 小时）

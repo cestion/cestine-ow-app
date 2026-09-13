@@ -452,23 +452,6 @@ jobs:
           fi
           echo "::notice::IPA uploaded to TestFlight successfully"
 
-      # 上传成功后，把新构建号回写 pubspec 并提交，避免下次查询失败时
-      # 回退到已使用过的旧号撞号。这一步会 push 到 main，本地记得先 pull。
-      - name: Bump pubspec build number
-        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
-        run: |
-          CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
-          if [ "$CURRENT" = "$BUILD_NUMBER" ]; then
-            echo "pubspec build number ${CURRENT} already equals ${BUILD_NUMBER}; nothing to bump."
-            exit 0
-          fi
-          sed -i '' -E "s/(^version:.*\+)[0-9]+$/\1${BUILD_NUMBER}/" pubspec.yaml
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pubspec.yaml
-          git commit -m "chore: bump build number to ${BUILD_NUMBER} [ci skip]"
-          git push
-
       # ==================== 上传产物 ====================
       - name: Upload APK Artifact
         if: env.BUILD_APK == 'true'
@@ -623,6 +606,55 @@ jobs:
             --build-version "$BUILD_NUMBER" \
             --groups "$TESTFLIGHT_GROUPS" \
             --timeout "$WAIT_SECONDS"
+
+      # ==================== 回写构建号 ====================
+      # 把新构建号写回 pubspec,避免下次 App Store Connect 查不到时回退到用过的旧号。
+      #
+      # 排在全 job 最后、且失败只报 warning:它原本夹在 altool 上传和上传产物之间,
+      # 一次 push 冲突(exit 1)就把后面的产物、Release、飞书通知、TestFlight 分发
+      # 全部跳过 —— 包传上去了却没进测试组。构建号的权威来源是 App Store Connect
+      # (resolve_build_number.py 查 max+1),pubspec 里这个数只是兜底,不值这个代价。
+      - name: Bump pubspec build number
+        if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
+        run: |
+          CURRENT=$(grep -E '^version:' pubspec.yaml | sed -E 's/.*\+([0-9]+)$/\1/')
+          if [ "$CURRENT" = "$BUILD_NUMBER" ]; then
+            echo "pubspec 构建号已经是 ${CURRENT},无需回写。"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 构建跑几十分钟,期间 main 基本都会前进,直接 push 必然 non-fast-forward。
+          # 所以每轮都拉最新的 origin/main、在它的 pubspec 上重做这一行改动,而不是
+          # rebase 一个基于几十分钟前快照的提交(那样会连带回退别人改的其他行)。
+          # 用独立 worktree 是为了不碰当前工作区 —— 上面几步还在用里面的构建产物。
+          WT="${RUNNER_TEMP:-/tmp}/bump-wt"
+          trap 'rm -rf "$WT"; git worktree prune || true' EXIT
+          for attempt in 1 2 3; do
+            rm -rf "$WT"
+            git worktree prune
+            git fetch --quiet origin main || { echo "git fetch 失败"; break; }
+            git worktree add --quiet --detach "$WT" FETCH_HEAD || { echo "worktree 创建失败"; break; }
+
+            REMOTE_NUM=$(grep -E '^version:' "$WT/pubspec.yaml" | sed -E 's/.*\+([0-9]+)$/\1/')
+            if [ "$REMOTE_NUM" = "$BUILD_NUMBER" ]; then
+              echo "远端 pubspec 已经是 ${BUILD_NUMBER},无需回写。"
+              exit 0
+            fi
+
+            sed -i '' -E "s/(^version:.*\+)[0-9]+$/\1${BUILD_NUMBER}/" "$WT/pubspec.yaml"
+            git -C "$WT" add pubspec.yaml
+            git -C "$WT" commit --quiet -m "chore: bump build number to ${BUILD_NUMBER} [ci skip]"
+            if git -C "$WT" push --quiet origin HEAD:main; then
+              echo "::notice::pubspec 构建号已回写为 ${BUILD_NUMBER},本地记得 git pull"
+              exit 0
+            fi
+            echo "push 被拒(main 又前进了),重试 ${attempt}/3"
+          done
+
+          echo "::warning::构建号 ${BUILD_NUMBER} 没能回写 pubspec。IPA 已上传并分发,本次构建不受影响;下次构建的号仍由 App Store Connect 查出,不会撞号。"
 
       # ==================== 构建摘要 ====================
       - name: Build summary
