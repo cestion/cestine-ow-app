@@ -80,7 +80,7 @@ def describe(group):
     return f"{attrs.get('name')!r} ({kind}组{auto}, id={group['id']})"
 
 
-def cmd_list(api, app_id):
+def cmd_list(api, app_id, level="notice"):
     groups = fetch_groups(api, app_id)
     if not groups:
         gh_notice("warning", "这个 app 在 App Store Connect 上还没有任何 TestFlight 群组")
@@ -89,7 +89,7 @@ def cmd_list(api, app_id):
     for g in groups:
         log(f"  - {describe(g)}")
     gh_notice(
-        "notice",
+        level,
         "可用群组: "
         + ", ".join(repr(g["attributes"]["name"]) for g in groups)
         + " —— 把要自动分发的名字填进仓库 Variable TESTFLIGHT_GROUPS（逗号分隔）",
@@ -301,10 +301,25 @@ def main():
             return cmd_list(api, app_id)
         wanted = [n.strip() for n in args.groups.split(",") if n.strip()]
         if not wanted:
-            # Nothing configured yet: show what is available so the first run
-            # tells the user exactly what to put in the Variable.
-            log("未配置 TESTFLIGHT_GROUPS，改为列出可用群组。")
-            return cmd_list(api, app_id)
+            # Nothing configured: show what is available so the first run tells
+            # the user exactly what to put in the Variable.
+            #
+            # Warning, not notice: a green step with a notice looks like success,
+            # and the build silently goes undistributed -- the exact manual step
+            # this script exists to remove. It reads empty both when the Variable
+            # was never set and when it was set somewhere that does not resolve
+            # (Secrets tab instead of Variables, an Environment-scoped variable
+            # while this job declares no `environment:`, or the other account's
+            # repo), so the message has to name where it actually looks.
+            log("TESTFLIGHT_GROUPS 读到的是空值，改为列出可用群组。")
+            gh_notice(
+                "warning",
+                "TESTFLIGHT_GROUPS 为空，本次构建没有自动分发。请确认它配在"
+                "「Settings → Secrets and variables → Actions → Variables tab →"
+                " Repository variables」——配成 Secret、配在 Environments 下、"
+                "或配在另一个账号的仓库里，这里都会读到空值。",
+            )
+            return cmd_list(api, app_id, level="warning")
         if not args.build_version:
             raise SystemExit("--build-version is required when --groups is set")
         return cmd_distribute(
