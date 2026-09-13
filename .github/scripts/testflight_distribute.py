@@ -132,6 +132,27 @@ def wait_for_build(api, app_id, version, timeout):
         time.sleep(POLL_INTERVAL)
 
 
+def app_store_version_attached(api, build):
+    """Is this build attached to an App Store version? -> (确定得了吗, 是不是)
+
+    Returns (False, None) when it cannot be determined. Callers must treat that
+    as "do not touch": expiring is irreversible, so "不知道" has to mean "别动".
+
+    /v1/builds/{id}/relationships/appStoreVersion is not readable (same 403 as
+    betaGroups), so this reads the relationship off the build resource first --
+    it comes back on the same GET that verifies the version, at no extra cost --
+    and falls back to the "related" path only if that was inconclusive.
+    """
+    rel = (build.get("relationships") or {}).get("appStoreVersion") or {}
+    if "data" in rel:
+        return True, bool(rel.get("data"))
+    try:
+        data = api.request("GET", f"/v1/builds/{build['id']}/appStoreVersion")
+        return True, bool((data or {}).get("data"))
+    except AscError:
+        return False, None
+
+
 def expire_old_builds(api, app_id, keep, protect_id):
     """Expire every live build except the newest `keep`. Returns what it did.
 
@@ -166,7 +187,9 @@ def expire_old_builds(api, app_id, keep, protect_id):
         if bid == protect_id:
             continue  # never the build this run just uploaded
         try:
-            cur = (api.request("GET", f"/v1/builds/{bid}") or {}).get("data") or {}
+            cur = (
+                api.request("GET", f"/v1/builds/{bid}?include=appStoreVersion") or {}
+            ).get("data") or {}
             attrs = cur.get("attributes", {})
             if attrs.get("expired"):
                 continue
@@ -174,8 +197,12 @@ def expire_old_builds(api, app_id, keep, protect_id):
                 # The id no longer points at the build we decided to expire.
                 skipped.append(f"{version}(版本号对不上)")
                 continue
-            rel = api.request("GET", f"/v1/builds/{bid}/relationships/appStoreVersion")
-            if (rel or {}).get("data"):
+            cur.setdefault("id", bid)
+            known, attached = app_store_version_attached(api, cur)
+            if not known:
+                skipped.append(f"{version}(查不到是否已关联 App Store 版本)")
+                continue
+            if attached:
                 # Attached to an App Store version -- in review or already
                 # released. Expiring that is a different, much worse mistake.
                 skipped.append(f"{version}(已关联 App Store 版本)")
@@ -224,10 +251,21 @@ def cmd_distribute(api, app_id, version, wanted, timeout, keep=0):
         )
         return 0
 
-    # Skip groups the build is already in. Re-POSTing an existing linkage is a
-    # 409, which would otherwise turn a harmless re-run into a red build.
-    data = api.request("GET", f"/v1/builds/{build_id}/relationships/betaGroups")
-    already = {e["id"] for e in (data or {}).get("data") or []}
+    # Which groups is it already in? Not via /relationships/betaGroups: that
+    # path is CREATE+DELETE only and answers GET with
+    #   403 The relationship 'betaGroups' does not allow 'GET_RELATIONSHIP'
+    # The readable form is the "related" path below.
+    #
+    # And this is only an optimisation to avoid a duplicate POST, so a failure
+    # here must not block distribution -- the POST handles duplicates itself.
+    # Getting this wrong already cost one build: the 403 aborted the whole step
+    # after the build had been uploaded and had finished processing.
+    already = set()
+    try:
+        data = api.request("GET", f"/v1/builds/{build_id}/betaGroups?limit=200")
+        already = {e["id"] for e in (data or {}).get("data") or []}
+    except AscError as exc:
+        log(f"查不到构建当前在哪些组，直接尝试加入（不影响分发）: {exc}")
 
     added, skipped, failed = [], [], []
     for g in targets:
@@ -243,6 +281,11 @@ def cmd_distribute(api, app_id, version, wanted, timeout, keep=0):
             )
             added.append(name)
         except AscError as exc:
+            if exc.status == 409:
+                # Already linked. This is the fallback for when the pre-check
+                # above could not run -- a re-run must stay green either way.
+                skipped.append(name)
+                continue
             # One bad group should not stop the others -- partial distribution
             # beats none, and the summary below says exactly which failed.
             log(f"加入 {name!r} 失败: {exc}")

@@ -427,6 +427,15 @@ flutter build ios --dart-define=ENV=test
 - 日志里有 `这些群组在 App Store Connect 上不存在` → 名字打错了，报错里有实际可用的名字
 - 日志里有 `等了 900s，构建 N 还没处理完` → 苹果处理慢，调大 `TESTFLIGHT_WAIT_SECONDS` 后重跑，或手动加一次
 
+**`The relationship 'X' does not allow 'GET_RELATIONSHIP'`**：
+App Store Connect 的 `/v1/{资源}/{id}/relationships/{关系}` 路径**只能写不能读**
+（CREATE/DELETE）。要读得走 related 路径 `/v1/{资源}/{id}/{关系}`，或者在资源本身的
+请求上加 `?include={关系}`。踩过两次：`builds/{id}/relationships/betaGroups` 和
+`builds/{id}/relationships/appStoreVersion`，都已改掉。
+
+现在读关系失败也不会中断分发——那个预查询只是为了避免重复加组，POST 自己会用 409
+兜住。参见 [Apple 文档](https://developer.apple.com/documentation/appstoreconnectapi/get-v1-apps-_id_-relationships-betagroups)。
+
 **`GitHub release failed with status: 500`**：
 GitHub release API 的瞬时故障，不是配置问题。这一步现在是 `continue-on-error`，
 只会显示成黄色，不再影响后面的步骤。**注意 500 经常是"写成功了但响应失败"**，所以
