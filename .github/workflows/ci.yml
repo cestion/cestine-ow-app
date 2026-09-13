@@ -14,8 +14,8 @@ on:
     branches: ["**"]
   pull_request:
     types: [opened, synchronize, reopened]
-  # 手动对任意区间补做影响/回归分析。只有 branch-ai-review 会跑 —— 其余 job 的 if
-  # 都限定了 push / pull_request,手动触发时自动跳过。
+  # 手动对任意区间补做影响/回归分析 + 代码评审。只有 push-ai-review 会跑 —— 其余
+  # job 的 if 都限定了 push / pull_request,手动触发时自动跳过。
   workflow_dispatch:
     inputs:
       base:
@@ -202,14 +202,19 @@ jobs:
             -d "$PAYLOAD"
 
   # ===========================================================================
-  # Push 事件 Job 2: 影响范围 / 影响点 / 回归范围 分析
+  # Push 事件 Job 2: 影响/回归分析 + 代码评审 —— 两次 LLM 调用,一张飞书卡片
   # 也承接 workflow_dispatch,用于对任意历史区间补做同一份分析
+  #
+  # 这两件事原本是 branch-ai-review / push-code-review 两个 job,各自 checkout、
+  # 各自 resolve refs、各自往同一个 webhook 发一张卡 —— 同一次 push 在群里刷出两
+  # 条,得对照着看。合并后共用一次 checkout + Flutter 安装,两个 ENABLE_* 开关下沉
+  # 到步骤级,单独关掉任一侧时另一侧照常出现在卡片里。
   # ===========================================================================
-  branch-ai-review:
-    name: Branch AI Review
+  push-ai-review:
+    name: Push AI Review (影响分析 + 代码评审)
     if: >-
       (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-      && vars.ENABLE_BRANCH_AI != 'false'
+      && (vars.ENABLE_BRANCH_AI != 'false' || vars.ENABLE_PUSH_CODE_REVIEW != 'false')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -275,18 +280,18 @@ jobs:
           echo "Changed files: $COUNT"
 
       - name: Install deps (only if we have work to do)
-        if: steps.count.outputs.count != '0'
+        if: steps.count.outputs.count != '0' && vars.ENABLE_BRANCH_AI != 'false'
         run: flutter pub get
 
       - name: Run static impact analysis
-        if: steps.count.outputs.count != '0'
+        if: steps.count.outputs.count != '0' && vars.ENABLE_BRANCH_AI != 'false'
         env:
           BASE_SHA: ${{ steps.refs.outputs.base }}
           HEAD_SHA: ${{ steps.refs.outputs.head }}
         run: dart run tool/pr_impact_analysis.dart > impact-report.md
 
       - name: Build diff summary
-        if: steps.count.outputs.count != '0'
+        if: steps.count.outputs.count != '0' && vars.ENABLE_BRANCH_AI != 'false'
         env:
           BASE_SHA: ${{ steps.refs.outputs.base }}
           HEAD_SHA: ${{ steps.refs.outputs.head }}
@@ -304,8 +309,8 @@ jobs:
             ':(exclude)build/**' \
             | head -c 120000 > diff-truncated.patch
 
-      - name: Call LLM
-        if: steps.count.outputs.count != '0'
+      - name: Call LLM (影响/回归分析)
+        if: steps.count.outputs.count != '0' && vars.ENABLE_BRANCH_AI != 'false'
         id: ai
         env:
           MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
@@ -417,169 +422,12 @@ jobs:
             echo "ok=1"
           } >> "$GITHUB_OUTPUT"
 
-      # 手动触发时用户就停在 run 页面上,结果不该只发去飞书。
-      - name: Job summary
-        if: always()
-        env:
-          ASSESSMENT: ${{ steps.ai.outputs.assessment }}
-          CHANGED:    ${{ steps.count.outputs.count }}
-          BASE_SHA:   ${{ steps.refs.outputs.base }}
-          HEAD_SHA:   ${{ steps.refs.outputs.head }}
-        run: |
-          {
-            echo "## 🧪 影响范围 / 影响点 / 回归范围"
-            echo ""
-            echo "区间 \`${BASE_SHA:-?}\`..\`${HEAD_SHA:-?}\` · 源码改动 ${CHANGED:-0} 个文件"
-            echo ""
-            if [ "${CHANGED:-0}" = "0" ]; then
-              echo "_本次区间未修改代码或配置文件,已跳过 AI 分析。_"
-            elif [ -z "$ASSESSMENT" ]; then
-              echo "_AI 分析未生成结果,见 Call LLM 步骤日志。_"
-            else
-              echo "$ASSESSMENT"
-            fi
-            if [ -s impact-report.md ]; then
-              echo ""
-              echo "<details><summary>静态影响分析原文</summary>"
-              echo ""
-              head -c 60000 impact-report.md
-              echo ""
-              echo "</details>"
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
+      # ---- 以下为代码评审(原 push-code-review job)----
 
-      - name: Notify Feishu
-        if: always()
-        env:
-          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
-          REPO:       ${{ github.repository }}
-          BRANCH:     ${{ github.ref_name }}
-          ACTOR:      ${{ github.actor }}
-          COMMIT_ID:  ${{ github.event.head_commit.id }}
-          COMMIT_URL: ${{ github.event.head_commit.url }}
-          COMPARE:    ${{ github.event.compare }}
-          CHANGED:    ${{ steps.count.outputs.count }}
-          ASSESSMENT: ${{ steps.ai.outputs.assessment }}
-          MODEL:      ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
-          EVENT:      ${{ github.event_name }}
-          SERVER_URL: ${{ github.server_url }}
-          BASE_SHA:   ${{ steps.refs.outputs.base }}
-          HEAD_SHA:   ${{ steps.refs.outputs.head }}
-        run: |
-          if [ -z "$FEISHU_WEBHOOK_URL" ]; then
-            echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
-            exit 0
-          fi
-
-          # workflow_dispatch 没有 head_commit / compare 上下文,自己拼。
-          # refs 步骤若因 commit 无效而失败,outputs 为空 —— 退回 GITHUB_SHA,
-          # 否则卡片里会出现 .../commit/ 这样的断链。
-          if [ "$EVENT" = "workflow_dispatch" ]; then
-            HEAD_SHA="${HEAD_SHA:-$GITHUB_SHA}"
-            BASE_SHA="${BASE_SHA:-$HEAD_SHA}"
-            COMMIT_URL="$SERVER_URL/$REPO/commit/$HEAD_SHA"
-            COMPARE="$SERVER_URL/$REPO/compare/$BASE_SHA...$HEAD_SHA"
-          fi
-          COMMIT_ID="${COMMIT_ID:-${HEAD_SHA:-$GITHUB_SHA}}"
-
-          SHORT_SHA="${COMMIT_ID:0:7}"
-
-          if [ "${CHANGED:-0}" = "0" ]; then
-            BODY="_本次区间未修改代码或配置文件,已跳过 AI 分析。_"
-            TEMPLATE="grey"
-            TITLE="🧪 影响范围 / 回归范围 分析(跳过)"
-          elif [ -z "$ASSESSMENT" ]; then
-            BODY="_AI 分析未生成结果,请查看 Actions 日志。_"
-            TEMPLATE="orange"
-            TITLE="🧪 影响范围 / 回归范围 分析(失败)"
-          else
-            BODY="$ASSESSMENT"
-            TEMPLATE="blue"
-            TITLE="🧪 影响范围 / 影响点 / 回归范围"
-          fi
-          if [ "$EVENT" = "workflow_dispatch" ]; then
-            TITLE="$TITLE · 手动"
-          fi
-
-          PAYLOAD=$(jq -n \
-            --arg repo    "$REPO" \
-            --arg branch  "$BRANCH" \
-            --arg actor   "$ACTOR" \
-            --arg sha     "$SHORT_SHA" \
-            --arg changed "$CHANGED" \
-            --arg body    "$BODY" \
-            --arg model   "$MODEL" \
-            --arg commit  "$COMMIT_URL" \
-            --arg compare "$COMPARE" \
-            --arg tmpl    "$TEMPLATE" \
-            --arg title   "$TITLE" \
-            '{
-              msg_type: "interactive",
-              card: {
-                config: { wide_screen_mode: true, enable_forward: true },
-                header: {
-                  template: $tmpl,
-                  title: { tag: "plain_text", content: $title }
-                },
-                elements: [
-                  {
-                    tag: "div",
-                    fields: [
-                      { is_short: true, text: { tag: "lark_md", content: ("**🌿 分支**\n`" + $branch + "`") } },
-                      { is_short: true, text: { tag: "lark_md", content: ("**🔖 版本**\n`" + $sha + "`") } },
-                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } },
-                      { is_short: true, text: { tag: "lark_md", content: ("**📊 源码改动**\n" + $changed + " 文件") } }
-                    ]
-                  },
-                  { tag: "hr" },
-                  { tag: "div", text: { tag: "lark_md", content: $body } },
-                  { tag: "hr" },
-                  { tag: "note", elements: [ { tag: "plain_text", content: ("🧠 " + $model + " · " + $repo) } ] },
-                  {
-                    tag: "action",
-                    actions: [
-                      { tag: "button", text: { tag: "plain_text", content: "🔍 查看提交" }, type: "primary",  url: $commit  },
-                      { tag: "button", text: { tag: "plain_text", content: "📊 对比变更" }, type: "default", url: $compare }
-                    ]
-                  }
-                ]
-              }
-            }')
-
-          curl -s -X POST "$FEISHU_WEBHOOK_URL" \
-            -H "Content-Type: application/json" \
-            -d "$PAYLOAD"
-
-  # ===========================================================================
-  # Push 事件 Job 3: 代码级 AI 评审
-  # ===========================================================================
-  push-code-review:
-    name: Push Code Review (AI)
-    if: github.event_name == 'push' && vars.ENABLE_PUSH_CODE_REVIEW != 'false'
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Resolve BASE / HEAD
-        id: refs
-        run: |
-          HEAD_SHA="${{ github.event.after }}"
-          BEFORE="${{ github.event.before }}"
-          if [[ "$BEFORE" =~ ^0+$ ]]; then
-            DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
-            git fetch origin "$DEFAULT_BRANCH" --depth=100 || true
-            BASE_SHA=$(git merge-base "origin/$DEFAULT_BRANCH" "$HEAD_SHA" 2>/dev/null || echo "$HEAD_SHA~1")
-          else
-            BASE_SHA="$BEFORE"
-          fi
-          echo "base=$BASE_SHA" >> "$GITHUB_OUTPUT"
-          echo "head=$HEAD_SHA" >> "$GITHUB_OUTPUT"
-
+      # 计数口径和上面的 count 有意不同:影响分析关心 ios/ android/ .github/ 这类
+      # 发版链路,代码评审只看 .dart —— 只动了 pbxproj 的提交没有代码可评。
       - name: Count changed source files
-        id: count
+        id: count_src
         env:
           BASE_SHA: ${{ steps.refs.outputs.base }}
           HEAD_SHA: ${{ steps.refs.outputs.head }}
@@ -592,7 +440,7 @@ jobs:
           echo "Changed source files: $COUNT"
 
       - name: Build diff for review
-        if: steps.count.outputs.count != '0'
+        if: steps.count_src.outputs.count != '0' && vars.ENABLE_PUSH_CODE_REVIEW != 'false'
         env:
           BASE_SHA: ${{ steps.refs.outputs.base }}
           HEAD_SHA: ${{ steps.refs.outputs.head }}
@@ -608,8 +456,8 @@ jobs:
             ':(exclude)build/**' \
             | head -c 150000 > /tmp/review-diff.patch
 
-      - name: Call LLM for code review
-        if: steps.count.outputs.count != '0'
+      - name: Call LLM (代码评审)
+        if: steps.count_src.outputs.count != '0' && vars.ENABLE_PUSH_CODE_REVIEW != 'false'
         id: review
         env:
           MINIMAX_KEY_BLOB: ${{ secrets.MINIMAX_KEY_BLOB }}
@@ -618,8 +466,15 @@ jobs:
           MINIMAX_BASE: ${{ vars.MINIMAX_BASE_URL || 'https://api.minimaxi.com/anthropic' }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
           BRANCH: ${{ github.ref_name }}
+          HEAD_SHA: ${{ steps.refs.outputs.head }}
         run: |
           DIFF=$(cat /tmp/review-diff.patch)
+
+          # workflow_dispatch 没有 head_commit 上下文,从 git 里取(同影响分析那步)
+          if [ -z "$COMMIT_MSG" ]; then
+            COMMIT_MSG=$(git log -1 --pretty=%B "$HEAD_SHA" 2>/dev/null \
+              || echo '(手动触发,无提交信息)')
+          fi
 
           cat > /tmp/system-prompt.txt <<'PROMPT_EOF'
           你是 Flutter/Dart 代码评审专家,对一次 push 做代码质量评审。输出精简的中文 Markdown,包含:
@@ -644,17 +499,25 @@ jobs:
             --arg diff "$DIFF" \
             '"# 分支\n\($branch)\n\n# 提交信息\n\($msg)\n\n# Diff\n```diff\n\($diff)\n```"')
 
+          # ok 标志给下面的飞书卡片用:它据此决定这一段是正常结果还是失败文案,
+          # 而不是去猜正文里有没有“失败”两个字。四条出口都要写。
           if [ -z "$MINIMAX_KEY_BLOB" ]; then
-            echo "review=_MINIMAX_KEY_BLOB secret 未设置,跳过代码评审_" >> "$GITHUB_OUTPUT"
+            {
+              echo "review=_MINIMAX_KEY_BLOB secret 未设置,跳过代码评审_"
+              echo "ok=0"
+            } >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          # 不要加 2>/dev/null:keyring.sh 现在会在 stderr 上说清楚 blob 哪里不对,
+          # 不要加 2>/dev/null:keyring.sh 会在 stderr 上说清楚 blob 哪里不对,
           # 把它吞掉就又回到“只知道失败、不知道为什么”的状态。
           API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || API_KEY=""
           if [ -z "$API_KEY" ]; then
             echo "::warning::MINIMAX_KEY_BLOB 解码失败,已跳过代码评审(原因见上一行 keyring 输出)"
-            echo "review=_MiniMax 密钥解码失败 —— Secret 里应存 keyring.sh encode 的输出,详见本步骤日志_" >> "$GITHUB_OUTPUT"
+            {
+              echo "review=_MiniMax 密钥解码失败 —— Secret 里应存 keyring.sh encode 的输出,详见本步骤日志_"
+              echo "ok=0"
+            } >> "$GITHUB_OUTPUT"
             exit 0
           fi
           API_BASE="$MINIMAX_BASE/v1/messages"
@@ -677,10 +540,8 @@ jobs:
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
             -d "$PAYLOAD" 2>/tmp/review-curl-err.txt) || {
-              # 这里原本是 `echo "review=_LLM 调用失败: $CLEANED_"`,bash 把 `$CLEANED_`
-              # 当成变量名 CLEANED_(下划线是合法标识符字符)解析,于是永远是空 ——
-              # 卡片上只剩 "_LLM 调用失败: "。另外 $GITHUB_OUTPUT 的单行 key=value 装不下
-              # 多行 JSON 错误体,必须用 heredoc 形式,与另外两个 AI job 保持一致。
+              # --fail-with-body 只把 HTTP 错误体写到 stdout;DNS/TLS/超时的 body 是空的,
+              # 原因全在 stderr。状态行用来区分 401(key 错)/404(base url 错)/429。
               {
                 grep -m1 '^HTTP/' /tmp/review-headers.txt 2>/dev/null | tr -d '\r' || true
                 printf '%s\n' "$RESPONSE"
@@ -696,6 +557,7 @@ jobs:
                 echo "$CLEANED"
                 echo "\`\`\`"
                 echo "EOF_REVIEW"
+                echo "ok=0"
               } >> "$GITHUB_OUTPUT"
               exit 0
             }
@@ -707,57 +569,165 @@ jobs:
             echo "review<<EOF_REVIEW"
             echo "$CONTENT"
             echo "EOF_REVIEW"
+            echo "ok=1"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Publish to job summary
+      # 手动触发时用户就停在 run 页面上,结果不该只发去飞书。
+      - name: Job summary
         if: always()
         env:
-          CHANGED: ${{ steps.count.outputs.count }}
-          REVIEW: ${{ steps.review.outputs.review }}
+          ASSESSMENT:  ${{ steps.ai.outputs.assessment }}
+          REVIEW:      ${{ steps.review.outputs.review }}
+          CHANGED:     ${{ steps.count.outputs.count }}
+          CHANGED_SRC: ${{ steps.count_src.outputs.count }}
+          ENABLE_IMPACT: ${{ vars.ENABLE_BRANCH_AI }}
+          ENABLE_REVIEW: ${{ vars.ENABLE_PUSH_CODE_REVIEW }}
+          BASE_SHA:    ${{ steps.refs.outputs.base }}
+          HEAD_SHA:    ${{ steps.refs.outputs.head }}
         run: |
+          # 两段共用一套降级文案:关掉 / 无改动 / 没出结果 是三种不同的情况,
+          # 混成一句“未生成结果”会让人以为是 AI 挂了。
+          section_body() {  # $1=开关值 $2=改动文件数 $3=正文
+            if [ "$1" = "false" ]; then
+              echo "_已通过仓库 Variables 关闭。_"
+            elif [ "${2:-0}" = "0" ]; then
+              echo "_本次区间没有相关改动,已跳过。_"
+            elif [ -z "$3" ]; then
+              echo "_未生成结果,请查看本 run 的 Call LLM 步骤日志。_"
+            else
+              echo "$3"
+            fi
+          }
           {
+            echo "区间 \`${BASE_SHA:-?}\`..\`${HEAD_SHA:-?}\` · 影响分析 ${CHANGED:-0} 个文件 · 代码评审 ${CHANGED_SRC:-0} 个文件"
+            echo ""
+            echo "## 🧪 影响范围 / 影响点 / 回归范围"
+            echo ""
+            section_body "$ENABLE_IMPACT" "$CHANGED" "$ASSESSMENT"
+            if [ -s impact-report.md ]; then
+              echo ""
+              echo "<details><summary>静态影响分析原文</summary>"
+              echo ""
+              head -c 60000 impact-report.md
+              echo ""
+              echo "</details>"
+            fi
+            echo ""
             echo "## 🔍 代码评审 (AI)"
             echo ""
-            if [ "${CHANGED:-0}" = "0" ]; then
-              echo "_本次推送未修改源码,已跳过代码评审。_"
-            elif [ -z "$REVIEW" ]; then
-              echo "_代码评审未生成结果,请查看 Actions 日志。_"
-            else
-              echo "$REVIEW"
-            fi
+            section_body "$ENABLE_REVIEW" "$CHANGED_SRC" "$REVIEW"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Notify Feishu (optional)
-        if: steps.count.outputs.count != '0'
+      # 影响分析和代码评审合发一张卡:同一次 push 原本会在群里刷出两条,
+      # 要对照着看。两段各自降级,一边失败不影响另一边照常显示。
+      - name: Notify Feishu
+        if: always()
         env:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_APP_WEBHOOK_URL }}
-          REPO: ${{ github.repository }}
-          BRANCH: ${{ github.ref_name }}
-          ACTOR: ${{ github.actor }}
-          COMMIT_ID: ${{ github.event.head_commit.id }}
-          COMMIT_URL: ${{ github.event.head_commit.url }}
-          REVIEW: ${{ steps.review.outputs.review }}
+          REPO:          ${{ github.repository }}
+          BRANCH:        ${{ github.ref_name }}
+          ACTOR:         ${{ github.actor }}
+          COMMIT_ID:     ${{ github.event.head_commit.id }}
+          COMMIT_URL:    ${{ github.event.head_commit.url }}
+          COMPARE:       ${{ github.event.compare }}
+          CHANGED:       ${{ steps.count.outputs.count }}
+          CHANGED_SRC:   ${{ steps.count_src.outputs.count }}
+          ASSESSMENT:    ${{ steps.ai.outputs.assessment }}
+          IMPACT_OK:     ${{ steps.ai.outputs.ok }}
+          REVIEW:        ${{ steps.review.outputs.review }}
+          REVIEW_OK:     ${{ steps.review.outputs.ok }}
+          ENABLE_IMPACT: ${{ vars.ENABLE_BRANCH_AI }}
+          ENABLE_REVIEW: ${{ vars.ENABLE_PUSH_CODE_REVIEW }}
+          MODEL:         ${{ vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          REVIEW_MODEL:  ${{ vars.PUSH_REVIEW_MODEL || vars.MINIMAX_MODEL || 'MiniMax-M3' }}
+          EVENT:         ${{ github.event_name }}
+          SERVER_URL:    ${{ github.server_url }}
+          BASE_SHA:      ${{ steps.refs.outputs.base }}
+          HEAD_SHA:      ${{ steps.refs.outputs.head }}
+          RUN_URL:       ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           if [ -z "$FEISHU_WEBHOOK_URL" ]; then
-            echo "FEISHU_APP_WEBHOOK_URL not set; skipping Feishu notification"
+            echo "FEISHU_APP_WEBHOOK_URL not set; skipping notification"
             exit 0
           fi
 
+          # workflow_dispatch 没有 head_commit / compare 上下文,自己拼。
+          # refs 步骤若因 commit 无效而失败,outputs 为空 —— 退回 GITHUB_SHA,
+          # 否则卡片里会出现 .../commit/ 这样的断链。
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            HEAD_SHA="${HEAD_SHA:-$GITHUB_SHA}"
+            BASE_SHA="${BASE_SHA:-$HEAD_SHA}"
+            COMMIT_URL="$SERVER_URL/$REPO/commit/$HEAD_SHA"
+            COMPARE="$SERVER_URL/$REPO/compare/$BASE_SHA...$HEAD_SHA"
+          fi
+          COMMIT_ID="${COMMIT_ID:-${HEAD_SHA:-$GITHUB_SHA}}"
           SHORT_SHA="${COMMIT_ID:0:7}"
+
+          # 关掉 / 无改动 / 调用失败 / 正常 是四种不同情况,别混成一句“未生成结果”。
+          # 失败与否以步骤输出的 ok 标志为准,不去猜正文内容。
+          classify() {  # $1=开关 $2=改动数 $3=ok标志 $4=正文
+            if [ "$1" = "false" ]; then
+              _STATE=skip; _BODY="_已通过仓库 Variables 关闭。_"
+            elif [ "${2:-0}" = "0" ]; then
+              _STATE=skip; _BODY="_本次区间没有相关改动,已跳过。_"
+            elif [ -z "$4" ]; then
+              _STATE=fail; _BODY="_未生成结果,请查看 Actions 日志。_"
+            elif [ "$3" != "1" ]; then
+              _STATE=fail; _BODY="$4"
+            else
+              _STATE=ok;   _BODY="$4"
+            fi
+          }
+          classify "$ENABLE_IMPACT" "$CHANGED"     "$IMPACT_OK" "$ASSESSMENT"
+          IMPACT_STATE="$_STATE"; IMPACT_BODY="$_BODY"
+          classify "$ENABLE_REVIEW" "$CHANGED_SRC" "$REVIEW_OK" "$REVIEW"
+          REVIEW_STATE="$_STATE"; REVIEW_BODY="$_BODY"
+
+          if [ "$IMPACT_STATE" = "fail" ] || [ "$REVIEW_STATE" = "fail" ]; then
+            TEMPLATE="orange"; TITLE="🧪 影响分析 · 🔍 代码评审(有失败)"
+          elif [ "$IMPACT_STATE" = "skip" ] && [ "$REVIEW_STATE" = "skip" ]; then
+            TEMPLATE="grey";   TITLE="🧪 影响分析 · 🔍 代码评审(跳过)"
+          else
+            TEMPLATE="blue";   TITLE="🧪 影响分析 · 🔍 代码评审"
+          fi
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            TITLE="$TITLE · 手动"
+          fi
+
+          if [ "$MODEL" = "$REVIEW_MODEL" ]; then
+            MODEL_NOTE="$MODEL"
+          else
+            MODEL_NOTE="$MODEL / $REVIEW_MODEL"
+          fi
+
           PAYLOAD=$(jq -n \
-            --arg repo "$REPO" \
-            --arg branch "$BRANCH" \
-            --arg actor "$ACTOR" \
-            --arg sha "$SHORT_SHA" \
-            --arg review "${REVIEW:-_评审未生成_}" \
-            --arg commit "$COMMIT_URL" \
-            '{
+            --arg repo    "$REPO" \
+            --arg branch  "$BRANCH" \
+            --arg actor   "$ACTOR" \
+            --arg sha     "$SHORT_SHA" \
+            --arg changed "${CHANGED:-0}" \
+            --arg csrc    "${CHANGED_SRC:-0}" \
+            --arg impact  "$IMPACT_BODY" \
+            --arg review  "$REVIEW_BODY" \
+            --arg model   "$MODEL_NOTE" \
+            --arg commit  "$COMMIT_URL" \
+            --arg compare "$COMPARE" \
+            --arg run     "$RUN_URL" \
+            --arg tmpl    "$TEMPLATE" \
+            --arg title   "$TITLE" \
+            '
+            # 两段 AI 正文加起来可能顶到飞书的卡片体积上限,超了整条消息会被拒。
+            # 按字符(而不是字节)截断,否则会把 UTF-8 多字节字符切成半个。
+            def clip: if (. | length) > 2500
+                      then .[0:2500] + "\n\n_…内容过长已截断,完整结果见 Actions job summary。_"
+                      else . end;
+            {
               msg_type: "interactive",
               card: {
                 config: { wide_screen_mode: true, enable_forward: true },
                 header: {
-                  template: "blue",
-                  title: { tag: "plain_text", content: "🔍 代码评审 (AI)" }
+                  template: $tmpl,
+                  title: { tag: "plain_text", content: $title }
                 },
                 elements: [
                   {
@@ -765,26 +735,39 @@ jobs:
                     fields: [
                       { is_short: true, text: { tag: "lark_md", content: ("**🌿 分支**\n`" + $branch + "`") } },
                       { is_short: true, text: { tag: "lark_md", content: ("**🔖 版本**\n`" + $sha + "`") } },
-                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } }
+                      { is_short: true, text: { tag: "lark_md", content: ("**👤 提交人**\n" + $actor) } },
+                      { is_short: true, text: { tag: "lark_md", content: ("**📊 改动**\n影响 " + $changed + " · 源码 " + $csrc + " 文件") } }
                     ]
                   },
                   { tag: "hr" },
-                  { tag: "div", text: { tag: "lark_md", content: $review } },
+                  { tag: "div", text: { tag: "lark_md", content: ("**🧪 影响范围 / 影响点 / 回归范围**\n\n" + ($impact | clip)) } },
                   { tag: "hr" },
-                  { tag: "note", elements: [ { tag: "plain_text", content: ("📦 " + $repo) } ] },
+                  { tag: "div", text: { tag: "lark_md", content: ("**🔍 代码评审**\n\n" + ($review | clip)) } },
+                  { tag: "hr" },
+                  { tag: "note", elements: [ { tag: "plain_text", content: ("🧠 " + $model + " · " + $repo) } ] },
                   {
                     tag: "action",
                     actions: [
-                      { tag: "button", text: { tag: "plain_text", content: "🔍 查看提交" }, type: "primary", url: $commit }
+                      { tag: "button", text: { tag: "plain_text", content: "🔍 查看提交" }, type: "primary",  url: $commit  },
+                      { tag: "button", text: { tag: "plain_text", content: "📊 对比变更" }, type: "default", url: $compare },
+                      { tag: "button", text: { tag: "plain_text", content: "📋 运行详情" }, type: "default", url: $run     }
                     ]
                   }
                 ]
               }
             }')
 
-          curl -s -X POST "$FEISHU_WEBHOOK_URL" \
+          # 以前是 `curl -s` 后不看返回:卡片超长或格式不对时飞书会拒收,
+          # 而 CI 一路绿灯,只有群里没消息 —— 查起来毫无线索。
+          RESP=$(curl -sS -X POST "$FEISHU_WEBHOOK_URL" \
             -H "Content-Type: application/json" \
-            -d "$PAYLOAD"
+            -d "$PAYLOAD" 2>&1) || RESP="curl 失败: $RESP"
+          CODE=$(printf '%s' "$RESP" | jq -r '.code // .StatusCode // "?"' 2>/dev/null || echo "?")
+          if [ "$CODE" = "0" ]; then
+            echo "飞书卡片已发送"
+          else
+            echo "::warning::飞书卡片发送失败(code=$CODE): $(printf '%s' "$RESP" | head -c 300)"
+          fi
 
   # ===========================================================================
   # PR 事件 Job 1: Lark 通知
@@ -897,7 +880,7 @@ jobs:
 
   # ===========================================================================
   # PR 事件 Job 4: Impact Analysis
-  # (push 侧的同一套分析由上面的 branch-ai-review 承担,避免重复)
+  # (push 侧的同一套分析由上面的 push-ai-review 承担,避免重复)
   # ===========================================================================
   pr-impact:
     name: Impact Analysis
@@ -971,7 +954,7 @@ jobs:
           git diff --numstat "$BASE_SHA" "$HEAD_SHA" > diff-numstat.txt
           git diff --unified=3 --stat "$BASE_SHA" "$HEAD_SHA" > diff-stat.txt
           # 整库 (':/') 而不是 'lib/**':prompt 要求评估 ios/ android/ .github/ pubspec.yaml
-          # 的影响,过去这些 diff 根本没发给模型。与 branch-ai-review 的排除列表保持一致。
+          # 的影响,过去这些 diff 根本没发给模型。与 push-ai-review 的排除列表保持一致。
           git diff --unified=3 "$BASE_SHA" "$HEAD_SHA" \
             -- ':/' \
             ':(exclude)**/*.g.dart' \
@@ -999,7 +982,7 @@ jobs:
             exit 0
           fi
 
-          # 同 branch-ai-review:`bash -e` 下不兜底就是静默 exit 1,PR 上连评论都没有。
+          # 同 push-ai-review:`bash -e` 下不兜底就是静默 exit 1,PR 上连评论都没有。
           API_KEY=$(bash .github/scripts/keyring.sh decode "$MINIMAX_KEY_BLOB") || API_KEY=""
           if [ -z "$API_KEY" ]; then
             echo "::warning::MINIMAX_KEY_BLOB 解码失败,已跳过 AI 评估(原因见上一行 keyring 输出)"
@@ -1015,7 +998,7 @@ jobs:
           STAT=$(cat diff-stat.txt)
           DIFF=$(cat diff-truncated.patch)
 
-          # 与 branch-ai-review 共用同一份输出规格;业务模块清单由
+          # 与 push-ai-review 共用同一份输出规格;业务模块清单由
           # tool/pr_impact_analysis.dart 生成并附在 impact-report.md 末尾,是唯一来源。
           SYSTEM="$(cat .github/prompts/impact-regression.md)
 
@@ -1048,7 +1031,7 @@ jobs:
             -H "anthropic-version: 2023-06-01" \
             -H "Content-Type: application/json" \
             -d "$PAYLOAD" 2>/tmp/ai-curl-err.txt) || {
-              # 见 branch-ai-review 的同名分支:body + stderr + 状态行三样都要收。
+              # 见 push-ai-review 的同名分支:body + stderr + 状态行三样都要收。
               {
                 grep -m1 '^HTTP/' /tmp/ai-headers.txt 2>/dev/null | tr -d '\r' || true
                 printf '%s\n' "$RESPONSE"

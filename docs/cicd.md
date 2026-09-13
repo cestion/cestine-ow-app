@@ -15,8 +15,7 @@
 |---|---|---|---|
 | `ci-checks` | push + PR | ✅ | 代码生成校验 + `dart format` + `flutter analyze` + `flutter test --coverage` + codecov（唯一会 fail 的 job） |
 | `feishu-push-notify` | push | — | 提交卡片 |
-| `branch-ai-review` | push + **手动** | — | 静态影响分析 + diff → AI 影响范围/影响点/回归范围 → 飞书卡片 |
-| `push-code-review` | push | — | 代码级 AI 评审 → job summary + 飞书卡片 |
+| `push-ai-review` | push + **手动** | — | 两次 LLM 调用（影响范围/影响点/回归范围 + 代码级评审）→ job summary + **一张**飞书卡片 |
 | `pr-notify-lark` | PR | — | PR 打开/更新通知 |
 | `pr-impact` | PR | — | `tool/pr_impact_analysis.dart` → sticky PR 评论 |
 | `pr-impact-ai` | PR | — | 影响报告 + diff → AI 影响范围/影响点/回归范围 → PR 评论 |
@@ -31,8 +30,8 @@
 
 | Variable | 默认 | 作用 |
 |---|---|---|
-| `ENABLE_BRANCH_AI` | 开启 | push 分支 AI 风险评估 |
-| `ENABLE_PUSH_CODE_REVIEW` | 开启 | push 代码级 AI 评审 |
+| `ENABLE_BRANCH_AI` | 开启 | `push-ai-review` 的影响/回归分析段 |
+| `ENABLE_PUSH_CODE_REVIEW` | 开启 | `push-ai-review` 的代码评审段 |
 | `ENABLE_IMPACT` | 开启 | PR 静态影响分析 |
 | `ENABLE_IMPACT_AI` | 开启 | PR AI 风险评估 |
 | `ENABLE_ANALYZER_DIFF` | 开启 | analyzer 错误 diff |
@@ -90,7 +89,7 @@ read -rs BLOB && printf '%s' "$BLOB" | gh secret set MINIMAX_KEY_BLOB -R cestine
 
 ### 影响范围 / 影响点 / 回归范围
 
-`branch-ai-review`（push）和 `pr-impact-ai`（PR）产出同一份四段报告，给的是业务视角而不是 reviewer 视角：
+`push-ai-review`（push）和 `pr-impact-ai`（PR）产出同一份四段报告，给的是业务视角而不是 reviewer 视角：
 
 | 段 | 内容 | 条数上限 |
 |---|---|---|
@@ -110,7 +109,24 @@ read -rs BLOB && printf '%s' "$BLOB" | gh secret set MINIMAX_KEY_BLOB -R cestine
 gh workflow run "Unified CI Pipeline" -f base=15722e4 -f head=HEAD
 ```
 
-手动触发只会跑 `branch-ai-review`，其余 job 的 `if` 都限定了 push / pull_request，会自动跳过。并发组单独按 `run_id` 分，不会取消正在跑的 push CI。
+手动触发只会跑 `push-ai-review`（影响分析和代码评审两段都会跑），其余 job 的 `if` 都限定了 push / pull_request，会自动跳过。并发组单独按 `run_id` 分，不会取消正在跑的 push CI。
+
+### 一张卡片，两段内容
+
+影响分析和代码评审原本是 `branch-ai-review` / `push-code-review` 两个 job，各自 checkout、各自发一张飞书卡片——同一次 push 会在群里刷出两条，得对照着看。现在合并成 `push-ai-review`：共用一次 checkout，两次 LLM 调用，结果拼成一张卡。
+
+两段各自降级，一边失败不影响另一边照常显示：
+
+| 段的状态 | 卡片里显示 | 卡片颜色 |
+|---|---|---|
+| 正常出结果 | AI 正文（超 2500 字按字符截断，完整版看 job summary） | 🔵 blue |
+| 对应 `ENABLE_*` 设为 `false` | `已通过仓库 Variables 关闭。` | 两段都跳过时 ⚪️ grey |
+| 本次区间没有该段关心的改动 | `本次区间没有相关改动,已跳过。` | 同上 |
+| 调用失败 | 状态行 + 响应体 + stderr（已脱敏） | 任一段失败即 🟠 orange |
+
+两段的「有没有改动」口径不同：影响分析统计全部改动文件（含 `ios/`、`android/`、`.github/`），代码评审只看 `.dart`——只动了 `pbxproj` 的提交没有代码可评。所以卡片上经常出现「影响 N · 源码 0」。
+
+失败与否以步骤输出的 `ok` 标志为准，不靠正文关键字去猜。飞书 webhook 的返回码也会检查：卡片过大或格式不对时飞书会拒收，以前 CI 一路绿灯、只有群里没消息，现在会打一条 `::warning::` 带上 `code`。
 
 ### 为什么有自建的 `tool/pr_impact_analysis.dart`
 
