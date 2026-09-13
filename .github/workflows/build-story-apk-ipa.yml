@@ -46,7 +46,7 @@ jobs:
       BUILD_START_TIME: ${{ github.event.repository.updated_at }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Record build start time
         run: echo "BUILD_START_TIME=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_ENV
@@ -136,7 +136,7 @@ jobs:
 
       - name: Setup Java (for Android)
         if: env.BUILD_APK == 'true'
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: 'zulu'
           java-version: '17'
@@ -455,7 +455,7 @@ jobs:
       # ==================== 上传产物 ====================
       - name: Upload APK Artifact
         if: env.BUILD_APK == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.APK_NAME }}
           path: ${{ env.APK_PATH }}
@@ -463,7 +463,7 @@ jobs:
 
       - name: Upload IPA/App Artifact
         if: env.BUILD_IPA == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: story-${{ env.ENVIRONMENT }}
           path: |
@@ -475,7 +475,7 @@ jobs:
       # ==================== GitHub Release (仅 main) ====================
       - name: Create GitHub Release and Upload APK
         if: env.BUILD_APK == 'true' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.APK_RELEASE_TAG }}
           name: 🤖 Story APK ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
@@ -492,7 +492,7 @@ jobs:
 
       - name: Create GitHub Release and Upload IPA
         if: env.BUILD_IPA == 'true' && env.IOS_SIGNED == 'true' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.IPA_RELEASE_TAG }}
           name: 🍎 Story IPA ${{ env.ENVIRONMENT }} $(date +'%Y-%m-%d %H:%M')
